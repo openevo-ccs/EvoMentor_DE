@@ -1,0 +1,3765 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EvoMentor DE v1.1</title>
+<style>
+  :root {
+    --primary: #2c5f2e;
+    --primary-light: #4a9e4e;
+    --primary-pale: #e8f5e9;
+    --secondary: #1565c0;
+    --secondary-pale: #e3f2fd;
+    --accent: #f57c00;
+    --accent-pale: #fff3e0;
+    --accent2: #6a1b9a;
+    --accent2-pale: #f3e5f5;
+    --danger: #c62828;
+    --danger-pale: #ffebee;
+    --success: #2e7d32;
+    --neutral: #546e7a;
+    --neutral-pale: #eceff1;
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --border: #cfd8dc;
+    --text: #1a2327;
+    --text-muted: #607d8b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --transition: 0.2s ease;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --bk-color: #004d7a;
+    --bk-pale: #e0f0fa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── TOPBAR ── */
+  #topbar {
+    background: linear-gradient(135deg, #1b4332 0%, #2c5f2e 60%, #1a3a5c 100%);
+    color: white; padding: 0 14px;
+    display: flex; align-items: center; gap: 6px;
+    height: 58px; position: sticky; top: 0; z-index: 100;
+    box-shadow: var(--shadow-md); flex-wrap: nowrap; overflow-x: auto;
+  }
+  #topbar .brand { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  #topbar .brand-logo { font-size: 1.4rem; line-height: 1; }
+  #topbar .brand-text { display: flex; flex-direction: column; }
+  #topbar .brand-name { font-size: 1.05rem; font-weight: 800; letter-spacing: 0.04em; line-height: 1.1; }
+  #topbar .brand-sub { font-size: 0.65rem; opacity: 0.7; font-weight: 400; letter-spacing: 0.02em; }
+  #topbar .topbar-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+  .topbar-btn {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+    color: white; padding: 5px 10px; border-radius: var(--radius-sm);
+    cursor: pointer; font-size: 0.76rem; font-weight: 600;
+    transition: var(--transition); white-space: nowrap; flex-shrink: 0;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .topbar-btn:hover { background: rgba(255,255,255,0.25); }
+  .topbar-btn.accent-btn { background: var(--accent); border-color: var(--accent); }
+  .topbar-btn.accent-btn:hover { background: #e65100; }
+  .topbar-btn.purple-btn { background: var(--accent2); border-color: var(--accent2); }
+  .topbar-btn.purple-btn:hover { background: #4a148c; }
+  .topbar-btn.bk-btn { background: var(--bk-color); border-color: #0077bb; }
+  .topbar-btn.bk-btn:hover { background: #003d5e; }
+  .topbar-btn.active-view { background: rgba(255,255,255,0.32); border-color: rgba(255,255,255,0.65); font-weight: 700; }
+
+  /* ── LOADING ── */
+  #loading-overlay {
+    position: fixed; inset: 0; background: rgba(255,255,255,0.94);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 9999; gap: 14px;
+  }
+  #loading-overlay.hidden { display: none; }
+  .spinner { width: 42px; height: 42px; border: 4px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-brand { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: 0.05em; }
+  .loading-text { color: var(--text-muted); font-size: 0.88rem; }
+  .loading-progress { width: 240px; background: var(--border); border-radius: 4px; height: 5px; overflow: hidden; }
+  .loading-progress-bar { height: 100%; background: var(--primary); border-radius: 4px; transition: width 0.4s ease; }
+  .loading-details { font-size: 0.73rem; color: var(--text-muted); text-align: center; max-width: 280px; line-height: 1.5; }
+
+  /* ── LAYOUT ── */
+  #app { display: flex; height: calc(100vh - 58px); overflow: hidden; }
+  #sidebar { width: 296px; min-width: 280px; background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; display: flex; flex-direction: column; transition: width 0.25s ease, min-width 0.25s ease; flex-shrink: 0; }
+  #sidebar.collapsed { width: 0; min-width: 0; overflow: hidden; }
+  #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+  .view { display: none; flex: 1; overflow: hidden; flex-direction: column; }
+  .view.active { display: flex; }
+  #content-area { flex: 1; overflow-y: auto; padding: 16px; }
+
+  /* ── SIDEBAR ── */
+  .sidebar-section { border-bottom: 1px solid var(--border); }
+  .sidebar-header { padding: 9px 13px; font-weight: 700; font-size: 0.71rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); background: var(--bg); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .sidebar-header:hover { background: var(--neutral-pale); }
+  .sidebar-header .toggle-icon { transition: transform 0.2s; display: inline-block; font-size: 0.65rem; }
+  .sidebar-body { padding: 9px 11px; }
+  .sidebar-body.hidden { display: none; }
+
+  /* ── SEARCH ── */
+  #search-wrap { position: relative; }
+  #search-input { width: 100%; padding: 6px 10px 6px 28px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.83rem; background: var(--bg); color: var(--text); transition: var(--transition); }
+  #search-input:focus { outline: none; border-color: var(--primary-light); background: white; }
+  .search-icon { position: absolute; left: 7px; top: 50%; transform: translateY(-50%); font-size: 0.75rem; color: var(--text-muted); pointer-events: none; }
+
+  /* ── GRADE BAND FILTER ── */
+  .grade-band-row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .grade-chip { padding: 3px 9px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; cursor: pointer; border: 1.5px solid var(--border); background: var(--surface); color: var(--text-muted); transition: var(--transition); user-select: none; }
+  .grade-chip:hover { border-color: var(--primary-light); color: var(--primary); }
+  .grade-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .grade-chip[data-band="mnt56"].active { background: #00796b; border-color: #00796b; }
+  .grade-chip[data-band="gy78"].active  { background: #1565c0; border-color: #1565c0; }
+  .grade-chip[data-band="gy910"].active { background: #6a1b9a; border-color: #6a1b9a; }
+
+  /* ── FILTER CHIPS ── */
+  .filter-label { font-size: 0.71rem; font-weight: 700; color: var(--text-muted); margin: 6px 0 3px; display: flex; align-items: center; justify-content: space-between; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; user-select: none; }
+  .filter-label .toggle-arrow { font-size: 0.58rem; transition: transform 0.2s; display: inline-block; }
+  .filter-chips { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 5px; }
+  .filter-chips.hidden { display: none; }
+  .chip { padding: 2px 7px; border-radius: 20px; font-size: 0.67rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: var(--surface); color: var(--text-muted); transition: var(--transition); white-space: normal; word-break: break-word; line-height: 1.3; user-select: none; max-width: 100%; display: inline-block; }
+  .chip:hover { border-color: var(--primary-light); color: var(--primary); }
+  .chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .chip.r1.active { background: #388e3c; border-color: #388e3c; }
+  .chip.r2.active { background: #e65100; border-color: #e65100; }
+  .chip.r3.active { background: #c62828; border-color: #c62828; }
+  .chip.fav.active { background: #c2185b; border-color: #c2185b; }
+  .chip.inc.active { background: #c62828; border-color: #c62828; }
+  .chip.edited.active { background: #1565c0; border-color: #1565c0; }
+  .chip.bk-chip.active { background: var(--bk-color); border-color: var(--bk-color); color: white; }
+
+  /* ── EVO CONCEPT TREE ── */
+  .evo-concept-group { margin-bottom: 3px; }
+  .evo-concept-parent-row { display: flex; align-items: flex-start; gap: 3px; margin-bottom: 2px; }
+  .evo-concept-parent-row .chip { flex: 1; }
+  .evo-concept-toggle-btn { background: var(--neutral-pale); border: 1px solid var(--border); border-radius: 4px; cursor: pointer; font-size: 0.62rem; padding: 2px 4px; color: var(--text-muted); flex-shrink: 0; margin-top: 2px; transition: var(--transition); line-height: 1; min-width: 20px; text-align: center; }
+  .evo-concept-toggle-btn:hover { background: var(--border); }
+  .evo-concept-children { padding-left: 12px; margin-top: 2px; display: none; }
+  .evo-concept-children.open { display: block; }
+  .evo-concept-children .chip { margin: 2px 0; display: block; width: 100%; }
+
+  select.filter-select { width: 100%; padding: 5px 8px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.8rem; background: var(--bg); color: var(--text); cursor: pointer; margin-bottom: 4px; }
+  select.filter-select:focus { outline: none; border-color: var(--primary-light); }
+
+  /* ── CHART ── */
+  .chart-container { position: relative; width: 100%; }
+  canvas#chart-canvas { width: 100% !important; display: block; }
+  .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 2px 0; font-size: 0.76rem; color: var(--text-muted); }
+  .stat-num { font-weight: 700; color: var(--primary); }
+  .reset-btn { background: none; border: 1px dashed var(--border); color: var(--text-muted); padding: 4px 8px; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.76rem; width: 100%; margin-top: 5px; }
+  .reset-btn:hover { background: var(--neutral-pale); }
+
+  /* ── USER TAGS ── */
+  .user-tag-input-wrap { display: flex; gap: 4px; margin-top: 5px; }
+  .user-tag-input { flex: 1; padding: 4px 7px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.76rem; background: var(--bg); }
+  .user-tag-input:focus { outline: none; border-color: var(--accent2); }
+  .user-tag-add-btn { padding: 4px 8px; background: var(--accent2); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.74rem; font-weight: 700; white-space: nowrap; }
+  .user-tags-display { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+  .user-tag-filter-chip { padding: 2px 7px; border-radius: 20px; font-size: 0.66rem; font-weight: 700; background: var(--accent2-pale); color: var(--accent2); border: 1.5px solid var(--accent2); cursor: pointer; display: flex; align-items: center; gap: 3px; user-select: none; }
+  .user-tag-filter-chip.active { background: var(--accent2); color: white; }
+  .user-tag-filter-chip .remove-utag { font-size: 0.62rem; opacity: 0.7; cursor: pointer; }
+  .user-tag-filter-chip .remove-utag:hover { opacity: 1; }
+
+  /* ── TOOLBAR ── */
+  #toolbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 7px 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .tb-label { font-size: 0.73rem; font-weight: 700; color: var(--text-muted); }
+  .tb-btn { padding: 4px 9px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface); cursor: pointer; font-size: 0.76rem; font-weight: 600; color: var(--text-muted); transition: var(--transition); display: flex; align-items: center; gap: 3px; }
+  .tb-btn:hover { background: var(--neutral-pale); color: var(--text); }
+  #sort-select { padding: 4px 7px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.76rem; background: var(--surface); cursor: pointer; color: var(--text); }
+  #view-toggle { display: flex; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+  #view-toggle button { padding: 4px 9px; border: none; background: var(--surface); cursor: pointer; font-size: 0.8rem; transition: var(--transition); color: var(--text-muted); }
+  #view-toggle button.active { background: var(--primary); color: white; }
+  #result-count { font-size: 0.76rem; color: var(--text-muted); margin-left: auto; white-space: nowrap; }
+
+  /* ── DATASET BADGE ── */
+  .dataset-badges { display: flex; flex-wrap: wrap; gap: 3px; padding: 5px 14px; background: var(--bg); border-bottom: 1px solid var(--border); }
+  .dataset-badge { font-size: 0.66rem; padding: 2px 7px; border-radius: 10px; font-weight: 700; }
+  .dataset-badge.mnt56 { background: #e0f2f1; color: #00796b; border: 1px solid #80cbc4; }
+  .dataset-badge.gy78  { background: var(--secondary-pale); color: var(--secondary); border: 1px solid #90caf9; }
+  .dataset-badge.gy910 { background: var(--accent2-pale); color: var(--accent2); border: 1px solid #ce93d8; }
+  .dataset-badge.bk    { background: var(--bk-pale); color: var(--bk-color); border: 1px solid #81d4fa; }
+  .dataset-badge.loading { background: var(--neutral-pale); color: var(--neutral); border: 1px solid var(--border); }
+  .dataset-badge.error  { background: var(--danger-pale); color: var(--danger); border: 1px solid #ffcdd2; }
+
+  /* ── CARDS ── */
+  #card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(390px, 1fr)); gap: 12px; }
+  #card-grid.list-view { grid-template-columns: 1fr; }
+  .card { background: var(--surface); border-radius: var(--radius); border: 1.5px solid var(--border); box-shadow: var(--shadow-sm); transition: box-shadow var(--transition), border-color var(--transition); display: flex; flex-direction: column; overflow: hidden; }
+  .card:hover { box-shadow: var(--shadow-md); border-color: #b0bec5; }
+  .card.is-favorite { border-color: #e91e63; border-width: 2px; }
+  .card.is-incorrect { border-color: var(--danger); border-width: 2px; }
+  .card.is-edited { box-shadow: 0 0 0 2px rgba(21,101,192,0.2), var(--shadow-sm); }
+
+  /* Band accent stripe */
+  .card .band-stripe { height: 3px; width: 100%; }
+  .band-stripe.mnt56 { background: linear-gradient(90deg, #00796b, #4db6ac); }
+  .band-stripe.gy78  { background: linear-gradient(90deg, #1565c0, #42a5f5); }
+  .band-stripe.gy910 { background: linear-gradient(90deg, #6a1b9a, #ab47bc); }
+  .band-stripe.bk    { background: linear-gradient(90deg, #004d7a, #0288d1); }
+  .band-stripe.unknown { background: var(--border); }
+
+  .card-header { padding: 9px 11px 7px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 6px; }
+  .card-id { font-family: 'Courier New', monospace; font-size: 0.64rem; color: var(--text-muted); font-weight: 700; background: var(--neutral-pale); padding: 2px 4px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .card-titles { flex: 1; min-width: 0; }
+  .card-thema { font-size: 0.64rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px; }
+  .card-band-tag { font-size: 0.6rem; padding: 1px 5px; border-radius: 8px; font-weight: 700; }
+  .card-band-tag.mnt56 { background: #e0f2f1; color: #00796b; }
+  .card-band-tag.gy78  { background: var(--secondary-pale); color: var(--secondary); }
+  .card-band-tag.gy910 { background: var(--accent2-pale); color: var(--accent2); }
+  .card-unterthema { font-size: 0.78rem; color: var(--primary); font-weight: 700; line-height: 1.3; }
+  .card-actions { display: flex; gap: 2px; flex-shrink: 0; }
+  .icon-btn { width: 24px; height: 24px; border-radius: 50%; border: none; background: transparent; cursor: pointer; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: var(--text-muted); }
+  .icon-btn:hover { background: var(--neutral-pale); }
+  .icon-btn.fav-btn.active { color: #e91e63; }
+  .icon-btn.inc-btn.active { color: var(--danger); }
+
+  .card-body { padding: 9px 11px; flex: 1; }
+  .lernziel-text { font-size: 0.84rem; line-height: 1.5; color: var(--text); font-weight: 500; margin-bottom: 7px; }
+  .relevance-badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; margin-bottom: 6px; }
+  .relevance-badge.r1 { background: #e8f5e9; color: #2e7d32; }
+  .relevance-badge.r2 { background: #fff3e0; color: #e65100; }
+  .relevance-badge.r3 { background: #ffebee; color: #c62828; }
+  .rel-dots { display: flex; gap: 3px; }
+  .rel-dot { width: 6px; height: 6px; border-radius: 50%; background: #ccc; }
+  .r1 .rel-dot.on { background: #2e7d32; } .r2 .rel-dot.on { background: #e65100; } .r3 .rel-dot.on { background: #c62828; }
+  .concept-list { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
+  .concept-chip { font-size: 0.63rem; padding: 2px 5px; border-radius: 10px; background: var(--primary-pale); color: var(--primary); font-weight: 600; white-space: normal; word-break: break-word; line-height: 1.3; cursor: pointer; transition: var(--transition); }
+  .concept-chip:hover { background: var(--primary); color: white; }
+
+  .bk-tag-chip { font-size: 0.63rem; padding: 2px 6px; border-radius: 10px; background: var(--bk-pale); color: var(--bk-color); font-weight: 600; border: 1px solid #b3ddf5; cursor: pointer; transition: var(--transition); }
+  .bk-tag-chip:hover { background: var(--bk-color); color: white; }
+
+  .card-user-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+  .card-user-tag { padding: 2px 6px; border-radius: 10px; font-size: 0.66rem; font-weight: 700; background: var(--accent2-pale); color: var(--accent2); border: 1px solid #ce93d8; display: flex; align-items: center; gap: 3px; }
+  .card-user-tag .rm-tag { cursor: pointer; opacity: 0.6; font-size: 0.58rem; }
+  .card-user-tag .rm-tag:hover { opacity: 1; }
+  .add-tag-btn { padding: 2px 6px; border-radius: 10px; font-size: 0.66rem; font-weight: 700; background: transparent; color: var(--accent2); border: 1px dashed var(--accent2); cursor: pointer; transition: var(--transition); }
+  .add-tag-btn:hover { background: var(--accent2-pale); }
+
+  .expand-section { border-top: 1px solid var(--border); }
+  .expand-trigger { width: 100%; padding: 5px 11px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 0.69rem; font-weight: 700; color: var(--text-muted); text-align: left; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.05em; }
+  .expand-trigger:hover { background: var(--bg); color: var(--text); }
+  .expand-arrow { transition: transform 0.2s; font-size: 0.6rem; }
+  .expand-trigger.open .expand-arrow { transform: rotate(180deg); }
+  .expand-content { padding: 0 11px 9px; display: none; }
+  .expand-content.open { display: block; }
+  .expand-content p { font-size: 0.79rem; line-height: 1.6; color: #37474f; }
+
+  .didaktik-block { margin-bottom: 7px; }
+  .didaktik-block strong { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 2px; }
+  .didaktik-block p { font-size: 0.79rem; line-height: 1.5; color: #37474f; }
+  .method-top3 { display: flex; flex-direction: column; gap: 4px; margin-top: 3px; }
+  .method-item { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 5px 8px; font-size: 0.76rem; cursor: pointer; transition: var(--transition); display: flex; align-items: flex-start; gap: 6px; }
+  .method-item:hover { border-color: var(--accent2); background: var(--accent2-pale); }
+  .method-item.method-fav { border-color: #c2185b; background: #fce4ec; }
+  .method-rank { font-weight: 700; color: var(--text-muted); font-size: 0.66rem; width: 16px; flex-shrink: 0; padding-top: 1px; }
+  .method-content { flex: 1; }
+  .method-name { font-weight: 700; color: var(--text); font-size: 0.76rem; }
+  .method-desc { color: var(--text-muted); font-size: 0.71rem; margin-top: 1px; line-height: 1.4; }
+  .method-fav-star { font-size: 0.82rem; flex-shrink: 0; color: #c2185b; }
+
+  .card-tags { padding: 5px 11px; border-top: 1px solid var(--border); display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+  .tag-badge { font-size: 0.64rem; padding: 2px 5px; border-radius: 10px; font-weight: 700; }
+  .tag-badge.fav { background: #fce4ec; color: #c2185b; }
+  .tag-badge.inc { background: var(--danger-pale); color: var(--danger); }
+  .tag-badge.edited { background: var(--secondary-pale); color: var(--secondary); }
+  .tag-annot { font-size: 0.64rem; color: var(--text-muted); font-style: italic; }
+  .annot-bubble { background: var(--neutral-pale); border-left: 3px solid var(--neutral); padding: 4px 7px; border-radius: 0 5px 5px 0; font-size: 0.75rem; color: var(--text-muted); font-style: italic; margin-top: 3px; }
+  mark { background: #fff59d; color: inherit; border-radius: 2px; padding: 0 1px; }
+
+  #empty-state { text-align: center; padding: 50px 20px; color: var(--text-muted); display: none; }
+  #empty-state .ei { font-size: 2.6rem; margin-bottom: 10px; }
+  #empty-state h3 { font-size: 0.95rem; margin-bottom: 4px; color: var(--text); }
+
+  /* ── DATA STATUS ── */
+  #data-status { border-radius: var(--radius-sm); padding: 8px 13px; margin: 8px; font-size: 0.8rem; display: none; }
+  #data-status.error { background: var(--danger-pale); border: 1px solid #ffcdd2; color: var(--danger); }
+  #data-status.info  { background: var(--secondary-pale); border: 1px solid #90caf9; color: var(--secondary); }
+  #data-status.warn  { background: var(--accent-pale); border: 1px solid #ffcc80; color: #e65100; }
+
+  /* ══════════════════════════════════════════════════════
+     BASISKONZEPTE VIEW
+  ══════════════════════════════════════════════════════ */
+  #bk-view { background: var(--bg); overflow-y: auto; }
+  .bk-header {
+    background: linear-gradient(135deg, var(--bk-color) 0%, #0277bd 100%);
+    color: white; padding: 16px 22px; display: flex; align-items: flex-start; gap: 12px;
+  }
+  .bk-header-icon { font-size: 1.9rem; flex-shrink: 0; margin-top: 2px; }
+  .bk-header h2 { font-size: 1.05rem; font-weight: 800; margin-bottom: 3px; }
+  .bk-header p { font-size: 0.77rem; opacity: 0.88; line-height: 1.55; }
+  .bk-body { padding: 16px 20px; max-width: 1200px; }
+
+  .bk-toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .bk-search { flex: 1; min-width: 180px; padding: 6px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.83rem; background: var(--surface); color: var(--text); }
+  .bk-search:focus { outline: none; border-color: var(--bk-color); }
+  .bk-view-btn { padding: 5px 11px; border-radius: var(--radius-sm); border: 1.5px solid var(--border); background: var(--surface); cursor: pointer; font-size: 0.76rem; font-weight: 700; color: var(--text-muted); transition: var(--transition); }
+  .bk-view-btn:hover { border-color: var(--bk-color); color: var(--bk-color); }
+  .bk-view-btn.active { background: var(--bk-color); color: white; border-color: var(--bk-color); }
+
+  .bk-stats-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+  .bk-stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 13px; display: flex; flex-direction: column; gap: 2px; min-width: 110px; }
+  .bk-stat-num { font-size: 1.4rem; font-weight: 800; color: var(--bk-color); line-height: 1; }
+  .bk-stat-label { font-size: 0.68rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* Grid view */
+  .bk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .bk-card { background: var(--surface); border-radius: var(--radius); border: 1.5px solid #b3ddf5; box-shadow: var(--shadow-sm); overflow: hidden; transition: box-shadow var(--transition); }
+  .bk-card:hover { box-shadow: var(--shadow-md); }
+  .bk-card-header { background: var(--bk-pale); border-bottom: 1px solid #b3ddf5; padding: 9px 12px; display: flex; align-items: flex-start; gap: 8px; }
+  .bk-card-num { background: var(--bk-color); color: white; font-size: 0.7rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .bk-card-name { font-size: 0.88rem; font-weight: 800; color: var(--bk-color); line-height: 1.3; flex: 1; }
+  .bk-card-body { padding: 10px 12px; }
+  .bk-card-desc { font-size: 0.79rem; color: var(--text); line-height: 1.6; margin-bottom: 8px; }
+  .bk-card-section { margin-bottom: 7px; }
+  .bk-card-section-title { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 3px; }
+  .bk-tag-row { display: flex; flex-wrap: wrap; gap: 3px; }
+  .bk-meta-chip { font-size: 0.65rem; padding: 2px 6px; border-radius: 10px; font-weight: 600; }
+  .bk-meta-chip.jahrgang { background: #e0f2f1; color: #00796b; }
+  .bk-meta-chip.level    { background: #e8eaf6; color: #3949ab; }
+  .bk-meta-chip.lz-link  { background: var(--primary-pale); color: var(--primary); cursor: pointer; transition: var(--transition); }
+  .bk-meta-chip.lz-link:hover { background: var(--primary); color: white; }
+  .bk-meta-chip.domain   { background: var(--accent-pale); color: var(--accent); }
+  .bk-meta-chip.beispiel { background: #fce4ec; color: #c2185b; }
+  .bk-meta-chip.fachueberschreitung { background: #fff3e0; color: #e65100; }
+
+  .bk-expand-trigger { width: 100%; padding: 5px 12px; background: none; border: none; border-top: 1px solid #b3ddf5; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-size: 0.68rem; font-weight: 700; color: var(--bk-color); text-align: left; transition: var(--transition); text-transform: uppercase; letter-spacing: 0.04em; }
+  .bk-expand-trigger:hover { background: var(--bk-pale); }
+  .bk-expand-content { padding: 0 12px 10px; display: none; }
+  .bk-expand-content.open { display: block; }
+
+  /* Matrix view */
+  .bk-matrix-wrap { overflow-x: auto; }
+  .bk-matrix { border-collapse: collapse; width: 100%; font-size: 0.74rem; }
+  .bk-matrix th, .bk-matrix td { border: 1px solid var(--border); padding: 5px 8px; }
+  .bk-matrix th { background: var(--bk-pale); color: var(--bk-color); font-weight: 700; text-align: left; white-space: nowrap; }
+  .bk-matrix td { background: var(--surface); color: var(--text); vertical-align: top; }
+  .bk-matrix tr:hover td { background: var(--bk-pale); }
+  .bk-matrix .cell-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .bk-matrix .cell-dot.has { background: var(--bk-color); }
+  .bk-matrix .cell-dot.none { background: var(--border); }
+
+  /* Curriculum Map view */
+  .bk-curriculum-map { display: flex; flex-direction: column; gap: 10px; }
+  .bk-band-section { background: var(--surface); border-radius: var(--radius); border: 1.5px solid var(--border); overflow: hidden; }
+  .bk-band-header { padding: 9px 14px; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; gap: 8px; }
+  .bk-band-header.mnt56 { background: linear-gradient(90deg,#e0f2f1,#f5f5f5); color: #00796b; }
+  .bk-band-header.gy78  { background: linear-gradient(90deg,var(--secondary-pale),#f5f5f5); color: var(--secondary); }
+  .bk-band-header.gy910 { background: linear-gradient(90deg,var(--accent2-pale),#f5f5f5); color: var(--accent2); }
+  .bk-band-count { font-size: 0.68rem; background: rgba(0,0,0,0.07); padding: 2px 7px; border-radius: 10px; font-weight: 700; }
+  .bk-band-body { padding: 10px 14px; }
+  .bk-lz-mini { display: flex; align-items: flex-start; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--border); font-size: 0.77rem; }
+  .bk-lz-mini:last-child { border-bottom: none; }
+  .bk-lz-mini-id { font-family: monospace; font-size: 0.63rem; color: var(--text-muted); flex-shrink: 0; padding-top: 1px; }
+  .bk-lz-mini-text { flex: 1; line-height: 1.4; color: var(--text); }
+  .bk-lz-mini-bk { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px; }
+
+  /* No data */
+  .bk-no-data { text-align: center; padding: 40px; color: var(--text-muted); }
+  .bk-no-data .ei { font-size: 2.4rem; margin-bottom: 8px; }
+
+  /* ══════════════════════════════════════════════════════
+     PROMPT GENERATOR
+  ══════════════════════════════════════════════════════ */
+  #prompt-view { background: var(--bg); overflow-y: auto; }
+  .pg-header { background: linear-gradient(135deg, var(--accent2) 0%, #4a148c 100%); color: white; padding: 16px 22px; display: flex; align-items: center; gap: 12px; }
+  .pg-header-icon { font-size: 1.7rem; flex-shrink: 0; }
+  .pg-header h2 { font-size: 1.0rem; font-weight: 700; margin-bottom: 2px; }
+  .pg-header p { font-size: 0.76rem; opacity: 0.85; line-height: 1.5; }
+  .pg-body { padding: 16px 20px; max-width: 1100px; }
+  .pg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .pg-section { background: var(--surface); border-radius: var(--radius); border: 1.5px solid var(--border); padding: 12px 14px; box-shadow: var(--shadow-sm); }
+  .pg-section-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent2); margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+  .pg-section-title .pg-num { background: var(--accent2); color: white; width: 18px; height: 18px; border-radius: 50%; font-size: 0.65rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pg-field { margin-bottom: 10px; }
+  .pg-field label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pg-field select, .pg-field input[type="number"], .pg-field input[type="text"] { width: 100%; padding: 6px 8px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.81rem; background: var(--bg); color: var(--text); font-family: var(--font); transition: var(--transition); }
+  .pg-field select:focus, .pg-field input:focus, .pg-field textarea:focus { outline: none; border-color: var(--accent2); background: white; }
+  .pg-field textarea { width: 100%; padding: 6px 8px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.81rem; resize: vertical; background: var(--bg); color: var(--text); font-family: var(--font); transition: var(--transition); min-height: 60px; }
+
+  .theme-selector { display: flex; flex-direction: column; gap: 6px; }
+  .theme-item { border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; transition: border-color var(--transition); }
+  .theme-item.selected { border-color: var(--accent2); }
+  .theme-item-header { display: flex; align-items: center; gap: 6px; padding: 6px 9px; background: var(--bg); cursor: pointer; user-select: none; font-size: 0.78rem; font-weight: 700; }
+  .theme-item-header:hover { background: var(--accent2-pale); }
+  .theme-item.selected .theme-item-header { background: var(--accent2-pale); color: var(--accent2); }
+  .theme-check { width: 14px; height: 14px; accent-color: var(--accent2); cursor: pointer; flex-shrink: 0; }
+  .theme-expand-btn { margin-left: auto; background: none; border: none; cursor: pointer; font-size: 0.7rem; color: var(--text-muted); padding: 2px 4px; transition: transform 0.2s; }
+  .theme-expand-btn.open { transform: rotate(180deg); }
+  .subtheme-list { padding: 4px 9px 6px 30px; display: none; }
+  .subtheme-list.open { display: block; }
+  .subtheme-item { display: flex; align-items: flex-start; gap: 5px; padding: 2px 0; font-size: 0.76rem; cursor: pointer; user-select: none; }
+  .subtheme-item input[type="checkbox"] { accent-color: var(--accent2); margin-top: 2px; flex-shrink: 0; }
+  .subtheme-item label { cursor: pointer; line-height: 1.35; }
+  .subtheme-item.selected label { color: var(--accent2); font-weight: 600; }
+  .lz-count { font-size: 0.62rem; background: var(--neutral-pale); color: var(--text-muted); padding: 1px 4px; border-radius: 8px; margin-left: 3px; }
+
+  .lz-list-section { margin-top: 9px; border-top: 1px solid var(--border); padding-top: 9px; }
+  .lz-list-section h4 { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+  .lz-filter-bar { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 6px; }
+  .lz-filter-btn { padding: 2px 8px; border-radius: 20px; font-size: 0.66rem; font-weight: 600; border: 1.5px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer; transition: var(--transition); user-select: none; }
+  .lz-filter-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+  .lz-filter-btn.active { background: var(--accent2); color: white; border-color: var(--accent2); }
+  .lz-items-container { max-height: 280px; overflow-y: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); }
+  .lz-item-row { display: flex; align-items: flex-start; gap: 6px; padding: 5px 8px; border-bottom: 1px solid var(--border); font-size: 0.75rem; cursor: pointer; transition: var(--transition); }
+  .lz-item-row:last-child { border-bottom: none; }
+  .lz-item-row:hover { background: var(--accent2-pale); }
+  .lz-item-row.excluded { opacity: 0.42; background: #fafafa; }
+  .lz-item-check { accent-color: var(--accent2); flex-shrink: 0; margin-top: 2px; }
+  .lz-item-content { flex: 1; min-width: 0; }
+  .lz-item-id { font-family: monospace; font-size: 0.63rem; color: var(--text-muted); font-weight: 700; }
+  .lz-item-text { line-height: 1.3; color: var(--text); }
+  .lz-item-badges { display: flex; gap: 3px; margin-top: 2px; flex-wrap: wrap; }
+  .lz-item-badge { font-size: 0.58rem; padding: 1px 4px; border-radius: 8px; font-weight: 700; }
+  .lz-item-badge.fav { background: #fce4ec; color: #c2185b; }
+  .lz-item-badge.r3 { background: #ffebee; color: #c62828; }
+  .lz-item-badge.r2 { background: #fff3e0; color: #e65100; }
+  .lz-item-badge.r1 { background: #e8f5e9; color: #2e7d32; }
+
+  .info-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--accent2-pale); color: var(--accent2); padding: 3px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; margin-top: 4px; }
+
+  .check-group { display: flex; flex-direction: column; gap: 5px; }
+  .check-item { display: flex; align-items: flex-start; gap: 6px; font-size: 0.79rem; cursor: pointer; }
+  .check-item input[type="checkbox"] { accent-color: var(--accent2); margin-top: 2px; flex-shrink: 0; }
+  .radio-group { display: flex; flex-wrap: wrap; gap: 5px; }
+  .radio-chip { padding: 3px 9px; border-radius: 20px; font-size: 0.73rem; font-weight: 600; border: 1.5px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer; transition: var(--transition); user-select: none; }
+  .radio-chip:hover { border-color: var(--accent2); color: var(--accent2); }
+  .radio-chip.selected { background: var(--accent2); color: white; border-color: var(--accent2); }
+  .range-wrap { display: flex; align-items: center; gap: 8px; }
+  .range-wrap input[type="range"] { flex: 1; accent-color: var(--accent2); }
+  .range-val { font-weight: 700; font-size: 0.83rem; color: var(--accent2); min-width: 24px; text-align: center; }
+  .pct-group { display: flex; gap: 5px; flex-wrap: wrap; }
+  .pct-chip { padding: 4px 10px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; border: 1.5px solid var(--border); background: var(--surface); color: var(--text-muted); cursor: pointer; transition: var(--transition); user-select: none; }
+  .pct-chip:hover { border-color: var(--accent2); color: var(--accent2); }
+  .pct-chip.selected { background: var(--accent2); color: white; border-color: var(--accent2); }
+
+  .pg-output-wrap { background: var(--surface); border-radius: var(--radius); border: 2px solid var(--accent2); box-shadow: var(--shadow-md); margin-top: 16px; overflow: hidden; }
+  .pg-output-header { background: var(--accent2); color: white; padding: 9px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  .pg-output-header h3 { font-size: 0.83rem; font-weight: 700; }
+  .pg-output-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pg-output-btn { padding: 3px 10px; border-radius: var(--radius-sm); border: 1.5px solid rgba(255,255,255,0.5); background: rgba(255,255,255,0.15); color: white; cursor: pointer; font-size: 0.75rem; font-weight: 700; transition: var(--transition); }
+  .pg-output-btn:hover { background: rgba(255,255,255,0.3); }
+  .pg-output-btn.copy-btn { background: white; color: var(--accent2); border-color: white; }
+  #prompt-preview { padding: 14px 16px; font-size: 0.78rem; line-height: 1.7; color: var(--text); white-space: pre-wrap; font-family: 'Courier New', monospace; min-height: 160px; max-height: 380px; overflow-y: auto; background: #fafafa; }
+  #prompt-preview.empty { color: var(--text-muted); font-style: italic; font-family: var(--font); }
+
+  .pg-generate-bar { display: flex; gap: 10px; align-items: center; justify-content: center; padding: 12px 0 0; }
+  .btn-generate { padding: 9px 24px; background: var(--accent2); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.88rem; font-weight: 700; transition: var(--transition); display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-md); }
+  .btn-generate:hover { background: #4a148c; transform: translateY(-1px); }
+  .btn-reset-pg { padding: 9px 14px; background: var(--neutral-pale); color: var(--text-muted); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; font-size: 0.81rem; font-weight: 600; transition: var(--transition); }
+  .btn-reset-pg:hover { background: var(--border); }
+
+  /* ── MODALS ── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.46); display: flex; align-items: center; justify-content: center; z-index: 500; padding: 18px; backdrop-filter: blur(2px); }
+  .modal-overlay.hidden { display: none; }
+  .modal { background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-lg); width: 100%; max-width: 640px; max-height: 90vh; overflow-y: auto; display: flex; flex-direction: column; }
+  .modal-sm { max-width: 460px; }
+  .modal-header { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--surface); z-index: 1; }
+  .modal-header h2 { font-size: 0.9rem; font-weight: 700; }
+  .modal-body { padding: 14px 16px; flex: 1; }
+  .modal-footer { padding: 10px 16px; border-top: 1px solid var(--border); display: flex; gap: 7px; justify-content: flex-end; position: sticky; bottom: 0; background: var(--surface); }
+  .form-group { margin-bottom: 11px; }
+  .form-group label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--text-muted); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-group textarea, .form-group input[type="text"], .form-group select { width: 100%; padding: 6px 9px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.82rem; font-family: var(--font); color: var(--text); background: var(--bg); transition: var(--transition); resize: vertical; }
+  .form-group textarea:focus, .form-group input[type="text"]:focus, .form-group select:focus { outline: none; border-color: var(--primary-light); background: white; }
+  .form-group input[type="file"] { font-size: 0.8rem; color: var(--text-muted); }
+  .btn { padding: 6px 13px; border-radius: var(--radius-sm); border: none; cursor: pointer; font-size: 0.82rem; font-weight: 700; transition: var(--transition); }
+  .btn-primary { background: var(--primary); color: white; } .btn-primary:hover { background: #1b4332; }
+  .btn-secondary { background: var(--neutral-pale); color: var(--text); } .btn-secondary:hover { background: var(--border); }
+  .btn-danger { background: var(--danger-pale); color: var(--danger); border: 1px solid #ffcdd2; } .btn-danger:hover { background: #ffcdd2; }
+  .btn-accent2 { background: var(--accent2); color: white; } .btn-accent2:hover { background: #4a148c; }
+
+  .import-option-row { display: flex; gap: 9px; margin-top: 9px; }
+  .import-option-btn { flex: 1; padding: 11px 9px; border: 2px solid var(--border); border-radius: var(--radius); cursor: pointer; text-align: center; transition: var(--transition); background: var(--surface); }
+  .import-option-btn:hover { border-color: var(--primary-light); background: var(--primary-pale); }
+  .import-option-btn.selected { border-color: var(--primary); background: var(--primary-pale); }
+  .import-option-btn .opt-icon { font-size: 1.5rem; display: block; margin-bottom: 5px; }
+  .import-option-btn .opt-title { font-size: 0.8rem; font-weight: 700; color: var(--text); display: block; margin-bottom: 2px; }
+  .import-option-btn .opt-desc { font-size: 0.68rem; color: var(--text-muted); line-height: 1.4; }
+  .import-option-btn.merge-opt.selected { border-color: var(--accent2); background: var(--accent2-pale); }
+
+  .tag-modal-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 7px; min-height: 30px; padding: 4px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg); }
+  .tag-modal-tag { padding: 2px 7px; border-radius: 10px; font-size: 0.7rem; font-weight: 700; background: var(--accent2-pale); color: var(--accent2); border: 1px solid #ce93d8; display: flex; align-items: center; gap: 3px; }
+  .tag-modal-tag .rm { cursor: pointer; opacity: 0.6; }
+  .tag-modal-tag .rm:hover { opacity: 1; }
+  .global-tags-hint { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 5px; }
+  .global-tag-option { display: inline-flex; align-items: center; gap: 3px; padding: 2px 8px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; border: 1.5px solid #ce93d8; color: var(--accent2); cursor: pointer; margin: 2px; transition: var(--transition); background: var(--surface); }
+  .global-tag-option:hover { background: var(--accent2-pale); }
+  .tag-input-wrap { display: flex; gap: 5px; margin-top: 6px; }
+  .tag-modal-input { flex: 1; padding: 5px 8px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.79rem; background: var(--bg); }
+  .tag-modal-input:focus { outline: none; border-color: var(--accent2); }
+  .tag-modal-add { padding: 5px 10px; background: var(--accent2); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.79rem; font-weight: 700; }
+
+  .export-opt { padding: 10px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; transition: var(--transition); margin-bottom: 7px; display: flex; align-items: center; gap: 9px; }
+  .export-opt:hover { border-color: var(--primary-light); background: var(--primary-pale); }
+  .export-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .export-title { font-weight: 700; font-size: 0.83rem; }
+  .export-desc { font-size: 0.71rem; color: var(--text-muted); margin-top: 1px; }
+
+  /* ── TOAST ── */
+  #toast-container { position: fixed; bottom: 18px; right: 18px; z-index: 9999; display: flex; flex-direction: column; gap: 5px; }
+  .toast { background: #1a2327; color: white; padding: 7px 12px; border-radius: var(--radius-sm); font-size: 0.79rem; box-shadow: var(--shadow-md); max-width: 290px; animation: toastIn 0.3s ease; }
+  .toast.success { border-left: 4px solid #4caf50; } .toast.error { border-left: 4px solid var(--danger); } .toast.info { border-left: 4px solid var(--secondary); }
+  @keyframes toastIn { from { transform: translateX(110%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 760px) {
+    #sidebar { width: 100%; position: fixed; top: 58px; left: 0; bottom: 0; z-index: 50; transform: translateX(-100%); transition: transform 0.3s; }
+    #sidebar.mobile-open { transform: translateX(0); }
+    #card-grid { grid-template-columns: 1fr; }
+    .pg-grid { grid-template-columns: 1fr; }
+    .import-option-row { flex-direction: column; }
+    .bk-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) { .pg-grid { grid-template-columns: 1fr; } }
+  @media print {
+    #topbar, #sidebar, #toolbar, .card-actions, .expand-trigger, .dataset-badges { display: none !important; }
+    #app { display: block; height: auto; }
+    #content-area { overflow: visible; padding: 0; }
+    .card { break-inside: avoid; margin-bottom: 10px; box-shadow: none; border: 1px solid #ccc; }
+    .expand-content { display: block !important; }
+  }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--neutral); }
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading-overlay">
+  <div class="loading-brand">🌱 EvoMentor</div>
+  <div class="spinner"></div>
+  <div class="loading-text" id="loading-text">Datensätze werden geladen…</div>
+  <div class="loading-progress"><div class="loading-progress-bar" id="loading-bar" style="width:0%"></div></div>
+  <div class="loading-details" id="loading-details">Verbinde mit GitHub-Repository…</div>
+</div>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <button class="topbar-btn" id="sidebar-toggle-btn">☰</button>
+  <div class="brand">
+    <span class="brand-logo">🌱</span>
+    <div class="brand-text">
+      <span class="brand-name">EvoMentor</span>
+      <span class="brand-sub">Evolutionsbiologie · Thüringen · DE v1.1</span>
+    </div>
+  </div>
+  <div class="topbar-divider"></div>
+  <button class="topbar-btn active-view" id="view-lernziele-btn">📋 Lernziele</button>
+  <button class="topbar-btn bk-btn" id="view-bk-btn">🧩 Basiskonzepte</button>
+  <button class="topbar-btn purple-btn" id="view-prompt-btn">🤖 KI-Prompt</button>
+  <button class="topbar-btn" id="export-open-btn">⬇ Export</button>
+  <button class="topbar-btn" id="import-open-btn">⬆ Import</button>
+  <button class="topbar-btn accent-btn" id="reset-all-btn">↺ Reset</button>
+</div>
+
+<!-- APP -->
+<div id="app">
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+
+    <!-- Search -->
+    <div class="sidebar-section">
+      <div class="sidebar-header" data-target="sec-search">🔍 Suche <span class="toggle-icon">▾</span></div>
+      <div class="sidebar-body" id="sec-search">
+        <div id="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="ID, Thema, Lernziel…">
+        </div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="sidebar-section">
+      <div class="sidebar-header" data-target="sec-filter">🎛 Filter <span class="toggle-icon">▾</span></div>
+      <div class="sidebar-body" id="sec-filter">
+
+        <span class="filter-label">Klassenstufen / Datensatz</span>
+        <div class="grade-band-row" id="grade-band-chips">
+          <span class="grade-chip" data-band="mnt56">MNT 5/6</span>
+          <span class="grade-chip" data-band="gy78">Gy 7/8</span>
+          <span class="grade-chip" data-band="gy910">Gy 9/10</span>
+        </div>
+
+        <span class="filter-label" style="margin-top:8px">Thema</span>
+        <div class="filter-chips" id="thema-chips"></div>
+
+        <span class="filter-label">Unterthema</span>
+        <select id="unterthema-select" class="filter-select"><option value="">Alle Unterthemen</option></select>
+
+        <span class="filter-label">Evolutionsrelevanz</span>
+        <div class="filter-chips" id="rel-chips">
+          <span class="chip r1" data-rel="1">● Gering</span>
+          <span class="chip r2" data-rel="2">●● Mittel</span>
+          <span class="chip r3" data-rel="3">●●● Hoch</span>
+        </div>
+
+        <span class="filter-label" id="method-filter-label">Didaktische Methode <span class="toggle-arrow">▾</span></span>
+        <div class="filter-chips" id="method-chips"></div>
+
+        <span class="filter-label" id="evokonzept-filter-label">Evolutionskonzept <span class="toggle-arrow">▾</span></span>
+        <div id="evokonzept-tree"></div>
+
+        <span class="filter-label" id="bk-filter-label" style="margin-top:6px">Basiskonzept-Tag <span class="toggle-arrow">▾</span></span>
+        <div class="filter-chips" id="bk-filter-chips"></div>
+
+        <span class="filter-label" style="margin-top:6px">Markierungen</span>
+        <div class="filter-chips" id="tag-chips">
+          <span class="chip fav" data-tag="fav">❤ Favoriten</span>
+          <span class="chip inc" data-tag="inc">⚠ Fehlerhaft</span>
+          <span class="chip edited" data-tag="edited">✏ Bearbeitet</span>
+        </div>
+
+        <span class="filter-label">Eigene Tags</span>
+        <div class="user-tags-display" id="user-tag-filter-display"></div>
+        <div class="user-tag-input-wrap">
+          <input type="text" class="user-tag-input" id="global-tag-input" placeholder="Neuen Tag erstellen…">
+          <button class="user-tag-add-btn" id="global-tag-add-btn">+ Tag</button>
+        </div>
+        <button class="reset-btn" id="clear-filters-btn">✕ Alle Filter zurücksetzen</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="sidebar-section">
+      <div class="sidebar-header" data-target="sec-stats">📊 Statistik <span class="toggle-icon">▾</span></div>
+      <div class="sidebar-body" id="sec-stats">
+        <div class="chart-container"><canvas id="chart-canvas"></canvas></div>
+        <div id="stats-detail"></div>
+      </div>
+    </div>
+
+    <!-- Planner -->
+    <div class="sidebar-section">
+      <div class="sidebar-header" data-target="sec-planner">📅 Unterrichtsplaner <span class="toggle-icon">▾</span></div>
+      <div class="sidebar-body hidden" id="sec-planner">
+        <div id="planner-info" style="font-size:0.77rem;color:var(--text-muted)">Noch keine Favoriten markiert.</div>
+        <button class="reset-btn" id="export-plan-btn">📋 Stundenplan als Markdown</button>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="sidebar-section">
+      <div class="sidebar-header" data-target="sec-info">ℹ Info <span class="toggle-icon">▾</span></div>
+      <div class="sidebar-body hidden" id="sec-info">
+        <p style="font-size:0.73rem;line-height:1.6;color:var(--text-muted)">
+          <strong>EvoMentor DE v1.1</strong> – Evolutionsbezug im Thüringer Biologielehrplan.<br><br>
+          <strong>Datensätze:</strong><br>
+          🟢 MNT 5/6 · 🔵 Gymnasium 7/8 · 🟣 Gymnasium 9/10 · 🧩 Basiskonzepte<br><br>
+          <strong>Relevanz:</strong> 🟢 Gering · 🟡 Mittel · 🔴 Hoch<br><br>
+          Annotationen werden lokal gespeichert.<br><br>
+          <strong>Tastenkürzel:</strong> Strg+F → Suche · Esc → Modal schließen
+        </p>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+  <!-- MAIN -->
+  <div id="main">
+
+    <!-- ═══ LERNZIELE VIEW ═══ -->
+    <div class="view active" id="lernziele-view">
+      <div id="data-status"></div>
+      <div class="dataset-badges" id="dataset-badges"></div>
+      <div id="toolbar">
+        <span class="tb-label">Sortieren:</span>
+        <select id="sort-select">
+          <option value="id">ID</option>
+          <option value="band">Klassenstufe</option>
+          <option value="thema">Thema</option>
+          <option value="rel-asc">Relevanz ↑</option>
+          <option value="rel-desc">Relevanz ↓</option>
+          <option value="fav-first">Favoriten zuerst</option>
+        </select>
+        <button class="tb-btn" id="expand-all-btn">⊕ Alle aufklappen</button>
+        <button class="tb-btn" id="collapse-all-btn">⊖ Alle zuklappen</button>
+        <button class="tb-btn" id="print-btn">🖨 Drucken</button>
+        <div id="view-toggle">
+          <button id="btn-grid" class="active">⊞</button>
+          <button id="btn-list">☰</button>
+        </div>
+        <span id="result-count"></span>
+      </div>
+      <div id="content-area">
+        <div id="card-grid"></div>
+        <div id="empty-state">
+          <div class="ei">🔍</div>
+          <h3>Keine Einträge gefunden</h3>
+          <p>Filter oder Suchbegriff anpassen.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BASISKONZEPTE VIEW ═══ -->
+    <div class="view" id="bk-view">
+      <div class="bk-header">
+        <div class="bk-header-icon">🧩</div>
+        <div>
+          <h2>Basiskonzepte-Toolkit</h2>
+          <p>Übergreifende biologische Konzepte · Vernetzung über Klassenstufen und Lehrplanbereiche</p>
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto">
+        <div class="bk-body" id="bk-body">
+          <div class="bk-no-data"><div class="ei">🧩</div><p>Basiskonzepte werden geladen…</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PROMPT VIEW ═══ -->
+    <div class="view" id="prompt-view">
+      <div style="overflow-y:auto;flex:1">
+        <div class="pg-header">
+          <div class="pg-header-icon">🤖</div>
+          <div>
+            <h2>KI-Prompt Generator – Unterrichtsplanung Evolution</h2>
+            <p>Maßgeschneiderter Prompt für KI-Sprachmodelle mit allen relevanten Lernzielen.</p>
+          </div>
+        </div>
+        <div class="pg-body">
+
+          <!-- Section 1: Themes -->
+          <div class="pg-grid" style="grid-template-columns:1fr">
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">1</span> Themen, Unterthemen und Lernziele</div>
+              <div class="theme-selector" id="pg-theme-selector"></div>
+              <div class="info-badge" id="pg-lz-badge">0 Lernziele ausgewählt</div>
+              <div class="lz-list-section" id="pg-lz-list-section" style="display:none">
+                <h4 id="pg-lz-list-toggle">Lernziele für diesen Prompt <span style="font-size:0.63rem;color:var(--text-muted);font-weight:400">▾</span></h4>
+                <div id="pg-lz-list-body">
+                  <div class="lz-filter-bar" id="pg-lz-filter-bar">
+                    <span class="lz-filter-btn active" data-lzfilter="all">Alle</span>
+                    <span class="lz-filter-btn" data-lzfilter="fav">❤ Favoriten</span>
+                    <span class="lz-filter-btn" data-lzfilter="r3">🔴 Hoch</span>
+                    <span class="lz-filter-btn" data-lzfilter="r2">🟡 Mittel</span>
+                  </div>
+                  <div class="lz-items-container" id="pg-lz-items"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sections 2+3 -->
+          <div class="pg-grid" style="margin-top:13px">
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">2</span> Unterrichtsrahmen</div>
+              <div class="pg-field">
+                <label>Klassenstufe(n)</label>
+                <div class="radio-group" id="pg-klasse">
+                  <span class="radio-chip" data-val="5-6">Kl. 5–6</span>
+                  <span class="radio-chip" data-val="7">Kl. 7</span>
+                  <span class="radio-chip selected" data-val="7-8">Kl. 7–8</span>
+                  <span class="radio-chip" data-val="9-10">Kl. 9–10</span>
+                </div>
+              </div>
+              <div class="pg-field">
+                <label>Anzahl Unterrichtsstunden</label>
+                <div class="range-wrap">
+                  <input type="range" id="pg-num-lessons" min="1" max="10" value="4" step="1">
+                  <span class="range-val" id="pg-num-lessons-val">4</span>
+                </div>
+              </div>
+              <div class="pg-field">
+                <label>Stundenformat</label>
+                <div class="radio-group" id="pg-stunden-format">
+                  <span class="radio-chip selected" data-val="45">45 Min.</span>
+                  <span class="radio-chip" data-val="60">60 Min.</span>
+                  <span class="radio-chip" data-val="90">90 Min.</span>
+                  <span class="radio-chip" data-val="other">Andere</span>
+                </div>
+              </div>
+              <div class="pg-field" id="pg-format-other-wrap" style="display:none">
+                <label>Andere Stundenlänge (Min.)</label>
+                <input type="number" id="pg-format-other" placeholder="z.B. 75" min="20" max="240">
+              </div>
+            </div>
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">3</span> Evolutionsbezug und Vorwissen</div>
+              <div class="pg-field">
+                <label>Vorwissen</label>
+                <div class="radio-group" id="pg-vorwissen">
+                  <span class="radio-chip selected" data-val="keins">Kein Vorwissen</span>
+                  <span class="radio-chip" data-val="grundlagen">Grundbegriffe</span>
+                  <span class="radio-chip" data-val="solide">Solides Wissen</span>
+                </div>
+                <textarea id="pg-vorwissen-notiz" placeholder="Weitere Angaben zum Vorwissen…" rows="2" style="width:100%;margin-top:6px;padding:6px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;background:var(--bg);font-family:var(--font);resize:vertical"></textarea>
+              </div>
+              <div class="pg-field">
+                <label>Anteil Evolutionsbezug</label>
+                <div class="pct-group" id="pg-evo-pct">
+                  <span class="pct-chip" data-val="5">5%</span>
+                  <span class="pct-chip" data-val="25">25%</span>
+                  <span class="pct-chip selected" data-val="50">50%</span>
+                  <span class="pct-chip" data-val="75">75%</span>
+                  <span class="pct-chip" data-val="100">100%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sections 4+5 -->
+          <div class="pg-grid" style="margin-top:13px">
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">4</span> Konzeptueller Fokus</div>
+              <div class="pg-field">
+                <label>Evolutionskonzepte betonen</label>
+                <div class="check-group" id="pg-evo-konzepte"><span style="font-size:0.76rem;color:var(--text-muted)">Bitte zuerst Lernziele auswählen.</span></div>
+              </div>
+              <div class="pg-field" style="margin-top:7px">
+                <label>Fachliche Schwerpunkte</label>
+                <textarea id="pg-fach-notizen" placeholder="z.B. Schwerpunkt auf molekulare Belege…" style="width:100%;padding:6px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;background:var(--bg);font-family:var(--font);resize:vertical;min-height:55px"></textarea>
+              </div>
+            </div>
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">5</span> Didaktische Methoden</div>
+              <div class="pg-field">
+                <label>Empfohlen (aus LZ)</label>
+                <div class="check-group" id="pg-lehrformen-recommended"><span style="font-size:0.76rem;color:var(--text-muted)">Bitte zuerst Lernziele auswählen.</span></div>
+              </div>
+              <div class="pg-field" style="margin-top:7px">
+                <label>Weitere Methoden</label>
+                <div class="check-group" id="pg-lehrformen-extra"></div>
+              </div>
+              <div class="pg-field" style="margin-top:7px">
+                <label>Differenzierung</label>
+                <div class="check-group" id="pg-differenzierung">
+                  <label class="check-item"><input type="checkbox" value="basis-erweiterung"> Basis- und Erweiterungsaufgaben</label>
+                  <label class="check-item"><input type="checkbox" value="sprachlich"> Sprachliche Differenzierung</label>
+                  <label class="check-item"><input type="checkbox" value="tempo"> Unterschiedliche Lerntempi</label>
+                </div>
+              </div>
+              <textarea id="pg-did-notizen" placeholder="Didaktische Hinweise…" style="width:100%;margin-top:6px;padding:6px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;background:var(--bg);font-family:var(--font);resize:vertical;min-height:50px"></textarea>
+            </div>
+          </div>
+
+          <!-- Sections 6+7 -->
+          <div class="pg-grid" style="margin-top:13px">
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">6</span> Evaluation</div>
+              <div class="check-group" id="pg-bewertung">
+                <label class="check-item"><input type="checkbox" value="formativ"> Formative Beurteilung</label>
+                <label class="check-item"><input type="checkbox" value="quiz"> Quiz</label>
+                <label class="check-item"><input type="checkbox" value="praesentation"> Präsentationen / Poster</label>
+                <label class="check-item"><input type="checkbox" value="reflexion"> Schriftliche Reflexion</label>
+                <label class="check-item"><input type="checkbox" value="portfolio"> Portfolio / Lerntagebuch</label>
+                <label class="check-item"><input type="checkbox" value="klassenarbeit"> Klassenarbeit / LEK</label>
+                <label class="check-item"><input type="checkbox" value="praktisch"> Praktische Leistungen</label>
+              </div>
+              <textarea id="pg-eval-notizen" placeholder="Weitere Hinweise zur Evaluation…" style="width:100%;margin-top:7px;padding:6px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;background:var(--bg);font-family:var(--font);resize:vertical;min-height:45px"></textarea>
+            </div>
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">7</span> Gesellschaftliche Bezüge</div>
+              <div class="check-group" id="pg-kontext">
+                <label class="check-item"><input type="checkbox" value="biodiversitaet"> Biodiversitätskrise</label>
+                <label class="check-item"><input type="checkbox" value="naturschutz"> Naturschutz und Arterhaltung</label>
+                <label class="check-item"><input type="checkbox" value="klimawandel"> Klimawandel</label>
+                <label class="check-item"><input type="checkbox" value="pandemie"> Pandemien und Virusevolution</label>
+                <label class="check-item"><input type="checkbox" value="antibiotikaresistenz"> Antibiotikaresistenz</label>
+                <label class="check-item"><input type="checkbox" value="gesundheit"> Evolutionäre Medizin</label>
+                <label class="check-item"><input type="checkbox" value="biotechnologie"> Biotechnologie und Gentechnik</label>
+              </div>
+              <textarea id="pg-kontext-notizen" placeholder="Weitere Hinweise…" style="width:100%;margin-top:7px;padding:6px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;background:var(--bg);font-family:var(--font);resize:vertical;min-height:45px"></textarea>
+            </div>
+          </div>
+
+          <!-- Section 8: Output -->
+          <div class="pg-grid" style="margin-top:13px;grid-template-columns:1fr">
+            <div class="pg-section">
+              <div class="pg-section-title"><span class="pg-num">8</span> Ausgabeformat</div>
+              <div class="pg-grid">
+                <div>
+                  <div class="pg-field">
+                    <label>KI soll erstellen</label>
+                    <div class="check-group" id="pg-ausgabe-typ">
+                      <label class="check-item"><input type="checkbox" value="sequenzplan" checked> Vollständige Unterrichtssequenz</label>
+                      <label class="check-item"><input type="checkbox" value="lernziele"> Operationalisierte Lernziele pro Stunde</label>
+                      <label class="check-item"><input type="checkbox" value="methoden" checked> Methodische Vorschläge</label>
+                      <label class="check-item"><input type="checkbox" value="materialien"> Hinweise auf Materialien</label>
+                      <label class="check-item"><input type="checkbox" value="fehlvorstellungen"> Schülerfehlvorstellungen</label>
+                      <label class="check-item"><input type="checkbox" value="differenzierung"> Differenzierungsvorschläge</label>
+                      <label class="check-item"><input type="checkbox" value="transferfragen" checked> Transfer- und Diskussionsfragen</label>
+                      <label class="check-item"><input type="checkbox" value="querverbindungen"> Querverbindungen zwischen LZ</label>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="pg-field">
+                    <label>Ton</label>
+                    <div class="radio-group" id="pg-ausgabe-ton">
+                      <span class="radio-chip" data-val="akademisch">Akademisch</span>
+                      <span class="radio-chip selected" data-val="professionell">Professionell</span>
+                      <span class="radio-chip" data-val="praxisnah">Praxisnah</span>
+                    </div>
+                  </div>
+                  <div class="pg-field" style="margin-top:8px">
+                    <label>Länge</label>
+                    <div class="radio-group" id="pg-ausgabe-laenge">
+                      <span class="radio-chip" data-val="kurz">Kompakt</span>
+                      <span class="radio-chip selected" data-val="mittel">Ausführlich</span>
+                      <span class="radio-chip" data-val="lang">Sehr ausführlich</span>
+                    </div>
+                  </div>
+                  <div class="pg-field" style="margin-top:8px">
+                    <label>Sonstige Hinweise</label>
+                    <textarea id="pg-sonstige-notizen" placeholder="z.B. Markdown-Tabellen verwenden…" style="width:100%;padding:6px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.8rem;background:var(--bg);font-family:var(--font);resize:vertical;min-height:55px"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pg-generate-bar">
+            <button class="btn-reset-pg" id="pg-reset-btn">↺ Zurücksetzen</button>
+            <button class="btn-generate" id="pg-generate-btn">✨ Prompt generieren</button>
+          </div>
+
+          <div class="pg-output-wrap" id="pg-output-wrap" style="display:none">
+            <div class="pg-output-header">
+              <h3>📋 Generierter KI-Prompt</h3>
+              <div class="pg-output-actions">
+                <button class="pg-output-btn" id="pg-regenerate-btn">↻ Neu</button>
+                <button class="pg-output-btn copy-btn" id="pg-copy-btn">📋 Kopieren</button>
+                <button class="pg-output-btn" id="pg-export-prompt-btn">📤 Exportieren</button>
+              </div>
+            </div>
+            <div id="prompt-preview" class="empty">Prompt wird hier erscheinen…</div>
+          </div>
+
+        </div><!-- /pg-body -->
+      </div>
+    </div><!-- /prompt-view -->
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- ── MODALS ── -->
+
+<!-- Edit Modal -->
+<div class="modal-overlay hidden" id="edit-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>✏ Bearbeiten – <span id="edit-modal-id"></span></h2>
+      <button class="icon-btn" id="edit-close-btn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Wissenschaftliche Begründung</label><textarea id="edit-wiss" rows="5"></textarea></div>
+      <div class="form-group"><label>Evolutionskonzepte (kommagetrennt)</label><input type="text" id="edit-konzepte"></div>
+      <div class="form-group"><label>Evolutionsrelevanz</label>
+        <select id="edit-relevanz"><option value="1">1 – Gering</option><option value="2">2 – Mittel</option><option value="3">3 – Hoch</option></select>
+      </div>
+      <div class="form-group"><label>Didaktischer Impuls</label><textarea id="edit-impuls" rows="3"></textarea></div>
+      <div class="form-group"><label>Methoden (eine pro Zeile)</label><textarea id="edit-methoden" rows="4"></textarea></div>
+      <div class="form-group"><label>Persönliche Notizen</label><textarea id="edit-notes" rows="2"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="edit-cancel-btn">Abbrechen</button>
+      <button class="btn btn-primary" id="edit-save-btn">💾 Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- Annotation Modal -->
+<div class="modal-overlay hidden" id="annot-modal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h2 id="annot-modal-title">Markierung</h2>
+      <button class="icon-btn" id="annot-close-btn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Anmerkung (optional)</label><textarea id="annot-text" rows="4"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="annot-cancel-btn">Abbrechen</button>
+      <button class="btn btn-danger" id="annot-remove-btn">Markierung entfernen</button>
+      <button class="btn btn-primary" id="annot-save-btn">✓ Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tag Modal -->
+<div class="modal-overlay hidden" id="tag-modal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h2>🏷 Tags – <span id="tag-modal-id"></span></h2>
+      <button class="icon-btn" id="tag-close-btn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>Aktuelle Tags</label><div class="tag-modal-tags" id="tag-modal-current"></div></div>
+      <div class="form-group"><label>Globale Tags</label><p class="global-tags-hint">Klicke zum Hinzufügen:</p><div id="tag-modal-global-options"></div></div>
+      <div class="form-group"><label>Neuen Tag erstellen</label>
+        <div class="tag-input-wrap">
+          <input type="text" class="tag-modal-input" id="tag-modal-new-input" placeholder="Tag eingeben…">
+          <button class="tag-modal-add" id="tag-modal-add-btn">+ Hinzufügen</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="tag-cancel-btn">Schließen</button>
+      <button class="btn btn-accent2" id="tag-save-btn">✓ Speichern</button>
+    </div>
+  </div>
+</div>
+
+<!-- Export Modal -->
+<div class="modal-overlay hidden" id="export-modal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h2>⬇ Exportieren</h2>
+      <button class="icon-btn" id="export-close-btn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="export-opt" data-export="all"><span class="export-icon">📦</span><div><div class="export-title">Vollständiger Datensatz (JSON)</div><div class="export-desc">Alle Einträge mit Bearbeitungen, Tags und Notizen</div></div></div>
+      <div class="export-opt" data-export="edited"><span class="export-icon">✏</span><div><div class="export-title">Nur bearbeitete Lernziele (JSON)</div><div class="export-desc">Einträge mit nutzerseitig geänderten Feldern</div></div></div>
+      <div class="export-opt" data-export="favorites"><span class="export-icon">❤</span><div><div class="export-title">Nur Favoriten (JSON)</div><div class="export-desc">Als Favorit markierte Einträge</div></div></div>
+      <div class="export-opt" data-export="filtered"><span class="export-icon">🎛</span><div><div class="export-title">Gefilterte Einträge (JSON)</div><div class="export-desc">Aktuell angezeigte Einträge (<span id="export-count">0</span>)</div></div></div>
+      <div class="export-opt" data-export="csv"><span class="export-icon">📊</span><div><div class="export-title">Gesamtübersicht (CSV)</div><div class="export-desc">Für Excel / LibreOffice Calc</div></div></div>
+      <div class="export-opt" data-export="markdown"><span class="export-icon">📋</span><div><div class="export-title">Unterrichtsplan (Markdown)</div><div class="export-desc">Favoriten als strukturierter Plan</div></div></div>
+      <div class="export-opt" data-export="bk-json"><span class="export-icon">🧩</span><div><div class="export-title">Basiskonzepte mit LZ-Verknüpfungen (JSON)</div><div class="export-desc">Angereicherte Basiskonzepte-Daten</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Import Modal -->
+<div class="modal-overlay hidden" id="import-modal">
+  <div class="modal modal-sm">
+    <div class="modal-header">
+      <h2>⬆ Importieren</h2>
+      <button class="icon-btn" id="import-close-btn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group"><label>JSON-Datei auswählen</label><input type="file" id="import-file" accept=".json"></div>
+      <p style="font-size:0.78rem;font-weight:700;color:var(--text);margin:9px 0 5px">Wie soll importiert werden?</p>
+      <div class="import-option-row">
+        <div class="import-option-btn selected" id="import-opt-replace" data-mode="replace">
+          <span class="opt-icon">🔄</span><span class="opt-title">Neue Session</span>
+          <span class="opt-desc">Ersetzt alle Daten durch den Inhalt der Datei.</span>
+        </div>
+        <div class="import-option-btn merge-opt" id="import-opt-merge" data-mode="merge">
+          <span class="opt-icon">🔀</span><span class="opt-title">Zusammenführen</span>
+          <span class="opt-desc">Fügt nur Annotationen aus der Datei hinzu.</span>
+        </div>
+      </div>
+      <div id="import-preview" style="display:none;margin-top:9px;padding:7px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.75rem;color:var(--text-muted);white-space:pre-line"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="import-cancel-btn">Abbrechen</button>
+      <button class="btn btn-primary" id="import-save-btn">📥 Importieren</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<script>
+(function () {
+'use strict';
+
+// ════════════════════════════════════════════════════════════════════
+// CONFIGURATION
+// ════════════════════════════════════════════════════════════════════
+var DATASETS = [
+  {
+    key:   'mnt56',
+    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/lernziele_MNT56.json',
+    label: 'MNT 5/6',
+    band:  'mnt56'
+  },
+  {
+    key:   'gy78',
+    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/lernziele_gy78_evolution_SH.json',
+    label: 'Gy 7/8',
+    band:  'gy78'
+  },
+  {
+    key:   'gy910',
+    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/lernziele_gy910.json',
+    label: 'Gy 9/10',
+    band:  'gy910'
+  },
+  {
+    key:   'bk',
+    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/basiskonzepte.json',
+    label: 'Basiskonzepte',
+    band:  'bk',
+    isBK:  true
+  }
+];
+
+// Raw-content proxy for GitHub to avoid CORS issues
+// raw.githubusercontent.com is CORS-enabled, so we convert automatically
+function toRawUrl(url) {
+  // Already raw
+  if (url.indexOf('raw.githubusercontent.com') !== -1) return url;
+  // GitHub blob URL → raw
+  if (url.indexOf('github.com') !== -1) {
+    return url
+      .replace('https://github.com/', 'https://raw.githubusercontent.com/')
+      .replace('/raw/refs/heads/', '/')
+      .replace('/blob/', '/');
+  }
+  return url;
+}
+
+var DATA_ARRAY_KEYS = [
+  'eintraege','evolutionsbezug_und_didaktik','lernziele',
+  'data','items','records','entries'
+];
+
+var LS_ANN   = 'evomentor_ann_v1';
+var LS_EDIT  = 'evomentor_edit_v1';
+var LS_UTAGS = 'evomentor_utags_v1';
+
+var REL_LABELS = { 1: '● Gering', 2: '●● Mittel', 3: '●●● Hoch' };
+
+var EVO_HIERARCHY = [
+  { p: 'Variation und Diversität', c: ['genetische Variation','phänotypische Variation','Rekombination','Gentransfer','Epigenetik','Modifikation','Phänotypische Plastizität'] },
+  { p: 'Vererbung von Merkmalen', c: ['genetische','epigenetische','soziale/kulturelle','ökologische'] },
+  { p: 'Natürliche Selektion und Selektionsdruck', c: ['stabilisierende Selektion','gerichtete Selektion','balancierende Selektion','frequenzabhängige Selektion','Trade-offs/Zielkonflikte','sexuelle Selektion','Fitness'] },
+  { p: 'Anpassung und Angepasstheit', c: ['Funktion von Merkmalen','Exaptation (Umfunktionieren von Merkmalen)','Evolutionäres Mismatch'] },
+  { p: 'Gendrift', c: ['Migration/Genfluss','Flaschenhalseffekt','Gründereffekt'] },
+  { p: 'Lebensgeschichte / Life-History-Theorie', c: [] },
+  { p: 'Koevolution', c: ['Domestikation','Nischenkonstruktion'] },
+  { p: 'Multilevel-Selektion', c: ['Gruppenselektion','Inklusive Fitness','Verwandtenselektion (Kin Selection)'] },
+  { p: 'Endosymbiontentheorie', c: [] },
+  { p: 'Tiefenzeit', c: ['geologische Epochen','Fossilien','Übergangsformen/Entwicklungslinien'] },
+  { p: 'Stammbäume und phylogenetische Systematik', c: ['gemeinsame Abstammung/Verwandtschaft','Konservierung von Merkmalen','Homologie und Analogie/Konvergente und divergente Evolution'] },
+  { p: 'Artbildung und adaptive Radiation', c: [] },
+  { p: 'Aussterben', c: [] },
+  { p: 'Evolutionäre Entwicklungsbiologie (Evo-Devo)', c: ['biogenetische Grundregel'] },
+  { p: 'kulturelle Evolution', c: [] },
+  { p: 'Evolution von Kooperation/Altruismus', c: [] }
+];
+
+var ALL_METHODS = [
+  'Forschendes Lernen','Konzeptuelles Lernen','Kooperative Lernformen',
+  'Projektbasiertes Lernen','Erfahrungsbasiertes Lernen','Diskussion',
+  'Narrativer Zugang','Analogien und Vergleiche','Modelle und Simulationen',
+  'Einblick in Wissenschaftsgeschichte','Recherche','Digitale Medien'
+];
+
+// ════════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════════
+var rawData = [];         // all lernziele items (all bands)
+var bkData  = [];         // parsed basiskonzepte
+var filteredData = [];
+
+var annotations   = {};
+var edits         = {};
+var globalUserTags= [];
+
+var datasetStatus = {};   // key → 'loading'|'ok'|'error'
+var loadedCount   = 0;
+
+var currentCardView = 'grid';
+var currentAppView  = 'lernziele';
+
+// Active filters
+var activeBandFilters   = {};
+var activeRelFilters    = {};
+var activeTagFilters    = {};
+var activeThemaFilters  = {};
+var activeMethodFilters = {};
+var activeEvoKonzeptFilters = {};
+var activeBKTagFilters  = {};
+var activeUserTagFilters= {};
+
+var editingId    = null;
+var annotatingId = null;
+var annotatingType = null;
+var taggingId    = null;
+var importMode   = 'replace';
+
+var pgSelectedSubthemas = {};
+var pgExcludedLZ = {};
+var pgLzActiveFilter = 'all';
+
+var lastPromptText     = '';
+var lastPromptSettings = null;
+
+var bkViewMode = 'grid';  // 'grid' | 'matrix' | 'map'
+
+var $ = function(id){ return document.getElementById(id); };
+
+// ════════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════════
+function init() {
+  loadLS();
+  bindStaticEvents();
+  bindPromptEvents();
+  fetchAllDatasets();
+}
+
+function loadLS() {
+  try { annotations    = JSON.parse(localStorage.getItem(LS_ANN)   || '{}'); } catch(e){ annotations = {}; }
+  try { edits          = JSON.parse(localStorage.getItem(LS_EDIT)  || '{}'); } catch(e){ edits = {}; }
+  try { globalUserTags = JSON.parse(localStorage.getItem(LS_UTAGS) || '[]'); } catch(e){ globalUserTags = []; }
+}
+
+function saveLS() {
+  try { localStorage.setItem(LS_ANN,   JSON.stringify(annotations));    } catch(e){}
+  try { localStorage.setItem(LS_EDIT,  JSON.stringify(edits));          } catch(e){}
+  try { localStorage.setItem(LS_UTAGS, JSON.stringify(globalUserTags)); } catch(e){}
+}
+
+// ════════════════════════════════════════════════════════════════════
+// FETCH + PARSE (CORS-safe, robust schema parsing)
+// ════════════════════════════════════════════════════════════════════
+function fetchAllDatasets() {
+  setLoadingBar(5);
+  setLoadingDetails('Verbinde mit openevo-ccs-lab/EvoMentor_DE…');
+  updateDatasetBadges();
+
+  var pending = DATASETS.length;
+
+  DATASETS.forEach(function(ds, idx) {
+    datasetStatus[ds.key] = 'loading';
+    var rawUrl = toRawUrl(ds.url);
+
+    fetchWithFallback(rawUrl, function(text, err) {
+      loadedCount++;
+      setLoadingBar(Math.round((loadedCount / DATASETS.length) * 90));
+
+      if (err || text === null) {
+        datasetStatus[ds.key] = 'error';
+        setLoadingDetails('⚠ ' + ds.label + ' nicht ladbar — ' + (err||''));
+      } else {
+        try {
+          var parsed = JSON.parse(text);
+          datasetStatus[ds.key] = 'ok';
+
+          if (ds.isBK) {
+            // Basiskonzepte: specialised parsing
+            bkData = parseBasiskonzepte(parsed, ds.key);
+            setLoadingDetails('✓ ' + ds.label + ': ' + bkData.length + ' Konzepte');
+          } else {
+            var items = extractLernzieleArray(parsed, ds.key, ds.band);
+            if (items && items.length) {
+              rawData = rawData.concat(items);
+              setLoadingDetails('✓ ' + ds.label + ': ' + items.length + ' Lernziele');
+            } else {
+              datasetStatus[ds.key] = 'error';
+              setLoadingDetails('⚠ ' + ds.label + ': kein Array gefunden');
+            }
+          }
+
+          // Merge global tags if present
+          if (parsed.globalUserTags && Array.isArray(parsed.globalUserTags)) {
+            parsed.globalUserTags.forEach(function(t){
+              if (t && globalUserTags.indexOf(t) === -1) globalUserTags.push(t);
+            });
+          }
+        } catch(e) {
+          datasetStatus[ds.key] = 'error';
+          setLoadingDetails('⚠ ' + ds.label + ' JSON-Fehler: ' + e.message);
+        }
+      }
+
+      pending--;
+      updateDatasetBadges();
+
+      if (pending === 0) {
+        setLoadingBar(100);
+        setTimeout(function(){
+          $('loading-overlay').classList.add('hidden');
+          if (rawData.length === 0) {
+            showDataStatus('⚠ Keine Lernziele geladen. Bitte Datei manuell importieren (⬆ Import).', 'error');
+            showToast('⚠ Bitte JSON manuell importieren', 'error');
+          } else {
+            fullRebuild();
+            var totalOk = Object.keys(datasetStatus).filter(function(k){ return datasetStatus[k]==='ok'; }).length;
+            showToast('✓ ' + rawData.length + ' LZ · ' + bkData.length + ' BK geladen (' + totalOk + '/' + DATASETS.length + ' Datensätze)', 'success');
+          }
+        }, 300);
+      }
+    });
+  });
+}
+
+// CORS-safe fetch: try raw URL directly (raw.githubusercontent.com is CORS-enabled)
+function fetchWithFallback(url, cb) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.timeout = 18000;
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      cb(xhr.responseText, null);
+    } else {
+      cb(null, 'HTTP ' + xhr.status);
+    }
+  };
+  xhr.onerror   = function() { cb(null, 'Netzwerkfehler'); };
+  xhr.ontimeout = function() { cb(null, 'Timeout'); };
+  xhr.send();
+}
+
+// ── LERNZIELE SCHEMA PARSER ──────────────────────────────────────────
+function extractLernzieleArray(json, datasetKey, band) {
+  var arr = null;
+
+  if (Array.isArray(json)) {
+    arr = json;
+  } else {
+    // Try known keys
+    for (var i = 0; i < DATA_ARRAY_KEYS.length; i++) {
+      var k = DATA_ARRAY_KEYS[i];
+      if (json[k] && Array.isArray(json[k]) && json[k].length > 0) {
+        arr = json[k]; break;
+      }
+    }
+    // Fallback: find any array with objects that look like lernziele
+    if (!arr) {
+      Object.keys(json).forEach(function(key) {
+        if (!arr && Array.isArray(json[key]) && json[key].length > 0) {
+          var sample = json[key][0];
+          if (sample && (sample.id || sample.lernziel || sample.originaltext || sample.text)) {
+            arr = json[key];
+          }
+        }
+      });
+    }
+  }
+
+  if (!arr || arr.length === 0) return null;
+
+  // Normalise each item to a consistent schema
+  return arr.map(function(item) {
+    return normaliseLernzielItem(item, datasetKey, band);
+  }).filter(function(item){ return !!item.id; });
+}
+
+// Normalise diverse schemas into a single internal format
+function normaliseLernzielItem(raw, datasetKey, band) {
+  if (!raw || typeof raw !== 'object') return {};
+
+  var item = JSON.parse(JSON.stringify(raw)); // deep clone
+
+  // Ensure id
+  if (!item.id) {
+    item.id = (band || datasetKey) + '_' + Math.random().toString(36).substr(2, 8);
+  }
+
+  // Normalise band
+  item._band    = band || 'unknown';
+  item._dataset = datasetKey;
+
+  // Normalise 'thema' (multiple possible field names)
+  item.thema = item.thema || item.theme || item.bereich || item.fach || 'Unbekannt';
+
+  // Normalise 'unterthema'
+  item.unterthema = item.unterthema || item.unterbereich || item.topic || item.subtopic || item.kapitel || item.thema_kurz || item.thema || '';
+
+  // Normalise 'originaltext' (the learning objective text)
+  item.originaltext = item.originaltext || item.lernziel || item.text || item.beschreibung || item.ziel || item.content || '';
+
+  // Ensure evolutionsbezug sub-object
+  if (!item.evolutionsbezug) item.evolutionsbezug = {};
+  var ev = item.evolutionsbezug;
+
+  // Normalise relevanz (1-3 scale)
+  if (!ev.evolutionsrelevanz_beurteilung) {
+    ev.evolutionsrelevanz_beurteilung =
+      item.evolutionsrelevanz || item.relevanz || item.relevance ||
+      raw.evolutionsrelevanz_beurteilung || 1;
+  }
+  ev.evolutionsrelevanz_beurteilung = parseInt(ev.evolutionsrelevanz_beurteilung, 10) || 1;
+  if (ev.evolutionsrelevanz_beurteilung < 1) ev.evolutionsrelevanz_beurteilung = 1;
+  if (ev.evolutionsrelevanz_beurteilung > 3) ev.evolutionsrelevanz_beurteilung = 3;
+
+  // Normalise konzepte
+  if (!ev.relevante_evolutionskonzepte) {
+    var k = item.konzepte || item.evolutionskonzepte || item.concepts || [];
+    if (typeof k === 'string') k = k.split(',').map(function(s){ return s.trim(); });
+    ev.relevante_evolutionskonzepte = Array.isArray(k) ? k : [];
+  }
+
+  // Ensure wissenschaftliche Begründung
+  if (!ev.wissenschaftliche_begruendung) {
+    ev.wissenschaftliche_begruendung =
+      item.begruendung || item.begruendung_evolutionsrelevanz ||
+      item.evolutionary_context || item.erklaerung || '';
+  }
+
+  // Ensure didaktische_strategien
+  if (!item.didaktische_strategien) item.didaktische_strategien = {};
+  var ds = item.didaktische_strategien;
+
+  if (!ds.evolutionsdidaktischer_impuls) {
+    ds.evolutionsdidaktischer_impuls =
+      item.impuls || item.leitfrage || item.didaktischer_impuls || item.guiding_question || '';
+  }
+
+  if (!ds.top3_methoden || !Array.isArray(ds.top3_methoden)) {
+    var rawMeth = item.methoden || item.methods || item.didaktische_methoden || [];
+    if (typeof rawMeth === 'string') rawMeth = rawMeth.split(',').map(function(s){ return s.trim(); });
+    if (Array.isArray(rawMeth) && rawMeth.length) {
+      ds.top3_methoden = rawMeth.slice(0,3).map(function(m, i) {
+        if (typeof m === 'object' && m.methode) return m;
+        return { rang: i+1, methode: String(m), beschreibung: '' };
+      });
+    } else {
+      ds.top3_methoden = [];
+    }
+  }
+
+  if (!ds.moegliche_fehlvorstellungen) {
+    ds.moegliche_fehlvorstellungen =
+      item.fehlvorstellungen || item.misconceptions || item.haeufige_fehler || '';
+  }
+
+  // Basiskonzept tags on lernziele
+  if (!item.basiskonzepte) {
+    item.basiskonzepte = item.bk_tags || item.bk || item.basiskonzept_tags || [];
+    if (typeof item.basiskonzepte === 'string')
+      item.basiskonzepte = item.basiskonzepte.split(',').map(function(s){ return s.trim(); });
+    if (!Array.isArray(item.basiskonzepte)) item.basiskonzepte = [];
+  }
+
+  return item;
+}
+
+// ── BASISKONZEPTE SCHEMA PARSER ──────────────────────────────────────
+// Very flexible — handles many possible BK JSON structures
+function parseBasiskonzepte(json, datasetKey) {
+  var result = [];
+
+  // Case 1: Direct array of BK objects
+  if (Array.isArray(json)) {
+    json.forEach(function(item, idx) { result.push(normaliseBK(item, idx)); });
+    return result.filter(function(b){ return !!b.name; });
+  }
+
+  // Case 2: Object with a known top-level key
+  var bkKeys = ['basiskonzepte','konzepte','concepts','items','data','entries','records'];
+  for (var i = 0; i < bkKeys.length; i++) {
+    var k = bkKeys[i];
+    if (json[k] && Array.isArray(json[k]) && json[k].length > 0) {
+      json[k].forEach(function(item, idx) { result.push(normaliseBK(item, idx)); });
+      return result.filter(function(b){ return !!b.name; });
+    }
+  }
+
+  // Case 3: Object where keys are BK names/IDs and values are BK objects
+  var keys = Object.keys(json);
+  var looksLikeBKMap = keys.length > 0 && keys.every(function(k) {
+    var v = json[k];
+    return v && typeof v === 'object' && !Array.isArray(v) &&
+           (v.name || v.bezeichnung || v.titel || v.beschreibung || v.description || v.id);
+  });
+
+  if (looksLikeBKMap) {
+    keys.forEach(function(k, idx) {
+      var item = json[k];
+      item._key = k;
+      result.push(normaliseBK(item, idx));
+    });
+    return result.filter(function(b){ return !!b.name; });
+  }
+
+  // Case 4: Flat object with BK data at top level (treat the whole object as one BK)
+  if (json.name || json.bezeichnung || json.titel) {
+    result.push(normaliseBK(json, 0));
+    return result.filter(function(b){ return !!b.name; });
+  }
+
+  // Case 5: Nested — look one level deeper for arrays
+  keys.forEach(function(k) {
+    var v = json[k];
+    if (Array.isArray(v) && v.length > 0 && v[0] && typeof v[0] === 'object') {
+      v.forEach(function(item, idx) { result.push(normaliseBK(item, idx)); });
+    }
+  });
+
+  return result.filter(function(b){ return !!b.name; });
+}
+
+function normaliseBK(raw, idx) {
+  if (!raw || typeof raw !== 'object') return {};
+
+  var bk = {};
+  bk._idx = idx;
+
+  // Name / ID
+  bk.name = raw.name || raw.bezeichnung || raw.titel || raw.konzept ||
+             raw.title || raw.concept || raw._key || '';
+  bk.id   = raw.id   || raw.nummer || raw.nr || raw.code || String(idx + 1);
+
+  // Description
+  bk.beschreibung = raw.beschreibung || raw.definition || raw.erklaerung ||
+                    raw.description  || raw.erklarung  || raw.text       || '';
+
+  // Short version
+  bk.kurzbezeichnung = raw.kurzbezeichnung || raw.kuerzel || raw.abkuerzung || raw.short || '';
+
+  // Domain / Fach
+  bk.domaine = raw.domaine || raw.fach || raw.fachbereich || raw.domain || raw.bereich || '';
+  if (Array.isArray(bk.domaine)) bk.domaine = bk.domaine.join(', ');
+
+  // Jahrgangsstufen / Grade bands
+  bk.jahrgangsstufen = raw.jahrgangsstufen || raw.klassen || raw.grades ||
+                       raw.stufen || raw.jahrgang || raw.grade_band || [];
+  if (typeof bk.jahrgangsstufen === 'string')
+    bk.jahrgangsstufen = bk.jahrgangsstufen.split(/[,;]/).map(function(s){ return s.trim(); });
+  if (!Array.isArray(bk.jahrgangsstufen)) bk.jahrgangsstufen = [];
+
+  // Level (Niveau, Komplexität)
+  bk.niveau = raw.niveau || raw.level || raw.komplexitaet || raw.complexity || '';
+
+  // Fachübergreifend
+  bk.fachuebergreifend = raw.fachuebergreifend || raw.interdisciplinary ||
+                          raw.faecherverbindend || raw.cross_curricular || false;
+
+  // Lehrplanbereiche / curriculum areas
+  bk.lehrplanbereiche = raw.lehrplanbereiche || raw.bereiche || raw.curriculum_areas || [];
+  if (typeof bk.lehrplanbereiche === 'string')
+    bk.lehrplanbereiche = bk.lehrplanbereiche.split(/[,;]/).map(function(s){ return s.trim(); });
+  if (!Array.isArray(bk.lehrplanbereiche)) bk.lehrplanbereiche = [];
+
+  // Beispiele
+  bk.beispiele = raw.beispiele || raw.examples || raw.anwendungsbeispiele || [];
+  if (typeof bk.beispiele === 'string')
+    bk.beispiele = bk.beispiele.split(/[,;]/).map(function(s){ return s.trim(); });
+  if (!Array.isArray(bk.beispiele)) bk.beispiele = [];
+
+  // Verknüpfte Lernziele (IDs)
+  bk.lernziele_ids = raw.lernziele_ids || raw.lernziele || raw.lz_ids ||
+                     raw.linked_lz     || raw.referenzen || [];
+  if (typeof bk.lernziele_ids === 'string')
+    bk.lernziele_ids = bk.lernziele_ids.split(/[,;]/).map(function(s){ return s.trim(); });
+  if (!Array.isArray(bk.lernziele_ids)) bk.lernziele_ids = [];
+
+  // Tags
+  bk.tags = raw.tags || raw.schlagwoerter || raw.keywords || [];
+  if (typeof bk.tags === 'string')
+    bk.tags = bk.tags.split(/[,;]/).map(function(s){ return s.trim(); });
+  if (!Array.isArray(bk.tags)) bk.tags = [];
+
+  // Querverbindungen
+  bk.querverbindungen = raw.querverbindungen || raw.related || raw.verbindungen || [];
+  if (typeof bk.querverbindungen === 'string')
+    bk.querverbindungen = bk.querverbindungen.split(/[,;]/).map(function(s){ return s.trim(); });
+  if (!Array.isArray(bk.querverbindungen)) bk.querverbindungen = [];
+
+  // Evolutionsrelevanz
+  bk.evolutionsrelevanz = raw.evolutionsrelevanz || raw.evo_relevanz ||
+                           raw.evolution_relevance || '';
+
+  return bk;
+}
+
+// ════════════════════════════════════════════════════════════════════
+// FULL REBUILD
+// ════════════════════════════════════════════════════════════════════
+function fullRebuild() {
+  // Cross-reference: tag lernziele with BK and vice-versa
+  crossReferenceBK();
+  buildSidebar();
+  buildMethodFilterChips();
+  buildEvoKonzeptTree();
+  buildBKFilterChips();
+  buildUserTagFilterDisplay();
+  buildBKView();
+  buildPromptThemeSelector();
+  applyFilters();
+  drawChart();
+}
+
+// Cross-reference BK ↔ LZ
+function crossReferenceBK() {
+  if (!bkData.length || !rawData.length) return;
+
+  // Build map: lz id → lz
+  var lzById = {};
+  rawData.forEach(function(d){ lzById[d.id] = d; });
+
+  bkData.forEach(function(bk) {
+    // Compute dynamic LZ links: any LZ that has this BK's name in basiskonzepte array
+    var dynLinks = [];
+    rawData.forEach(function(d) {
+      var bkTags = d.basiskonzepte || [];
+      if (bkTags.some(function(t){ return normStr(t) === normStr(bk.name); })) {
+        dynLinks.push(d.id);
+      }
+    });
+    // Merge static links from BK data with dynamic links
+    bk._lz_ids_resolved = unique(bk.lernziele_ids.concat(dynLinks));
+  });
+
+  // Tag each LZ with BK names from BK data
+  rawData.forEach(function(d) {
+    var bkNames = [];
+    bkData.forEach(function(bk) {
+      if (bk._lz_ids_resolved && bk._lz_ids_resolved.indexOf(d.id) !== -1) {
+        bkNames.push(bk.name);
+      }
+    });
+    // Merge with any basiskonzepte already on the LZ
+    d._bk_names = unique((d.basiskonzepte || []).concat(bkNames));
+  });
+}
+
+function normStr(s) {
+  return s ? s.toLowerCase().replace(/\s+/g,'').replace(/[^\w]/g,'') : '';
+}
+
+// ════════════════════════════════════════════════════════════════════
+// SIDEBAR BUILDING
+// ════════════════════════════════════════════════════════════════════
+function buildSidebar() {
+  // Thema chips (per active band filters or all)
+  var themas = unique(rawData.map(function(d){ return d.thema; })).sort();
+  var tc = $('thema-chips'); tc.innerHTML = '';
+  themas.forEach(function(t) {
+    var chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.textContent = shortLabel(t);
+    chip.title = t;
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      if (activeThemaFilters[t]) delete activeThemaFilters[t]; else activeThemaFilters[t] = true;
+      applyFilters();
+    });
+    tc.appendChild(chip);
+  });
+
+  // Unterthema select
+  var uts = unique(rawData.map(function(d){ return d.unterthema; })).sort();
+  var us = $('unterthema-select');
+  while (us.options.length > 1) us.remove(1);
+  uts.forEach(function(u) {
+    if (!u) return;
+    var o = document.createElement('option'); o.value = u; o.textContent = u; us.appendChild(o);
+  });
+}
+
+function shortLabel(t) {
+  if (!t) return '';
+  var map = { 'Biologie des Menschen':'Bio-Mensch', 'Naturwissenschaft und Technik':'NWT' };
+  return map[t] || (t.length > 22 ? t.substring(0,20) + '…' : t);
+}
+
+function buildMethodFilterChips() {
+  var methodSet = {};
+  rawData.forEach(function(d) {
+    ((d.didaktische_strategien||{}).top3_methoden||[]).forEach(function(m){ if(m.methode) methodSet[m.methode] = true; });
+  });
+  var mc = $('method-chips'); mc.innerHTML = '';
+  Object.keys(methodSet).sort().forEach(function(meth) {
+    var chip = document.createElement('span');
+    chip.className = 'chip';
+    chip.textContent = meth;
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      if (activeMethodFilters[meth]) delete activeMethodFilters[meth]; else activeMethodFilters[meth] = true;
+      applyFilters();
+    });
+    mc.appendChild(chip);
+  });
+}
+
+function buildEvoKonzeptTree() {
+  var dataConceptSet = {};
+  rawData.forEach(function(d) {
+    var ev = d.evolutionsbezug || {};
+    (ev.relevante_evolutionskonzepte || []).forEach(function(k){ if(k) dataConceptSet[k] = true; });
+    var e = edits[d.id] || {};
+    if (e.konzepte) e.konzepte.split(',').forEach(function(k){ k=k.trim(); if(k) dataConceptSet[k]=true; });
+  });
+
+  var coveredByHierarchy = {};
+  EVO_HIERARCHY.forEach(function(g) {
+    coveredByHierarchy[g.p] = true;
+    g.c.forEach(function(c){ coveredByHierarchy[c] = true; });
+  });
+
+  var tree = $('evokonzept-tree');
+  tree.innerHTML = '';
+
+  EVO_HIERARCHY.forEach(function(group) {
+    var parentInData   = !!dataConceptSet[group.p];
+    var childrenInData = group.c.filter(function(c){ return !!dataConceptSet[c]; });
+    if (!parentInData && childrenInData.length === 0) return;
+
+    var groupDiv  = document.createElement('div'); groupDiv.className = 'evo-concept-group';
+    var parentRow = document.createElement('div'); parentRow.className = 'evo-concept-parent-row';
+    var parentChip = document.createElement('span'); parentChip.className = 'chip'; parentChip.textContent = group.p; parentChip.title = group.p;
+
+    if (parentInData) {
+      parentChip.addEventListener('click', function() {
+        parentChip.classList.toggle('active');
+        if (activeEvoKonzeptFilters[group.p]) delete activeEvoKonzeptFilters[group.p]; else activeEvoKonzeptFilters[group.p] = true;
+        applyFilters();
+      });
+    } else {
+      parentChip.style.opacity = '0.5'; parentChip.style.cursor = 'default';
+    }
+    parentRow.appendChild(parentChip);
+
+    if (childrenInData.length > 0) {
+      var toggleBtn = document.createElement('button'); toggleBtn.className = 'evo-concept-toggle-btn'; toggleBtn.textContent = '▸';
+      parentRow.appendChild(toggleBtn);
+      var childrenDiv = document.createElement('div'); childrenDiv.className = 'evo-concept-children';
+
+      childrenInData.forEach(function(child) {
+        var cc = document.createElement('span'); cc.className = 'chip'; cc.textContent = child; cc.title = child;
+        cc.addEventListener('click', function() {
+          cc.classList.toggle('active');
+          if (activeEvoKonzeptFilters[child]) delete activeEvoKonzeptFilters[child]; else activeEvoKonzeptFilters[child] = true;
+          applyFilters();
+        });
+        childrenDiv.appendChild(cc);
+      });
+
+      (function(btn, children) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = children.classList.toggle('open');
+          btn.textContent = isOpen ? '▾' : '▸';
+        });
+      })(toggleBtn, childrenDiv);
+
+      groupDiv.appendChild(parentRow);
+      groupDiv.appendChild(childrenDiv);
+    } else {
+      groupDiv.appendChild(parentRow);
+    }
+    tree.appendChild(groupDiv);
+  });
+
+  // Orphan concepts
+  Object.keys(dataConceptSet).forEach(function(k) {
+    if (coveredByHierarchy[k]) return;
+    var chip = document.createElement('span'); chip.className = 'chip'; chip.textContent = k; chip.title = k;
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      if (activeEvoKonzeptFilters[k]) delete activeEvoKonzeptFilters[k]; else activeEvoKonzeptFilters[k] = true;
+      applyFilters();
+    });
+    tree.appendChild(chip);
+  });
+}
+
+function buildBKFilterChips() {
+  var bkSet = {};
+  rawData.forEach(function(d) {
+    (d._bk_names || []).forEach(function(b){ if(b) bkSet[b] = true; });
+  });
+
+  var container = $('bk-filter-chips'); container.innerHTML = '';
+  Object.keys(bkSet).sort().forEach(function(bkName) {
+    var chip = document.createElement('span');
+    chip.className = 'chip bk-chip';
+    chip.textContent = bkName.length > 22 ? bkName.substring(0,20)+'…' : bkName;
+    chip.title = bkName;
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      if (activeBKTagFilters[bkName]) delete activeBKTagFilters[bkName]; else activeBKTagFilters[bkName] = true;
+      applyFilters();
+    });
+    container.appendChild(chip);
+  });
+}
+
+function buildUserTagFilterDisplay() {
+  var container = $('user-tag-filter-display'); container.innerHTML = '';
+  globalUserTags.forEach(function(tag) {
+    var chip = document.createElement('span');
+    chip.className = 'user-tag-filter-chip' + (activeUserTagFilters[tag] ? ' active' : '');
+    chip.innerHTML = escHtml(tag) + '<span class="remove-utag" title="Tag löschen">✕</span>';
+    chip.addEventListener('click', function(e) {
+      if (e.target.classList.contains('remove-utag')) {
+        if (!confirm('Tag "' + tag + '" global löschen?')) return;
+        globalUserTags = globalUserTags.filter(function(t){ return t !== tag; });
+        Object.keys(annotations).forEach(function(id) {
+          if (annotations[id].userTags) annotations[id].userTags = annotations[id].userTags.filter(function(t){ return t !== tag; });
+        });
+        delete activeUserTagFilters[tag];
+        saveLS(); buildUserTagFilterDisplay(); applyFilters();
+      } else {
+        chip.classList.toggle('active');
+        if (activeUserTagFilters[tag]) delete activeUserTagFilters[tag]; else activeUserTagFilters[tag] = true;
+        applyFilters();
+      }
+    });
+    container.appendChild(chip);
+  });
+}
+
+function addGlobalTag(tagName) {
+  var t = tagName.trim();
+  if (!t || globalUserTags.indexOf(t) !== -1) return;
+  globalUserTags.push(t);
+  saveLS(); buildUserTagFilterDisplay();
+  showToast('✓ Tag "' + t + '" erstellt', 'success');
+}
+
+// ════════════════════════════════════════════════════════════════════
+// DATASET BADGES (loading indicator)
+// ════════════════════════════════════════════════════════════════════
+function updateDatasetBadges() {
+  var container = $('dataset-badges'); if (!container) return;
+  container.innerHTML = '';
+  DATASETS.forEach(function(ds) {
+    var status = datasetStatus[ds.key] || 'loading';
+    var span = document.createElement('span');
+    span.className = 'dataset-badge ' + (status === 'ok' ? ds.band : status);
+    var icon = status === 'ok' ? '✓' : status === 'error' ? '⚠' : '⟳';
+    var count = '';
+    if (status === 'ok') {
+      if (ds.isBK) {
+        count = ' (' + bkData.length + ')';
+      } else {
+        var n = rawData.filter(function(d){ return d._band === ds.band; }).length;
+        count = ' (' + n + ')';
+      }
+    }
+    span.textContent = icon + ' ' + ds.label + count;
+    container.appendChild(span);
+  });
+}
+
+function setLoadingBar(pct) {
+  var bar = $('loading-bar');
+  if (bar) bar.style.width = pct + '%';
+}
+function setLoadingDetails(msg) {
+  var el = $('loading-details'); if (el) el.textContent = msg;
+}
+
+// ════════════════════════════════════════════════════════════════════
+// FILTERS
+// ════════════════════════════════════════════════════════════════════
+function applyFilters() {
+  var q  = ($('search-input').value || '').toLowerCase().trim();
+  var ut = $('unterthema-select').value;
+  var sort = $('sort-select').value;
+
+  filteredData = rawData.filter(function(d) {
+    // Band filter
+    if (Object.keys(activeBandFilters).length && !activeBandFilters[d._band]) return false;
+    // Thema
+    if (Object.keys(activeThemaFilters).length && !activeThemaFilters[d.thema]) return false;
+    // Unterthema
+    if (ut && d.unterthema !== ut) return false;
+    // Relevanz
+    var rel = getRelevanz(d);
+    if (Object.keys(activeRelFilters).length && !activeRelFilters[String(rel)]) return false;
+    // Methods
+    if (Object.keys(activeMethodFilters).length) {
+      var meths = ((d.didaktische_strategien||{}).top3_methoden||[]).map(function(m){ return m.methode; });
+      if (!Object.keys(activeMethodFilters).every(function(mk){ return meths.indexOf(mk) !== -1; })) return false;
+    }
+    // Evo Konzepte
+    if (Object.keys(activeEvoKonzeptFilters).length) {
+      var ev2 = d.evolutionsbezug || {};
+      var konz = ev2.relevante_evolutionskonzepte || [];
+      var e2 = edits[d.id];
+      if (e2 && e2.konzepte) konz = e2.konzepte.split(',').map(function(s){ return s.trim(); });
+      if (!Object.keys(activeEvoKonzeptFilters).every(function(kk){ return konz.indexOf(kk) !== -1; })) return false;
+    }
+    // BK tags
+    if (Object.keys(activeBKTagFilters).length) {
+      var bkNames = d._bk_names || [];
+      if (!Object.keys(activeBKTagFilters).every(function(bk){ return bkNames.indexOf(bk) !== -1; })) return false;
+    }
+    // Annotation tags
+    var a = annotations[d.id] || {};
+    if (activeTagFilters['fav']    && !a.fav)       return false;
+    if (activeTagFilters['inc']    && !a.inc)       return false;
+    if (activeTagFilters['edited'] && !edits[d.id]) return false;
+    // User tags
+    if (Object.keys(activeUserTagFilters).length) {
+      var utags = a.userTags || [];
+      if (!Object.keys(activeUserTagFilters).every(function(t){ return utags.indexOf(t) !== -1; })) return false;
+    }
+    // Search
+    if (q) {
+      var e3 = edits[d.id] || {};
+      var hay = [
+        d.id, d.thema, d.unterthema, d.originaltext,
+        (d.evolutionsbezug||{}).wissenschaftliche_begruendung,
+        ((d.evolutionsbezug||{}).relevante_evolutionskonzepte||[]).join(' '),
+        (d.didaktische_strategien||{}).evolutionsdidaktischer_impuls,
+        e3.wiss, e3.impuls, a.favNote, a.incNote, a.notes,
+        (a.userTags||[]).join(' '),
+        (d._bk_names||[]).join(' ')
+      ].filter(Boolean).join(' ').toLowerCase();
+      if (hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+
+  filteredData.sort(function(a, b) {
+    if (sort === 'band')      return (a._band||'').localeCompare(b._band||'');
+    if (sort === 'thema')     { var tc=a.thema.localeCompare(b.thema); return tc!==0?tc:a.unterthema.localeCompare(b.unterthema); }
+    if (sort === 'rel-asc')   return getRelevanz(a) - getRelevanz(b);
+    if (sort === 'rel-desc')  return getRelevanz(b) - getRelevanz(a);
+    if (sort === 'fav-first') return ((annotations[b.id]||{}).fav?1:0) - ((annotations[a.id]||{}).fav?1:0);
+    return a.id.localeCompare(b.id);
+  });
+
+  $('result-count').textContent = filteredData.length + ' von ' + rawData.length;
+  var ec = $('export-count'); if (ec) ec.textContent = filteredData.length;
+  renderCards(q);
+  updateStats();
+}
+
+function getRelevanz(d) {
+  var e = edits[d.id];
+  if (e && e.relevanz) return parseInt(e.relevanz, 10);
+  return ((d.evolutionsbezug||{}).evolutionsrelevanz_beurteilung) || 1;
+}
+
+// ════════════════════════════════════════════════════════════════════
+// RENDER CARDS
+// ════════════════════════════════════════════════════════════════════
+function renderCards(query) {
+  var grid = $('card-grid'), empty = $('empty-state');
+  grid.innerHTML = '';
+  if (!filteredData.length) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  var frag = document.createDocumentFragment();
+  filteredData.forEach(function(d) { frag.appendChild(buildCard(d, query||'')); });
+  grid.appendChild(frag);
+}
+
+function hl(text, query) {
+  if (!text) return '';
+  var safe = escHtml(String(text));
+  if (!query) return safe;
+  return safe.split(new RegExp('(' + escRe(escHtml(query)) + ')', 'gi'))
+             .map(function(p,i){ return i%2===1 ? '<mark>'+p+'</mark>' : p; }).join('');
+}
+
+function buildCard(d, query) {
+  var id   = d.id;
+  var a    = annotations[id] || {};
+  var e    = edits[id] || {};
+  var rel  = getRelevanz(d);
+  var ev   = d.evolutionsbezug || {};
+  var ds   = d.didaktische_strategien || {};
+  var band = d._band || 'unknown';
+
+  var wiss     = e.wiss    !== undefined ? e.wiss    : (ev.wissenschaftliche_begruendung || '');
+  var konzepte = e.konzepte ? e.konzepte.split(',').map(function(s){return s.trim();}) : (ev.relevante_evolutionskonzepte||[]);
+  var impuls   = e.impuls  !== undefined ? e.impuls  : (ds.evolutionsdidaktischer_impuls || '');
+  var top3     = ds.top3_methoden || [];
+  var methoden = e.methoden ? e.methoden.split('\n').filter(Boolean) : [];
+  var fehlvors = ds.moegliche_fehlvorstellungen || '';
+  var notes    = a.notes || '';
+  var userTags = a.userTags || [];
+  var isEdited = !!edits[id];
+  var methFavs = a.methFavs || {};
+  var bkNames  = d._bk_names || [];
+
+  var card = document.createElement('div');
+  var classes = 'card';
+  if (a.fav)    classes += ' is-favorite';
+  if (a.inc)    classes += ' is-incorrect';
+  if (isEdited) classes += ' is-edited';
+  card.className = classes;
+  card.id = 'card-' + id;
+
+  var dots = [1,2,3].map(function(i){ return '<div class="rel-dot'+(i<=rel?' on':'')+'"></div>'; }).join('');
+  var konzHtml = konzepte.filter(Boolean).map(function(k){ return '<span class="concept-chip" title="'+escHtml(k)+'">'+hl(k,query)+'</span>'; }).join('');
+  var bkHtml = bkNames.filter(Boolean).map(function(b){ return '<span class="bk-tag-chip" title="Basiskonzept: '+escHtml(b)+'">🧩 '+hl(b,query)+'</span>'; }).join('');
+
+  var bandLabel = { mnt56:'MNT 5/6', gy78:'Gy 7/8', gy910:'Gy 9/10', unknown:'' }[band] || band;
+
+  var top3Html = '';
+  if (top3.length) {
+    top3Html = '<div class="method-top3">';
+    top3.forEach(function(m) {
+      var fav = methFavs[m.rang] || false;
+      top3Html += '<div class="method-item'+(fav?' method-fav':'')+'" data-id="'+id+'" data-rang="'+m.rang+'">' +
+        '<span class="method-rank">'+m.rang+'.</span>' +
+        '<div class="method-content"><div class="method-name">'+escHtml(m.methode)+'</div>' +
+        (m.beschreibung?'<div class="method-desc">'+hl(m.beschreibung,query)+'</div>':'')+
+        '</div>' +
+        '<span class="method-fav-star" style="color:'+(fav?'#c2185b':'var(--border)')+'">'+( fav?'★':'☆')+'</span>' +
+        '</div>';
+    });
+    top3Html += '</div>';
+  }
+
+  var tagHtml = '';
+  if (a.fav || a.inc || isEdited) {
+    var tb = '';
+    if (a.fav) tb += '<span class="tag-badge fav">❤ Favorit</span>' + (a.favNote ? '<span class="tag-annot"> '+escHtml(a.favNote)+'</span>' : '');
+    if (a.inc) tb += '<span class="tag-badge inc">⚠ Fehlerhaft</span>' + (a.incNote ? '<span class="tag-annot"> '+escHtml(a.incNote)+'</span>' : '');
+    if (isEdited) tb += '<span class="tag-badge edited">✏ Bearbeitet</span>';
+    tagHtml = '<div class="card-tags">'+tb+'</div>';
+  }
+
+  var utHtml = '<div class="card-user-tags">';
+  userTags.forEach(function(t){ utHtml += '<span class="card-user-tag">'+escHtml(t)+'<span class="rm-tag" data-id="'+id+'" data-tag="'+escHtml(t)+'">✕</span></span>'; });
+  utHtml += '<button class="add-tag-btn" data-action="tag" data-id="'+id+'">+ Tag</button></div>';
+
+  var noteSec = notes ? '<div class="expand-section"><button class="expand-trigger">📝 Notizen <span class="expand-arrow">▾</span></button><div class="expand-content"><div class="annot-bubble">'+hl(notes,query)+'</div></div></div>' : '';
+
+  card.innerHTML =
+    '<div class="band-stripe ' + band + '"></div>' +
+    '<div class="card-header">' +
+      '<span class="card-id">'+hl(id,query)+'</span>'+
+      '<div class="card-titles">'+
+        '<div class="card-thema">'+hl(shortLabel(d.thema),query) + (bandLabel ? '<span class="card-band-tag '+band+'">'+bandLabel+'</span>' : '')+'</div>'+
+        '<div class="card-unterthema">'+hl(d.unterthema,query)+'</div>'+
+      '</div>'+
+      '<div class="card-actions">'+
+        '<button class="icon-btn fav-btn'+(a.fav?' active':'')+'" data-action="fav" data-id="'+id+'" title="Favorit">❤</button>'+
+        '<button class="icon-btn inc-btn'+(a.inc?' active':'')+'" data-action="inc" data-id="'+id+'" title="Fehlerhaft">⚠</button>'+
+        '<button class="icon-btn tag-btn" data-action="tag" data-id="'+id+'" title="Tags">🏷</button>'+
+        '<button class="icon-btn edit-btn" data-action="edit" data-id="'+id+'" title="Bearbeiten">✏</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="card-body">'+
+      '<div class="lernziel-text">'+hl(d.originaltext,query)+'</div>'+
+      '<span class="relevance-badge r'+rel+'"><div class="rel-dots">'+dots+'</div>'+REL_LABELS[rel]+'</span>'+
+      (konzHtml ? '<div class="concept-list">'+konzHtml+'</div>' : '')+
+      (bkHtml   ? '<div class="concept-list" style="margin-top:3px">'+bkHtml+'</div>' : '')+
+      utHtml+
+    '</div>'+
+    '<div class="expand-section"><button class="expand-trigger">🔬 Wissenschaftlicher Evolutionsbezug <span class="expand-arrow">▾</span></button>
+        <div class="expand-content"><p>'+hl(wiss,query)+'</p></div></div>'+
+    '<div class="expand-section"><button class="expand-trigger">🎓 Didaktische Strategien <span class="expand-arrow">▾</span></button><div class="expand-content">'+
+      (impuls ? '<div class="didaktik-block"><strong>Evolutionsdidaktischer Impuls</strong><p>'+hl(impuls,query)+'</p></div>' : '')+
+      (top3.length ? '<div class="didaktik-block"><strong>Top 3 Methoden (★ anklicken)</strong>'+top3Html+'</div>' : '')+
+      (methoden.length ? '<div class="didaktik-block"><strong>Weitere Methoden</strong><ul>'+methoden.map(function(m){ return '<li>'+hl(m,query)+'</li>'; }).join('')+'</ul></div>' : '')+
+      (fehlvors ? '<div class="didaktik-block"><strong>Mögliche Fehlvorstellungen</strong><p>'+hl(fehlvors,query)+'</p></div>' : '')+
+    '</div></div>'+
+    noteSec+
+    tagHtml;
+
+  return card;
+}
+
+// ════════════════════════════════════════════════════════════════════
+// CLICK DELEGATION
+// ════════════════════════════════════════════════════════════════════
+document.addEventListener('click', function(evt) {
+  var t = evt.target;
+
+  // Method fav toggle
+  var mi = t.closest ? t.closest('.method-item') : null;
+  if (mi && mi.dataset.rang) {
+    var mId  = mi.dataset.id;
+    var rang = parseInt(mi.dataset.rang, 10);
+    if (!annotations[mId]) annotations[mId] = {};
+    if (!annotations[mId].methFavs) annotations[mId].methFavs = {};
+    annotations[mId].methFavs[rang] = !annotations[mId].methFavs[rang];
+    saveLS();
+    reRenderCard(mId);
+    showToast(annotations[mId].methFavs[rang] ? '★ Methode favorisiert' : '☆ Favorit entfernt', 'info');
+    return;
+  }
+
+  // rm-tag on card
+  if (t.classList && t.classList.contains('rm-tag')) {
+    var rId = t.dataset.id, rTag = t.dataset.tag;
+    if (annotations[rId] && annotations[rId].userTags)
+      annotations[rId].userTags = annotations[rId].userTags.filter(function(x){ return x !== rTag; });
+    saveLS(); applyFilters(); return;
+  }
+
+  // expand trigger
+  var trigger = t.closest ? t.closest('.expand-trigger') : null;
+  if (trigger && !trigger.dataset.action) {
+    trigger.classList.toggle('open');
+    var con = trigger.nextElementSibling; if (con) con.classList.toggle('open');
+    return;
+  }
+
+  // bk-expand trigger
+  var bkTrig = t.closest ? t.closest('.bk-expand-trigger') : null;
+  if (bkTrig) {
+    bkTrig.classList.toggle('open');
+    var bkCon = bkTrig.nextElementSibling; if (bkCon) bkCon.classList.toggle('open');
+    var arr = bkTrig.querySelector('.expand-arrow'); if (arr) arr.classList.toggle('open');
+    return;
+  }
+
+  // concept-chip → filter
+  if (t.classList && t.classList.contains('concept-chip')) {
+    var concept = t.title || t.textContent;
+    if (concept) {
+      activeEvoKonzeptFilters[concept] = true;
+      // visually mark active in tree
+      document.querySelectorAll('#evokonzept-tree .chip').forEach(function(c) {
+        if ((c.title || c.textContent) === concept) c.classList.add('active');
+      });
+      applyFilters();
+      showToast('Filter: ' + concept, 'info');
+    }
+    return;
+  }
+
+  // bk-tag-chip → filter
+  if (t.classList && t.classList.contains('bk-tag-chip')) {
+    var bkName = t.title ? t.title.replace('Basiskonzept: ','') : t.textContent.replace('🧩 ','');
+    if (bkName) {
+      activeBKTagFilters[bkName] = true;
+      document.querySelectorAll('#bk-filter-chips .chip').forEach(function(c) {
+        if ((c.title||c.textContent) === bkName) c.classList.add('active');
+      });
+      applyFilters();
+      showToast('BK-Filter: ' + bkName, 'info');
+    }
+    return;
+  }
+
+  // data-action buttons
+  var btn = t.closest ? t.closest('[data-action]') : null;
+  if (btn) {
+    var act = btn.dataset.action, did = btn.dataset.id;
+    if (act === 'fav')  openAnnotModal(did, 'fav');
+    if (act === 'inc')  openAnnotModal(did, 'inc');
+    if (act === 'edit') openEditModal(did);
+    if (act === 'tag')  openTagModal(did);
+    return;
+  }
+
+  // export-opt
+  var eo = t.closest ? t.closest('.export-opt') : null;
+  if (eo) { doExport(eo.dataset.export); return; }
+
+  // bk-lz-mini link → filter
+  var lzLink = t.closest ? t.closest('.bk-meta-chip.lz-link') : null;
+  if (lzLink) {
+    var lzId = lzLink.dataset.lzid;
+    if (lzId) {
+      switchView('lernziele');
+      $('search-input').value = lzId;
+      applyFilters();
+      showToast('Zeige LZ: ' + lzId, 'info');
+    }
+    return;
+  }
+
+  // modal overlay close
+  if (t.classList && t.classList.contains('modal-overlay')) t.classList.add('hidden');
+});
+
+function reRenderCard(id) {
+  var card = $('card-' + id);
+  if (!card) return;
+  var d = rawData.find(function(x){ return x.id === id; });
+  if (d) {
+    var nc = buildCard(d, ($('search-input').value||'').toLowerCase().trim());
+    card.parentNode.replaceChild(nc, card);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════
+// STATS + CHART
+// ════════════════════════════════════════════════════════════════════
+function updateStats() {
+  var counts = { mnt56:{1:0,2:0,3:0}, gy78:{1:0,2:0,3:0}, gy910:{1:0,2:0,3:0} };
+  var totalCounts = {1:0,2:0,3:0};
+  rawData.forEach(function(d) {
+    var r    = getRelevanz(d);
+    var band = d._band || 'unknown';
+    if (counts[band]) counts[band][r]++;
+    if (totalCounts[r] !== undefined) totalCounts[r]++;
+  });
+  var total  = rawData.length;
+  var favN   = Object.keys(annotations).filter(function(k){ return annotations[k].fav; }).length;
+  var incN   = Object.keys(annotations).filter(function(k){ return annotations[k].inc; }).length;
+  var editN  = Object.keys(edits).length;
+
+  $('stats-detail').innerHTML =
+    '<div class="stat-row"><span>🔢 Gesamt</span><span class="stat-num">'+total+'</span></div>'+
+    '<div class="stat-row"><span>🟢 Gering</span><span class="stat-num">'+totalCounts[1]+'</span></div>'+
+    '<div class="stat-row"><span>🟡 Mittel</span><span class="stat-num">'+totalCounts[2]+'</span></div>'+
+    '<div class="stat-row"><span>🔴 Hoch</span><span class="stat-num">'+totalCounts[3]+'</span></div>'+
+    '<div class="stat-row" style="margin-top:5px"><span>❤ Favoriten</span><span class="stat-num">'+favN+'</span></div>'+
+    '<div class="stat-row"><span>⚠ Fehlerhaft</span><span class="stat-num">'+incN+'</span></div>'+
+    '<div class="stat-row"><span>✏ Bearbeitet</span><span class="stat-num">'+editN+'</span></div>'+
+    '<div class="stat-row"><span>📋 Gefiltert</span><span class="stat-num">'+filteredData.length+'</span></div>'+
+    '<div class="stat-row"><span>🧩 BK</span><span class="stat-num">'+bkData.length+'</span></div>';
+
+  updatePlannerInfo();
+  drawChart();
+}
+
+function updatePlannerInfo() {
+  var favIds   = Object.keys(annotations).filter(function(k){ return annotations[k].fav; });
+  var favItems = rawData.filter(function(d){ return favIds.indexOf(d.id) !== -1; });
+  $('planner-info').innerHTML = favItems.length
+    ? '<strong>' + favItems.length + ' Favoriten</strong> ausgewählt'
+    : 'Noch keine Favoriten markiert.';
+}
+
+function drawChart() {
+  var canvas = $('chart-canvas');
+  if (!canvas || !canvas.getContext) return;
+  var container = canvas.parentElement;
+  var cw = container ? container.offsetWidth : 260;
+  if (cw < 10) cw = 260;
+
+  var LEGEND_W = 68;
+  var PAD_L = 4, PAD_R = LEGEND_W + 4, PAD_T = 8, PAD_B = 38;
+  var ch  = 200;
+  var dpr = window.devicePixelRatio || 1;
+  canvas.width  = cw * dpr; canvas.height = ch * dpr;
+  canvas.style.width = cw+'px'; canvas.style.height = ch+'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr); ctx.clearRect(0,0,cw,ch);
+  if (!rawData.length) return;
+
+  // Group by band
+  var bands = ['mnt56','gy78','gy910'];
+  var bandLabels = { mnt56:'MNT5/6', gy78:'Gy7/8', gy910:'Gy9/10' };
+  var COLORS = ['#388e3c','#e6a817','#c62828'];
+  var chartAreaW = cw - PAD_L - PAD_R;
+  var chartAreaH = ch - PAD_T - PAD_B;
+  var n  = bands.length;
+  var groupW = chartAreaW / n;
+  var barW   = Math.max(8, Math.min(28, groupW * 0.58));
+
+  // Compute counts
+  var bandData = bands.map(function(band) {
+    var items = rawData.filter(function(d){ return d._band === band; });
+    return { band: band, r: [1,2,3].map(function(r){ return items.filter(function(d){ return getRelevanz(d)===r; }).length; }) };
+  });
+  var maxTotal = 0;
+  bandData.forEach(function(bd) { var s=bd.r[0]+bd.r[1]+bd.r[2]; if(s>maxTotal)maxTotal=s; });
+  if (!maxTotal) return;
+
+  bandData.forEach(function(bd, i) {
+    var x      = PAD_L + i * groupW + (groupW - barW) / 2;
+    var yBase  = PAD_T + chartAreaH;
+    var cumul  = 0;
+    [0,1,2].forEach(function(ri) {
+      var count = bd.r[ri]; if (!count) return;
+      var segH  = (count / maxTotal) * chartAreaH;
+      var y     = yBase - cumul - segH;
+      ctx.fillStyle = COLORS[ri];
+      ctx.fillRect(x, y, barW, segH);
+      if (segH >= 11) {
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(count, x + barW/2, y + segH/2 + 3);
+      }
+      cumul += segH;
+    });
+    var total    = bd.r[0]+bd.r[1]+bd.r[2];
+    var totalBarH= (total/maxTotal)*chartAreaH;
+    ctx.fillStyle = '#546e7a'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(total, x+barW/2, PAD_T+chartAreaH-totalBarH-3);
+    ctx.fillStyle = '#607d8b'; ctx.font = '8px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText(bandLabels[bd.band]||bd.band, PAD_L+i*groupW+groupW/2, ch-PAD_B+13);
+  });
+
+  ctx.strokeStyle = '#cfd8dc'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(PAD_L,PAD_T+chartAreaH); ctx.lineTo(cw-PAD_R,PAD_T+chartAreaH); ctx.stroke();
+
+  var lx = cw - LEGEND_W + 3, ly = PAD_T + 4;
+  ['Gering','Mittel','Hoch'].forEach(function(lbl,i) {
+    ctx.fillStyle = COLORS[i]; ctx.fillRect(lx, ly+i*18, 10, 10);
+    ctx.fillStyle = '#546e7a'; ctx.font = '9px sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(lbl, lx+13, ly+i*18+9);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════════
+// BASISKONZEPTE VIEW
+// ════════════════════════════════════════════════════════════════════
+function buildBKView() {
+  var body = $('bk-body'); if (!body) return;
+
+  if (!bkData.length) {
+    body.innerHTML = '<div class="bk-no-data"><div class="ei">🧩</div><p>Keine Basiskonzepte-Daten geladen.<br>Bitte importiere die Datei manuell (⬆ Import).</p></div>';
+    return;
+  }
+
+  renderBKView(body, '', bkViewMode);
+}
+
+function renderBKView(body, searchQ, mode) {
+  var filtered = bkData.filter(function(bk) {
+    if (!searchQ) return true;
+    var hay = [bk.name, bk.beschreibung, bk.domaine, (bk.tags||[]).join(' '), (bk.lehrplanbereiche||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+    return hay.indexOf(searchQ.toLowerCase()) !== -1;
+  });
+
+  // Stats row
+  var lzWithBK = rawData.filter(function(d){ return (d._bk_names||[]).length > 0; }).length;
+  var totalLinks = 0;
+  bkData.forEach(function(bk){ totalLinks += (bk._lz_ids_resolved||[]).length; });
+
+  var statsHtml =
+    '<div class="bk-stats-row">'+
+    '<div class="bk-stat-card"><div class="bk-stat-num">'+bkData.length+'</div><div class="bk-stat-label">Basiskonzepte</div></div>'+
+    '<div class="bk-stat-card"><div class="bk-stat-num">'+rawData.length+'</div><div class="bk-stat-label">Lernziele gesamt</div></div>'+
+    '<div class="bk-stat-card"><div class="bk-stat-num">'+lzWithBK+'</div><div class="bk-stat-label">LZ mit BK-Tag</div></div>'+
+    '<div class="bk-stat-card"><div class="bk-stat-num">'+totalLinks+'</div><div class="bk-stat-label">BK–LZ Verknüpfungen</div></div>'+
+    '</div>';
+
+  var toolbarHtml =
+    '<div class="bk-toolbar">'+
+    '<input type="text" class="bk-search" id="bk-search-input" placeholder="Basiskonzepte durchsuchen…" value="'+escHtml(searchQ)+'">'+
+    '<button class="bk-view-btn'+(mode==='grid'?' active':'')+'" data-bkview="grid">⊞ Karten</button>'+
+    '<button class="bk-view-btn'+(mode==='matrix'?' active':'')+'" data-bkview="matrix">⊟ Matrix</button>'+
+    '<button class="bk-view-btn'+(mode==='map'?' active':'')+'" data-bkview="map">🗺 Lehrplanübersicht</button>'+
+    '</div>';
+
+  var contentHtml = '';
+
+  if (mode === 'grid') {
+    contentHtml = '<div class="bk-grid">' + filtered.map(function(bk){ return buildBKCard(bk, searchQ); }).join('') + '</div>';
+    if (!filtered.length) contentHtml = '<div class="bk-no-data"><div class="ei">🔍</div><p>Keine Basiskonzepte gefunden.</p></div>';
+  } else if (mode === 'matrix') {
+    contentHtml = buildBKMatrix(filtered);
+  } else if (mode === 'map') {
+    contentHtml = buildBKCurriculumMap(filtered);
+  }
+
+  body.innerHTML = statsHtml + toolbarHtml + contentHtml;
+
+  // Bind search
+  var bkSearch = $('bk-search-input');
+  if (bkSearch) {
+    bkSearch.addEventListener('input', function() {
+      renderBKView(body, bkSearch.value, bkViewMode);
+    });
+    bkSearch.focus();
+  }
+
+  // Bind view buttons
+  body.querySelectorAll('.bk-view-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      bkViewMode = btn.dataset.bkview;
+      renderBKView(body, bkSearch ? bkSearch.value : '', bkViewMode);
+    });
+  });
+}
+
+function buildBKCard(bk, q) {
+  var lzLinks = bk._lz_ids_resolved || [];
+  var matchingLZ = rawData.filter(function(d){ return lzLinks.indexOf(d.id) !== -1; });
+
+  // Group LZ by band
+  var byBand = {};
+  matchingLZ.forEach(function(d) {
+    var b = d._band || 'unknown';
+    if (!byBand[b]) byBand[b] = [];
+    byBand[b].push(d);
+  });
+
+  var bandLabels = { mnt56:'MNT 5/6', gy78:'Gy 7/8', gy910:'Gy 9/10' };
+  var bandColors = { mnt56:'00796b', gy78:'1565c0', gy910:'6a1b9a' };
+
+  var jahrgangHtml = (bk.jahrgangsstufen||[]).filter(Boolean).map(function(j){
+    return '<span class="bk-meta-chip jahrgang">'+escHtml(j)+'</span>';
+  }).join('');
+
+  var niveauHtml = bk.niveau ? '<span class="bk-meta-chip level">'+escHtml(bk.niveau)+'</span>' : '';
+  var domaineHtml = bk.domaine ? '<span class="bk-meta-chip domain">'+escHtml(bk.domaine)+'</span>' : '';
+  var fachHtml = bk.fachuebergreifend ? '<span class="bk-meta-chip fachueberschreitung">🔗 fächerübergreifend</span>' : '';
+
+  var tagsHtml = (bk.tags||[]).filter(Boolean).map(function(t){
+    return '<span class="bk-meta-chip beispiel">'+escHtml(t)+'</span>';
+  }).join('');
+
+  var beispieleHtml = '';
+  if ((bk.beispiele||[]).filter(Boolean).length) {
+    beispieleHtml = '<div class="bk-card-section"><div class="bk-card-section-title">Beispiele</div><div class="bk-tag-row">' +
+      bk.beispiele.filter(Boolean).map(function(b){ return '<span class="bk-meta-chip beispiel">'+escHtml(b)+'</span>'; }).join('') +
+      '</div></div>';
+  }
+
+  var querHtml = '';
+  if ((bk.querverbindungen||[]).filter(Boolean).length) {
+    querHtml = '<div class="bk-card-section"><div class="bk-card-section-title">Querverbindungen</div><div class="bk-tag-row">' +
+      bk.querverbindungen.filter(Boolean).map(function(q2){ return '<span class="bk-meta-chip domain">'+escHtml(q2)+'</span>'; }).join('') +
+      '</div></div>';
+  }
+
+  // LZ section per band
+  var lzSectionHtml = '';
+  if (matchingLZ.length) {
+    lzSectionHtml += '<div class="bk-card-section"><div class="bk-card-section-title">Verknüpfte Lernziele ('+matchingLZ.length+')</div><div class="bk-tag-row">';
+    Object.keys(byBand).forEach(function(band) {
+      byBand[band].forEach(function(d) {
+        lzSectionHtml += '<span class="bk-meta-chip lz-link" data-lzid="'+escHtml(d.id)+'" title="'+escHtml(d.originaltext)+'" style="border-color:#'+(bandColors[band]||'607d8b')+'">'+escHtml(d.id)+'</span>';
+      });
+    });
+    lzSectionHtml += '</div></div>';
+  }
+
+  // Expand: full LZ texts per band
+  var expandContent = '';
+  if (matchingLZ.length) {
+    Object.keys(byBand).forEach(function(band) {
+      var bl = bandLabels[band] || band;
+      expandContent += '<div style="margin-bottom:8px"><strong style="font-size:0.7rem;color:var(--text-muted)">'+bl+'</strong>';
+      byBand[band].forEach(function(d) {
+        var rel = getRelevanz(d);
+        expandContent += '<div class="bk-lz-mini" style="margin-top:3px">'+
+          '<span class="bk-lz-mini-id">'+escHtml(d.id)+'</span>'+
+          '<div class="bk-lz-mini-text">'+escHtml(d.originaltext)+
+            '<span class="bk-meta-chip r'+rel+'" style="background:'+(rel===3?'#ffebee':rel===2?'#fff3e0':'#e8f5e9')+';color:'+(rel===3?'#c62828':rel===2?'#e65100':'#2e7d32')+';margin-left:4px;font-size:0.6rem">'+REL_LABELS[rel]+'</span>'+
+          '</div>'+
+          '</div>';
+      });
+      expandContent += '</div>';
+    });
+  }
+
+  var evoRelHtml = bk.evolutionsrelevanz ? '<div class="bk-card-section"><div class="bk-card-section-title">Evolutionsrelevanz</div><p style="font-size:0.77rem;color:var(--text);line-height:1.5">'+escHtml(bk.evolutionsrelevanz)+'</p></div>' : '';
+
+  return '<div class="bk-card">' +
+    '<div class="bk-card-header">' +
+      '<span class="bk-card-num">BK '+escHtml(String(bk.id))+'</span>' +
+      '<div class="bk-card-name">'+hlBK(bk.name,q)+'</div>' +
+    '</div>' +
+    '<div class="bk-card-body">' +
+      (bk.kurzbezeichnung ? '<div style="font-size:0.7rem;color:var(--bk-color);font-weight:700;margin-bottom:4px">'+escHtml(bk.kurzbezeichnung)+'</div>' : '') +
+      '<div class="bk-card-desc">'+hlBK(bk.beschreibung,q)+'</div>' +
+      (jahrgangHtml||niveauHtml||domaineHtml||fachHtml ? '<div class="bk-card-section"><div class="bk-card-section-title">Metadaten</div><div class="bk-tag-row">'+jahrgangHtml+niveauHtml+domaineHtml+fachHtml+'</div></div>' : '') +
+      (tagsHtml ? '<div class="bk-card-section"><div class="bk-card-section-title">Schlagwörter</div><div class="bk-tag-row">'+tagsHtml+'</div></div>' : '') +
+      lzSectionHtml +
+      beispieleHtml +
+      querHtml +
+      evoRelHtml +
+    '</div>' +
+    (expandContent ?
+      '<button class="bk-expand-trigger">📋 Lernziel-Details <span class="expand-arrow" style="transition:transform 0.2s;display:inline-block">▾</span></button>' +
+      '<div class="bk-expand-content"><div style="padding:4px 0">'+expandContent+'</div></div>'
+    : '') +
+  '</div>';
+}
+
+function hlBK(text, q) {
+  if (!text) return '';
+  var safe = escHtml(String(text));
+  if (!q) return safe;
+  return safe.split(new RegExp('('+escRe(escHtml(q))+')', 'gi'))
+             .map(function(p,i){ return i%2===1?'<mark>'+p+'</mark>':p; }).join('');
+}
+
+function buildBKMatrix(filtered) {
+  if (!filtered.length) return '<div class="bk-no-data"><div class="ei">🔍</div><p>Keine Basiskonzepte gefunden.</p></div>';
+
+  var bands = ['mnt56','gy78','gy910'];
+  var bandLabels = { mnt56:'MNT 5/6', gy78:'Gy 7/8', gy910:'Gy 9/10' };
+
+  var html = '<div class="bk-matrix-wrap"><table class="bk-matrix"><thead><tr>' +
+    '<th>Basiskonzept</th>' +
+    bands.map(function(b){ return '<th>'+bandLabels[b]+'</th>'; }).join('') +
+    '<th>LZ-Anzahl</th><th>Domäne</th>' +
+    '</tr></thead><tbody>';
+
+  filtered.forEach(function(bk) {
+    var lzLinks = bk._lz_ids_resolved || [];
+    html += '<tr><td><strong style="font-size:0.79rem;color:var(--bk-color)">'+escHtml(bk.name)+'</strong>' +
+      (bk.beschreibung ? '<br><span style="font-size:0.69rem;color:var(--text-muted)">'+escHtml(bk.beschreibung.substring(0,80))+(bk.beschreibung.length>80?'…':'')+'</span>' : '') +
+      '</td>';
+    bands.forEach(function(band) {
+      var count = rawData.filter(function(d){ return d._band===band && lzLinks.indexOf(d.id)!==-1; }).length;
+      html += '<td style="text-align:center">';
+      if (count) {
+        html += '<span style="background:var(--bk-color);color:white;padding:2px 6px;border-radius:10px;font-size:0.7rem;font-weight:700">'+count+'</span>';
+      } else {
+        html += '<span style="color:var(--border)">–</span>';
+      }
+      html += '</td>';
+    });
+    html += '<td style="text-align:center;font-weight:700;color:var(--bk-color)">'+lzLinks.length+'</td>';
+    html += '<td><span style="font-size:0.72rem;color:var(--text-muted)">'+escHtml(bk.domaine||'–')+'</span></td>';
+    html += '</tr>';
+  });
+
+  html += '</tbody></table></div>';
+  return html;
+}
+
+function buildBKCurriculumMap(filtered) {
+  if (!filtered.length) return '<div class="bk-no-data"><div class="ei">🔍</div><p>Keine Basiskonzepte gefunden.</p></div>';
+
+  var bands = ['mnt56','gy78','gy910'];
+  var bandLabels = { mnt56:'MNT 5/6 (Naturwissenschaft)', gy78:'Gymnasium 7/8 (Evolution)', gy910:'Gymnasium 9/10' };
+
+  var html = '<div class="bk-curriculum-map">';
+
+  bands.forEach(function(band) {
+    var bandLZ = rawData.filter(function(d){ return d._band === band; });
+    if (!bandLZ.length) return;
+
+    // For each LZ in this band, collect its BK names
+    var lzWithBK = bandLZ.filter(function(d){ return (d._bk_names||[]).length > 0; });
+
+    html += '<div class="bk-band-section">';
+    html += '<div class="bk-band-header '+band+'">'+bandLabels[band]+' <span class="bk-band-count">'+bandLZ.length+' LZ · '+lzWithBK.length+' mit BK-Tag</span></div>';
+    html += '<div class="bk-band-body">';
+
+    if (!lzWithBK.length) {
+      html += '<p style="font-size:0.78rem;color:var(--text-muted);padding:6px 0">Keine direkten BK-Verknüpfungen in diesem Datensatz vorhanden.</p>';
+      html += '<p style="font-size:0.73rem;color:var(--text-muted)">Tipp: Die Basiskonzepte können über die LZ-IDs in der JSON-Datei verknüpft werden.</p>';
+    } else {
+      lzWithBK.slice(0, 30).forEach(function(d) {
+        var rel = getRelevanz(d);
+        var bkTags = (d._bk_names||[]).filter(Boolean);
+        html += '<div class="bk-lz-mini">' +
+          '<span class="bk-lz-mini-id">'+escHtml(d.id)+'</span>' +
+          '<div class="bk-lz-mini-text">'+escHtml(d.originaltext)+
+            '<div class="bk-lz-mini-bk">'+
+              bkTags.map(function(b){
+                return '<span class="bk-meta-chip" style="background:var(--bk-pale);color:var(--bk-color);border:1px solid #b3ddf5;font-size:0.6rem">🧩 '+escHtml(b)+'</span>';
+              }).join('') +
+              '<span class="bk-meta-chip r'+rel+'" style="background:'+(rel===3?'#ffebee':rel===2?'#fff3e0':'#e8f5e9')+';color:'+(rel===3?'#c62828':rel===2?'#e65100':'#2e7d32')+';font-size:0.6rem">'+REL_LABELS[rel]+'</span>' +
+            '</div>' +
+          '</div>' +
+          '</div>';
+      });
+      if (lzWithBK.length > 30) {
+        html += '<p style="font-size:0.73rem;color:var(--text-muted);padding:5px 0">… und '+( lzWithBK.length-30)+' weitere</p>';
+      }
+    }
+    html += '</div></div>';
+  });
+
+  // Cross-band BK summary
+  html += '<div class="bk-band-section">';
+  html += '<div class="bk-band-header" style="background:linear-gradient(90deg,var(--bk-pale),#f5f5f5);color:var(--bk-color)">🔗 Basiskonzepte-Übersicht (alle Bänder) <span class="bk-band-count">'+filtered.length+' BK</span></div>';
+  html += '<div class="bk-band-body">';
+  html += '<div style="display:flex;flex-wrap:wrap;gap:6px;padding:4px 0">';
+  filtered.forEach(function(bk) {
+    var n = (bk._lz_ids_resolved||[]).length;
+    html += '<span style="background:var(--bk-pale);border:1px solid #b3ddf5;color:var(--bk-color);padding:3px 9px;border-radius:20px;font-size:0.72rem;font-weight:700" title="'+escHtml(bk.beschreibung||bk.name)+'">'+
+      escHtml(bk.name)+(n?' <span style="background:var(--bk-color);color:white;border-radius:8px;padding:0 4px;font-size:0.62rem">'+n+'</span>':'')+
+      '</span>';
+  });
+  html += '</div></div></div>';
+
+  html += '</div>';
+  return html;
+}
+
+// ════════════════════════════════════════════════════════════════════
+// EDIT MODAL
+// ════════════════════════════════════════════════════════════════════
+function openEditModal(id) {
+  editingId = id;
+  var d  = rawData.find(function(x){ return x.id === id; }) || {};
+  var e  = edits[id] || {};
+  var a  = annotations[id] || {};
+  var ev = d.evolutionsbezug || {};
+  var ds = d.didaktische_strategien || {};
+  $('edit-modal-id').textContent = id;
+  $('edit-wiss').value     = e.wiss     !== undefined ? e.wiss     : (ev.wissenschaftliche_begruendung || '');
+  $('edit-konzepte').value = e.konzepte !== undefined ? e.konzepte : (ev.relevante_evolutionskonzepte||[]).join(', ');
+  $('edit-relevanz').value = e.relevanz !== undefined ? e.relevanz : String(ev.evolutionsrelevanz_beurteilung || 1);
+  $('edit-impuls').value   = e.impuls   !== undefined ? e.impuls   : (ds.evolutionsdidaktischer_impuls || '');
+  $('edit-methoden').value = e.methoden !== undefined ? e.methoden : '';
+  $('edit-notes').value    = a.notes || '';
+  openModal('edit-modal');
+}
+
+function saveEdit() {
+  var id = editingId; if (!id) return;
+  var d  = rawData.find(function(x){ return x.id === id; }) || {};
+  var ev = d.evolutionsbezug || {};
+  var ds = d.didaktische_strategien || {};
+
+  var newVals = {
+    wiss:     $('edit-wiss').value,
+    konzepte: $('edit-konzepte').value,
+    relevanz: $('edit-relevanz').value,
+    impuls:   $('edit-impuls').value,
+    methoden: $('edit-methoden').value
+  };
+
+  var origWiss   = ev.wissenschaftliche_begruendung || '';
+  var origKonz   = (ev.relevante_evolutionskonzepte||[]).join(', ');
+  var origRel    = String(ev.evolutionsrelevanz_beurteilung || 1);
+  var origImpuls = ds.evolutionsdidaktischer_impuls || '';
+
+  var hasChange = (
+    newVals.wiss     !== origWiss  ||
+    newVals.konzepte !== origKonz  ||
+    newVals.relevanz !== origRel   ||
+    newVals.impuls   !== origImpuls||
+    newVals.methoden !== ''
+  );
+
+  if (hasChange) edits[id] = newVals; else delete edits[id];
+
+  if (!annotations[id]) annotations[id] = {};
+  annotations[id].notes = $('edit-notes').value;
+
+  saveLS();
+  closeModal('edit-modal');
+  applyFilters();
+  drawChart();
+  showToast('✓ Gespeichert', 'success');
+}
+
+// ════════════════════════════════════════════════════════════════════
+// TAG MODAL
+// ════════════════════════════════════════════════════════════════════
+function openTagModal(id) {
+  taggingId = id;
+  $('tag-modal-id').textContent = id;
+  renderTagModalCurrent();
+  renderTagModalGlobalOptions();
+  $('tag-modal-new-input').value = '';
+  openModal('tag-modal');
+}
+
+function renderTagModalCurrent() {
+  var a = annotations[taggingId]||{}, tags = a.userTags||[];
+  var container = $('tag-modal-current'); container.innerHTML = '';
+  if (!tags.length) { container.innerHTML = '<span style="font-size:0.71rem;color:var(--text-muted)">Noch keine Tags</span>'; return; }
+  tags.forEach(function(t) {
+    var el = document.createElement('span'); el.className = 'tag-modal-tag';
+    el.innerHTML = escHtml(t) + '<span class="rm">✕</span>';
+    el.querySelector('.rm').addEventListener('click', function(){ removeUserTagFromItem(taggingId,t); renderTagModalCurrent(); renderTagModalGlobalOptions(); });
+    container.appendChild(el);
+  });
+}
+
+function renderTagModalGlobalOptions() {
+  var a = annotations[taggingId]||{}, cur = a.userTags||[];
+  var container = $('tag-modal-global-options'); container.innerHTML = '';
+  if (!globalUserTags.length) { container.innerHTML = '<span style="font-size:0.71rem;color:var(--text-muted)">Noch keine globalen Tags.</span>'; return; }
+  globalUserTags.forEach(function(t) {
+    var already = cur.indexOf(t) !== -1;
+    var el = document.createElement('span'); el.className = 'global-tag-option'; el.style.opacity = already?'0.4':'1';
+    el.textContent = (already?'✓ ':'+ ') + t;
+    if (!already) el.addEventListener('click', function(){ addUserTagToItem(taggingId,t); renderTagModalCurrent(); renderTagModalGlobalOptions(); });
+    container.appendChild(el);
+  });
+}
+
+function addUserTagToItem(id, tag) {
+  if (!annotations[id]) annotations[id] = {};
+  if (!annotations[id].userTags) annotations[id].userTags = [];
+  if (annotations[id].userTags.indexOf(tag) === -1) annotations[id].userTags.push(tag);
+  if (globalUserTags.indexOf(tag) === -1) { globalUserTags.push(tag); buildUserTagFilterDisplay(); }
+  saveLS();
+}
+
+function removeUserTagFromItem(id, tag) {
+  if (annotations[id] && annotations[id].userTags)
+    annotations[id].userTags = annotations[id].userTags.filter(function(t){ return t !== tag; });
+  saveLS();
+}
+
+function saveTagModal() { closeModal('tag-modal'); applyFilters(); showToast('✓ Tags gespeichert','success'); }
+
+// ════════════════════════════════════════════════════════════════════
+// ANNOTATION MODAL
+// ════════════════════════════════════════════════════════════════════
+function openAnnotModal(id, type) {
+  annotatingId   = id;
+  annotatingType = type;
+  var a = annotations[id] || {};
+  $('annot-modal-title').textContent = type==='fav' ? '❤ Favorit markieren' : '⚠ Als fehlerhaft markieren';
+  $('annot-text').value = type==='fav' ? (a.favNote||'') : (a.incNote||'');
+  $('annot-remove-btn').style.display = a[type] ? '' : 'none';
+  openModal('annot-modal');
+}
+
+function saveAnnotation() {
+  var id=annotatingId, type=annotatingType; if(!id) return;
+  if (!annotations[id]) annotations[id] = {};
+  annotations[id][type] = true;
+  var note = $('annot-text').value.trim();
+  if (type==='fav') annotations[id].favNote=note; else annotations[id].incNote=note;
+  saveLS(); closeModal('annot-modal'); applyFilters();
+  showToast(type==='fav'?'❤ Favorit markiert':'⚠ Als fehlerhaft markiert','info');
+}
+
+function removeAnnotation() {
+  var id=annotatingId, type=annotatingType;
+  if (id && annotations[id]) {
+    delete annotations[id][type];
+    if (type==='fav') delete annotations[id].favNote; else delete annotations[id].incNote;
+  }
+  saveLS(); closeModal('annot-modal'); applyFilters(); showToast('Markierung entfernt','info');
+}
+
+// ════════════════════════════════════════════════════════════════════
+// EXPORT
+// ════════════════════════════════════════════════════════════════════
+function enrichItem(d) {
+  var id   = d.id;
+  var e    = edits[id] || {};
+  var a    = annotations[id] || {};
+  var item = JSON.parse(JSON.stringify(d));
+  var ev   = item.evolutionsbezug || (item.evolutionsbezug = {});
+  var ds   = item.didaktische_strategien || (item.didaktische_strategien = {});
+
+  if (e.wiss     !== undefined) ev.wissenschaftliche_begruendung   = e.wiss;
+  if (e.konzepte !== undefined) ev.relevante_evolutionskonzepte    = e.konzepte.split(',').map(function(s){ return s.trim(); });
+  if (e.relevanz !== undefined) ev.evolutionsrelevanz_beurteilung  = parseInt(e.relevanz, 10);
+  if (e.impuls   !== undefined) ds.evolutionsdidaktischer_impuls   = e.impuls;
+  if (e.methoden && e.methoden.trim()) ds.methoden_zusatz = e.methoden.split('\n').filter(Boolean);
+
+  item._annotation = {
+    favorit:    !!a.fav,
+    fehlerhaft: !!a.inc,
+    favNote:    a.favNote  || '',
+    incNote:    a.incNote  || '',
+    notizen:    a.notes    || '',
+    bearbeitet: !!edits[id],
+    userTags:   a.userTags || [],
+    methFavs:   a.methFavs || {}
+  };
+  return item;
+}
+
+function doExport(type) {
+  closeModal('export-modal');
+  var ts  = new Date().toISOString();
+  var content, filename, mime;
+
+  var wrap = function(arr) {
+    return JSON.stringify({ exportiert:ts, tool:'EvoMentor DE v1.1', globalUserTags:globalUserTags, eintraege:arr }, null, 2);
+  };
+
+  if (type === 'all') {
+    content  = wrap(rawData.map(enrichItem));
+    filename = 'evomentor_alle.json'; mime = 'application/json';
+
+  } else if (type === 'edited') {
+    var ed = rawData.filter(function(d){ return !!edits[d.id]; }).map(enrichItem);
+    if (!ed.length) { showToast('Keine bearbeiteten Lernziele','error'); return; }
+    content = wrap(ed); filename = 'evomentor_bearbeitet.json'; mime = 'application/json';
+
+  } else if (type === 'favorites') {
+    var favs = rawData.filter(function(d){ return (annotations[d.id]||{}).fav; }).map(enrichItem);
+    if (!favs.length) { showToast('Keine Favoriten','error'); return; }
+    content = wrap(favs); filename = 'evomentor_favoriten.json'; mime = 'application/json';
+
+  } else if (type === 'filtered') {
+    content = wrap(filteredData.map(enrichItem));
+    filename = 'evomentor_gefiltert.json'; mime = 'application/json';
+
+  } else if (type === 'csv') {
+    var hdrs = ['ID','Band','Thema','Unterthema','Lernziel','Relevanz','Konzepte','BK-Tags','Favorit','Fehlerhaft','UserTags','Notizen'];
+    var rows = rawData.map(function(d) {
+      var a  = annotations[d.id]||{};
+      var ev = d.evolutionsbezug||{};
+      var e  = edits[d.id]||{};
+      var rel  = getRelevanz(d);
+      var konz = e.konzepte ? e.konzepte : (ev.relevante_evolutionskonzepte||[]).join('; ');
+      var bkN  = (d._bk_names||[]).join('; ');
+      return [d.id, d._band||'', d.thema, d.unterthema, d.originaltext, rel, konz, bkN,
+        a.fav?'Ja':'Nein', a.inc?'Ja':'Nein',
+        (a.userTags||[]).join('; '), a.notes||a.favNote||a.incNote||''
+      ].map(function(v){ return '"'+String(v||'').replace(/"/g,'""')+'"'; }).join(',');
+    });
+    content = '\uFEFF' + hdrs.join(',') + '\n' + rows.join('\n');
+    filename = 'evomentor_lernziele.csv'; mime = 'text/csv;charset=utf-8;';
+
+  } else if (type === 'markdown') {
+    var mFavs = rawData.filter(function(d){ return (annotations[d.id]||{}).fav; });
+    if (!mFavs.length) { showToast('Keine Favoriten','error'); return; }
+    var byT = {};
+    mFavs.forEach(function(d){ if(!byT[d.thema]) byT[d.thema]=[]; byT[d.thema].push(d); });
+    var md = '# EvoMentor – Unterrichtsplan\n\n_Erstellt: '+new Date().toLocaleDateString('de-DE')+'_\n\n';
+    Object.keys(byT).forEach(function(thema) {
+      md += '## ' + thema + '\n\n';
+      byT[thema].forEach(function(d) {
+        var a    = annotations[d.id]||{};
+        var rel  = getRelevanz(d);
+        var relS = ['','🟢 Gering','🟡 Mittel','🔴 Hoch'][rel]||'';
+        var ds2  = d.didaktische_strategien||{};
+        var e2   = edits[d.id]||{};
+        var imp  = e2.impuls !== undefined ? e2.impuls : (ds2.evolutionsdidaktischer_impuls||'');
+        var mf   = a.methFavs||{};
+        var top3 = ds2.top3_methoden||[];
+        md += '### ['+d.id+'] '+d.unterthema+'\n**Lernziel:** '+d.originaltext+'\n\n**Relevanz:** '+relS+' · **Band:** '+(d._band||'')+'\n\n';
+        if (imp) md += '**Didaktischer Impuls:** '+imp+'\n\n';
+        if (top3.length) { md += '**Methoden:**\n'; top3.forEach(function(m){ md += (mf[m.rang]?'★ ':'- ')+'**'+m.methode+'**'+(m.beschreibung?' – '+m.beschreibung:'')+'\n'; }); md += '\n'; }
+        if (a.favNote) md += '**Notiz:** '+a.favNote+'\n\n';
+        if ((a.userTags||[]).length) md += '**Tags:** '+a.userTags.join(', ')+'\n\n';
+        md += '---\n\n';
+      });
+    });
+    content = md; filename = 'evomentor_unterrichtsplan.md'; mime = 'text/markdown;charset=utf-8;';
+
+  } else if (type === 'bk-json') {
+    // Export enriched BK data with resolved LZ links
+    var bkExport = bkData.map(function(bk) {
+      var resolved = (bk._lz_ids_resolved||[]).map(function(id) {
+        var d = rawData.find(function(x){ return x.id===id; });
+        return d ? { id:id, thema:d.thema, unterthema:d.unterthema, text:d.originaltext, band:d._band, relevanz:getRelevanz(d) } : { id:id };
+      });
+      return Object.assign({}, bk, { _lz_details: resolved });
+    });
+    content  = JSON.stringify({ exportiert:ts, tool:'EvoMentor DE v1.1', basiskonzepte:bkExport }, null, 2);
+    filename = 'evomentor_basiskonzepte.json'; mime = 'application/json';
+
+  } else return;
+
+  downloadFile(content, filename, mime);
+  showToast('✓ '+filename+' exportiert','success');
+}
+
+function downloadFile(content, filename, mime) {
+  var blob = new Blob([content], {type:mime});
+  var url  = URL.createObjectURL(blob);
+  var a = document.createElement('a'); a.href=url; a.download=filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 600);
+}
+
+// ════════════════════════════════════════════════════════════════════
+// IMPORT (ROBUST)
+// ════════════════════════════════════════════════════════════════════
+function doImport() {
+  var file = $('import-file').files[0];
+  if (!file) { showToast('Keine Datei ausgewählt','error'); return; }
+  var reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      var json = JSON.parse(evt.target.result);
+
+      if (importMode === 'replace') {
+        // Determine if file is BK-only, LZ-only, or mixed
+        var hasBK  = json.basiskonzepte && Array.isArray(json.basiskonzepte) && json.basiskonzepte.length > 0;
+        var lzArr  = extractLernzieleArray(json, 'import', 'unknown');
+
+        if (hasBK && (!lzArr || lzArr.length === 0)) {
+          // Pure BK import
+          bkData = parseBasiskonzepte(json.basiskonzepte || json, 'import');
+          saveLS(); closeModal('import-modal');
+          crossReferenceBK(); buildBKFilterChips(); buildBKView();
+          showToast('✓ '+bkData.length+' Basiskonzepte geladen','success');
+          return;
+        }
+
+        if (!lzArr || lzArr.length === 0) {
+          showToast('⚠ Keine Lernziele in Datei gefunden','error'); return;
+        }
+
+        rawData = []; annotations = {}; edits = {}; globalUserTags = [];
+
+        if (json.globalUserTags && Array.isArray(json.globalUserTags))
+          json.globalUserTags.forEach(function(t){ if(t) globalUserTags.push(t); });
+
+        lzArr.forEach(function(item) {
+          if (!item.id) return;
+          var clean = JSON.parse(JSON.stringify(item));
+          delete clean._annotation;
+          rawData.push(clean);
+          if (item._annotation) {
+            var ann = item._annotation;
+            if (!annotations[item.id]) annotations[item.id] = {};
+            if (ann.favorit)    annotations[item.id].fav     = true;
+            if (ann.fehlerhaft) annotations[item.id].inc     = true;
+            if (ann.favNote)    annotations[item.id].favNote = ann.favNote;
+            if (ann.incNote)    annotations[item.id].incNote = ann.incNote;
+            if (ann.notizen)    annotations[item.id].notes   = ann.notizen;
+            if (ann.userTags && ann.userTags.length) annotations[item.id].userTags = ann.userTags;
+            if (ann.methFavs)   annotations[item.id].methFavs = ann.methFavs;
+            if (ann.bearbeitet) {
+              var ev2 = item.evolutionsbezug || {};
+              var ds2 = item.didaktische_strategien || {};
+              edits[item.id] = {
+                wiss:     ev2.wissenschaftliche_begruendung || '',
+                konzepte: (ev2.relevante_evolutionskonzepte||[]).join(', '),
+                relevanz: String(ev2.evolutionsrelevanz_beurteilung||1),
+                impuls:   ds2.evolutionsdidaktischer_impuls || '',
+                methoden: (ds2.methoden_zusatz||[]).join('\n')
+              };
+            }
+          }
+        });
+
+        if (hasBK) bkData = parseBasiskonzepte(json.basiskonzepte, 'import');
+
+        saveLS(); closeModal('import-modal');
+        activeBandFilters={}; activeRelFilters={}; activeTagFilters={};
+        activeThemaFilters={}; activeMethodFilters={}; activeEvoKonzeptFilters={};
+        activeBKTagFilters={}; activeUserTagFilters={};
+        $('search-input').value=''; $('unterthema-select').value='';
+        fullRebuild();
+        updateDatasetBadges();
+        showToast('✓ '+rawData.length+' LZ geladen (neue Session)','success');
+
+      } else {
+        // Merge: only annotations
+        if (!rawData.length) { showToast('⚠ Keine aktiven Lernziele.','error'); return; }
+        if (json.globalUserTags && Array.isArray(json.globalUserTags))
+          json.globalUserTags.forEach(function(t){ if(t && globalUserTags.indexOf(t)===-1) globalUserTags.push(t); });
+        var items = json.eintraege || extractLernzieleArray(json,'import','unknown') || [];
+        var count = 0;
+        items.forEach(function(item) {
+          if (!item.id || !rawData.some(function(d){ return d.id===item.id; })) return;
+          if (item._annotation) {
+            var ann = item._annotation;
+            if (!annotations[item.id]) annotations[item.id] = {};
+            if (ann.favorit)    annotations[item.id].fav     = true;
+            if (ann.fehlerhaft) annotations[item.id].inc     = true;
+            if (ann.favNote)    annotations[item.id].favNote = ann.favNote;
+            if (ann.incNote)    annotations[item.id].incNote = ann.incNote;
+            if (ann.notizen)    annotations[item.id].notes   = ann.notizen;
+            if (ann.userTags && ann.userTags.length) {
+              if (!annotations[item.id].userTags) annotations[item.id].userTags = [];
+              ann.userTags.forEach(function(t){ if(annotations[item.id].userTags.indexOf(t)===-1) annotations[item.id].userTags.push(t); });
+            }
+            if (ann.methFavs) annotations[item.id].methFavs = ann.methFavs;
+            count++;
+          }
+        });
+        saveLS(); closeModal('import-modal');
+        buildUserTagFilterDisplay(); buildEvoKonzeptTree(); applyFilters();
+        showToast('✓ '+count+' Annotationen zusammengeführt','success');
+      }
+    } catch(err) {
+      showToast('⚠ Fehler: '+err.message,'error');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function previewImportFile(file) {
+  if (!file) { $('import-preview').style.display='none'; return; }
+  var reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      var json = JSON.parse(evt.target.result);
+      var arr  = extractLernzieleArray(json,'preview','unknown');
+      var hasBK = json.basiskonzepte && Array.isArray(json.basiskonzepte);
+      var lines = [];
+      if (arr && arr.length) {
+        lines.push('📦 ' + arr.length + ' Lernziele gefunden');
+        var annCount = arr.filter(function(i){ return i._annotation; }).length;
+        if (annCount) lines.push('📝 ' + annCount + ' mit Annotationen');
+      } else { lines.push('⚠ Kein LZ-Array gefunden'); }
+      if (hasBK) lines.push('🧩 Basiskonzepte enthalten');
+      if (json.exportiert) lines.push('📅 Exportiert: ' + json.exportiert.substring(0,10));
+      if (json.tool)       lines.push('🛠 Tool: ' + json.tool);
+      $('import-preview').textContent = lines.join('\n');
+      $('import-preview').style.display = 'block';
+    } catch(e) {
+      $('import-preview').textContent = '⚠ Ungültige JSON-Datei';
+      $('import-preview').style.display = 'block';
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ════════════════════════════════════════════════════════════════════
+// MODALS
+// ════════════════════════════════════════════════════════════════════
+function openModal(id)  { $(id).classList.remove('hidden'); }
+function closeModal(id) { $(id).classList.add('hidden'); }
+
+// ════════════════════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════════════════════
+function showToast(msg, type) {
+  var tc = $('toast-container');
+  var t  = document.createElement('div'); t.className='toast '+(type||'info'); t.textContent=msg;
+  tc.appendChild(t);
+  setTimeout(function(){
+    t.style.transition='opacity 0.3s'; t.style.opacity='0';
+    setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); }, 320);
+  }, 3200);
+}
+
+// ════════════════════════════════════════════════════════════════════
+// DATA STATUS BANNER
+// ════════════════════════════════════════════════════════════════════
+function showDataStatus(msg, type) {
+  var el = $('data-status'); if(!el) return;
+  el.textContent = msg; el.className = type||'';
+  el.style.display = 'block';
+}
+
+// ════════════════════════════════════════════════════════════════════
+// UTILS
+// ════════════════════════════════════════════════════════════════════
+function unique(arr) { var s={}; return arr.filter(function(v){ if(s[v]) return false; s[v]=true; return true; }); }
+function escHtml(s)  { if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escRe(s)    { return s.replace(/[-\/\\^$*+?.()|[${}]/g,'\\$&'); }
+function getRadioVal(gid) { var c=document.querySelectorAll('#'+gid+' .radio-chip.selected'); return c.length?c[0].getAttribute('data-val'):''; }
+function getPctVal(gid)   { var c=document.querySelectorAll('#'+gid+' .pct-chip.selected');   return c.length?c[0].getAttribute('data-val'):''; }
+function getCheckedVals(gid) { var v=[]; document.querySelectorAll('#'+gid+' input[type="checkbox"]:checked').forEach(function(cb){v.push(cb.value);}); return v; }
+function getPgMethodVals() {
+  var v=[];
+  ['pg-lehrformen-recommended','pg-lehrformen-extra'].forEach(function(gid){
+    document.querySelectorAll('#'+gid+' input[type="checkbox"]:checked').forEach(function(cb){v.push(cb.value);});
+  });
+  return v;
+}
+
+// ════════════════════════════════════════════════════════════════════
+// VIEW SWITCHING
+// ════════════════════════════════════════════════════════════════════
+function switchView(v) {
+  currentAppView = v;
+  ['lernziele','bk','prompt'].forEach(function(name) {
+    var viewEl = $(name+'-view'), btnEl = $('view-'+name+'-btn');
+    if (viewEl) viewEl.classList.toggle('active', name===v);
+    if (btnEl)  btnEl.classList.toggle('active-view', name===v);
+  });
+  if (v === 'bk') buildBKView();
+}
+
+function setCardView(v) {
+  currentCardView = v;
+  $('card-grid').className = v==='list'?'list-view':'';
+  $('btn-grid').className  = v==='grid'?'active':'';
+  $('btn-list').className  = v==='list'?'active':'';
+}
+
+// ════════════════════════════════════════════════════════════════════
+// PROMPT GENERATOR
+// ════════════════════════════════════════════════════════════════════
+function buildPromptThemeSelector() {
+  var container = $('pg-theme-selector'); container.innerHTML = '';
+
+  // Group by band then thema
+  var bands = ['mnt56','gy78','gy910'];
+  var bandLabels = { mnt56:'MNT 5/6', gy78:'Gymnasium 7/8', gy910:'Gymnasium 9/10' };
+  var bandColors = { mnt56:'#00796b', gy78:'#1565c0', gy910:'#6a1b9a' };
+
+  bands.forEach(function(band) {
+    var bandItems = rawData.filter(function(d){ return d._band === band; });
+    if (!bandItems.length) return;
+
+    var bandHeader = document.createElement('div');
+    bandHeader.style.cssText = 'font-size:0.7rem;font-weight:800;color:'+bandColors[band]+';text-transform:uppercase;letter-spacing:0.06em;margin:8px 0 4px;padding:3px 0;border-bottom:2px solid '+bandColors[band]+'22';
+    bandHeader.textContent = bandLabels[band];
+    container.appendChild(bandHeader);
+
+    var themas = unique(bandItems.map(function(d){ return d.thema; }));
+    themas.forEach(function(thema) {
+      var subthemas = unique(bandItems.filter(function(d){ return d.thema===thema; }).map(function(d){ return d.unterthema; }));
+      var item = document.createElement('div'); item.className = 'theme-item';
+
+      var header = document.createElement('div'); header.className = 'theme-item-header';
+      var cb = document.createElement('input'); cb.type='checkbox'; cb.className='theme-check';
+      var lbl = document.createElement('span');
+      lbl.innerHTML = escHtml(shortLabel(thema))+'<span class="lz-count">'+bandItems.filter(function(d){ return d.thema===thema; }).length+'</span>';
+      lbl.title = thema;
+      var expBtn = document.createElement('button'); expBtn.className='theme-expand-btn'; expBtn.innerHTML='▾';
+      header.appendChild(cb); header.appendChild(lbl); header.appendChild(expBtn);
+      item.appendChild(header);
+
+      var subList = document.createElement('div'); subList.className='subtheme-list';
+      subthemas.forEach(function(ut) {
+        if (!ut) return;
+        var subDiv = document.createElement('div'); subDiv.className='subtheme-item';
+        var subCb  = document.createElement('input'); subCb.type='checkbox'; subCb.id='pgcb-'+sanitize(band+'-'+ut);
+        var subLbl = document.createElement('label'); subLbl.htmlFor=subCb.id;
+        subLbl.innerHTML = escHtml(ut)+'<span class="lz-count">'+bandItems.filter(function(d){ return d.unterthema===ut; }).length+'</span>';
+        subDiv.appendChild(subCb); subDiv.appendChild(subLbl); subList.appendChild(subDiv);
+
+        subCb.addEventListener('change', function() {
+          if (subCb.checked) { pgSelectedSubthemas[ut]=true; subDiv.classList.add('selected'); }
+          else               { delete pgSelectedSubthemas[ut]; subDiv.classList.remove('selected'); }
+          syncThemaCheck(thema, band, cb, subthemas, item, bandItems);
+          onPgSelectionChange();
+        });
+      });
+      item.appendChild(subList);
+
+      cb.addEventListener('change', function() {
+        subthemas.forEach(function(ut) {
+          if (!ut) return;
+          var sc = $('pgcb-'+sanitize(band+'-'+ut));
+          var sd = sc ? sc.closest('.subtheme-item') : null;
+          if (cb.checked) { pgSelectedSubthemas[ut]=true; if(sc)sc.checked=true; if(sd)sd.classList.add('selected'); }
+          else            { delete pgSelectedSubthemas[ut]; if(sc)sc.checked=false; if(sd)sd.classList.remove('selected'); }
+        });
+        item.classList.toggle('selected', cb.checked);
+        onPgSelectionChange();
+      });
+
+      expBtn.addEventListener('click', function(e) { e.stopPropagation(); subList.classList.toggle('open'); expBtn.classList.toggle('open'); });
+      header.addEventListener('click', function(e) { if(e.target===cb||e.target===expBtn) return; subList.classList.toggle('open'); expBtn.classList.toggle('open'); });
+      container.appendChild(item);
+    });
+  });
+
+  updatePgLzBadge();
+}
+
+function sanitize(s) { return s.replace(/[^a-zA-Z0-9]/g,'-').toLowerCase(); }
+
+function syncThemaCheck(thema, band, cb, subthemas, item, bandItems) {
+  var any = subthemas.some(function(ut){ return pgSelectedSubthemas[ut]; });
+  cb.checked = any;
+  item.classList.toggle('selected', any);
+}
+
+function onPgSelectionChange() {
+  updatePgLzBadge();
+  updatePgLzList();
+  updatePgEvoKonzepte();
+  updatePgMethods();
+}
+
+function getSelectedLZ() {
+  if (!Object.keys(pgSelectedSubthemas).length) return [];
+  return rawData.filter(function(d){ return pgSelectedSubthemas[d.unterthema]; });
+}
+
+function getActiveLZ() {
+  return getSelectedLZ().filter(function(d){ return !pgExcludedLZ[d.id]; });
+}
+
+function updatePgLzBadge() {
+  var all    = getSelectedLZ();
+  var active = getActiveLZ();
+  var badge  = $('pg-lz-badge');
+  if (badge) {
+    badge.textContent = active.length + ' von ' + all.length + ' Lernzielen im Prompt';
+    badge.style.background = all.length>0?'var(--accent2-pale)':'var(--neutral-pale)';
+    badge.style.color      = all.length>0?'var(--accent2)':'var(--text-muted)';
+  }
+  var sec = $('pg-lz-list-section');
+  if (sec) sec.style.display = all.length>0 ? 'block' : 'none';
+}
+
+function updatePgLzList() {
+  var all = getSelectedLZ();
+  var container = $('pg-lz-items'); if (!container) return;
+
+  var visible = all.filter(function(d) {
+    var a   = annotations[d.id]||{};
+    var rel = getRelevanz(d);
+    if (pgLzActiveFilter==='fav')   return !!a.fav;
+    if (pgLzActiveFilter==='r3')    return rel===3;
+    if (pgLzActiveFilter==='r2')    return rel===2;
+    return true;
+  });
+
+  container.innerHTML = '';
+  if (!visible.length) {
+    container.innerHTML = '<div style="padding:9px;font-size:0.76rem;color:var(--text-muted);text-align:center">Keine Lernziele für diesen Filter.</div>';
+    return;
+  }
+
+  visible.forEach(function(d) {
+    var a      = annotations[d.id]||{};
+    var rel    = getRelevanz(d);
+    var isExcl = !!pgExcludedLZ[d.id];
+    var row    = document.createElement('div'); row.className='lz-item-row'+(isExcl?' excluded':'');
+    var cb     = document.createElement('input'); cb.type='checkbox'; cb.className='lz-item-check'; cb.checked=!isExcl;
+
+    var con    = document.createElement('div'); con.className='lz-item-content';
+    var idSpan = document.createElement('div'); idSpan.className='lz-item-id'; idSpan.textContent=d.id+' · '+(d._band||'');
+    var txt    = document.createElement('div'); txt.className='lz-item-text'; txt.textContent=d.originaltext;
+    var badges = document.createElement('div'); badges.className='lz-item-badges';
+    if (a.fav) badges.innerHTML+='<span class="lz-item-badge fav">❤</span>';
+    badges.innerHTML+='<span class="lz-item-badge r'+rel+'">'+REL_LABELS[rel]+'</span>';
+
+    con.appendChild(idSpan); con.appendChild(txt); con.appendChild(badges);
+    row.appendChild(cb); row.appendChild(con);
+
+    var doToggle = function() {
+      cb.checked=!cb.checked;
+      if(cb.checked) delete pgExcludedLZ[d.id]; else pgExcludedLZ[d.id]=true;
+      row.classList.toggle('excluded',!cb.checked);
+      updatePgLzBadge();
+    };
+    cb.addEventListener('change', function(e){ e.stopPropagation(); if(cb.checked) delete pgExcludedLZ[d.id]; else pgExcludedLZ[d.id]=true; row.classList.toggle('excluded',!cb.checked); updatePgLzBadge(); });
+    row.addEventListener('click', function(e){ if(e.target===cb) return; doToggle(); });
+    container.appendChild(row);
+  });
+}
+
+function updatePgEvoKonzepte() {
+  var lz = getSelectedLZ(), cset = {};
+  lz.forEach(function(d) {
+    var ev = d.evolutionsbezug||{};
+    var e2 = edits[d.id]||{};
+    var k  = e2.konzepte ? e2.konzepte.split(',').map(function(s){ return s.trim(); }) : (ev.relevante_evolutionskonzepte||[]);
+    k.forEach(function(x){ if(x) cset[x]=true; });
+  });
+  var container = $('pg-evo-konzepte'); if (!container) return;
+  container.innerHTML = '';
+  if (!Object.keys(cset).length) {
+    container.innerHTML = '<span style="font-size:0.76rem;color:var(--text-muted)">Bitte zuerst Lernziele auswählen.</span>';
+    return;
+  }
+  Object.keys(cset).sort().forEach(function(k) {
+    container.appendChild(makeCheckItem(k, k));
+  });
+}
+
+function normalizeMethod(raw) {
+  var map = {
+    'forschendes lernen':'Forschendes Lernen','konzeptuelles lernen':'Konzeptuelles Lernen',
+    'kooperative lernformen':'Kooperative Lernformen','projektbasiertes lernen':'Projektbasiertes Lernen',
+    'erfahrungsbasiertes lernen':'Erfahrungsbasiertes Lernen','diskussion':'Diskussion',
+    'narrativer zugang':'Narrativer Zugang','analogien und vergleiche':'Analogien und Vergleiche',
+    'modelle und simulationen':'Modelle und Simulationen',
+    'einblick in wissenschaftsgeschichte':'Einblick in Wissenschaftsgeschichte',
+    'recherche':'Recherche','digitale medien':'Digitale Medien'
+  };
+  return map[raw.toLowerCase().trim()] || raw;
+}
+
+function updatePgMethods() {
+  var lz = getSelectedLZ(), freq = {};
+  lz.forEach(function(d) {
+    ((d.didaktische_strategien||{}).top3_methoden||[]).forEach(function(m) {
+      if (m.methode) { var n=normalizeMethod(m.methode); freq[n]=(freq[n]||0)+1; }
+    });
+  });
+  var rec   = $('pg-lehrformen-recommended');
+  var extra = $('pg-lehrformen-extra');
+  if (!rec||!extra) return;
+  rec.innerHTML=''; extra.innerHTML='';
+
+  var recMethods   = Object.keys(freq).sort(function(a,b){ return freq[b]-freq[a]; });
+  var extraMethods = ALL_METHODS.filter(function(m){ return !freq[m]; });
+
+  if (!recMethods.length) {
+    rec.innerHTML = '<span style="font-size:0.76rem;color:var(--text-muted)">Bitte zuerst Lernziele auswählen.</span>';
+  } else {
+    recMethods.forEach(function(m){ rec.appendChild(makeCheckItem(m, m+' ('+freq[m]+'×)')); });
+  }
+  extraMethods.forEach(function(m){ extra.appendChild(makeCheckItem(m, m)); });
+}
+
+function makeCheckItem(val, label) {
+  var lbl  = document.createElement('label'); lbl.className='check-item';
+  var cb   = document.createElement('input'); cb.type='checkbox'; cb.value=val;
+  var span = document.createElement('span'); span.textContent=label;
+  lbl.appendChild(cb); lbl.appendChild(span); return lbl;
+}
+
+// ── GENERATE PROMPT ───────────────────────────────────────────────
+function generatePrompt() {
+  var activeLZ = getActiveLZ();
+  if (!activeLZ.length) {
+    showToast('⚠ Bitte mindestens ein Thema / Lernziel auswählen','error');
+    $('pg-output-wrap').style.display='none'; return;
+  }
+
+  var klasse       = getRadioVal('pg-klasse') || '7-8';
+  var klasseLabel  = {'5-6':'Klassen 5–6','7':'Klasse 7','7-8':'Klassen 7–8','9-10':'Klassen 9–10'}[klasse]||klasse;
+  var numLessons   = parseInt($('pg-num-lessons').value, 10);
+  var formatVal    = getRadioVal('pg-stunden-format');
+  var formatLabel  = formatVal==='other'?(($('pg-format-other').value||'?')+' Min.'):(formatVal+' Min.');
+  var vorwissen    = getRadioVal('pg-vorwissen');
+  var vorwNotiz    = $('pg-vorwissen-notiz').value.trim();
+  var evoPct       = getPctVal('pg-evo-pct') || '50';
+  var evoKonzepte  = getCheckedVals('pg-evo-konzepte');
+  var fachNotizen  = $('pg-fach-notizen').value.trim();
+  var lehrformen   = getPgMethodVals();
+  var differenz    = getCheckedVals('pg-differenzierung');
+  var didNotizen   = $('pg-did-notizen').value.trim();
+  var bewertung    = getCheckedVals('pg-bewertung');
+  var evalNotizen  = $('pg-eval-notizen').value.trim();
+  var kontexte     = getCheckedVals('pg-kontext');
+  var kontNotizen  = $('pg-kontext-notizen').value.trim();
+  var ausgabeTyp   = getCheckedVals('pg-ausgabe-typ');
+  var ausgabeTon   = getRadioVal('pg-ausgabe-ton');
+  var ausgabeLaenge= getRadioVal('pg-ausgabe-laenge');
+  var sonstiges    = $('pg-sonstige-notizen').value.trim();
+
+  // Group LZ
+  var byBandThema = {};
+  activeLZ.forEach(function(d) {
+    var key = d._band+'::'+d.thema;
+    if (!byBandThema[key]) byBandThema[key] = { band:d._band, thema:d.thema, byUnt:{} };
+    if (!byBandThema[key].byUnt[d.unterthema]) byBandThema[key].byUnt[d.unterthema] = [];
+    byBandThema[key].byUnt[d.unterthema].push(d);
+  });
+
+  var favLZ     = activeLZ.filter(function(d){ return (annotations[d.id]||{}).fav; });
+  var highRelLZ = activeLZ.filter(function(d){ return getRelevanz(d)===3; });
+
+  var vorwissensLabels = {
+    keins:'Die Lerngruppe hat noch kein Vorwissen zur Evolutionsbiologie.',
+    grundlagen:'Die Lerngruppe kennt Grundbegriffe der Evolution.',
+    solide:'Die Lerngruppe verfügt über solides Grundwissen zur Evolution.'
+  };
+  var bewertungsNames = {
+    formativ:'Formative Beurteilung (laufend)',quiz:'Quiz',
+    praesentation:'Präsentationen, Poster, Flyer',reflexion:'Schriftliche Reflexion',
+    portfolio:'Portfolio / Lerntagebuch',klassenarbeit:'Klassenarbeit / LEK',
+    praktisch:'Praktische Leistungen'
+  };
+  var kontextNames = {
+    biodiversitaet:'Biodiversitätskrise',naturschutz:'Naturschutz und Arterhaltung',
+    klimawandel:'Klimawandel und Artenanpassung',pandemie:'Pandemien und Virusevolution',
+    antibiotikaresistenz:'Antibiotikaresistenz',gesundheit:'Evolutionäre Medizin',
+    biotechnologie:'Biotechnologie und Gentechnik'
+  };
+  var ausgabeTypNames = {
+    sequenzplan:'Vollständige Unterrichtssequenz mit Stundenverlaufsplänen',
+    lernziele:'Operationalisierte Lernziele pro Stunde',
+    methoden:'Methodische Vorschläge und Aufgabenideen',
+    materialien:'Hinweise auf Materialien / Medien',
+    fehlvorstellungen:'Übersicht häufiger Schülerfehlvorstellungen',
+    differenzierung:'Differenzierungsvorschläge',
+    transferfragen:'Transfer- und Diskussionsfragen',
+    querverbindungen:'Querverbindungen zwischen Lernzielen'
+  };
+  var tonLabels    = { akademisch:'akademisch-fachwissenschaftlich', professionell:'professionell und lehrkorientiert', praxisnah:'praxisnah und direkt umsetzbar' };
+  var laengeLabels = { kurz:'kompakten', mittel:'ausführlichen', lang:'sehr ausführlichen' };
+  var bandLabels   = { mnt56:'MNT 5/6', gy78:'Gymnasium 7/8', gy910:'Gymnasium 9/10' };
+
+  var L = [], push = function(s){ L.push(s !== undefined ? s : ''); };
+
+  // HEADER
+  push('═══════════════════════════════════════════════════════════════');
+  push('EvoMentor · KI-UNTERRICHTSPLANUNGSAUFTRAG: EVOLUTIONSBIOLOGIE');
+  push('Thüringer Lehrplan Biologie · ' + klasseLabel);
+  push('Erstellt: ' + new Date().toLocaleDateString('de-DE') + ' · ' + activeLZ.length + ' Lernziele');
+  push('═══════════════════════════════════════════════════════════════');
+  push('');
+  push('ROLLE: Du bist Experte für Biologiedidaktik mit Schwerpunkt Evolutionsbiologie');
+  push('und konzeptuelles Lernen am Gymnasium. Du kennst den Thüringer Lehrplan Biologie');
+  push('und planst Unterricht, der echtes konzeptuelles Verständnis evolutionärer Prinzipien aufbaut.');
+  push('');
+
+  // SECTION 1: Planungsrahmen
+  push('━━━ 1. PLANUNGSRAHMEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  push('• Klassenstufe:       ' + klasseLabel);
+  push('• Unterrichtsstunden: ' + numLessons + ' Stunden à ' + formatLabel);
+  push('• Evolutionsbezug:    ' + evoPct + '% der Unterrichtszeit');
+  push('');
+  push('LERNGRUPPE – VORWISSEN: ' + (vorwissensLabels[vorwissen]||vorwissen));
+  if (vorwNotiz) push('Weitere Angaben: ' + vorwNotiz);
+  push('');
+  push('FORMAT STUNDENVERLAUFSPLÄNE:');
+  push('Tabellarisch: Zeit | Didaktische Funktion | Teilziele | Unterrichtsmittel | Lehrerhandeln | Schülerhandeln');
+  push('Operatoren (Thüringer LP): ableiten · analysieren · begründen · beschreiben · beurteilen · bewerten ·');
+  push('  darstellen · diskutieren · erklären · erläutern · ermitteln · interpretieren · vergleichen');
+  push('');
+
+  // SECTION 2: Lernziele
+  push('━━━ 2. LERNZIELE (Thüringer Lehrplan) ━━━━━━━━━━━━━━━━━━━━━━━');
+  push('❤ = Favorit der Lehrkraft  🔴/🟡/🟢 = Evolutionsrelevanz');
+  push('');
+
+  Object.keys(byBandThema).forEach(function(key) {
+    var grp  = byBandThema[key];
+    var bl   = bandLabels[grp.band] || grp.band;
+    push('▶ [' + bl + '] ' + grp.thema.toUpperCase());
+    Object.keys(grp.byUnt).forEach(function(ut) {
+      var list = grp.byUnt[ut];
+      push('  ┌ Unterthema: ' + ut + ' (' + list.length + ' LZ)');
+      list.forEach(function(d, idx) {
+        var a    = annotations[d.id]||{};
+        var e2   = edits[d.id]||{};
+        var ev   = d.evolutionsbezug||{};
+        var ds2  = d.didaktische_strategien||{};
+        var rel  = getRelevanz(d);
+        var relS = ['','🟢','🟡','🔴'][rel]||'';
+        var marker = a.fav ? '  │ ❤ ' : '  │   ';
+        push(marker + '[' + d.id + '] ' + d.originaltext);
+        push('  │   Relevanz: ' + relS + ' ' + REL_LABELS[rel]);
+        var konz = e2.konzepte ? e2.konzepte.split(',').map(function(s){ return s.trim(); }) : (ev.relevante_evolutionskonzepte||[]);
+        if (konz.filter(Boolean).length) push('  │   Konzepte: ' + konz.filter(Boolean).join(' · '));
+        var bkN = (d._bk_names||[]).filter(Boolean);
+        if (bkN.length) push('  │   Basiskonzepte: ' + bkN.join(' · '));
+        var wiss = e2.wiss !== undefined ? e2.wiss : (ev.wissenschaftliche_begruendung||'');
+        if (wiss) push('  │   Bezug: ' + (wiss.length>240?wiss.substring(0,240)+'…':wiss));
+        var imp  = e2.impuls !== undefined ? e2.impuls : (ds2.evolutionsdidaktischer_impuls||'');
+        if (imp) push('  │   Leitfrage: ' + imp);
+        var fv   = ds2.moegliche_fehlvorstellungen||'';
+        if (fv)  push('  │   Fehlvorstellung: ' + fv);
+        var top3 = ds2.top3_methoden||[], mf = a.methFavs||{};
+        if (top3.length) push('  │   Methoden: ' + top3.map(function(m){ return (mf[m.rang]?'★':m.rang+'.')+' '+m.methode; }).join(' | '));
+        if (a.fav && a.favNote) push('  │   💬 Notiz: "' + a.favNote + '"');
+        if (a.notes) push('  │   📝 "' + a.notes + '"');
+        if (idx < list.length-1) push('  │');
+      });
+      push('  └──────────────────────────────────────────────────────');
+      push('');
+    });
+  });
+
+  push('ZUSAMMENFASSUNG: ' + activeLZ.length + ' LZ · ' + Object.keys(byBandThema).length + ' Themen');
+  if (favLZ.length)     push('❤ Favoriten (' + favLZ.length + '): ' + favLZ.map(function(d){ return d.id; }).join(', '));
+  if (highRelLZ.length) push('🔴 Hohe Relevanz (' + highRelLZ.length + '): ' + highRelLZ.slice(0,10).map(function(d){ return d.id; }).join(', ') + (highRelLZ.length>10?' …':''));
+  push('');
+
+  // SECTION 3: Konzepte
+  if (evoKonzepte.length || fachNotizen) {
+    push('━━━ 3. EVOLUTIONSKONZEPTE SCHWERPUNKT ━━━━━━━━━━━━━━━━━━━━━━');
+    evoKonzepte.forEach(function(k){ push('  → ' + k); });
+    if (fachNotizen) { push(''); push('FACHLICHE SCHWERPUNKTE: ' + fachNotizen); }
+    push('WICHTIG: Als kohärentes Erklärungsframework, nicht als isolierte Fakten vermitteln.');
+    push('');
+  }
+
+  // SECTION 4: Methoden
+  if (lehrformen.length || differenz.length || didNotizen) {
+    push('━━━ 4. DIDAKTISCHE METHODEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    if (lehrformen.length) { push('Bevorzugte Methoden:'); lehrformen.forEach(function(k){ push('  → '+k); }); }
+    if (differenz.length)  { push('Differenzierung:'); differenz.forEach(function(d2){ push('  → '+d2); }); }
+    if (didNotizen)        { push('Hinweise: '+didNotizen); }
+    push('');
+  }
+
+  // SECTION 5: Evaluation
+  if (bewertung.length || evalNotizen) {
+    push('━━━ 5. EVALUATION ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    bewertung.forEach(function(b){ push('  → '+(bewertungsNames[b]||b)); });
+    if (evalNotizen) push('Hinweise: '+evalNotizen);
+    push('');
+  }
+
+  // SECTION 6: Gesellschaft
+  if (kontexte.length || kontNotizen) {
+    push('━━━ 6. GESELLSCHAFTLICHE BEZÜGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    kontexte.forEach(function(k){ push('  → '+(kontextNames[k]||k)); });
+    if (kontNotizen) push('Hinweise: '+kontNotizen);
+    push('');
+  }
+
+  // SECTION 7: Ausgabe
+  push('━━━ 7. ANFORDERUNGEN AN DIE KI-AUSGABE ━━━━━━━━━━━━━━━━━━━━━');
+  push('Stil: ' + (tonLabels[ausgabeTon]||ausgabeTon) + ' · Umfang: ' + (laengeLabels[ausgabeLaenge]||ausgabeLaenge));
+  push('Sprache: AUSSCHLIESSLICH DEUTSCH');
+  push('');
+  if (ausgabeTyp.length) {
+    push('Die Antwort soll enthalten:');
+    ausgabeTyp.forEach(function(t){ push('  ✓ '+(ausgabeTypNames[t]||t)); });
+    push('');
+  }
+  push('PFLICHTBESTANDTEILE:');
+  push('1. ÜBERBLICK: Titel · didaktische Leitidee · übergeordnetes Lernziel · Stundenübersicht');
+  push('2. PRO STUNDE: Tabellarischer Verlaufsplan · Kernaufgabe · LZ-IDs · Verbindung zur Vor-/Folgestunde');
+  push('3. KONZEPTUELLE VERNETZUNG: Evolutionskonzepte als Framework · Querverbindungen · "Big Questions"');
+  push('4. FEHLVORSTELLUNGEN: Diagnose-Aufgaben · Conceptual Change · teleologisches Denken');
+  push('5. TRANSFER: ≥2 Transferfragen pro Einheit · abschließende integrierende Aufgabe');
+  if (favLZ.length) {
+    push('');
+    push('6. FAVORITEN (❤) BESONDERS AUSFÜHRLICH:');
+    favLZ.forEach(function(d) {
+      var a=annotations[d.id]||{};
+      push('   ❤ ['+d.id+'] '+d.originaltext);
+      if (a.favNote) push('     → "'+a.favNote+'"');
+    });
+    push('   Je Favorit: mindestens eine vollständige Stunde mit Vertiefungsaufgaben');
+  }
+  if (sonstiges) {
+    push('');
+    push('WEITERE HINWEISE: '+sonstiges);
+  }
+  push('');
+  push('━━━ QUALITÄTSKRITERIEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  push('✓ Evolution als Erklärungsframework · ✓ Phänomene als Stundeneinstiege');
+  push('✓ Querverbindungen explizit · ✓ Alle LZ-IDs vollständig abgedeckt');
+  push('✓ Realistische Zeitplanung mit Puffern · ✓ Thüringer LP-Operatoren');
+  push('');
+  push('═══════════════════════════════════════════════════════════════');
+  push('BITTE BEGINNE JETZT MIT DER VOLLSTÄNDIGEN UNTERRICHTSPLANUNG.');
+  push('Verwende klare Überschriften und Markdown-Tabellen.');
+  push('═══════════════════════════════════════════════════════════════');
+
+  var promptText = L.join('\n');
+  lastPromptText = promptText;
+
+  lastPromptSettings = {
+    generiert: new Date().toISOString(),
+    klassenstufe: klasseLabel, anzahl_stunden: numLessons, stundenformat: formatLabel,
+    evolutionsanteil: evoPct+'%', vorwissen: vorwissen,
+    evo_konzepte: evoKonzepte, lehrformen: lehrformen, differenzierung: differenz,
+    bewertung: bewertung, gesellschaft: kontexte, ausgabe_typ: ausgabeTyp,
+    ausgabe_ton: ausgabeTon, ausgabe_laenge: ausgabeLaenge,
+    ausgewaehlte_lz: activeLZ.map(function(d){ return { id:d.id, band:d._band, thema:d.thema, unterthema:d.unterthema, text:d.originaltext, relevanz:getRelevanz(d), favorit:!!(annotations[d.id]||{}).fav }; })
+  };
+
+  var wrap = $('pg-output-wrap'), preview = $('prompt-preview');
+  wrap.style.display = 'block';
+  preview.className  = '';
+  preview.textContent= promptText;
+  wrap.scrollIntoView({ behavior:'smooth', block:'start' });
+  showToast('✓ Prompt generiert ('+promptText.length+' Zeichen)','success');
+}
+
+function exportPromptData() {
+  if (!lastPromptSettings) { showToast('Kein Prompt generiert','error'); return; }
+  var exportObj = {
+    meta: { tool:'EvoMentor DE v1.1', exportiert:new Date().toISOString() },
+    prompt_einstellungen: lastPromptSettings,
+    prompt_volltext: lastPromptText,
+    statistik: {
+      gesamtzeichen: lastPromptText.length,
+      lernziele_total: lastPromptSettings.ausgewaehlte_lz.length,
+      favoriten: lastPromptSettings.ausgewaehlte_lz.filter(function(l){ return l.favorit; }).length,
+      hoch_relevant: lastPromptSettings.ausgewaehlte_lz.filter(function(l){ return l.relevanz===3; }).length
+    }
+  };
+  downloadFile(JSON.stringify(exportObj,null,2), 'evomentor_prompt_'+new Date().toISOString().substring(0,10)+'.json', 'application/json');
+  showToast('✓ Prompt-Daten exportiert','success');
+}
+
+// ════════════════════════════════════════════════════════════════════
+// PROMPT EVENTS
+// ════════════════════════════════════════════════════════════════════
+function bindPromptEvents() {
+  var range = $('pg-num-lessons'), val = $('pg-num-lessons-val');
+  if (range && val) range.addEventListener('input', function(){ val.textContent=range.value; });
+
+  document.querySelectorAll('.radio-group .radio-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.closest('.radio-group').querySelectorAll('.radio-chip').forEach(function(c){ c.classList.remove('selected'); });
+      chip.classList.add('selected');
+      if (chip.closest('.radio-group').id==='pg-stunden-format')
+        $('pg-format-other-wrap').style.display = chip.dataset.val==='other'?'block':'none';
+    });
+  });
+
+  document.querySelectorAll('.pct-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.closest('.pct-group').querySelectorAll('.pct-chip').forEach(function(c){ c.classList.remove('selected'); });
+      chip.classList.add('selected');
+    });
+  });
+
+  document.querySelectorAll('#pg-lz-filter-bar .lz-filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('#pg-lz-filter-bar .lz-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      pgLzActiveFilter = btn.dataset.lzfilter;
+      updatePgLzList();
+    });
+  });
+
+  var lzToggle = $('pg-lz-list-toggle'), lzBody = $('pg-lz-list-body');
+  if (lzToggle && lzBody) lzToggle.addEventListener('click', function() {
+    lzBody.style.display = lzBody.style.display==='none'?'block':'none';
+  });
+
+  $('pg-generate-btn').addEventListener('click',   generatePrompt);
+  $('pg-regenerate-btn').addEventListener('click', generatePrompt);
+
+  $('pg-copy-btn').addEventListener('click', function() {
+    var text = $('prompt-preview').textContent;
+    if (!text || $('prompt-preview').classList.contains('empty')) { showToast('Bitte zuerst Prompt generieren','error'); return; }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function(){ showToast('✓ Prompt kopiert!','success'); });
+    } else {
+      var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      showToast('✓ Prompt kopiert!','success');
+    }
+  });
+
+  $('pg-export-prompt-btn').addEventListener('click', exportPromptData);
+
+  $('pg-reset-btn').addEventListener('click', function() {
+    if (!confirm('Alle Prompt-Einstellungen zurücksetzen?')) return;
+    document.querySelectorAll('.radio-group').forEach(function(g) {
+      var chips=g.querySelectorAll('.radio-chip'); chips.forEach(function(c){ c.classList.remove('selected'); }); if(chips.length) chips[0].classList.add('selected');
+    });
+    document.querySelectorAll('.pct-group').forEach(function(g) {
+      var chips=g.querySelectorAll('.pct-chip'); chips.forEach(function(c){ c.classList.remove('selected'); }); var mid=chips[Math.floor(chips.length/2)]; if(mid) mid.classList.add('selected');
+    });
+    ['pg-evo-konzepte','pg-lehrformen-recommended','pg-lehrformen-extra','pg-differenzierung','pg-bewertung','pg-kontext','pg-ausgabe-typ'].forEach(function(id) {
+      var el=$(id); if(el) el.querySelectorAll('input[type="checkbox"]').forEach(function(cb){ cb.checked=false; });
+    });
+    ['sequenzplan','methoden','transferfragen'].forEach(function(v) {
+      var el=document.querySelector('#pg-ausgabe-typ input[value="'+v+'"]'); if(el) el.checked=true;
+    });
+    $('pg-num-lessons').value=4; $('pg-num-lessons-val').textContent='4';
+    ['pg-fach-notizen','pg-did-notizen','pg-eval-notizen','pg-kontext-notizen','pg-sonstige-notizen','pg-vorwissen-notiz'].forEach(function(id){ if($(id)) $(id).value=''; });
+    $('pg-format-other-wrap').style.display='none';
+    $('pg-output-wrap').style.display='none';
+    pgSelectedSubthemas={}; pgExcludedLZ={};
+    document.querySelectorAll('.theme-check').forEach(function(cb){ cb.checked=false; });
+    document.querySelectorAll('.subtheme-item input[type="checkbox"]').forEach(function(cb){ cb.checked=false; });
+    document.querySelectorAll('.theme-item,.subtheme-item').forEach(function(el){ el.classList.remove('selected'); });
+    lastPromptSettings=null; lastPromptText='';
+    onPgSelectionChange();
+    showToast('↺ Prompt-Generator zurückgesetzt','info');
+  });
+}
+
+// ════════════════════════════════════════════════════════════════════
+// STATIC EVENT BINDING
+// ════════════════════════════════════════════════════════════════════
+function bindStaticEvents() {
+  // View buttons
+  $('view-lernziele-btn').addEventListener('click', function(){ switchView('lernziele'); });
+  $('view-bk-btn').addEventListener('click',        function(){ switchView('bk'); });
+  $('view-prompt-btn').addEventListener('click',    function(){ switchView('prompt'); });
+
+  // Sidebar toggle
+  $('sidebar-toggle-btn').addEventListener('click', function() {
+    var sb = $('sidebar');
+    if (window.innerWidth <= 760) sb.classList.toggle('mobile-open');
+    else sb.classList.toggle('collapsed');
+  });
+
+  // Sidebar section headers
+  document.querySelectorAll('.sidebar-header').forEach(function(hdr) {
+    hdr.addEventListener('click', function() {
+      var target = hdr.dataset.target; if (!target) return;
+      var el = $(target); if (!el) return;
+      var isHidden = el.classList.toggle('hidden');
+      var icon = hdr.querySelector('.toggle-icon');
+      if (icon) icon.style.transform = isHidden ? 'rotate(-90deg)' : 'rotate(0deg)';
+    });
+  });
+
+  // Filter label toggles for method + evokonzept + bk
+  [['method-filter-label','method-chips'],['evokonzept-filter-label','evokonzept-tree'],['bk-filter-label','bk-filter-chips']].forEach(function(pair) {
+    var label=$(pair[0]), target=$(pair[1]);
+    if (!label||!target) return;
+    label.addEventListener('click', function() {
+      var isHidden = target.classList.toggle('hidden');
+      var arrow = label.querySelector('.toggle-arrow');
+      if (arrow) arrow.style.transform = isHidden ? 'rotate(-90deg)' : 'rotate(0deg)';
+    });
+  });
+
+  // Search + filters
+  $('search-input').addEventListener('input', applyFilters);
+  $('unterthema-select').addEventListener('change', applyFilters);
+  $('sort-select').addEventListener('change', applyFilters);
+
+  // Grade band chips
+  document.querySelectorAll('#grade-band-chips .grade-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      var band = chip.dataset.band;
+      if (activeBandFilters[band]) delete activeBandFilters[band]; else activeBandFilters[band] = true;
+      applyFilters();
+    });
+  });
+
+  // Relevance chips
+  document.querySelectorAll('#rel-chips .chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      var r = chip.dataset.rel;
+      if (activeRelFilters[r]) delete activeRelFilters[r]; else activeRelFilters[r] = true;
+      applyFilters();
+    });
+  });
+
+  // Tag filter chips
+  document.querySelectorAll('#tag-chips .chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chip.classList.toggle('active');
+      var tag = chip.dataset.tag;
+      if (activeTagFilters[tag]) delete activeTagFilters[tag]; else activeTagFilters[tag] = true;
+      applyFilters();
+    });
+  });
+
+  // Global user tag add
+  $('global-tag-add-btn').addEventListener('click', function() {
+    var val=$('global-tag-input').value.trim(); if(val){ addGlobalTag(val); $('global-tag-input').value=''; }
+  });
+  $('global-tag-input').addEventListener('keydown', function(e) {
+    if(e.key==='Enter'){ var val=$('global-tag-input').value.trim(); if(val){ addGlobalTag(val); $('global-tag-input').value=''; } }
+  });
+
+  $('clear-filters-btn').addEventListener('click', function() {
+    activeBandFilters={}; activeRelFilters={}; activeTagFilters={}; activeThemaFilters={};
+    activeMethodFilters={}; activeEvoKonzeptFilters={}; activeBKTagFilters={}; activeUserTagFilters={};
+    document.querySelectorAll('.chip.active,.grade-chip.active').forEach(function(c){ c.classList.remove('active'); });
+    document.querySelectorAll('.user-tag-filter-chip.active').forEach(function(c){ c.classList.remove('active'); });
+    $('search-input').value=''; $('unterthema-select').value='';
+    applyFilters();
+  });
+
+  // Toolbar
+  $('expand-all-btn').addEventListener('click', function() {
+    document.querySelectorAll('.expand-trigger').forEach(function(tr){ tr.classList.add('open'); var c=tr.nextElementSibling; if(c) c.classList.add('open'); });
+  });
+  $('collapse-all-btn').addEventListener('click', function() {
+    document.querySelectorAll('.expand-trigger').forEach(function(tr){ tr.classList.remove('open'); var c=tr.nextElementSibling; if(c) c.classList.remove('open'); });
+  });
+  $('print-btn').addEventListener('click', function(){ window.print(); });
+  $('btn-grid').addEventListener('click', function(){ setCardView('grid'); });
+  $('btn-list').addEventListener('click', function(){ setCardView('list'); });
+
+  // Export modal
+  $('export-open-btn').addEventListener('click', function() {
+    var ec=$('export-count'); if(ec) ec.textContent=filteredData.length;
+    openModal('export-modal');
+  });
+  $('export-close-btn').addEventListener('click', function(){ closeModal('export-modal'); });
+
+  // Import modal
+  $('import-open-btn').addEventListener('click', function(){ openModal('import-modal'); });
+  $('import-close-btn').addEventListener('click',  function(){ closeModal('import-modal'); });
+  $('import-cancel-btn').addEventListener('click', function(){ closeModal('import-modal'); });
+  $('import-opt-replace').addEventListener('click', function() {
+    importMode='replace';
+    $('import-opt-replace').classList.add('selected'); $('import-opt-merge').classList.remove('selected');
+  });
+  $('import-opt-merge').addEventListener('click', function() {
+    importMode='merge';
+    $('import-opt-merge').classList.add('selected'); $('import-opt-replace').classList.remove('selected');
+  });
+  $('import-file').addEventListener('change', function(){ previewImportFile(this.files[0]); });
+  $('import-save-btn').addEventListener('click', doImport);
+
+  // Reset all
+  $('reset-all-btn').addEventListener('click', function() {
+    if (!confirm('Alle Markierungen, Bearbeitungen und Tags zurücksetzen?')) return;
+    annotations={}; edits={}; globalUserTags=[];
+    saveLS(); buildUserTagFilterDisplay(); buildEvoKonzeptTree(); buildBKFilterChips(); applyFilters(); drawChart();
+    showToast('↺ Alle Daten zurückgesetzt','info');
+  });
+
+  // Edit modal
+  $('edit-close-btn').addEventListener('click',  function(){ closeModal('edit-modal'); });
+  $('edit-cancel-btn').addEventListener('click', function(){ closeModal('edit-modal'); });
+  $('edit-save-btn').addEventListener('click',   saveEdit);
+
+  // Annotation modal
+  $('annot-close-btn').addEventListener('click',  function(){ closeModal('annot-modal'); });
+  $('annot-cancel-btn').addEventListener('click', function(){ closeModal('annot-modal'); });
+  $('annot-save-btn').addEventListener('click',   saveAnnotation);
+  $('annot-remove-btn').addEventListener('click', removeAnnotation);
+
+  // Tag modal
+  $('tag-close-btn').addEventListener('click',  function(){ closeModal('tag-modal'); });
+  $('tag-cancel-btn').addEventListener('click', function(){ closeModal('tag-modal'); });
+  $('tag-save-btn').addEventListener('click',   saveTagModal);
+  $('tag-modal-add-btn').addEventListener('click', function() {
+    var val=$('tag-modal-new-input').value.trim(); if(!val) return;
+    addGlobalTag(val); addUserTagToItem(taggingId,val); $('tag-modal-new-input').value='';
+    renderTagModalCurrent(); renderTagModalGlobalOptions();
+  });
+  $('tag-modal-new-input').addEventListener('keydown', function(e) {
+    if(e.key==='Enter'){ var val=$('tag-modal-new-input').value.trim(); if(!val) return; addGlobalTag(val); addUserTagToItem(taggingId,val); $('tag-modal-new-input').value=''; renderTagModalCurrent(); renderTagModalGlobalOptions(); }
+  });
+
+  // Planner export
+  $('export-plan-btn').addEventListener('click', function(){ doExport('markdown'); });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    if (e.key==='Escape') {
+      ['edit-modal','annot-modal','tag-modal','export-modal','import-modal'].forEach(function(id){
+        if (!$(id).classList.contains('hidden')) closeModal(id);
+      });
+    }
+    if ((e.ctrlKey||e.metaKey) && e.key==='f' && currentAppView==='lernziele') {
+      e.preventDefault(); $('search-input').focus();
+    }
+  });
+
+  window.addEventListener('resize', function(){ if(rawData.length) drawChart(); });
+}
+
+// ════════════════════════════════════════════════════════════════════
+// BOOT
+// ════════════════════════════════════════════════════════════════════
+if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+else init();
+
+})();
+</script>
+</body>
+</html>
