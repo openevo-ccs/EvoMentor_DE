@@ -1067,48 +1067,33 @@
 var DATASETS = [
   {
     key:   'mnt56',
-    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/lernziele_MNT56.json',
+    url:   'https://raw.githubusercontent.com/openevo-ccs/EvoMentor_DE/main/data/lernziele_MNT56.json',
     label: 'MNT 5/6',
     band:  'mnt56'
   },
   {
     key:   'gy78',
-    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/lernziele_gy78_evolution_SH.json',
+    url:   'https://raw.githubusercontent.com/openevo-ccs/EvoMentor_DE/main/data/lernziele_gy78_evolution_SH.json',
     label: 'Gy 7/8',
     band:  'gy78'
   },
   {
     key:   'gy910',
-    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/lernziele_gy910.json',
+    url:   'https://raw.githubusercontent.com/openevo-ccs/EvoMentor_DE/main/data/lernziele_gy910.json',
     label: 'Gy 9/10',
     band:  'gy910'
   },
   {
     key:   'bk',
-    url:   'https://github.com/openevo-ccs-lab/EvoMentor_DE/raw/refs/heads/main/data/basiskonzepte.json',
+    url:   'https://raw.githubusercontent.com/openevo-ccs/EvoMentor_DE/main/data/basiskonzepte.json',
     label: 'Basiskonzepte',
     band:  'bk',
     isBK:  true
   }
 ];
 
-// Raw-content proxy for GitHub to avoid CORS issues
-// raw.githubusercontent.com is CORS-enabled, so we convert automatically
-function toRawUrl(url) {
-  // Already raw
-  if (url.indexOf('raw.githubusercontent.com') !== -1) return url;
-  // GitHub blob URL → raw
-  if (url.indexOf('github.com') !== -1) {
-    return url
-      .replace('https://github.com/', 'https://raw.githubusercontent.com/')
-      .replace('/raw/refs/heads/', '/')
-      .replace('/blob/', '/');
-  }
-  return url;
-}
-
 var DATA_ARRAY_KEYS = [
-  'eintraege','evolutionsbezug_und_didaktik','lernziele',
+  'eintraege','lernziele','evolutionsbezug_und_didaktik',
   'data','items','records','entries'
 ];
 
@@ -1147,21 +1132,20 @@ var ALL_METHODS = [
 // ════════════════════════════════════════════════════════════════════
 // STATE
 // ════════════════════════════════════════════════════════════════════
-var rawData = [];         // all lernziele items (all bands)
-var bkData  = [];         // parsed basiskonzepte
+var rawData = [];
+var bkData  = [];
 var filteredData = [];
 
 var annotations   = {};
 var edits         = {};
 var globalUserTags= [];
 
-var datasetStatus = {};   // key → 'loading'|'ok'|'error'
+var datasetStatus = {};
 var loadedCount   = 0;
 
 var currentCardView = 'grid';
 var currentAppView  = 'lernziele';
 
-// Active filters
 var activeBandFilters   = {};
 var activeRelFilters    = {};
 var activeTagFilters    = {};
@@ -1184,7 +1168,7 @@ var pgLzActiveFilter = 'all';
 var lastPromptText     = '';
 var lastPromptSettings = null;
 
-var bkViewMode = 'grid';  // 'grid' | 'matrix' | 'map'
+var bkViewMode = 'grid';
 
 var $ = function(id){ return document.getElementById(id); };
 
@@ -1211,33 +1195,31 @@ function saveLS() {
 }
 
 // ════════════════════════════════════════════════════════════════════
-// FETCH + PARSE (CORS-safe, robust schema parsing)
+// FETCH
 // ════════════════════════════════════════════════════════════════════
 function fetchAllDatasets() {
   setLoadingBar(5);
-  setLoadingDetails('Verbinde mit openevo-ccs-lab/EvoMentor_DE…');
+  setLoadingDetails('Verbinde mit openevo-ccs/EvoMentor_DE…');
   updateDatasetBadges();
 
   var pending = DATASETS.length;
 
-  DATASETS.forEach(function(ds, idx) {
+  DATASETS.forEach(function(ds) {
     datasetStatus[ds.key] = 'loading';
-    var rawUrl = toRawUrl(ds.url);
 
-    fetchWithFallback(rawUrl, function(text, err) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', ds.url, true);
+    xhr.timeout = 18000;
+    xhr.onload = function() {
       loadedCount++;
       setLoadingBar(Math.round((loadedCount / DATASETS.length) * 90));
 
-      if (err || text === null) {
-        datasetStatus[ds.key] = 'error';
-        setLoadingDetails('⚠ ' + ds.label + ' nicht ladbar — ' + (err||''));
-      } else {
+      if (xhr.status >= 200 && xhr.status < 300) {
         try {
-          var parsed = JSON.parse(text);
+          var parsed = JSON.parse(xhr.responseText);
           datasetStatus[ds.key] = 'ok';
 
           if (ds.isBK) {
-            // Basiskonzepte: specialised parsing
             bkData = parseBasiskonzepte(parsed, ds.key);
             setLoadingDetails('✓ ' + ds.label + ': ' + bkData.length + ' Konzepte');
           } else {
@@ -1251,7 +1233,6 @@ function fetchAllDatasets() {
             }
           }
 
-          // Merge global tags if present
           if (parsed.globalUserTags && Array.isArray(parsed.globalUserTags)) {
             parsed.globalUserTags.forEach(function(t){
               if (t && globalUserTags.indexOf(t) === -1) globalUserTags.push(t);
@@ -1261,6 +1242,9 @@ function fetchAllDatasets() {
           datasetStatus[ds.key] = 'error';
           setLoadingDetails('⚠ ' + ds.label + ' JSON-Fehler: ' + e.message);
         }
+      } else {
+        datasetStatus[ds.key] = 'error';
+        setLoadingDetails('⚠ ' + ds.label + ': HTTP ' + xhr.status);
       }
 
       pending--;
@@ -1271,56 +1255,63 @@ function fetchAllDatasets() {
         setTimeout(function(){
           $('loading-overlay').classList.add('hidden');
           if (rawData.length === 0) {
-            showDataStatus('⚠ Keine Lernziele geladen. Bitte Datei manuell importieren (⬆ Import).', 'error');
+            showDataStatus('⚠ Keine Lernziele geladen. Bitte JSON manuell importieren (⬆ Import).', 'error');
             showToast('⚠ Bitte JSON manuell importieren', 'error');
           } else {
             fullRebuild();
             var totalOk = Object.keys(datasetStatus).filter(function(k){ return datasetStatus[k]==='ok'; }).length;
-            showToast('✓ ' + rawData.length + ' LZ · ' + bkData.length + ' BK geladen (' + totalOk + '/' + DATASETS.length + ' Datensätze)', 'success');
+            showToast('✓ ' + rawData.length + ' LZ · ' + bkData.length + ' BK geladen (' + totalOk + '/' + DATASETS.length + ')', 'success');
           }
         }, 300);
       }
-    });
+    };
+    xhr.onerror   = function() {
+      loadedCount++;
+      datasetStatus[ds.key] = 'error';
+      setLoadingDetails('⚠ ' + ds.label + ': Netzwerkfehler');
+      pending--;
+      updateDatasetBadges();
+      if (pending === 0) {
+        setLoadingBar(100);
+        setTimeout(function(){
+          $('loading-overlay').classList.add('hidden');
+          if (rawData.length === 0) {
+            showDataStatus('⚠ Keine Lernziele geladen. Bitte JSON manuell importieren.', 'error');
+          } else {
+            fullRebuild();
+          }
+        }, 300);
+      }
+    };
+    xhr.ontimeout = xhr.onerror;
+    xhr.send();
   });
 }
 
-// CORS-safe fetch: try raw URL directly (raw.githubusercontent.com is CORS-enabled)
-function fetchWithFallback(url, cb) {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', url, true);
-  xhr.timeout = 18000;
-  xhr.onload = function() {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      cb(xhr.responseText, null);
-    } else {
-      cb(null, 'HTTP ' + xhr.status);
-    }
-  };
-  xhr.onerror   = function() { cb(null, 'Netzwerkfehler'); };
-  xhr.ontimeout = function() { cb(null, 'Timeout'); };
-  xhr.send();
-}
+// ════════════════════════════════════════════════════════════════════
+// SCHEMA PARSERS
+// ════════════════════════════════════════════════════════════════════
 
-// ── LERNZIELE SCHEMA PARSER ──────────────────────────────────────────
+// Extract lernziele array from any schema
 function extractLernzieleArray(json, datasetKey, band) {
   var arr = null;
 
   if (Array.isArray(json)) {
     arr = json;
   } else {
-    // Try known keys
     for (var i = 0; i < DATA_ARRAY_KEYS.length; i++) {
       var k = DATA_ARRAY_KEYS[i];
       if (json[k] && Array.isArray(json[k]) && json[k].length > 0) {
-        arr = json[k]; break;
+        arr = json[k];
+        break;
       }
     }
-    // Fallback: find any array with objects that look like lernziele
     if (!arr) {
       Object.keys(json).forEach(function(key) {
         if (!arr && Array.isArray(json[key]) && json[key].length > 0) {
           var sample = json[key][0];
-          if (sample && (sample.id || sample.lernziel || sample.originaltext || sample.text)) {
+          if (sample && typeof sample === 'object' &&
+              (sample.id || sample.lernziel || sample.originaltext || sample.text)) {
             arr = json[key];
           }
         }
@@ -1330,114 +1321,276 @@ function extractLernzieleArray(json, datasetKey, band) {
 
   if (!arr || arr.length === 0) return null;
 
-  // Normalise each item to a consistent schema
   return arr.map(function(item) {
     return normaliseLernzielItem(item, datasetKey, band);
   }).filter(function(item){ return !!item.id; });
 }
 
-// Normalise diverse schemas into a single internal format
+// Detect which schema a raw item uses
+function detectSchema(raw) {
+  // GY78 schema: has evolutionsbezug object with wissenschaftliche_begruendung
+  if (raw.evolutionsbezug && raw.evolutionsbezug.wissenschaftliche_begruendung !== undefined) {
+    return 'gy78';
+  }
+  // MNT56/GY910 schema: flat structure with basiskonzepte_primaer, alltagsnaehe, etc.
+  if (raw.basiskonzepte_primaer || raw.alltagsnaehe || raw.kognitionsverb ||
+      raw.geschaetzte_unterrichtsstunden !== undefined) {
+    return 'flat';
+  }
+  return 'unknown';
+}
+
 function normaliseLernzielItem(raw, datasetKey, band) {
   if (!raw || typeof raw !== 'object') return {};
 
-  var item = JSON.parse(JSON.stringify(raw)); // deep clone
+  var item = JSON.parse(JSON.stringify(raw));
+  var schema = detectSchema(raw);
 
   // Ensure id
   if (!item.id) {
     item.id = (band || datasetKey) + '_' + Math.random().toString(36).substr(2, 8);
   }
 
-  // Normalise band
   item._band    = band || 'unknown';
   item._dataset = datasetKey;
+  item._schema  = schema;
 
-  // Normalise 'thema' (multiple possible field names)
-  item.thema = item.thema || item.theme || item.bereich || item.fach || 'Unbekannt';
+  // ── Normalise thema / unterthema ──
+  item.thema      = item.thema || item.theme || item.bereich || 'Unbekannt';
+  item.unterthema = item.unterthema || item.unterbereich || item.topic || item.kapitel || item.thema || '';
 
-  // Normalise 'unterthema'
-  item.unterthema = item.unterthema || item.unterbereich || item.topic || item.subtopic || item.kapitel || item.thema_kurz || item.thema || '';
+  // ── Normalise originaltext ──
+  item.originaltext = item.originaltext || item.lernziel || item.text ||
+                      item.beschreibung || item.ziel || item.content || '';
 
-  // Normalise 'originaltext' (the learning objective text)
-  item.originaltext = item.originaltext || item.lernziel || item.text || item.beschreibung || item.ziel || item.content || '';
-
-  // Ensure evolutionsbezug sub-object
+  // ── Normalise evolutionsbezug ──
   if (!item.evolutionsbezug) item.evolutionsbezug = {};
   var ev = item.evolutionsbezug;
 
-  // Normalise relevanz (1-3 scale)
-  if (!ev.evolutionsrelevanz_beurteilung) {
-    ev.evolutionsrelevanz_beurteilung =
-      item.evolutionsrelevanz || item.relevanz || item.relevance ||
-      raw.evolutionsrelevanz_beurteilung || 1;
+  if (schema === 'flat') {
+    // For flat schemas (MNT56, GY910), synthesise evolutionsbezug from available fields
+
+    // Relevanz: not present in flat schema → infer from BK-Prinzipien and concept coverage
+    if (!ev.evolutionsrelevanz_beurteilung) {
+      ev.evolutionsrelevanz_beurteilung = inferRelevanz(raw);
+    }
+
+    // Konzepte: derive from basiskonzepte_primaer / bk_prinzipien
+    if (!ev.relevante_evolutionskonzepte || !ev.relevante_evolutionskonzepte.length) {
+      ev.relevante_evolutionskonzepte = deriveKonzepteFromFlat(raw);
+    }
+
+    // Begründung: compose from available flat fields
+    if (!ev.wissenschaftliche_begruendung) {
+      ev.wissenschaftliche_begruendung = composeBegrundungFromFlat(raw);
+    }
+  } else {
+    // GY78 or unknown: normalise relevanz
+    if (!ev.evolutionsrelevanz_beurteilung) {
+      ev.evolutionsrelevanz_beurteilung =
+        item.evolutionsrelevanz || item.relevanz || 1;
+    }
+    if (!ev.relevante_evolutionskonzepte) {
+      ev.relevante_evolutionskonzepte = [];
+    }
+    if (!ev.wissenschaftliche_begruendung) {
+      ev.wissenschaftliche_begruendung = '';
+    }
   }
+
+  // Clamp relevanz 1–3
   ev.evolutionsrelevanz_beurteilung = parseInt(ev.evolutionsrelevanz_beurteilung, 10) || 1;
   if (ev.evolutionsrelevanz_beurteilung < 1) ev.evolutionsrelevanz_beurteilung = 1;
   if (ev.evolutionsrelevanz_beurteilung > 3) ev.evolutionsrelevanz_beurteilung = 3;
 
-  // Normalise konzepte
-  if (!ev.relevante_evolutionskonzepte) {
-    var k = item.konzepte || item.evolutionskonzepte || item.concepts || [];
-    if (typeof k === 'string') k = k.split(',').map(function(s){ return s.trim(); });
-    ev.relevante_evolutionskonzepte = Array.isArray(k) ? k : [];
-  }
-
-  // Ensure wissenschaftliche Begründung
-  if (!ev.wissenschaftliche_begruendung) {
-    ev.wissenschaftliche_begruendung =
-      item.begruendung || item.begruendung_evolutionsrelevanz ||
-      item.evolutionary_context || item.erklaerung || '';
-  }
-
-  // Ensure didaktische_strategien
+  // ── Normalise didaktische_strategien ──
   if (!item.didaktische_strategien) item.didaktische_strategien = {};
   var ds = item.didaktische_strategien;
 
-  if (!ds.evolutionsdidaktischer_impuls) {
-    ds.evolutionsdidaktischer_impuls =
-      item.impuls || item.leitfrage || item.didaktischer_impuls || item.guiding_question || '';
-  }
-
-  if (!ds.top3_methoden || !Array.isArray(ds.top3_methoden)) {
-    var rawMeth = item.methoden || item.methods || item.didaktische_methoden || [];
-    if (typeof rawMeth === 'string') rawMeth = rawMeth.split(',').map(function(s){ return s.trim(); });
-    if (Array.isArray(rawMeth) && rawMeth.length) {
-      ds.top3_methoden = rawMeth.slice(0,3).map(function(m, i) {
-        if (typeof m === 'object' && m.methode) return m;
-        return { rang: i+1, methode: String(m), beschreibung: '' };
-      });
-    } else {
-      ds.top3_methoden = [];
+  if (schema === 'flat') {
+    // Synthesise didaktischer Impuls from flat fields
+    if (!ds.evolutionsdidaktischer_impuls) {
+      ds.evolutionsdidaktischer_impuls = composeDidaktikFromFlat(raw);
     }
+    if (!ds.top3_methoden || !Array.isArray(ds.top3_methoden)) {
+      ds.top3_methoden = deriveMethodenFromFlat(raw);
+    }
+    if (!ds.moegliche_fehlvorstellungen) {
+      ds.moegliche_fehlvorstellungen = '';
+    }
+  } else {
+    if (!ds.evolutionsdidaktischer_impuls) ds.evolutionsdidaktischer_impuls = '';
+    if (!ds.top3_methoden) ds.top3_methoden = [];
+    if (!ds.moegliche_fehlvorstellungen) ds.moegliche_fehlvorstellungen = '';
   }
 
-  if (!ds.moegliche_fehlvorstellungen) {
-    ds.moegliche_fehlvorstellungen =
-      item.fehlvorstellungen || item.misconceptions || item.haeufige_fehler || '';
-  }
-
-  // Basiskonzept tags on lernziele
+  // ── Basiskonzept tags ──
   if (!item.basiskonzepte) {
-    item.basiskonzepte = item.bk_tags || item.bk || item.basiskonzept_tags || [];
-    if (typeof item.basiskonzepte === 'string')
-      item.basiskonzepte = item.basiskonzepte.split(',').map(function(s){ return s.trim(); });
-    if (!Array.isArray(item.basiskonzepte)) item.basiskonzepte = [];
+    if (schema === 'flat') {
+      var bkList = [];
+      if (raw.basiskonzepte_primaer && Array.isArray(raw.basiskonzepte_primaer))
+        bkList = bkList.concat(raw.basiskonzepte_primaer);
+      if (raw.basiskonzepte_sekundaer && Array.isArray(raw.basiskonzepte_sekundaer))
+        bkList = bkList.concat(raw.basiskonzepte_sekundaer);
+      item.basiskonzepte = bkList.map(formatBKName);
+    } else {
+      item.basiskonzepte = item.bk_tags || item.bk || [];
+      if (typeof item.basiskonzepte === 'string')
+        item.basiskonzepte = item.basiskonzepte.split(',').map(function(s){ return s.trim(); });
+      if (!Array.isArray(item.basiskonzepte)) item.basiskonzepte = [];
+    }
   }
 
   return item;
 }
 
+// ── Flat-schema helpers ──────────────────────────────────────────────
+
+// BK key → human-readable label
+var BK_LABELS = {
+  'bk_struktur_funktion': 'Struktur und Funktion',
+  'bk_stoff_energie_umwandlung': 'Stoff- und Energieumwandlung',
+  'bk_information_kommunikation': 'Information und Kommunikation',
+  'bk_steuerung_regelung': 'Steuerung und Regelung',
+  'bk_individuelle_evolutive_entwicklung': 'Individuelle und evolutive Entwicklung',
+  'bk_individuelle_entwicklung': 'Individuelle Entwicklung'
+};
+
+function formatBKName(key) {
+  return BK_LABELS[key] || key.replace(/^bk_/, '').replace(/_/g, ' ');
+}
+
+// Evolution-relevant BK principles from flat schema
+var EVO_PRINZIPIEN = [
+  'Selektion','Reproduktion und Individualentwicklung','evolutive Entwicklung',
+  'morphologische und anatomische Angepasstheit','Stoffkreislauf und Energiefluss',
+  'Entwicklung von Ökosystemen','Zelldifferenzierung'
+];
+
+var EVO_BK_KEYS = [
+  'bk_individuelle_evolutive_entwicklung'
+];
+
+function inferRelevanz(raw) {
+  var score = 0;
+
+  // If primary BK is evolutionary → higher relevance
+  var primaer = raw.basiskonzepte_primaer || [];
+  if (primaer.some(function(k){ return EVO_BK_KEYS.indexOf(k) !== -1; })) score += 2;
+
+  // If BK principles include evolution-related ones
+  var prinzipien = raw.bk_prinzipien || [];
+  var evoP = prinzipien.filter(function(p){
+    return EVO_PRINZIPIEN.indexOf(p) !== -1;
+  }).length;
+  score += evoP;
+
+  // Ecosystem level → moderate relevance
+  if (raw.systemebene_primaer === 'Ökosystem' || raw.systemebene_sekundaer === 'Ökosystem') score++;
+
+  if (score >= 3) return 3;
+  if (score >= 1) return 2;
+  return 1;
+}
+
+function deriveKonzepteFromFlat(raw) {
+  var konzepte = [];
+  var prinzipien = raw.bk_prinzipien || [];
+
+  // Map BK-Prinzipien to evolution concepts
+  var mapping = {
+    'Selektion': 'Natürliche Selektion und Selektionsdruck',
+    'Reproduktion und Individualentwicklung': 'Vererbung von Merkmalen',
+    'morphologische und anatomische Angepasstheit': 'Anpassung und Angepasstheit',
+    'evolutive Entwicklung': 'Artbildung und adaptive Radiation',
+    'Entwicklung von Ökosystemen': 'Artbildung und adaptive Radiation',
+    'Stoffkreislauf und Energiefluss': 'Koevolution',
+    'Zelldifferenzierung': 'Evolutionäre Entwicklungsbiologie (Evo-Devo)'
+  };
+
+  prinzipien.forEach(function(p) {
+    if (mapping[p] && konzepte.indexOf(mapping[p]) === -1) {
+      konzepte.push(mapping[p]);
+    }
+  });
+
+  // From primary BK
+  var primaer = raw.basiskonzepte_primaer || [];
+  if (primaer.indexOf('bk_individuelle_evolutive_entwicklung') !== -1) {
+    if (konzepte.indexOf('Variation und Diversität') === -1)
+      konzepte.push('Variation und Diversität');
+  }
+
+  return konzepte;
+}
+
+function composeBegrundungFromFlat(raw) {
+  var parts = [];
+  if (raw.konzeptanker_begruendung) parts.push(raw.konzeptanker_begruendung);
+  if (raw.anmerkung && raw.anmerkung.trim()) parts.push(raw.anmerkung);
+
+  var prinzipien = raw.bk_prinzipien || [];
+  if (prinzipien.length) {
+    parts.push('Bk-Prinzipien: ' + prinzipien.join(', ') + '.');
+  }
+
+  var systemebene = [];
+  if (raw.systemebene_primaer) systemebene.push(raw.systemebene_primaer);
+  if (raw.systemebene_sekundaer) systemebene.push(raw.systemebene_sekundaer);
+  if (systemebene.length) {
+    parts.push('Systemebene: ' + systemebene.join(' → ') + '.');
+  }
+
+  return parts.join(' ') || '';
+}
+
+function composeDidaktikFromFlat(raw) {
+  var parts = [];
+  if (raw.alltagsnaehe) parts.push('Alltagsnähe: ' + raw.alltagsnaehe + '.');
+  if (raw.abstraktionsgrad) parts.push('Abstraktionsgrad: ' + raw.abstraktionsgrad + '.');
+  if (raw.ist_konzeptanker) parts.push('Dieses Lernziel ist ein Konzeptanker.');
+  if (raw.anmerkung && raw.anmerkung.trim()) parts.push(raw.anmerkung);
+  return parts.join(' ') || '';
+}
+
+function deriveMethodenFromFlat(raw) {
+  var methoden = [];
+  var interleaving = raw.interleaving_empfehlung || [];
+  var istPraktisch = raw.ist_praktisch;
+
+  if (istPraktisch) {
+    methoden.push({ rang: 1, methode: 'Erfahrungsbasiertes Lernen', beschreibung: 'Praktische Durchführung empfohlen.' });
+  } else {
+    var kognAnf = raw.kognitive_anforderung || '';
+    if (kognAnf.indexOf('bewertung') !== -1 || kognAnf.indexOf('synthese') !== -1) {
+      methoden.push({ rang: 1, methode: 'Diskussion', beschreibung: 'Analyse und Bewertung durch Diskussion.' });
+    } else if (kognAnf.indexOf('analyse') !== -1) {
+      methoden.push({ rang: 1, methode: 'Forschendes Lernen', beschreibung: 'Analytische Erarbeitung.' });
+    } else {
+      methoden.push({ rang: 1, methode: 'Konzeptuelles Lernen', beschreibung: 'Begriffe und Konzepte erarbeiten.' });
+    }
+  }
+
+  if (interleaving.length) {
+    methoden.push({ rang: 2, methode: 'Analogien und Vergleiche', beschreibung: 'Querverbindung zu: ' + interleaving.join(', ') + '.' });
+  }
+
+  if (raw.alltagsnaehe === 'sehr hoch' || raw.alltagsnaehe === 'hoch') {
+    methoden.push({ rang: methoden.length + 1, methode: 'Narrativer Zugang', beschreibung: 'Alltagsbezug als Einstieg nutzen.' });
+  }
+
+  return methoden.slice(0, 3);
+}
+
 // ── BASISKONZEPTE SCHEMA PARSER ──────────────────────────────────────
-// Very flexible — handles many possible BK JSON structures
 function parseBasiskonzepte(json, datasetKey) {
   var result = [];
 
-  // Case 1: Direct array of BK objects
   if (Array.isArray(json)) {
     json.forEach(function(item, idx) { result.push(normaliseBK(item, idx)); });
     return result.filter(function(b){ return !!b.name; });
   }
 
-  // Case 2: Object with a known top-level key
   var bkKeys = ['basiskonzepte','konzepte','concepts','items','data','entries','records'];
   for (var i = 0; i < bkKeys.length; i++) {
     var k = bkKeys[i];
@@ -1447,30 +1600,26 @@ function parseBasiskonzepte(json, datasetKey) {
     }
   }
 
-  // Case 3: Object where keys are BK names/IDs and values are BK objects
   var keys = Object.keys(json);
   var looksLikeBKMap = keys.length > 0 && keys.every(function(k) {
     var v = json[k];
     return v && typeof v === 'object' && !Array.isArray(v) &&
-           (v.name || v.bezeichnung || v.titel || v.beschreibung || v.description || v.id);
+           (v.name || v.bezeichnung || v.titel || v.beschreibung || v.id);
   });
 
   if (looksLikeBKMap) {
     keys.forEach(function(k, idx) {
-      var item = json[k];
-      item._key = k;
+      var item = json[k]; item._key = k;
       result.push(normaliseBK(item, idx));
     });
     return result.filter(function(b){ return !!b.name; });
   }
 
-  // Case 4: Flat object with BK data at top level (treat the whole object as one BK)
   if (json.name || json.bezeichnung || json.titel) {
     result.push(normaliseBK(json, 0));
     return result.filter(function(b){ return !!b.name; });
   }
 
-  // Case 5: Nested — look one level deeper for arrays
   keys.forEach(function(k) {
     var v = json[k];
     if (Array.isArray(v) && v.length > 0 && v[0] && typeof v[0] === 'object') {
@@ -1483,75 +1632,35 @@ function parseBasiskonzepte(json, datasetKey) {
 
 function normaliseBK(raw, idx) {
   if (!raw || typeof raw !== 'object') return {};
-
   var bk = {};
   bk._idx = idx;
-
-  // Name / ID
-  bk.name = raw.name || raw.bezeichnung || raw.titel || raw.konzept ||
-             raw.title || raw.concept || raw._key || '';
+  bk.name = raw.name || raw.bezeichnung || raw.titel || raw.konzept || raw.title || raw._key || '';
   bk.id   = raw.id   || raw.nummer || raw.nr || raw.code || String(idx + 1);
-
-  // Description
-  bk.beschreibung = raw.beschreibung || raw.definition || raw.erklaerung ||
-                    raw.description  || raw.erklarung  || raw.text       || '';
-
-  // Short version
-  bk.kurzbezeichnung = raw.kurzbezeichnung || raw.kuerzel || raw.abkuerzung || raw.short || '';
-
-  // Domain / Fach
-  bk.domaine = raw.domaine || raw.fach || raw.fachbereich || raw.domain || raw.bereich || '';
+  bk.beschreibung = raw.beschreibung || raw.definition || raw.erklaerung || raw.description || raw.text || '';
+  bk.kurzbezeichnung = raw.kurzbezeichnung || raw.kuerzel || raw.short || '';
+  bk.domaine = raw.domaine || raw.fach || raw.domain || raw.bereich || '';
   if (Array.isArray(bk.domaine)) bk.domaine = bk.domaine.join(', ');
-
-  // Jahrgangsstufen / Grade bands
-  bk.jahrgangsstufen = raw.jahrgangsstufen || raw.klassen || raw.grades ||
-                       raw.stufen || raw.jahrgang || raw.grade_band || [];
-  if (typeof bk.jahrgangsstufen === 'string')
-    bk.jahrgangsstufen = bk.jahrgangsstufen.split(/[,;]/).map(function(s){ return s.trim(); });
+  bk.jahrgangsstufen = raw.jahrgangsstufen || raw.klassen || raw.grades || raw.stufen || [];
+  if (typeof bk.jahrgangsstufen === 'string') bk.jahrgangsstufen = bk.jahrgangsstufen.split(/[,;]/).map(function(s){ return s.trim(); });
   if (!Array.isArray(bk.jahrgangsstufen)) bk.jahrgangsstufen = [];
-
-  // Level (Niveau, Komplexität)
-  bk.niveau = raw.niveau || raw.level || raw.komplexitaet || raw.complexity || '';
-
-  // Fachübergreifend
-  bk.fachuebergreifend = raw.fachuebergreifend || raw.interdisciplinary ||
-                          raw.faecherverbindend || raw.cross_curricular || false;
-
-  // Lehrplanbereiche / curriculum areas
-  bk.lehrplanbereiche = raw.lehrplanbereiche || raw.bereiche || raw.curriculum_areas || [];
-  if (typeof bk.lehrplanbereiche === 'string')
-    bk.lehrplanbereiche = bk.lehrplanbereiche.split(/[,;]/).map(function(s){ return s.trim(); });
+  bk.niveau = raw.niveau || raw.level || '';
+  bk.fachuebergreifend = raw.fachuebergreifend || raw.interdisciplinary || false;
+  bk.lehrplanbereiche = raw.lehrplanbereiche || raw.bereiche || [];
+  if (typeof bk.lehrplanbereiche === 'string') bk.lehrplanbereiche = bk.lehrplanbereiche.split(/[,;]/).map(function(s){ return s.trim(); });
   if (!Array.isArray(bk.lehrplanbereiche)) bk.lehrplanbereiche = [];
-
-  // Beispiele
-  bk.beispiele = raw.beispiele || raw.examples || raw.anwendungsbeispiele || [];
-  if (typeof bk.beispiele === 'string')
-    bk.beispiele = bk.beispiele.split(/[,;]/).map(function(s){ return s.trim(); });
+  bk.beispiele = raw.beispiele || raw.examples || [];
+  if (typeof bk.beispiele === 'string') bk.beispiele = bk.beispiele.split(/[,;]/).map(function(s){ return s.trim(); });
   if (!Array.isArray(bk.beispiele)) bk.beispiele = [];
-
-  // Verknüpfte Lernziele (IDs)
-  bk.lernziele_ids = raw.lernziele_ids || raw.lernziele || raw.lz_ids ||
-                     raw.linked_lz     || raw.referenzen || [];
-  if (typeof bk.lernziele_ids === 'string')
-    bk.lernziele_ids = bk.lernziele_ids.split(/[,;]/).map(function(s){ return s.trim(); });
+  bk.lernziele_ids = raw.lernziele_ids || raw.lernziele || raw.lz_ids || raw.linked_lz || [];
+  if (typeof bk.lernziele_ids === 'string') bk.lernziele_ids = bk.lernziele_ids.split(/[,;]/).map(function(s){ return s.trim(); });
   if (!Array.isArray(bk.lernziele_ids)) bk.lernziele_ids = [];
-
-  // Tags
-  bk.tags = raw.tags || raw.schlagwoerter || raw.keywords || [];
-  if (typeof bk.tags === 'string')
-    bk.tags = bk.tags.split(/[,;]/).map(function(s){ return s.trim(); });
+  bk.tags = raw.tags || raw.schlagwoerter || [];
+  if (typeof bk.tags === 'string') bk.tags = bk.tags.split(/[,;]/).map(function(s){ return s.trim(); });
   if (!Array.isArray(bk.tags)) bk.tags = [];
-
-  // Querverbindungen
-  bk.querverbindungen = raw.querverbindungen || raw.related || raw.verbindungen || [];
-  if (typeof bk.querverbindungen === 'string')
-    bk.querverbindungen = bk.querverbindungen.split(/[,;]/).map(function(s){ return s.trim(); });
+  bk.querverbindungen = raw.querverbindungen || raw.related || [];
+  if (typeof bk.querverbindungen === 'string') bk.querverbindungen = bk.querverbindungen.split(/[,;]/).map(function(s){ return s.trim(); });
   if (!Array.isArray(bk.querverbindungen)) bk.querverbindungen = [];
-
-  // Evolutionsrelevanz
-  bk.evolutionsrelevanz = raw.evolutionsrelevanz || raw.evo_relevanz ||
-                           raw.evolution_relevance || '';
-
+  bk.evolutionsrelevanz = raw.evolutionsrelevanz || '';
   return bk;
 }
 
@@ -1559,7 +1668,6 @@ function normaliseBK(raw, idx) {
 // FULL REBUILD
 // ════════════════════════════════════════════════════════════════════
 function fullRebuild() {
-  // Cross-reference: tag lernziele with BK and vice-versa
   crossReferenceBK();
   buildSidebar();
   buildMethodFilterChips();
@@ -1572,28 +1680,30 @@ function fullRebuild() {
   drawChart();
 }
 
-// Cross-reference BK ↔ LZ
 function crossReferenceBK() {
   if (!bkData.length || !rawData.length) return;
 
-  // Build map: lz id → lz
-  var lzById = {};
-  rawData.forEach(function(d){ lzById[d.id] = d; });
-
   bkData.forEach(function(bk) {
-    // Compute dynamic LZ links: any LZ that has this BK's name in basiskonzepte array
     var dynLinks = [];
     rawData.forEach(function(d) {
+      // Match by basiskonzepte array (formatted names)
       var bkTags = d.basiskonzepte || [];
       if (bkTags.some(function(t){ return normStr(t) === normStr(bk.name); })) {
         dynLinks.push(d.id);
       }
+      // Also match flat schema: basiskonzepte_primaer / sekundaer keys
+      var primaer = d.basiskonzepte_primaer || [];
+      var sekund  = d.basiskonzepte_sekundaer || [];
+      primaer.concat(sekund).forEach(function(key) {
+        var label = formatBKName(key);
+        if (normStr(label) === normStr(bk.name) && dynLinks.indexOf(d.id) === -1) {
+          dynLinks.push(d.id);
+        }
+      });
     });
-    // Merge static links from BK data with dynamic links
     bk._lz_ids_resolved = unique(bk.lernziele_ids.concat(dynLinks));
   });
 
-  // Tag each LZ with BK names from BK data
   rawData.forEach(function(d) {
     var bkNames = [];
     bkData.forEach(function(bk) {
@@ -1601,8 +1711,9 @@ function crossReferenceBK() {
         bkNames.push(bk.name);
       }
     });
-    // Merge with any basiskonzepte already on the LZ
-    d._bk_names = unique((d.basiskonzepte || []).concat(bkNames));
+    // Also include formatted BK labels from flat schema
+    var flatBKs = (d.basiskonzepte || []);
+    d._bk_names = unique(flatBKs.concat(bkNames));
   });
 }
 
@@ -1614,7 +1725,6 @@ function normStr(s) {
 // SIDEBAR BUILDING
 // ════════════════════════════════════════════════════════════════════
 function buildSidebar() {
-  // Thema chips (per active band filters or all)
   var themas = unique(rawData.map(function(d){ return d.thema; })).sort();
   var tc = $('thema-chips'); tc.innerHTML = '';
   themas.forEach(function(t) {
@@ -1630,7 +1740,6 @@ function buildSidebar() {
     tc.appendChild(chip);
   });
 
-  // Unterthema select
   var uts = unique(rawData.map(function(d){ return d.unterthema; })).sort();
   var us = $('unterthema-select');
   while (us.options.length > 1) us.remove(1);
@@ -1642,7 +1751,13 @@ function buildSidebar() {
 
 function shortLabel(t) {
   if (!t) return '';
-  var map = { 'Biologie des Menschen':'Bio-Mensch', 'Naturwissenschaft und Technik':'NWT' };
+  var map = {
+    'Biologie des Menschen':'Bio-Mensch',
+    'Naturwissenschaft und Technik':'NWT',
+    'Stoff- und Energiewechselprozesse von Pilzen und grünen Pflanzen':'Stoff/Energie Pflanzen',
+    'Wirbellose in ihren Lebensräumen':'Wirbellose',
+    'Zellen als Lebensbausteine':'Zellen'
+  };
   return map[t] || (t.length > 22 ? t.substring(0,20) + '…' : t);
 }
 
@@ -1802,7 +1917,7 @@ function addGlobalTag(tagName) {
 }
 
 // ════════════════════════════════════════════════════════════════════
-// DATASET BADGES (loading indicator)
+// DATASET BADGES
 // ════════════════════════════════════════════════════════════════════
 function updateDatasetBadges() {
   var container = $('dataset-badges'); if (!container) return;
@@ -1843,21 +1958,15 @@ function applyFilters() {
   var sort = $('sort-select').value;
 
   filteredData = rawData.filter(function(d) {
-    // Band filter
     if (Object.keys(activeBandFilters).length && !activeBandFilters[d._band]) return false;
-    // Thema
     if (Object.keys(activeThemaFilters).length && !activeThemaFilters[d.thema]) return false;
-    // Unterthema
     if (ut && d.unterthema !== ut) return false;
-    // Relevanz
     var rel = getRelevanz(d);
     if (Object.keys(activeRelFilters).length && !activeRelFilters[String(rel)]) return false;
-    // Methods
     if (Object.keys(activeMethodFilters).length) {
       var meths = ((d.didaktische_strategien||{}).top3_methoden||[]).map(function(m){ return m.methode; });
       if (!Object.keys(activeMethodFilters).every(function(mk){ return meths.indexOf(mk) !== -1; })) return false;
     }
-    // Evo Konzepte
     if (Object.keys(activeEvoKonzeptFilters).length) {
       var ev2 = d.evolutionsbezug || {};
       var konz = ev2.relevante_evolutionskonzepte || [];
@@ -1865,22 +1974,18 @@ function applyFilters() {
       if (e2 && e2.konzepte) konz = e2.konzepte.split(',').map(function(s){ return s.trim(); });
       if (!Object.keys(activeEvoKonzeptFilters).every(function(kk){ return konz.indexOf(kk) !== -1; })) return false;
     }
-    // BK tags
     if (Object.keys(activeBKTagFilters).length) {
       var bkNames = d._bk_names || [];
       if (!Object.keys(activeBKTagFilters).every(function(bk){ return bkNames.indexOf(bk) !== -1; })) return false;
     }
-    // Annotation tags
     var a = annotations[d.id] || {};
     if (activeTagFilters['fav']    && !a.fav)       return false;
     if (activeTagFilters['inc']    && !a.inc)       return false;
     if (activeTagFilters['edited'] && !edits[d.id]) return false;
-    // User tags
     if (Object.keys(activeUserTagFilters).length) {
       var utags = a.userTags || [];
       if (!Object.keys(activeUserTagFilters).every(function(t){ return utags.indexOf(t) !== -1; })) return false;
     }
-    // Search
     if (q) {
       var e3 = edits[d.id] || {};
       var hay = [
@@ -1890,7 +1995,10 @@ function applyFilters() {
         (d.didaktische_strategien||{}).evolutionsdidaktischer_impuls,
         e3.wiss, e3.impuls, a.favNote, a.incNote, a.notes,
         (a.userTags||[]).join(' '),
-        (d._bk_names||[]).join(' ')
+        (d._bk_names||[]).join(' '),
+        // Also search flat fields
+        (d.bk_prinzipien||[]).join(' '),
+        d.alltagsnaehe, d.abstraktionsgrad, d.kognitionsverb
       ].filter(Boolean).join(' ').toLowerCase();
       if (hay.indexOf(q) === -1) return false;
     }
@@ -1960,6 +2068,17 @@ function buildCard(d, query) {
   var methFavs = a.methFavs || {};
   var bkNames  = d._bk_names || [];
 
+  // Extra flat-schema fields to display
+  var extraInfo = [];
+  if (d._schema === 'flat') {
+    if (d.kognitionsverb) extraInfo.push('Verb: ' + d.kognitionsverb);
+    if (d.geschaetzte_unterrichtsstunden) extraInfo.push('⏱ ~' + d.geschaetzte_unterrichtsstunden + ' Std.');
+    if (d.empfohlene_klassenstufe) extraInfo.push('Kl. ' + d.empfohlene_klassenstufe);
+    if (d.ist_praktisch) extraInfo.push('🔬 Praktisch');
+    if (d.ist_konzeptanker) extraInfo.push('⚓ Konzeptanker');
+    if (d.alltagsnaehe && d.alltagsnaehe !== 'mittel') extraInfo.push('Alltag: ' + d.alltagsnaehe);
+  }
+
   var card = document.createElement('div');
   var classes = 'card';
   if (a.fav)    classes += ' is-favorite';
@@ -1973,6 +2092,24 @@ function buildCard(d, query) {
   var bkHtml = bkNames.filter(Boolean).map(function(b){ return '<span class="bk-tag-chip" title="Basiskonzept: '+escHtml(b)+'">🧩 '+hl(b,query)+'</span>'; }).join('');
 
   var bandLabel = { mnt56:'MNT 5/6', gy78:'Gy 7/8', gy910:'Gy 9/10', unknown:'' }[band] || band;
+
+  // Extra info chips for flat schema
+  var extraHtml = '';
+  if (extraInfo.length) {
+    extraHtml = '<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:4px">' +
+      extraInfo.map(function(info){
+        return '<span style="font-size:0.6rem;padding:1px 5px;border-radius:8px;background:var(--neutral-pale);color:var(--text-muted);font-weight:600">' + escHtml(info) + '</span>';
+      }).join('') + '</div>';
+  }
+
+  // BK Prinzipien for flat schema
+  var prinzipienHtml = '';
+  if (d._schema === 'flat' && d.bk_prinzipien && d.bk_prinzipien.length) {
+    prinzipienHtml = '<div style="margin-top:3px;display:flex;flex-wrap:wrap;gap:3px">' +
+      d.bk_prinzipien.map(function(p){
+        return '<span style="font-size:0.61rem;padding:1px 5px;border-radius:8px;background:#e8f4fd;color:#1565c0;font-weight:600">' + hl(p,query) + '</span>';
+      }).join('') + '</div>';
+  }
 
   var top3Html = '';
   if (top3.length) {
@@ -2005,6 +2142,18 @@ function buildCard(d, query) {
 
   var noteSec = notes ? '<div class="expand-section"><button class="expand-trigger">📝 Notizen <span class="expand-arrow">▾</span></button><div class="expand-content"><div class="annot-bubble">'+hl(notes,query)+'</div></div></div>' : '';
 
+  // Build didaktik section content
+  var didaktikContent = '';
+  if (impuls) didaktikContent += '<div class="didaktik-block"><strong>Evolutionsdidaktischer Impuls / Hinweis</strong><p>'+hl(impuls,query)+'</p></div>';
+  if (top3.length) didaktikContent += '<div class="didaktik-block"><strong>Methoden (★ anklicken)</strong>'+top3Html+'</div>';
+  if (methoden.length) didaktikContent += '<div class="didaktik-block"><strong>Weitere Methoden</strong><ul>'+methoden.map(function(m){ return '<li>'+hl(m,query)+'</li>'; }).join('')+'</ul></div>';
+  if (fehlvors) didaktikContent += '<div class="didaktik-block"><strong>Fehlvorstellungen</strong><p>'+hl(fehlvors,query)+'</p></div>';
+
+  // Show interleaving for flat schema
+  if (d._schema === 'flat' && d.interleaving_empfehlung && d.interleaving_empfehlung.length) {
+    didaktikContent += '<div class="didaktik-block"><strong>Interleaving</strong><p style="font-size:0.76rem;color:var(--text-muted)">Parallel unterrichten mit: ' + escHtml(d.interleaving_empfehlung.join(', ')) + '</p></div>';
+  }
+
   card.innerHTML =
     '<div class="band-stripe ' + band + '"></div>' +
     '<div class="card-header">' +
@@ -2012,6 +2161,7 @@ function buildCard(d, query) {
       '<div class="card-titles">'+
         '<div class="card-thema">'+hl(shortLabel(d.thema),query) + (bandLabel ? '<span class="card-band-tag '+band+'">'+bandLabel+'</span>' : '')+'</div>'+
         '<div class="card-unterthema">'+hl(d.unterthema,query)+'</div>'+
+        (d.kurzbezeichnung ? '<div style="font-size:0.71rem;color:var(--text-muted);font-style:italic">'+hl(d.kurzbezeichnung,query)+'</div>' : '')+
       '</div>'+
       '<div class="card-actions">'+
         '<button class="icon-btn fav-btn'+(a.fav?' active':'')+'" data-action="fav" data-id="'+id+'" title="Favorit">❤</button>'+
@@ -2023,17 +2173,14 @@ function buildCard(d, query) {
     '<div class="card-body">'+
       '<div class="lernziel-text">'+hl(d.originaltext,query)+'</div>'+
       '<span class="relevance-badge r'+rel+'"><div class="rel-dots">'+dots+'</div>'+REL_LABELS[rel]+'</span>'+
-      (konzHtml ? '<div class="concept-list">'+konzHtml+'</div>' : '')+
+      extraHtml +
+      (konzHtml ? '<div class="concept-list" style="margin-top:4px">'+konzHtml+'</div>' : '')+
+      prinzipienHtml +
       (bkHtml   ? '<div class="concept-list" style="margin-top:3px">'+bkHtml+'</div>' : '')+
       utHtml+
     '</div>'+
-    '<div class="expand-section"><button class="expand-trigger">🔬 Wissenschaftlicher Evolutionsbezug <span class="expand-arrow">▾</span></button> <div class="expand-content"><p>'+hl(wiss,query)+'</p></div></div>'+
-    '<div class="expand-section"><button class="expand-trigger">🎓 Didaktische Strategien <span class="expand-arrow">▾</span></button><div class="expand-content">'+
-      (impuls ? '<div class="didaktik-block"><strong>Evolutionsdidaktischer Impuls</strong><p>'+hl(impuls,query)+'</p></div>' : '')+
-      (top3.length ? '<div class="didaktik-block"><strong>Top 3 Methoden (★ anklicken)</strong>'+top3Html+'</div>' : '')+
-      (methoden.length ? '<div class="didaktik-block"><strong>Weitere Methoden</strong><ul>'+methoden.map(function(m){ return '<li>'+hl(m,query)+'</li>'; }).join('')+'</ul></div>' : '')+
-      (fehlvors ? '<div class="didaktik-block"><strong>Mögliche Fehlvorstellungen</strong><p>'+hl(fehlvors,query)+'</p></div>' : '')+
-    '</div></div>'+
+    '<div class="expand-section"><button class="expand-trigger">🔬 Wissenschaftlicher Evolutionsbezug <span class="expand-arrow">▾</span></button><div class="expand-content"><p>'+hl(wiss,query)+'</p></div></div>'+
+    (didaktikContent ? '<div class="expand-section"><button class="expand-trigger">🎓 Didaktische Strategien <span class="expand-arrow">▾</span></button><div class="expand-content">'+didaktikContent+'</div></div>' : '')+
     noteSec+
     tagHtml;
 
@@ -2046,7 +2193,6 @@ function buildCard(d, query) {
 document.addEventListener('click', function(evt) {
   var t = evt.target;
 
-  // Method fav toggle
   var mi = t.closest ? t.closest('.method-item') : null;
   if (mi && mi.dataset.rang) {
     var mId  = mi.dataset.id;
@@ -2060,7 +2206,6 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // rm-tag on card
   if (t.classList && t.classList.contains('rm-tag')) {
     var rId = t.dataset.id, rTag = t.dataset.tag;
     if (annotations[rId] && annotations[rId].userTags)
@@ -2068,7 +2213,6 @@ document.addEventListener('click', function(evt) {
     saveLS(); applyFilters(); return;
   }
 
-  // expand trigger
   var trigger = t.closest ? t.closest('.expand-trigger') : null;
   if (trigger && !trigger.dataset.action) {
     trigger.classList.toggle('open');
@@ -2076,7 +2220,6 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // bk-expand trigger
   var bkTrig = t.closest ? t.closest('.bk-expand-trigger') : null;
   if (bkTrig) {
     bkTrig.classList.toggle('open');
@@ -2085,12 +2228,10 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // concept-chip → filter
   if (t.classList && t.classList.contains('concept-chip')) {
     var concept = t.title || t.textContent;
     if (concept) {
       activeEvoKonzeptFilters[concept] = true;
-      // visually mark active in tree
       document.querySelectorAll('#evokonzept-tree .chip').forEach(function(c) {
         if ((c.title || c.textContent) === concept) c.classList.add('active');
       });
@@ -2100,7 +2241,6 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // bk-tag-chip → filter
   if (t.classList && t.classList.contains('bk-tag-chip')) {
     var bkName = t.title ? t.title.replace('Basiskonzept: ','') : t.textContent.replace('🧩 ','');
     if (bkName) {
@@ -2114,7 +2254,6 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // data-action buttons
   var btn = t.closest ? t.closest('[data-action]') : null;
   if (btn) {
     var act = btn.dataset.action, did = btn.dataset.id;
@@ -2125,11 +2264,9 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // export-opt
   var eo = t.closest ? t.closest('.export-opt') : null;
   if (eo) { doExport(eo.dataset.export); return; }
 
-  // bk-lz-mini link → filter
   var lzLink = t.closest ? t.closest('.bk-meta-chip.lz-link') : null;
   if (lzLink) {
     var lzId = lzLink.dataset.lzid;
@@ -2142,7 +2279,6 @@ document.addEventListener('click', function(evt) {
     return;
   }
 
-  // modal overlay close
   if (t.classList && t.classList.contains('modal-overlay')) t.classList.add('hidden');
 });
 
@@ -2160,12 +2296,9 @@ function reRenderCard(id) {
 // STATS + CHART
 // ════════════════════════════════════════════════════════════════════
 function updateStats() {
-  var counts = { mnt56:{1:0,2:0,3:0}, gy78:{1:0,2:0,3:0}, gy910:{1:0,2:0,3:0} };
   var totalCounts = {1:0,2:0,3:0};
   rawData.forEach(function(d) {
-    var r    = getRelevanz(d);
-    var band = d._band || 'unknown';
-    if (counts[band]) counts[band][r]++;
+    var r = getRelevanz(d);
     if (totalCounts[r] !== undefined) totalCounts[r]++;
   });
   var total  = rawData.length;
@@ -2213,7 +2346,6 @@ function drawChart() {
   ctx.scale(dpr, dpr); ctx.clearRect(0,0,cw,ch);
   if (!rawData.length) return;
 
-  // Group by band
   var bands = ['mnt56','gy78','gy910'];
   var bandLabels = { mnt56:'MNT5/6', gy78:'Gy7/8', gy910:'Gy9/10' };
   var COLORS = ['#388e3c','#e6a817','#c62828'];
@@ -2223,7 +2355,6 @@ function drawChart() {
   var groupW = chartAreaW / n;
   var barW   = Math.max(8, Math.min(28, groupW * 0.58));
 
-  // Compute counts
   var bandData = bands.map(function(band) {
     var items = rawData.filter(function(d){ return d._band === band; });
     return { band: band, r: [1,2,3].map(function(r){ return items.filter(function(d){ return getRelevanz(d)===r; }).length; }) };
@@ -2284,11 +2415,10 @@ function buildBKView() {
 function renderBKView(body, searchQ, mode) {
   var filtered = bkData.filter(function(bk) {
     if (!searchQ) return true;
-    var hay = [bk.name, bk.beschreibung, bk.domaine, (bk.tags||[]).join(' '), (bk.lehrplanbereiche||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
+    var hay = [bk.name, bk.beschreibung, bk.domaine, (bk.tags||[]).join(' ')].filter(Boolean).join(' ').toLowerCase();
     return hay.indexOf(searchQ.toLowerCase()) !== -1;
   });
 
-  // Stats row
   var lzWithBK = rawData.filter(function(d){ return (d._bk_names||[]).length > 0; }).length;
   var totalLinks = 0;
   bkData.forEach(function(bk){ totalLinks += (bk._lz_ids_resolved||[]).length; });
@@ -2310,7 +2440,6 @@ function renderBKView(body, searchQ, mode) {
     '</div>';
 
   var contentHtml = '';
-
   if (mode === 'grid') {
     contentHtml = '<div class="bk-grid">' + filtered.map(function(bk){ return buildBKCard(bk, searchQ); }).join('') + '</div>';
     if (!filtered.length) contentHtml = '<div class="bk-no-data"><div class="ei">🔍</div><p>Keine Basiskonzepte gefunden.</p></div>';
@@ -2322,7 +2451,6 @@ function renderBKView(body, searchQ, mode) {
 
   body.innerHTML = statsHtml + toolbarHtml + contentHtml;
 
-  // Bind search
   var bkSearch = $('bk-search-input');
   if (bkSearch) {
     bkSearch.addEventListener('input', function() {
@@ -2331,7 +2459,6 @@ function renderBKView(body, searchQ, mode) {
     bkSearch.focus();
   }
 
-  // Bind view buttons
   body.querySelectorAll('.bk-view-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       bkViewMode = btn.dataset.bkview;
@@ -2344,7 +2471,6 @@ function buildBKCard(bk, q) {
   var lzLinks = bk._lz_ids_resolved || [];
   var matchingLZ = rawData.filter(function(d){ return lzLinks.indexOf(d.id) !== -1; });
 
-  // Group LZ by band
   var byBand = {};
   matchingLZ.forEach(function(d) {
     var b = d._band || 'unknown';
@@ -2367,21 +2493,6 @@ function buildBKCard(bk, q) {
     return '<span class="bk-meta-chip beispiel">'+escHtml(t)+'</span>';
   }).join('');
 
-  var beispieleHtml = '';
-  if ((bk.beispiele||[]).filter(Boolean).length) {
-    beispieleHtml = '<div class="bk-card-section"><div class="bk-card-section-title">Beispiele</div><div class="bk-tag-row">' +
-      bk.beispiele.filter(Boolean).map(function(b){ return '<span class="bk-meta-chip beispiel">'+escHtml(b)+'</span>'; }).join('') +
-      '</div></div>';
-  }
-
-  var querHtml = '';
-  if ((bk.querverbindungen||[]).filter(Boolean).length) {
-    querHtml = '<div class="bk-card-section"><div class="bk-card-section-title">Querverbindungen</div><div class="bk-tag-row">' +
-      bk.querverbindungen.filter(Boolean).map(function(q2){ return '<span class="bk-meta-chip domain">'+escHtml(q2)+'</span>'; }).join('') +
-      '</div></div>';
-  }
-
-  // LZ section per band
   var lzSectionHtml = '';
   if (matchingLZ.length) {
     lzSectionHtml += '<div class="bk-card-section"><div class="bk-card-section-title">Verknüpfte Lernziele ('+matchingLZ.length+')</div><div class="bk-tag-row">';
@@ -2393,7 +2504,6 @@ function buildBKCard(bk, q) {
     lzSectionHtml += '</div></div>';
   }
 
-  // Expand: full LZ texts per band
   var expandContent = '';
   if (matchingLZ.length) {
     Object.keys(byBand).forEach(function(band) {
@@ -2412,8 +2522,6 @@ function buildBKCard(bk, q) {
     });
   }
 
-  var evoRelHtml = bk.evolutionsrelevanz ? '<div class="bk-card-section"><div class="bk-card-section-title">Evolutionsrelevanz</div><p style="font-size:0.77rem;color:var(--text);line-height:1.5">'+escHtml(bk.evolutionsrelevanz)+'</p></div>' : '';
-
   return '<div class="bk-card">' +
     '<div class="bk-card-header">' +
       '<span class="bk-card-num">BK '+escHtml(String(bk.id))+'</span>' +
@@ -2425,9 +2533,6 @@ function buildBKCard(bk, q) {
       (jahrgangHtml||niveauHtml||domaineHtml||fachHtml ? '<div class="bk-card-section"><div class="bk-card-section-title">Metadaten</div><div class="bk-tag-row">'+jahrgangHtml+niveauHtml+domaineHtml+fachHtml+'</div></div>' : '') +
       (tagsHtml ? '<div class="bk-card-section"><div class="bk-card-section-title">Schlagwörter</div><div class="bk-tag-row">'+tagsHtml+'</div></div>' : '') +
       lzSectionHtml +
-      beispieleHtml +
-      querHtml +
-      evoRelHtml +
     '</div>' +
     (expandContent ?
       '<button class="bk-expand-trigger">📋 Lernziel-Details <span class="expand-arrow" style="transition:transform 0.2s;display:inline-block">▾</span></button>' +
@@ -2484,7 +2589,7 @@ function buildBKCurriculumMap(filtered) {
   if (!filtered.length) return '<div class="bk-no-data"><div class="ei">🔍</div><p>Keine Basiskonzepte gefunden.</p></div>';
 
   var bands = ['mnt56','gy78','gy910'];
-  var bandLabels = { mnt56:'MNT 5/6 (Naturwissenschaft)', gy78:'Gymnasium 7/8 (Evolution)', gy910:'Gymnasium 9/10' };
+  var bandLabels = { mnt56:'MNT 5/6 (Naturwissenschaft)', gy78:'Gymnasium 7/8', gy910:'Gymnasium 9/10' };
 
   var html = '<div class="bk-curriculum-map">';
 
@@ -2492,7 +2597,6 @@ function buildBKCurriculumMap(filtered) {
     var bandLZ = rawData.filter(function(d){ return d._band === band; });
     if (!bandLZ.length) return;
 
-    // For each LZ in this band, collect its BK names
     var lzWithBK = bandLZ.filter(function(d){ return (d._bk_names||[]).length > 0; });
 
     html += '<div class="bk-band-section">';
@@ -2500,8 +2604,7 @@ function buildBKCurriculumMap(filtered) {
     html += '<div class="bk-band-body">';
 
     if (!lzWithBK.length) {
-      html += '<p style="font-size:0.78rem;color:var(--text-muted);padding:6px 0">Keine direkten BK-Verknüpfungen in diesem Datensatz vorhanden.</p>';
-      html += '<p style="font-size:0.73rem;color:var(--text-muted)">Tipp: Die Basiskonzepte können über die LZ-IDs in der JSON-Datei verknüpft werden.</p>';
+      html += '<p style="font-size:0.78rem;color:var(--text-muted);padding:6px 0">Keine direkten BK-Verknüpfungen gefunden.</p>';
     } else {
       lzWithBK.slice(0, 30).forEach(function(d) {
         var rel = getRelevanz(d);
@@ -2519,17 +2622,15 @@ function buildBKCurriculumMap(filtered) {
           '</div>';
       });
       if (lzWithBK.length > 30) {
-        html += '<p style="font-size:0.73rem;color:var(--text-muted);padding:5px 0">… und '+( lzWithBK.length-30)+' weitere</p>';
+        html += '<p style="font-size:0.73rem;color:var(--text-muted);padding:5px 0">… und '+(lzWithBK.length-30)+' weitere</p>';
       }
     }
     html += '</div></div>';
   });
 
-  // Cross-band BK summary
   html += '<div class="bk-band-section">';
-  html += '<div class="bk-band-header" style="background:linear-gradient(90deg,var(--bk-pale),#f5f5f5);color:var(--bk-color)">🔗 Basiskonzepte-Übersicht (alle Bänder) <span class="bk-band-count">'+filtered.length+' BK</span></div>';
-  html += '<div class="bk-band-body">';
-  html += '<div style="display:flex;flex-wrap:wrap;gap:6px;padding:4px 0">';
+  html += '<div class="bk-band-header" style="background:linear-gradient(90deg,var(--bk-pale),#f5f5f5);color:var(--bk-color)">🔗 Basiskonzepte-Übersicht <span class="bk-band-count">'+filtered.length+' BK</span></div>';
+  html += '<div class="bk-band-body"><div style="display:flex;flex-wrap:wrap;gap:6px;padding:4px 0">';
   filtered.forEach(function(bk) {
     var n = (bk._lz_ids_resolved||[]).length;
     html += '<span style="background:var(--bk-pale);border:1px solid #b3ddf5;color:var(--bk-color);padding:3px 9px;border-radius:20px;font-size:0.72rem;font-weight:700" title="'+escHtml(bk.beschreibung||bk.name)+'">'+
@@ -2537,7 +2638,6 @@ function buildBKCurriculumMap(filtered) {
       '</span>';
   });
   html += '</div></div></div>';
-
   html += '</div>';
   return html;
 }
@@ -2778,7 +2878,7 @@ function doExport(type) {
         var mf   = a.methFavs||{};
         var top3 = ds2.top3_methoden||[];
         md += '### ['+d.id+'] '+d.unterthema+'\n**Lernziel:** '+d.originaltext+'\n\n**Relevanz:** '+relS+' · **Band:** '+(d._band||'')+'\n\n';
-        if (imp) md += '**Didaktischer Impuls:** '+imp+'\n\n';
+        if (imp) md += '**Hinweis:** '+imp+'\n\n';
         if (top3.length) { md += '**Methoden:**\n'; top3.forEach(function(m){ md += (mf[m.rang]?'★ ':'- ')+'**'+m.methode+'**'+(m.beschreibung?' – '+m.beschreibung:'')+'\n'; }); md += '\n'; }
         if (a.favNote) md += '**Notiz:** '+a.favNote+'\n\n';
         if ((a.userTags||[]).length) md += '**Tags:** '+a.userTags.join(', ')+'\n\n';
@@ -2788,7 +2888,6 @@ function doExport(type) {
     content = md; filename = 'evomentor_unterrichtsplan.md'; mime = 'text/markdown;charset=utf-8;';
 
   } else if (type === 'bk-json') {
-    // Export enriched BK data with resolved LZ links
     var bkExport = bkData.map(function(bk) {
       var resolved = (bk._lz_ids_resolved||[]).map(function(id) {
         var d = rawData.find(function(x){ return x.id===id; });
@@ -2825,12 +2924,10 @@ function doImport() {
       var json = JSON.parse(evt.target.result);
 
       if (importMode === 'replace') {
-        // Determine if file is BK-only, LZ-only, or mixed
         var hasBK  = json.basiskonzepte && Array.isArray(json.basiskonzepte) && json.basiskonzepte.length > 0;
         var lzArr  = extractLernzieleArray(json, 'import', 'unknown');
 
         if (hasBK && (!lzArr || lzArr.length === 0)) {
-          // Pure BK import
           bkData = parseBasiskonzepte(json.basiskonzepte || json, 'import');
           saveLS(); closeModal('import-modal');
           crossReferenceBK(); buildBKFilterChips(); buildBKView();
@@ -2885,10 +2982,9 @@ function doImport() {
         $('search-input').value=''; $('unterthema-select').value='';
         fullRebuild();
         updateDatasetBadges();
-        showToast('✓ '+rawData.length+' LZ geladen (neue Session)','success');
+        showToast('✓ '+rawData.length+' LZ geladen','success');
 
       } else {
-        // Merge: only annotations
         if (!rawData.length) { showToast('⚠ Keine aktiven Lernziele.','error'); return; }
         if (json.globalUserTags && Array.isArray(json.globalUserTags))
           json.globalUserTags.forEach(function(t){ if(t && globalUserTags.indexOf(t)===-1) globalUserTags.push(t); });
@@ -2969,9 +3065,6 @@ function showToast(msg, type) {
   }, 3200);
 }
 
-// ════════════════════════════════════════════════════════════════════
-// DATA STATUS BANNER
-// ════════════════════════════════════════════════════════════════════
 function showDataStatus(msg, type) {
   var el = $('data-status'); if(!el) return;
   el.textContent = msg; el.className = type||'';
@@ -3021,7 +3114,6 @@ function setCardView(v) {
 function buildPromptThemeSelector() {
   var container = $('pg-theme-selector'); container.innerHTML = '';
 
-  // Group by band then thema
   var bands = ['mnt56','gy78','gy910'];
   var bandLabels = { mnt56:'MNT 5/6', gy78:'Gymnasium 7/8', gy910:'Gymnasium 9/10' };
   var bandColors = { mnt56:'#00796b', gy78:'#1565c0', gy910:'#6a1b9a' };
@@ -3265,7 +3357,6 @@ function generatePrompt() {
   var ausgabeLaenge= getRadioVal('pg-ausgabe-laenge');
   var sonstiges    = $('pg-sonstige-notizen').value.trim();
 
-  // Group LZ
   var byBandThema = {};
   activeLZ.forEach(function(d) {
     var key = d._band+'::'+d.thema;
@@ -3284,22 +3375,22 @@ function generatePrompt() {
   };
   var bewertungsNames = {
     formativ:'Formative Beurteilung (laufend)',quiz:'Quiz',
-    praesentation:'Präsentationen, Poster, Flyer',reflexion:'Schriftliche Reflexion',
+    praesentation:'Präsentationen, Poster',reflexion:'Schriftliche Reflexion',
     portfolio:'Portfolio / Lerntagebuch',klassenarbeit:'Klassenarbeit / LEK',
     praktisch:'Praktische Leistungen'
   };
   var kontextNames = {
     biodiversitaet:'Biodiversitätskrise',naturschutz:'Naturschutz und Arterhaltung',
-    klimawandel:'Klimawandel und Artenanpassung',pandemie:'Pandemien und Virusevolution',
+    klimawandel:'Klimawandel',pandemie:'Pandemien und Virusevolution',
     antibiotikaresistenz:'Antibiotikaresistenz',gesundheit:'Evolutionäre Medizin',
     biotechnologie:'Biotechnologie und Gentechnik'
   };
   var ausgabeTypNames = {
-    sequenzplan:'Vollständige Unterrichtssequenz mit Stundenverlaufsplänen',
+    sequenzplan:'Vollständige Unterrichtssequenz',
     lernziele:'Operationalisierte Lernziele pro Stunde',
-    methoden:'Methodische Vorschläge und Aufgabenideen',
-    materialien:'Hinweise auf Materialien / Medien',
-    fehlvorstellungen:'Übersicht häufiger Schülerfehlvorstellungen',
+    methoden:'Methodische Vorschläge',
+    materialien:'Materialhinweise',
+    fehlvorstellungen:'Schülerfehlvorstellungen',
     differenzierung:'Differenzierungsvorschläge',
     transferfragen:'Transfer- und Diskussionsfragen',
     querverbindungen:'Querverbindungen zwischen Lernzielen'
@@ -3310,7 +3401,6 @@ function generatePrompt() {
 
   var L = [], push = function(s){ L.push(s !== undefined ? s : ''); };
 
-  // HEADER
   push('═══════════════════════════════════════════════════════════════');
   push('EvoMentor · KI-UNTERRICHTSPLANUNGSAUFTRAG: EVOLUTIONSBIOLOGIE');
   push('Thüringer Lehrplan Biologie · ' + klasseLabel);
@@ -3319,10 +3409,9 @@ function generatePrompt() {
   push('');
   push('ROLLE: Du bist Experte für Biologiedidaktik mit Schwerpunkt Evolutionsbiologie');
   push('und konzeptuelles Lernen am Gymnasium. Du kennst den Thüringer Lehrplan Biologie');
-  push('und planst Unterricht, der echtes konzeptuelles Verständnis evolutionärer Prinzipien aufbaut.');
+  push('und planst Unterricht, der echtes konzeptuelles Verständnis aufbaut.');
   push('');
 
-  // SECTION 1: Planungsrahmen
   push('━━━ 1. PLANUNGSRAHMEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   push('• Klassenstufe:       ' + klasseLabel);
   push('• Unterrichtsstunden: ' + numLessons + ' Stunden à ' + formatLabel);
@@ -3331,15 +3420,9 @@ function generatePrompt() {
   push('LERNGRUPPE – VORWISSEN: ' + (vorwissensLabels[vorwissen]||vorwissen));
   if (vorwNotiz) push('Weitere Angaben: ' + vorwNotiz);
   push('');
-  push('FORMAT STUNDENVERLAUFSPLÄNE:');
-  push('Tabellarisch: Zeit | Didaktische Funktion | Teilziele | Unterrichtsmittel | Lehrerhandeln | Schülerhandeln');
-  push('Operatoren (Thüringer LP): ableiten · analysieren · begründen · beschreiben · beurteilen · bewerten ·');
-  push('  darstellen · diskutieren · erklären · erläutern · ermitteln · interpretieren · vergleichen');
-  push('');
 
-  // SECTION 2: Lernziele
   push('━━━ 2. LERNZIELE (Thüringer Lehrplan) ━━━━━━━━━━━━━━━━━━━━━━━');
-  push('❤ = Favorit der Lehrkraft  🔴/🟡/🟢 = Evolutionsrelevanz');
+  push('❤ = Favorit  🔴/🟡/🟢 = Evolutionsrelevanz');
   push('');
 
   Object.keys(byBandThema).forEach(function(key) {
@@ -3364,15 +3447,12 @@ function generatePrompt() {
         var bkN = (d._bk_names||[]).filter(Boolean);
         if (bkN.length) push('  │   Basiskonzepte: ' + bkN.join(' · '));
         var wiss = e2.wiss !== undefined ? e2.wiss : (ev.wissenschaftliche_begruendung||'');
-        if (wiss) push('  │   Bezug: ' + (wiss.length>240?wiss.substring(0,240)+'…':wiss));
+        if (wiss) push('  │   Bezug: ' + (wiss.length>200?wiss.substring(0,200)+'…':wiss));
         var imp  = e2.impuls !== undefined ? e2.impuls : (ds2.evolutionsdidaktischer_impuls||'');
-        if (imp) push('  │   Leitfrage: ' + imp);
-        var fv   = ds2.moegliche_fehlvorstellungen||'';
-        if (fv)  push('  │   Fehlvorstellung: ' + fv);
+        if (imp) push('  │   Hinweis: ' + imp);
         var top3 = ds2.top3_methoden||[], mf = a.methFavs||{};
         if (top3.length) push('  │   Methoden: ' + top3.map(function(m){ return (mf[m.rang]?'★':m.rang+'.')+' '+m.methode; }).join(' | '));
-        if (a.fav && a.favNote) push('  │   💬 Notiz: "' + a.favNote + '"');
-        if (a.notes) push('  │   📝 "' + a.notes + '"');
+        if (a.fav && a.favNote) push('  │   💬 "' + a.favNote + '"');
         if (idx < list.length-1) push('  │');
       });
       push('  └──────────────────────────────────────────────────────');
@@ -3382,19 +3462,16 @@ function generatePrompt() {
 
   push('ZUSAMMENFASSUNG: ' + activeLZ.length + ' LZ · ' + Object.keys(byBandThema).length + ' Themen');
   if (favLZ.length)     push('❤ Favoriten (' + favLZ.length + '): ' + favLZ.map(function(d){ return d.id; }).join(', '));
-  if (highRelLZ.length) push('🔴 Hohe Relevanz (' + highRelLZ.length + '): ' + highRelLZ.slice(0,10).map(function(d){ return d.id; }).join(', ') + (highRelLZ.length>10?' …':''));
+  if (highRelLZ.length) push('🔴 Hohe Relevanz (' + highRelLZ.length + '): ' + highRelLZ.slice(0,10).map(function(d){ return d.id; }).join(', ')+(highRelLZ.length>10?' …':''));
   push('');
 
-  // SECTION 3: Konzepte
   if (evoKonzepte.length || fachNotizen) {
     push('━━━ 3. EVOLUTIONSKONZEPTE SCHWERPUNKT ━━━━━━━━━━━━━━━━━━━━━━');
     evoKonzepte.forEach(function(k){ push('  → ' + k); });
     if (fachNotizen) { push(''); push('FACHLICHE SCHWERPUNKTE: ' + fachNotizen); }
-    push('WICHTIG: Als kohärentes Erklärungsframework, nicht als isolierte Fakten vermitteln.');
     push('');
   }
 
-  // SECTION 4: Methoden
   if (lehrformen.length || differenz.length || didNotizen) {
     push('━━━ 4. DIDAKTISCHE METHODEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     if (lehrformen.length) { push('Bevorzugte Methoden:'); lehrformen.forEach(function(k){ push('  → '+k); }); }
@@ -3403,7 +3480,6 @@ function generatePrompt() {
     push('');
   }
 
-  // SECTION 5: Evaluation
   if (bewertung.length || evalNotizen) {
     push('━━━ 5. EVALUATION ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     bewertung.forEach(function(b){ push('  → '+(bewertungsNames[b]||b)); });
@@ -3411,7 +3487,6 @@ function generatePrompt() {
     push('');
   }
 
-  // SECTION 6: Gesellschaft
   if (kontexte.length || kontNotizen) {
     push('━━━ 6. GESELLSCHAFTLICHE BEZÜGE ━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     kontexte.forEach(function(k){ push('  → '+(kontextNames[k]||k)); });
@@ -3419,7 +3494,6 @@ function generatePrompt() {
     push('');
   }
 
-  // SECTION 7: Ausgabe
   push('━━━ 7. ANFORDERUNGEN AN DIE KI-AUSGABE ━━━━━━━━━━━━━━━━━━━━━');
   push('Stil: ' + (tonLabels[ausgabeTon]||ausgabeTon) + ' · Umfang: ' + (laengeLabels[ausgabeLaenge]||ausgabeLaenge));
   push('Sprache: AUSSCHLIESSLICH DEUTSCH');
@@ -3430,11 +3504,11 @@ function generatePrompt() {
     push('');
   }
   push('PFLICHTBESTANDTEILE:');
-  push('1. ÜBERBLICK: Titel · didaktische Leitidee · übergeordnetes Lernziel · Stundenübersicht');
-  push('2. PRO STUNDE: Tabellarischer Verlaufsplan · Kernaufgabe · LZ-IDs · Verbindung zur Vor-/Folgestunde');
-  push('3. KONZEPTUELLE VERNETZUNG: Evolutionskonzepte als Framework · Querverbindungen · "Big Questions"');
-  push('4. FEHLVORSTELLUNGEN: Diagnose-Aufgaben · Conceptual Change · teleologisches Denken');
-  push('5. TRANSFER: ≥2 Transferfragen pro Einheit · abschließende integrierende Aufgabe');
+  push('1. ÜBERBLICK: Titel · didaktische Leitidee · Stundenübersicht');
+  push('2. PRO STUNDE: Tabellarischer Verlaufsplan · Kernaufgabe · LZ-IDs');
+  push('3. KONZEPTUELLE VERNETZUNG: Evolutionskonzepte als Framework');
+  push('4. FEHLVORSTELLUNGEN: Diagnose-Aufgaben · Conceptual Change');
+  push('5. TRANSFER: ≥2 Transferfragen pro Einheit');
   if (favLZ.length) {
     push('');
     push('6. FAVORITEN (❤) BESONDERS AUSFÜHRLICH:');
@@ -3443,33 +3517,18 @@ function generatePrompt() {
       push('   ❤ ['+d.id+'] '+d.originaltext);
       if (a.favNote) push('     → "'+a.favNote+'"');
     });
-    push('   Je Favorit: mindestens eine vollständige Stunde mit Vertiefungsaufgaben');
   }
-  if (sonstiges) {
-    push('');
-    push('WEITERE HINWEISE: '+sonstiges);
-  }
-  push('');
-  push('━━━ QUALITÄTSKRITERIEN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  push('✓ Evolution als Erklärungsframework · ✓ Phänomene als Stundeneinstiege');
-  push('✓ Querverbindungen explizit · ✓ Alle LZ-IDs vollständig abgedeckt');
-  push('✓ Realistische Zeitplanung mit Puffern · ✓ Thüringer LP-Operatoren');
+  if (sonstiges) { push(''); push('WEITERE HINWEISE: '+sonstiges); }
   push('');
   push('═══════════════════════════════════════════════════════════════');
   push('BITTE BEGINNE JETZT MIT DER VOLLSTÄNDIGEN UNTERRICHTSPLANUNG.');
-  push('Verwende klare Überschriften und Markdown-Tabellen.');
   push('═══════════════════════════════════════════════════════════════');
 
   var promptText = L.join('\n');
   lastPromptText = promptText;
-
   lastPromptSettings = {
     generiert: new Date().toISOString(),
-    klassenstufe: klasseLabel, anzahl_stunden: numLessons, stundenformat: formatLabel,
-    evolutionsanteil: evoPct+'%', vorwissen: vorwissen,
-    evo_konzepte: evoKonzepte, lehrformen: lehrformen, differenzierung: differenz,
-    bewertung: bewertung, gesellschaft: kontexte, ausgabe_typ: ausgabeTyp,
-    ausgabe_ton: ausgabeTon, ausgabe_laenge: ausgabeLaenge,
+    klassenstufe: klasseLabel, anzahl_stunden: numLessons,
     ausgewaehlte_lz: activeLZ.map(function(d){ return { id:d.id, band:d._band, thema:d.thema, unterthema:d.unterthema, text:d.originaltext, relevanz:getRelevanz(d), favorit:!!(annotations[d.id]||{}).fav }; })
   };
 
@@ -3486,13 +3545,7 @@ function exportPromptData() {
   var exportObj = {
     meta: { tool:'EvoMentor DE v1.1', exportiert:new Date().toISOString() },
     prompt_einstellungen: lastPromptSettings,
-    prompt_volltext: lastPromptText,
-    statistik: {
-      gesamtzeichen: lastPromptText.length,
-      lernziele_total: lastPromptSettings.ausgewaehlte_lz.length,
-      favoriten: lastPromptSettings.ausgewaehlte_lz.filter(function(l){ return l.favorit; }).length,
-      hoch_relevant: lastPromptSettings.ausgewaehlte_lz.filter(function(l){ return l.relevanz===3; }).length
-    }
+    prompt_volltext: lastPromptText
   };
   downloadFile(JSON.stringify(exportObj,null,2), 'evomentor_prompt_'+new Date().toISOString().substring(0,10)+'.json', 'application/json');
   showToast('✓ Prompt-Daten exportiert','success');
@@ -3583,19 +3636,16 @@ function bindPromptEvents() {
 // STATIC EVENT BINDING
 // ════════════════════════════════════════════════════════════════════
 function bindStaticEvents() {
-  // View buttons
   $('view-lernziele-btn').addEventListener('click', function(){ switchView('lernziele'); });
   $('view-bk-btn').addEventListener('click',        function(){ switchView('bk'); });
   $('view-prompt-btn').addEventListener('click',    function(){ switchView('prompt'); });
 
-  // Sidebar toggle
   $('sidebar-toggle-btn').addEventListener('click', function() {
     var sb = $('sidebar');
     if (window.innerWidth <= 760) sb.classList.toggle('mobile-open');
     else sb.classList.toggle('collapsed');
   });
 
-  // Sidebar section headers
   document.querySelectorAll('.sidebar-header').forEach(function(hdr) {
     hdr.addEventListener('click', function() {
       var target = hdr.dataset.target; if (!target) return;
@@ -3606,7 +3656,6 @@ function bindStaticEvents() {
     });
   });
 
-  // Filter label toggles for method + evokonzept + bk
   [['method-filter-label','method-chips'],['evokonzept-filter-label','evokonzept-tree'],['bk-filter-label','bk-filter-chips']].forEach(function(pair) {
     var label=$(pair[0]), target=$(pair[1]);
     if (!label||!target) return;
@@ -3617,12 +3666,10 @@ function bindStaticEvents() {
     });
   });
 
-  // Search + filters
   $('search-input').addEventListener('input', applyFilters);
   $('unterthema-select').addEventListener('change', applyFilters);
   $('sort-select').addEventListener('change', applyFilters);
 
-  // Grade band chips
   document.querySelectorAll('#grade-band-chips .grade-chip').forEach(function(chip) {
     chip.addEventListener('click', function() {
       chip.classList.toggle('active');
@@ -3632,7 +3679,6 @@ function bindStaticEvents() {
     });
   });
 
-  // Relevance chips
   document.querySelectorAll('#rel-chips .chip').forEach(function(chip) {
     chip.addEventListener('click', function() {
       chip.classList.toggle('active');
@@ -3642,7 +3688,6 @@ function bindStaticEvents() {
     });
   });
 
-  // Tag filter chips
   document.querySelectorAll('#tag-chips .chip').forEach(function(chip) {
     chip.addEventListener('click', function() {
       chip.classList.toggle('active');
@@ -3652,7 +3697,6 @@ function bindStaticEvents() {
     });
   });
 
-  // Global user tag add
   $('global-tag-add-btn').addEventListener('click', function() {
     var val=$('global-tag-input').value.trim(); if(val){ addGlobalTag(val); $('global-tag-input').value=''; }
   });
@@ -3669,7 +3713,6 @@ function bindStaticEvents() {
     applyFilters();
   });
 
-  // Toolbar
   $('expand-all-btn').addEventListener('click', function() {
     document.querySelectorAll('.expand-trigger').forEach(function(tr){ tr.classList.add('open'); var c=tr.nextElementSibling; if(c) c.classList.add('open'); });
   });
@@ -3680,14 +3723,12 @@ function bindStaticEvents() {
   $('btn-grid').addEventListener('click', function(){ setCardView('grid'); });
   $('btn-list').addEventListener('click', function(){ setCardView('list'); });
 
-  // Export modal
   $('export-open-btn').addEventListener('click', function() {
     var ec=$('export-count'); if(ec) ec.textContent=filteredData.length;
     openModal('export-modal');
   });
   $('export-close-btn').addEventListener('click', function(){ closeModal('export-modal'); });
 
-  // Import modal
   $('import-open-btn').addEventListener('click', function(){ openModal('import-modal'); });
   $('import-close-btn').addEventListener('click',  function(){ closeModal('import-modal'); });
   $('import-cancel-btn').addEventListener('click', function(){ closeModal('import-modal'); });
@@ -3702,7 +3743,6 @@ function bindStaticEvents() {
   $('import-file').addEventListener('change', function(){ previewImportFile(this.files[0]); });
   $('import-save-btn').addEventListener('click', doImport);
 
-  // Reset all
   $('reset-all-btn').addEventListener('click', function() {
     if (!confirm('Alle Markierungen, Bearbeitungen und Tags zurücksetzen?')) return;
     annotations={}; edits={}; globalUserTags=[];
@@ -3710,18 +3750,15 @@ function bindStaticEvents() {
     showToast('↺ Alle Daten zurückgesetzt','info');
   });
 
-  // Edit modal
   $('edit-close-btn').addEventListener('click',  function(){ closeModal('edit-modal'); });
   $('edit-cancel-btn').addEventListener('click', function(){ closeModal('edit-modal'); });
   $('edit-save-btn').addEventListener('click',   saveEdit);
 
-  // Annotation modal
   $('annot-close-btn').addEventListener('click',  function(){ closeModal('annot-modal'); });
   $('annot-cancel-btn').addEventListener('click', function(){ closeModal('annot-modal'); });
   $('annot-save-btn').addEventListener('click',   saveAnnotation);
   $('annot-remove-btn').addEventListener('click', removeAnnotation);
 
-  // Tag modal
   $('tag-close-btn').addEventListener('click',  function(){ closeModal('tag-modal'); });
   $('tag-cancel-btn').addEventListener('click', function(){ closeModal('tag-modal'); });
   $('tag-save-btn').addEventListener('click',   saveTagModal);
@@ -3734,10 +3771,8 @@ function bindStaticEvents() {
     if(e.key==='Enter'){ var val=$('tag-modal-new-input').value.trim(); if(!val) return; addGlobalTag(val); addUserTagToItem(taggingId,val); $('tag-modal-new-input').value=''; renderTagModalCurrent(); renderTagModalGlobalOptions(); }
   });
 
-  // Planner export
   $('export-plan-btn').addEventListener('click', function(){ doExport('markdown'); });
 
-  // Keyboard shortcuts
   document.addEventListener('keydown', function(e) {
     if (e.key==='Escape') {
       ['edit-modal','annot-modal','tag-modal','export-modal','import-modal'].forEach(function(id){
