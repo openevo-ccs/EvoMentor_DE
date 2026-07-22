@@ -1,0 +1,10 @@
+# EvoMentor_DE's apps/ are plain static HTML pages, no build system — just
+# editor/OS noise and defense-in-depth env-file protection.
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+.env
+.env.*
