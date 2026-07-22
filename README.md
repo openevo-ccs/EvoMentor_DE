@@ -60,7 +60,7 @@ Weitere Informationen finden Sie auf der [OpenEvo CCS Website](http://openevo.ev
 
 ```bash
 # Repository klonen
-git clone https://github.com/openevo-ccs-lab/EvoMentor_DE.git
+git clone https://github.com/openevo-ccs/EvoMentor_DE.git
 
 # In das Projektverzeichnis wechseln
 cd EvoMentor_DE
@@ -72,7 +72,7 @@ cd EvoMentor_DE
 
 ## 🤝 Mitwirken
 
-Beiträge sind herzlich willkommen! Wenn Sie Ideen, Fehlerberichte oder Vorschläge haben, öffnen Sie bitte ein [Issue](https://github.com/openevo-ccs-lab/EvoMentor_DE/issues) oder reichen Sie einen Pull Request ein.
+Beiträge sind herzlich willkommen! Wenn Sie Ideen, Fehlerberichte oder Vorschläge haben, öffnen Sie bitte ein [Issue](https://github.com/openevo-ccs/EvoMentor_DE/issues) oder reichen Sie einen Pull Request ein.
 
 Bitte beachten Sie unsere Beitragsrichtlinien (folgen in Kürze).
 
