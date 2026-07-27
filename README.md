@@ -66,7 +66,8 @@ git clone https://github.com/openevo-ccs/EvoMentor_DE.git
 cd EvoMentor_DE
 ```
 
-> Weitere Installations- und Nutzungshinweise folgen in Kürze.
+Öffnen Sie [`apps/index.html`](apps/index.html) direkt im Browser — die Apps sind
+eigenständige HTML-Dateien ohne Build-Schritt oder Server.
 
 ---
 
@@ -74,7 +75,7 @@ cd EvoMentor_DE
 
 Beiträge sind herzlich willkommen! Wenn Sie Ideen, Fehlerberichte oder Vorschläge haben, öffnen Sie bitte ein [Issue](https://github.com/openevo-ccs/EvoMentor_DE/issues) oder reichen Sie einen Pull Request ein.
 
-Bitte beachten Sie unsere Beitragsrichtlinien (folgen in Kürze).
+Bitte beachten Sie unsere [Beitragsrichtlinien](CONTRIBUTING.md).
 
 ---
 
@@ -86,7 +87,7 @@ Dieses Projekt steht unter der [MIT-Lizenz](LICENSE).
 
 ## 📬 Kontakt
 
-OpenEvo CCS Lab – Max-Planck-Institut für evolutionäre Anthropologie
+OpenEvo CCS Lab
 🌐 [openevo.eva.mpg.de](http://openevo.eva.mpg.de)
 
 ---
