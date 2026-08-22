@@ -50,6 +50,15 @@ Alle Apps sind eigenständige HTML-Dateien ohne Build-Schritt — direkt über G
 
 > Der Konzept-Explorer (`apps/explore.html`) und der Sequenzplaner (`apps/sequenz.html`) sind als eigene Ansichten in LehrplanKompass eingebettet, lassen sich aber auch direkt öffnen.
 
+## 🧵 Basiskonzept-Kohärenzfäden
+
+[`docs/basiskonzepte-kohaerenz-strategie.md`](docs/basiskonzepte-kohaerenz-strategie.md)
+beschreibt, wie die Beziehungen zwischen den fünf KMK-Basiskonzepten (v. a.
+"wird durch Evolution erklärt") datengetrieben genutzt werden, um horizontale
+und vertikale Kohärenz über die Klassenstufen 5–10 hinweg herzustellen — mit
+vier vollständig ausgearbeiteten, an echte Lernziele verankerten Fäden in
+[`data/kohaerenzfaeden.json`](data/kohaerenzfaeden.json).
+
 ---
 
 ## 🗺️ Geplante Erweiterungen

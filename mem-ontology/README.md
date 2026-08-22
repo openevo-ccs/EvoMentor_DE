@@ -101,6 +101,19 @@ instead of `thuringia_custom_importer.py`'s ad hoc join would close that gap
 for the full grade range, not just the evolution-annotated subset — left as
 a follow-up, not built here.
 
+## Basiskonzept-Kohärenzfäden layer
+
+If `data/kohaerenzfaeden.json` exists, the exporter also emits a small,
+explicitly non-FWU annotation layer: each `evomentor:kohaerenzfaden`
+(coherence-thread) individual links back to every `Kompetenzerwartung_TH`
+that is one of its real stations, via `evomentor:teilVonKohaerenzfaden`. This
+is deliberately a *different, weaker* predicate than
+`obo:BFO_0000051`/`evomentor:buildsOn` above — coherence-thread membership is
+a proposed pedagogical connection this project is recommending, not an
+asserted curricular prerequisite, and the two must never be conflated. See
+[`docs/basiskonzepte-kohaerenz-strategie.md`](../docs/basiskonzepte-kohaerenz-strategie.md)
+for the full method and the worked threads themselves.
+
 ## Loading it
 
 Any RDF tool works — it's plain, valid Turtle (validated at generation time

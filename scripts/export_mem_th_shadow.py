@@ -184,6 +184,7 @@ def main() -> None:
 
     stats = {"fachlehrplaene": 0, "lernbereiche": 0, "lernziele": 0, "unmapped_grade": 0}
     all_lz_ids: set[str] = set()
+    lz_local_by_id: dict[str, str] = {}  # raw source id -> thsh: local name, for the Kohaerenzfaeden pass below
 
     for filename, stem, fallback_label in SOURCE_FILES:
         data = load_gradeband(filename)
@@ -226,6 +227,7 @@ def main() -> None:
 
             for lz, lz_local in zip(items, lz_locals):
                 stats["lernziele"] += 1
+                lz_local_by_id[lz["id"]] = lz_local
                 grade_raw = lz.get("empfohlene_klassenstufe")
                 grade_int = None
                 if grade_raw:
@@ -281,6 +283,40 @@ def main() -> None:
         lines.extend(lb_blocks)
         lines.append("")
 
+    # --- Kohaerenzfaeden (data/kohaerenzfaeden.json): membership links from
+    # each Kompetenzerwartung_TH individual to the coherence thread(s) it's a
+    # station in. A separate, explicitly non-FWU predicate
+    # (evomentor:teilVonKohaerenzfaden) -- these are proposed pedagogical
+    # connections, not asserted curricular prerequisites, so they must never
+    # be confused with the real obo:BFO_0000051/evomentor:buildsOn edges
+    # above, which do carry that stronger claim. ---
+    kf_path = DATA_DIR / "kohaerenzfaeden.json"
+    kf_stats = None
+    if kf_path.exists():
+        with open(kf_path, "r", encoding="utf-8") as f:
+            kf_data = json.load(f)
+        lines.append("evomentor:Kohaerenzfaden a owl:Class ;")
+        lines.append(f'    rdfs:label {lit("Basiskonzept-Kohärenzfaden (EvoMentor_DE-eigenes Konzept, kein FWU/MEM-Begriff)")} .')
+        lines.append("")
+        kf_stats = {"faeden": 0, "stationen": 0, "unresolved_stationen": 0}
+        for kf in kf_data["kohaerenzfaeden"]:
+            kf_stats["faeden"] += 1
+            kf_local = kf["id"]
+            lines.append(
+                f"evomentor:{kf_local} a evomentor:Kohaerenzfaden ;\n"
+                f"    rdfs:label {lit(kf['titel'])} ;\n"
+                f'    evomentor:typ {lit(kf["typ"], lang=None)} ;\n'
+                f"    evomentor:evolutionaererKern {lit(kf['evolutionaererKern'])} ."
+            )
+            for station in kf["lernzielStationen"]:
+                kf_stats["stationen"] += 1
+                target_local = lz_local_by_id.get(station["lernzielId"])
+                if target_local is None:
+                    kf_stats["unresolved_stationen"] += 1
+                    continue
+                lines.append(f"thsh:{target_local} evomentor:teilVonKohaerenzfaden evomentor:{kf_local} .")
+            lines.append("")
+
     ttl = "\n".join(lines) + "\n"
 
     # Validate before writing anything -- fail loudly rather than emit
@@ -302,6 +338,12 @@ def main() -> None:
     print(f"  {stats['lernbereiche']} Lernbereich_TH (grouped by `thema`)")
     print(f"  {stats['lernziele']} Kompetenzerwartung_TH (one per Lernziel)")
     print(f"  {len(g)} triples total (rdflib-parsed, validated)")
+    if kf_stats:
+        print(f"  {kf_stats['faeden']} Kohaerenzfaeden, {kf_stats['stationen']} Lernziel-Stationen linked "
+              f"via evomentor:teilVonKohaerenzfaden")
+        if kf_stats["unresolved_stationen"]:
+            print(f"  WARNING: {kf_stats['unresolved_stationen']} Kohaerenzfaden Lernziel-Stationen did not "
+                  f"resolve against the Grades 5-10 dataset.", file=sys.stderr)
     if stats["unmapped_grade"]:
         print(f"  WARNING: {stats['unmapped_grade']} Lernziele had no resolvable "
               f"empfohlene_klassenstufe -> no lp:LP_0000026 (hat Jahrgangsstufe) "

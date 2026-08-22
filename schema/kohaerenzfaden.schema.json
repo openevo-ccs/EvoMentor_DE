@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openevo-ccs.github.io/EvoMentor_DE/schema/kohaerenzfaden.schema.json",
+  "title": "EvoMentor_DE Basiskonzept-Kohaerenzfaden",
+  "description": "A 'coherence thread' -- an evidence-grounded chain showing how two or more KMK Basiskonzepte connect through a shared evolutionary explanation, anchored to real Lernziele across one or more grade bands. Designed to cross-reference, not duplicate, the other artifacts built this session: basiskonzeptPfad[].relationType reuses conceptbase RFC-0018's frameworkRelation.schema.yaml relationType enum verbatim (so a thread's basiskonzept-level edges are the SAME controlled vocabulary as the pairwise relations in framework-relations/KMK-BASISKONZEPTE-BIOLOGIE-RELATIONS-v1.0.0.yaml, not a parallel one); basiskonzeptPfad[].basiskonzeptTag uses the same 'kmk-basiskonzepte-biologie:bk_...' tag-id format as RFC-0018's subject/object fields and the MEM shadow graph's evomentor:basiskonzeptPrimaer/Sekundaer literals (mem-ontology/lehrplan-th-shadow.ttl); lernzielStationen[].lernzielId is the raw source id (matching basiskonzepte.json's own lernziel_ids_thuringia arrays), from which em-item:thuringia-{id.lower()} (EvoMentor v2 canonical items) and thsh:lz-{gradeband}-{slug} (MEM shadow graph) are both mechanically derivable.",
+  "type": "object",
+  "required": ["id", "titel", "typ", "evolutionaererKern", "basiskonzeptPfad", "lernzielStationen", "kohaerenzErklaerung", "evidenz"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^kf-[0-9]{3}-[a-z0-9-]+$",
+      "description": "Stable id, e.g. 'kf-001-mensch-in-der-natur'."
+    },
+    "titel": { "type": "string" },
+    "typ": {
+      "type": "string",
+      "enum": ["vertikal", "horizontal", "vertikal-horizontal"],
+      "description": "vertikal: spans multiple grade bands (spiral-curriculum revisit). horizontal: within one grade band, crosses Basiskonzepte via real prerequisite/enables edges already in the data. vertikal-horizontal: does both."
+    },
+    "evolutionaererKern": {
+      "type": "string",
+      "description": "The evolutionary mechanism/idea that is the actual hub tying every station together -- the 'why', not just a list of co-occurring tags."
+    },
+    "basiskonzeptPfad": {
+      "type": "array",
+      "minItems": 2,
+      "description": "Ordered path of Basiskonzept-to-Basiskonzept edges this thread traces. Each edge's relationType is drawn from the identical controlled vocabulary conceptbase RFC-0018 defines (frameworkRelation.schema.yaml) -- deliberately not a new vocabulary.",
+      "items": {
+        "type": "object",
+        "required": ["basiskonzeptTag", "rolleImFaden"],
+        "additionalProperties": false,
+        "properties": {
+          "basiskonzeptTag": {
+            "type": "string",
+            "pattern": "^kmk-basiskonzepte-biologie:bk_[a-z_]+$"
+          },
+          "rolleImFaden": {
+            "type": "string",
+            "description": "What this Basiskonzept contributes at this point in the narrative."
+          },
+          "relationTypeZumNaechsten": {
+            "type": "string",
+            "enum": ["enables", "requires", "regulates", "isRegulatedBy", "implements", "isImplementedBy", "controls", "isControlledBy", "explainsOriginOf", "isExplainedBy"],
+            "description": "Relation from this station to the NEXT basiskonzeptPfad entry. Omitted on the last entry."
+          }
+        }
+      }
+    },
+    "lernzielStationen": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["lernzielId", "datei", "klassenstufe", "basiskonzeptTag", "rolleBeschreibung"],
+        "additionalProperties": false,
+        "properties": {
+          "lernzielId": {
+            "type": "string",
+            "description": "Raw source id from data/lernziele_*.json, e.g. 'GY-78-HUM-VD-2'."
+          },
+          "datei": {
+            "type": "string",
+            "enum": ["lernziele_MNT56.json", "lernziele_gy78.json", "lernziele_gy910.json"]
+          },
+          "klassenstufe": { "type": "string" },
+          "basiskonzeptTag": {
+            "type": "string",
+            "pattern": "^kmk-basiskonzepte-biologie:bk_[a-z_]+$",
+            "description": "Which basiskonzeptPfad station this Lernziel instantiates."
+          },
+          "rolleBeschreibung": { "type": "string" }
+        }
+      }
+    },
+    "kohaerenzErklaerung": {
+      "type": "string",
+      "description": "The actual narrative explanation connecting every station through evolutionaererKern -- prose a teacher could say in class, not a restatement of the tags."
+    },
+    "unterrichtsimpuls": {
+      "type": "string",
+      "description": "A concrete bridging activity/question a teacher could use to make the thread explicit to students."
+    },
+    "evidenz": {
+      "type": "string",
+      "description": "How this thread was identified from the real data (co-occurrence analysis, cross-Basiskonzept prerequisite-chain mining, unterthema keyword recurrence, etc.) -- reproducibility, not just assertion."
+    },
+    "luecken": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known gaps: where the thread's real data anchors currently stop and new content would be needed to complete it."
+    }
+  }
+}

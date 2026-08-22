@@ -3247,7 +3247,7 @@ thsh:lz-gy910-gy-910-gen-wge-3 a thsh:Kompetenzerwartung_TH ;
     lp:LP_0000029 <https://w3id.org/lehrplan/ontology/LP_3000031> ;
     evomentor:sourceId "GY-910-GEN-WGE-3" ;
     lp:LP_0000026 <https://w3id.org/lehrplan/ontology/LP_2000009> ;
-    evomentor:basiskonzeptPrimaer "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung" ;
+    evomentor:basiskonzeptPrimaer "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung" ;
     evomentor:basiskonzeptSekundaer "kmk-basiskonzepte-biologie:bk_information_kommunikation" ;
     evomentor:buildsOn thsh:lz-gy910-gy-910-gen-wge-1 ;
     evomentor:buildsOn thsh:lz-gy910-gy-910-gen-sge-3 ;
@@ -3692,4 +3692,51 @@ thsh:lz-gy910-gy-910-evo-hum-4 a thsh:Kompetenzerwartung_TH ;
     evomentor:basiskonzeptSekundaer "kmk-basiskonzepte-biologie:bk_information_kommunikation" ;
     evomentor:buildsOn thsh:lz-gy910-gy-910-evo-hum-2 ;
     evomentor:buildsOn thsh:lz-gy910-gy-910-evo-hum-3 .
+
+evomentor:Kohaerenzfaden a owl:Class ;
+    rdfs:label "Basiskonzept-Kohärenzfaden (EvoMentor_DE-eigenes Konzept, kein FWU/MEM-Begriff)"@de .
+
+evomentor:kf-001-mensch-in-der-natur a evomentor:Kohaerenzfaden ;
+    rdfs:label "Der Mensch in der Natur: von der wertenden Einordnung zur formalen Evolutionstheorie"@de ;
+    evomentor:typ "vertikal" ;
+    evomentor:evolutionaererKern "Die Frage 'Welche Rolle spielt der Mensch in der Natur?' wird in Klasse 6 alltagssprachlich-wertend gestellt (Eingriffe bewerten, Umweltschutz begründen) und in Klasse 10 mit der vollen Tiefenzeit-Perspektive der Evolutionstheorie neu beantwortet: der Mensch ist selbst Produkt derselben evolutionären Prozesse (Selektion, gemeinsame Abstammung mit anderen Hominiden), die seine Eingriffe in die Natur überhaupt erst wirksam machen -- und dieselbe evolutionäre Perspektive liefert zugleich die biologische Widerlegung des Rassenkonzepts."@de .
+thsh:lz-mnt56-mnt-56-m5-men-1 evomentor:teilVonKohaerenzfaden evomentor:kf-001-mensch-in-der-natur .
+thsh:lz-mnt56-mnt-56-m5-men-2 evomentor:teilVonKohaerenzfaden evomentor:kf-001-mensch-in-der-natur .
+thsh:lz-gy910-gy-910-evo-hum-1 evomentor:teilVonKohaerenzfaden evomentor:kf-001-mensch-in-der-natur .
+thsh:lz-gy910-gy-910-evo-hum-2 evomentor:teilVonKohaerenzfaden evomentor:kf-001-mensch-in-der-natur .
+thsh:lz-gy910-gy-910-evo-hum-4 evomentor:teilVonKohaerenzfaden evomentor:kf-001-mensch-in-der-natur .
+
+evomentor:kf-002-fortpflanzung-lebensgeschichte a evomentor:Kohaerenzfaden ;
+    rdfs:label "Fortpflanzung als evolvierte Life-History-Strategie: von Pflanze über Wirbeltier zu Mensch"@de ;
+    evomentor:typ "vertikal-horizontal" ;
+    evomentor:evolutionaererKern "Fortpflanzungsstrategien (geschlechtlich vs. ungeschlechtlich, innere vs. äußere Befruchtung, Investition in wenige vs. viele Nachkommen) sind keine beliebigen Variationen, sondern das Ergebnis evolutionärer Life-History-Trade-offs zwischen Energieinvestition, Überlebenswahrscheinlichkeit der Nachkommen und Umweltbedingungen -- derselbe Erklärungsrahmen gilt für Samenpflanzen, Wirbeltiere und den Menschen, nur mit jeweils artspezifischer Ausprägung der Mechanismen (Struktur, Steuerung, Kommunikation)."@de .
+thsh:lz-mnt56-mnt-56-m2-for-2 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-mnt56-mnt-56-m2-for-5 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-mnt56-mnt-56-m3-for-2 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-mnt56-mnt-56-m3-for-3 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-mnt56-mnt-56-m4-sex-1 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-mnt56-mnt-56-m4-sex-2 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-gy78-gy-78-hum-fes-1 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-gy78-gy-78-hum-fes-2 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+thsh:lz-gy78-gy-78-hum-fes-3 evomentor:teilVonKohaerenzfaden evomentor:kf-002-fortpflanzung-lebensgeschichte .
+
+evomentor:kf-003-zelle-enzym-immun-puberaet a evomentor:Kohaerenzfaden ;
+    rdfs:label "Vom Zellorganell zum Regelkreis: eine reale Ermöglichungskette durch vier Basiskonzepte"@de ;
+    evomentor:typ "horizontal" ;
+    evomentor:evolutionaererKern "Das Schlüssel-Schloss-Prinzip (räumliche Komplementarität zwischen Molekülen) ist ein einziger evolvierter Mechanismus, der in mehreren Basiskonzepten wiederkehrt: als Enzymspezifität (Stoff/Energie), als Antigen-Antikörper-Erkennung (Information/Kommunikation) und -- weil Immunsystem und Hormonsystem über dieselbe Rezeptor-Logik funktionieren -- als Grundlage hormoneller Entwicklungssteuerung (Steuerung/Regelung, individuell-evolutive Entwicklung). Die Kette ist keine didaktische Konstruktion: sie folgt einer echten ermoeglichende_lernziele-Sequenz im Datensatz."@de .
+thsh:lz-gy78-gy-78-zel-ptz-2 evomentor:teilVonKohaerenzfaden evomentor:kf-003-zelle-enzym-immun-puberaet .
+thsh:lz-gy78-gy-78-hum-vd-2 evomentor:teilVonKohaerenzfaden evomentor:kf-003-zelle-enzym-immun-puberaet .
+thsh:lz-gy78-gy-78-hum-abw-5 evomentor:teilVonKohaerenzfaden evomentor:kf-003-zelle-enzym-immun-puberaet .
+thsh:lz-gy78-gy-78-hum-fes-2 evomentor:teilVonKohaerenzfaden evomentor:kf-003-zelle-enzym-immun-puberaet .
+
+evomentor:kf-004-vergleichende-anatomie-insekt-mensch a evomentor:Kohaerenzfaden ;
+    rdfs:label "Vergleichende Anatomie Wirbellose/Mensch: Analogie statt Homologie"@de ;
+    evomentor:typ "horizontal" ;
+    evomentor:evolutionaererKern "Insekten (Tracheensystem) und Menschen (Lunge) lösen dasselbe Stoff/Energie-Problem -- effizienter Gasaustausch -- mit strukturell unabhängig entstandenen Lösungen: ein Lehrbuchfall für Analogie (konvergente Evolution), weil die Baupläne von Arthropoden und Wirbeltieren lange vor der Entstehung spezialisierter Atmungsorgane auseinandergingen. Das Nervensystem-Paar (Strickleiternervensystem vs. ZNS/PNS) ist dagegen der subtilere Fall: tiefe Homologie auf Ebene gemeinsamer bilaterier Vorfahren und konservierter Entwicklungsgene, aber stark divergente anatomische Umsetzung -- ideal, um Schüler:innen vor vorschnellen Analogie/Homologie-Fehlschlüssen zu warnen."@de .
+thsh:lz-gy78-gy-78-wir-ins-2 evomentor:teilVonKohaerenzfaden evomentor:kf-004-vergleichende-anatomie-insekt-mensch .
+thsh:lz-gy78-gy-78-wir-ins-3 evomentor:teilVonKohaerenzfaden evomentor:kf-004-vergleichende-anatomie-insekt-mensch .
+thsh:lz-gy78-gy-78-hum-atm-1 evomentor:teilVonKohaerenzfaden evomentor:kf-004-vergleichende-anatomie-insekt-mensch .
+thsh:lz-gy78-gy-78-wir-ins-4 evomentor:teilVonKohaerenzfaden evomentor:kf-004-vergleichende-anatomie-insekt-mensch .
+thsh:lz-gy78-gy-78-hum-ner-8 evomentor:teilVonKohaerenzfaden evomentor:kf-004-vergleichende-anatomie-insekt-mensch .
+thsh:lz-gy78-gy-78-wir-ins-7 evomentor:teilVonKohaerenzfaden evomentor:kf-004-vergleichende-anatomie-insekt-mensch .
 

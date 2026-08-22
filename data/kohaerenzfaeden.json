@@ -1,0 +1,309 @@
+{
+  "metadaten": {
+    "titel": "Basiskonzept-Kohärenzfäden – Evolution als verbindender Erklärungsfaden über die KMK-Basiskonzepte, Klassen 5–10",
+    "beschreibung": "Evidenzbasierte Kohärenzfäden, die zeigen, wie mehrere KMK-Basiskonzepte durch eine gemeinsame evolutionäre Erklärung verbunden sind -- verankert an echten Lernzielen aus data/lernziele_MNT56.json, lernziele_gy78.json und lernziele_gy910.json. Jeder Faden geht über bloße Ko-Vorkommen von Basiskonzept-Tags hinaus: er liefert eine explizite Erklärung, WARUM die Stationen zusammenhängen, plus einen konkreten Unterrichtsimpuls.",
+    "version": "1.0",
+    "methode": "Jeder Faden wurde datengetrieben identifiziert, nicht a priori konstruiert: (1) Ko-Vorkommen von bk_individuelle_evolutive_entwicklung mit anderen Basiskonzepten in basiskonzepte_primaer/sekundaer (95 von 271 Lernzielen betroffen); (2) echte ermoeglichende_lernziele/voraussetzende_lernziele-Ketten, die die primaere Basiskonzept-Zuordnung wechseln (138 solcher Kanten gefunden, 53 davon mit Evolution als Quelle oder Ziel); (3) wiederkehrende unterthema-Stichworte über Klassenstufen-Dateien hinweg (z. B. 'Fortpflanzung, Entwicklung und Sexualität' in MNT56 UND Gy78; 'Die Rolle des Menschen in der Natur' in MNT56 vs. 'Evolution des Menschen' in Gy910). Wichtiger Befund: es gibt aktuell 0 explizite klassenstufen-übergreifende (dateiübergreifende) voraussetzende_lernziele/ermoeglichende_lernziele-Referenzen im Datensatz -- vertikale Kohärenz über Klassenstufen hinweg ist derzeit NICHT strukturell kodiert, nur thematisch erkennbar. Die hier gesammelten Fäden schließen diese Lücke, indem sie echte Lernziele explizit über Klassenstufen hinweg verknüpfen.",
+    "kompatibilitaet": "basiskonzeptPfad[].basiskonzeptTag und relationTypeZumNaechsten verwenden exakt dasselbe kontrollierte Vokabular wie conceptbase RFC-0018 (schemas/frameworkRelation.schema.yaml, framework-relations/KMK-BASISKONZEPTE-BIOLOGIE-RELATIONS-v1.0.0.yaml). lernzielStationen[].lernzielId sind die rohen Quell-IDs aus data/lernziele_*.json (wie in basiskonzepte.json lernziel_ids_thuringia) -- daraus mechanisch ableitbar: em-item:thuringia-{id.lower()} (EvoMentor v2 canonical items, siehe EvoMentor/importers/thuringia_custom_importer.py) und thsh:lz-{gradeband}-{slug} (MEM-Schattengraph, siehe mem-ontology/lehrplan-th-shadow.ttl).",
+    "validiert_gegen": "schema/kohaerenzfaden.schema.json"
+  },
+  "kohaerenzfaeden": [
+    {
+      "id": "kf-001-mensch-in-der-natur",
+      "titel": "Der Mensch in der Natur: von der wertenden Einordnung zur formalen Evolutionstheorie",
+      "typ": "vertikal",
+      "evolutionaererKern": "Die Frage 'Welche Rolle spielt der Mensch in der Natur?' wird in Klasse 6 alltagssprachlich-wertend gestellt (Eingriffe bewerten, Umweltschutz begründen) und in Klasse 10 mit der vollen Tiefenzeit-Perspektive der Evolutionstheorie neu beantwortet: der Mensch ist selbst Produkt derselben evolutionären Prozesse (Selektion, gemeinsame Abstammung mit anderen Hominiden), die seine Eingriffe in die Natur überhaupt erst wirksam machen -- und dieselbe evolutionäre Perspektive liefert zugleich die biologische Widerlegung des Rassenkonzepts.",
+      "basiskonzeptPfad": [
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleImFaden": "Klasse 6: der Mensch wird erstmals explizit als Akteur mit Einfluss auf die Natur eingeführt -- noch ohne evolutionstheoretische Tiefe",
+          "relationTypeZumNaechsten": "requires"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_stoff_energie_umwandlung",
+          "rolleImFaden": "Mechanismus: menschliche Eingriffe wirken konkret über Stoff- und Energieflüsse in Lebensräumen und Ökosystemen",
+          "relationTypeZumNaechsten": "isExplainedBy"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleImFaden": "Klasse 10: formale Evolutionstheorie (Kladogramm der Hominiden, Belege für Hominisation) liefert die Tiefenzeit-Perspektive, die die früh gestellte Frage fundiert beantwortet",
+          "relationTypeZumNaechsten": "requires"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleImFaden": "Wissenschaftliche Evidenz (Fossilien, Genetik) wird explizit als Beleggrundlage genutzt, um das Konzept 'menschliche Rassen' biologisch zu widerlegen"
+        }
+      ],
+      "lernzielStationen": [
+        {
+          "lernzielId": "MNT-56-M5-MEN-1",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "6",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Eingriffe des Menschen in die Natur bewerten -- naive Einstiegsfragestellung"
+        },
+        {
+          "lernzielId": "MNT-56-M5-MEN-2",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "6",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_stoff_energie_umwandlung",
+          "rolleBeschreibung": "Umweltschutz begründen -- Mechanismus über Lebensgrundlagen/Stoffkreisläufe"
+        },
+        {
+          "lernzielId": "GY-910-EVO-HUM-1",
+          "datei": "lernziele_gy910.json",
+          "klassenstufe": "10",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Kladogramm der Hominiden -- formale evolutionäre Einordnung des Menschen"
+        },
+        {
+          "lernzielId": "GY-910-EVO-HUM-2",
+          "datei": "lernziele_gy910.json",
+          "klassenstufe": "10",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleBeschreibung": "Bedeutung von Belegen für die Rekonstruktion der Hominisation"
+        },
+        {
+          "lernzielId": "GY-910-EVO-HUM-4",
+          "datei": "lernziele_gy910.json",
+          "klassenstufe": "10",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleBeschreibung": "Biologische Widerlegung des Rassenkonzepts -- Evidenz-Anwendung mit gesellschaftlicher Tragweite"
+        }
+      ],
+      "kohaerenzErklaerung": "In Klasse 6 lernen Schüler:innen, menschliche Eingriffe in die Natur zu bewerten -- eine Frage, die implizit einen Sonderstatus des Menschen unterstellt. In Klasse 10 liefert die formale Evolutionstheorie die eigentliche Antwort: der Mensch ist ein Hominide unter anderen, dessen Merkmale (wie jedes andere Lebewesen) das Ergebnis von Selektion auf gemeinsamer Abstammung sind -- kein Sonderfall außerhalb der Natur. Genau diese Perspektive macht zugleich sichtbar, warum das Konzept 'menschliche Rassen' biologisch nicht haltbar ist: genetische Variation innerhalb der Menschheit folgt denselben Populationsgenetik-Prinzipien wie bei jeder anderen Art, ohne die diskreten Grenzen, die 'Rasse' unterstellen würde. Der Kohärenzfaden schließt damit den Bogen von einer wertenden Alltagsfrage (Klasse 6) zu einer wissenschaftlich fundierten, gesellschaftlich relevanten Antwort (Klasse 10).",
+      "unterrichtsimpuls": "In Klasse 10 vor Einführung der Hominisation die MNT-56-M5-MEN-Aufgabe von Klasse 6 wörtlich wieder vorlegen ('Bewerte Eingriffe des Menschen in die Natur') und fragen: 'Was an eurer damaligen Antwort würdet ihr heute anders beurteilen, jetzt wo ihr wisst, dass der Mensch selbst ein Produkt evolutionärer Prozesse ist?'",
+      "evidenz": "Ko-Vorkommen (MNT-56-M5-MEN-1/2 taggen bk_stoff_energie_umwandlung sekundär) + unterthema-Stichwortabgleich ('Die Rolle des Menschen in der Natur' vs. 'Evolution des Menschen', gemeinsames Stichwort 'Menschen') + Ko-Vorkommen in Gy910 (2 von 4 Evolution-des-Menschen-Lernzielen taggen bk_information_kommunikation sekundär)."
+    },
+    {
+      "id": "kf-002-fortpflanzung-lebensgeschichte",
+      "titel": "Fortpflanzung als evolvierte Life-History-Strategie: von Pflanze über Wirbeltier zu Mensch",
+      "typ": "vertikal-horizontal",
+      "evolutionaererKern": "Fortpflanzungsstrategien (geschlechtlich vs. ungeschlechtlich, innere vs. äußere Befruchtung, Investition in wenige vs. viele Nachkommen) sind keine beliebigen Variationen, sondern das Ergebnis evolutionärer Life-History-Trade-offs zwischen Energieinvestition, Überlebenswahrscheinlichkeit der Nachkommen und Umweltbedingungen -- derselbe Erklärungsrahmen gilt für Samenpflanzen, Wirbeltiere und den Menschen, nur mit jeweils artspezifischer Ausprägung der Mechanismen (Struktur, Steuerung, Kommunikation).",
+      "basiskonzeptPfad": [
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleImFaden": "Klasse 5: Blütenbau und Geschlechtsorgane als strukturelle Grundlage jeder Fortpflanzung",
+          "relationTypeZumNaechsten": "enables"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleImFaden": "Fortpflanzungsstrategien (geschlechtlich/ungeschlechtlich, innere/äußere Befruchtung) als artspezifische Life-History-Lösungen desselben evolutionären Problems",
+          "relationTypeZumNaechsten": "isRegulatedBy"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_steuerung_regelung",
+          "rolleImFaden": "Klasse 6/8: Pubertät und Menstruationszyklus als hormonell geregelte Entwicklungsprozesse beim Menschen",
+          "relationTypeZumNaechsten": "isImplementedBy"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleImFaden": "Das Hormonsystem als Informationssystem, das Entwicklung und Fortpflanzung tatsächlich steuert"
+        }
+      ],
+      "lernzielStationen": [
+        {
+          "lernzielId": "MNT-56-M2-FOR-2",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "5",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "Blütenbau beschreiben und vergleichen -- 'Vielfalt, gleicher Grundaufbau'"
+        },
+        {
+          "lernzielId": "MNT-56-M2-FOR-5",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "5",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Geschlechtliche und ungeschlechtliche Fortpflanzung vergleichen -- erste Strategievielfalt bei Pflanzen"
+        },
+        {
+          "lernzielId": "MNT-56-M3-FOR-2",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "5",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Befruchtungsformen bei Wirbeltieren vergleichen -- Strategievielfalt bei Tieren"
+        },
+        {
+          "lernzielId": "MNT-56-M3-FOR-3",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "5",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "Befruchtung, Eibau, Entwicklung und Lebensraum verknüpfen -- Life-History-Trade-off explizit als Struktur-Beziehung"
+        },
+        {
+          "lernzielId": "MNT-56-M4-SEX-1",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "6",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Körperliche Veränderungen in der Pubertät nennen -- erster Einstieg beim Menschen"
+        },
+        {
+          "lernzielId": "MNT-56-M4-SEX-2",
+          "datei": "lernziele_MNT56.json",
+          "klassenstufe": "6",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "Geschlechtsorgane und Menstruation/Pollution beschreiben"
+        },
+        {
+          "lernzielId": "GY-78-HUM-FES-1",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "8",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleBeschreibung": "Hormonsystem als Informationssystem charakterisieren -- Vertiefung des Steuerungsmechanismus"
+        },
+        {
+          "lernzielId": "GY-78-HUM-FES-2",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "8",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Pubertät als Entwicklungsphase charakterisieren -- Rückkehr zum evolutiven Rahmen mit voller mechanistischer Tiefe"
+        },
+        {
+          "lernzielId": "GY-78-HUM-FES-3",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "8",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_steuerung_regelung",
+          "rolleBeschreibung": "Menstruationszyklus beschreiben -- konkreter Regelkreis"
+        }
+      ],
+      "kohaerenzErklaerung": "Klasse 5 führt Fortpflanzungsvielfalt bei Pflanzen und Wirbeltieren rein deskriptiv ein (Struktur, Vergleich von Formen). Klasse 6 überträgt dieselbe Frage auf den Menschen, zunächst ebenfalls deskriptiv (körperliche Veränderungen, Organe). Erst Klasse 8 liefert den vollen Mechanismus (Hormonsystem als Informationssystem, Menstruationszyklus als Regelkreis) UND die Rückbindung an die evolutionäre Deutungsebene: Pubertät wird nicht nur beschrieben, sondern als Entwicklungsphase charakterisiert -- die Frage 'warum verläuft Entwicklung gerade so und nicht anders' bekommt dieselbe Antwortform wie bei Pflanze und Wirbeltier in Klasse 5: eine artspezifische, evolvierte Life-History-Lösung, keine beliebige biologische Tatsache.",
+      "unterrichtsimpuls": "In Klasse 8 vor GY-78-HUM-FES-2 eine Vergleichstabelle mit den Klasse-5-Beispielen (Samenpflanze, Wirbeltier) anlegen lassen: 'Wie viel Energie/Zeit investiert der Organismus in wie viele Nachkommen, und wie hängt das mit seiner Umwelt zusammen?' -- dann den Menschen als vierte Spalte ergänzen.",
+      "evidenz": "unterthema-Stichwortabgleich ('Fortpflanzung und Entwicklung der Samenpflanzen'/'der Wirbeltiere' in MNT56 vs. 'Fortpflanzung, Entwicklung und Sexualität' in Gy78, gemeinsames Stichwort 'Entwicklung') + Ko-Vorkommen-Muster (bk_individuelle_evolutive_entwicklung als primär oder sekundär in 13 der 15 Stationen-Kandidaten)."
+    },
+    {
+      "id": "kf-003-zelle-enzym-immun-puberaet",
+      "titel": "Vom Zellorganell zum Regelkreis: eine reale Ermöglichungskette durch vier Basiskonzepte",
+      "typ": "horizontal",
+      "evolutionaererKern": "Das Schlüssel-Schloss-Prinzip (räumliche Komplementarität zwischen Molekülen) ist ein einziger evolvierter Mechanismus, der in mehreren Basiskonzepten wiederkehrt: als Enzymspezifität (Stoff/Energie), als Antigen-Antikörper-Erkennung (Information/Kommunikation) und -- weil Immunsystem und Hormonsystem über dieselbe Rezeptor-Logik funktionieren -- als Grundlage hormoneller Entwicklungssteuerung (Steuerung/Regelung, individuell-evolutive Entwicklung). Die Kette ist keine didaktische Konstruktion: sie folgt einer echten ermoeglichende_lernziele-Sequenz im Datensatz.",
+      "basiskonzeptPfad": [
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleImFaden": "Zellorganellen und ihre räumliche Organisation als Grundlage aller nachfolgenden molekularen Funktionen",
+          "relationTypeZumNaechsten": "enables"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_stoff_energie_umwandlung",
+          "rolleImFaden": "Enzymatische Verdauung nach dem Schlüssel-Schloss-Prinzip -- konkrete molekulare Anwendung von Struktur/Funktion",
+          "relationTypeZumNaechsten": "enables"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleImFaden": "Antigen-Antikörper-Erkennung (dasselbe Schlüssel-Schloss-Prinzip) als Grundlage spezifischer Immunabwehr und Gedächtniszellen",
+          "relationTypeZumNaechsten": "enables"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleImFaden": "Pubertät als hormonell gesteuerter Entwicklungsprozess -- Timing und Ablauf selbst evolutionär erklärbar"
+        }
+      ],
+      "lernzielStationen": [
+        {
+          "lernzielId": "GY-78-ZEL-PTZ-2",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "Zellaufbau und Organellen-Funktionen -- Ausgangspunkt der Kette"
+        },
+        {
+          "lernzielId": "GY-78-HUM-VD-2",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_stoff_energie_umwandlung",
+          "rolleBeschreibung": "Enzymatische Verdauung erläutern -- erste explizite Schlüssel-Schloss-Anwendung"
+        },
+        {
+          "lernzielId": "GY-78-HUM-ABW-5",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "8",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleBeschreibung": "Spezifische Abwehr und Gedächtniszellen -- Übertragung des Prinzips auf das Immunsystem"
+        },
+        {
+          "lernzielId": "GY-78-HUM-FES-2",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "8",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Pubertät charakterisieren -- Endpunkt der realen ermoeglichende_lernziele-Kette in den Quelldaten"
+        }
+      ],
+      "kohaerenzErklaerung": "Diese Kette ist im Datensatz bereits real verknüpft (GY-78-ZEL-PTZ-2 → ... → GY-78-HUM-VD-2 → GY-78-HUM-FES-1 → GY-78-HUM-ABW-5/GY-78-HUM-FES-2 über ermoeglichende_lernziele), aber die Verknüpfung ist bisher rein sequenziell, nicht explanatorisch: die Lernziele folgen aufeinander, ohne dass explizit gemacht wird, dass dieselbe molekulare Logik (räumliche Komplementarität zweier Moleküle) viermal wiederverwendet wird. Die evolutionäre Pointe: Enzym-Substrat-Bindung, Antikörper-Antigen-Bindung und Hormon-Rezeptor-Bindung sind keine drei zufällig ähnlichen Tricks, sondern Varianten eines einzigen, evolutionär alten Bauprinzips (Protein-Faltung mit spezifischer Bindungstasche), das die Evolution wiederholt für neue Zwecke rekrutiert hat (Exaptation) -- und die Pubertät ist am Ende der Kette selbst ein Beispiel für hormonell (also über exakt dasselbe Prinzip) gesteuerte Entwicklung.",
+      "unterrichtsimpuls": "Nach GY-78-HUM-FES-2 (Pubertät) explizit zurückblicken lassen: 'Zeichnet an der Tafel Enzym+Substrat, Antikörper+Antigen und Hormon+Rezeptor nebeneinander. Was ist strukturell gleich? Warum taucht dasselbe Prinzip in Verdauung, Immunsystem UND Pubertätssteuerung auf?'",
+      "luecken": [
+        "In Gy910 gibt es aktuell kein Lernziel, das Enzym/Antikörper/Immunsystem explizit wieder aufgreift, um das Schlüssel-Schloss-Prinzip evolutionär zu vertiefen (z. B. Rezeptorevolution, Wirt-Pathogen-Koevolution, Exaptation als Konzept). Eine Klasse-9/10-Ergänzung würde diesen horizontalen Faden zu einem vertikal-horizontalen Faden ausbauen und wäre der natürliche nächste Schritt."
+      ],
+      "evidenz": "Reale ermoeglichende_lernziele-Kette (GY-78-ZEL-PTZ-2 -> ... -> GY-78-HUM-VD-2 -> GY-78-HUM-FES-1 -> {GY-78-HUM-ABW-5, GY-78-HUM-FES-2}), eine der 138 gefundenen basiskonzept-überschreitenden Ermöglichungskanten."
+    },
+    {
+      "id": "kf-004-vergleichende-anatomie-insekt-mensch",
+      "titel": "Vergleichende Anatomie Wirbellose/Mensch: Analogie statt Homologie",
+      "typ": "horizontal",
+      "evolutionaererKern": "Insekten (Tracheensystem) und Menschen (Lunge) lösen dasselbe Stoff/Energie-Problem -- effizienter Gasaustausch -- mit strukturell unabhängig entstandenen Lösungen: ein Lehrbuchfall für Analogie (konvergente Evolution), weil die Baupläne von Arthropoden und Wirbeltieren lange vor der Entstehung spezialisierter Atmungsorgane auseinandergingen. Das Nervensystem-Paar (Strickleiternervensystem vs. ZNS/PNS) ist dagegen der subtilere Fall: tiefe Homologie auf Ebene gemeinsamer bilaterier Vorfahren und konservierter Entwicklungsgene, aber stark divergente anatomische Umsetzung -- ideal, um Schüler:innen vor vorschnellen Analogie/Homologie-Fehlschlüssen zu warnen.",
+      "basiskonzeptPfad": [
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleImFaden": "Außenskelett, Tracheensystem und Strickleiternervensystem der Insekten als äußerlich gut beobachtbare Strukturen",
+          "relationTypeZumNaechsten": "enables"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_stoff_energie_umwandlung",
+          "rolleImFaden": "Tracheensystem als strukturelle Lösung des Gasaustausch-Problems bei Insekten",
+          "relationTypeZumNaechsten": "isExplainedBy"
+        },
+        {
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleImFaden": "Warum lösen Insekt und Mensch dasselbe Problem unterschiedlich? Unterscheidung Analogie (konvergente Evolution) vs. Homologie (gemeinsame Abstammung)"
+        }
+      ],
+      "lernzielStationen": [
+        {
+          "lernzielId": "GY-78-WIR-INS-2",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "Außenskelett aus Chitin -- bereits sekundär evolutionär getaggt"
+        },
+        {
+          "lernzielId": "GY-78-WIR-INS-3",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_stoff_energie_umwandlung",
+          "rolleBeschreibung": "Tracheensystem der Insekten -- Ausgangspunkt der realen Ermöglichungskante zu HUM-ATM-1"
+        },
+        {
+          "lernzielId": "GY-78-HUM-ATM-1",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "Atmungsorgane des Menschen -- Analogie-Vergleichspunkt zum Insekten-Tracheensystem"
+        },
+        {
+          "lernzielId": "GY-78-WIR-INS-4",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_information_kommunikation",
+          "rolleBeschreibung": "Strickleiternervensystem der Insekten -- Ausgangspunkt der realen Ermöglichungskante zu HUM-NER-8"
+        },
+        {
+          "lernzielId": "GY-78-HUM-NER-8",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "8",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
+          "rolleBeschreibung": "ZNS und PNS des Menschen -- Homologie-Vergleichspunkt (tiefe gemeinsame Abstammung, divergente Umsetzung)"
+        },
+        {
+          "lernzielId": "GY-78-WIR-INS-7",
+          "datei": "lernziele_gy78.json",
+          "klassenstufe": "7",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "rolleBeschreibung": "Metamorphose als Angepasstheit an Lebensweise/Lebensraum -- expliziter evolutiver Rahmen im Insektenblock"
+        }
+      ],
+      "kohaerenzErklaerung": "Zwei reale Ermöglichungskanten aus den Quelldaten (GY-78-WIR-INS-3 -> GY-78-HUM-ATM-1 und GY-78-WIR-INS-4 -> GY-78-HUM-NER-8) führen Lehrkräfte bereits heute von der Insekten- zur Menschenanatomie -- aber ohne die entscheidende evolutionsbiologische Unterscheidung explizit zu machen. Tracheen und Lunge sind analog: unabhängig entstanden, weil Insekten und Wirbeltiere lange vor der Evolution spezialisierter Atmungsorgane getrennte Wege gingen. Strickleiternervensystem und ZNS/PNS sind dagegen (zumindest teilweise) homolog: beide gehen auf ein zentralisiertes Nervensystem bei einem gemeinsamen bilaterischen Vorfahren zurück, auch wenn die heutige Anatomie stark divergiert. Ohne diese Unterscheidung wirkt 'Insekt und Mensch haben beide X' wie eine beliebige Ähnlichkeit; mit ihr wird sichtbar, dass Ähnlichkeit zwei fundamental verschiedene evolutionäre Geschichten haben kann.",
+      "unterrichtsimpuls": "Zwei Ähnlichkeits-Karten nebeneinander legen (Trachee/Lunge, Strickleiternervensystem/ZNS-PNS) und fragen lassen: 'Beide Paare sehen ähnlich aus/lösen ein ähnliches Problem -- ist das Zufall, gemeinsame Abstammung, oder beides auf unterschiedliche Weise?' als Einstieg in Homologie vs. Analogie.",
+      "luecken": [
+        "Die Begriffe 'Homologie' und 'Analogie' selbst werden in den Klasse-7/8-Lernzielen an dieser Stelle nicht explizit benannt (das Vokabular taucht im Datensatz erst über die evolutionsbezogenen Zusatzannotationen auf) -- ein expliziter Begriffslernziel-Zusatz an dieser Stelle würde den Faden erst vollständig schließen."
+      ],
+      "evidenz": "Reale ermoeglichende_lernziele-Kanten GY-78-WIR-INS-3 -> GY-78-HUM-ATM-1 und GY-78-WIR-INS-4 -> GY-78-HUM-NER-8, zwei der 138 gefundenen basiskonzept-überschreitenden Kanten."
+    }
+  ]
+}

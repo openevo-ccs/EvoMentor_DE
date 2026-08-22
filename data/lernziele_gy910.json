@@ -1489,7 +1489,7 @@
       "ist_praktisch": false,
       "empfohlene_klassenstufe": "9",
       "empfohlenes_quartal": "Q3",
-      "basiskonzepte_primaer": ["bk_individuelle_entwicklung"],
+      "basiskonzepte_primaer": ["bk_individuelle_evolutive_entwicklung"],
       "basiskonzepte_sekundaer": ["bk_information_kommunikation"],
       "teilkonzept_primaer": "bk_individuelle_evolutive_entwicklung__individuell",
       "bk_prinzipien": ["Reproduktion und Individualentwicklung", "Zelldifferenzierung"],
