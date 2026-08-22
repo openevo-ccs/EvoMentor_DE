@@ -11,7 +11,7 @@
 
 Im Mittelpunkt steht die **Integration von Evolution als zentrales Thema im Biologieunterricht** – sowie als fächerübergreifendes Leitthema in verschiedenen Schulfächern und Klassenstufen.
 
-Die aktuelle Version enthält eine einzelne App, die darauf ausgerichtet ist, evolutionäre Konzepte in den **Biologielehrplan der Klassen 7–8 im Bundesland Thüringen** einzubetten. Mittelfristig planen wir, das Angebot auf weitere deutschsprachige Bundesländer, Klassenstufen und Unterrichtsfächer auszuweiten.
+Die aktuelle Version enthält mehrere Apps, die darauf ausgerichtet sind, evolutionäre Konzepte in den **Biologielehrplan der Klassen 5–10 im Bundesland Thüringen** einzubetten. Mittelfristig planen wir, das Angebot auf weitere deutschsprachige Bundesländer, Klassenstufen und Unterrichtsfächer auszuweiten.
 
 ---
 
@@ -27,11 +27,28 @@ Die aktuelle Version enthält eine einzelne App, die darauf ausgerichtet ist, ev
 
 ## 🗂️ Aktuelle Inhalte
 
-| App / Werkzeug | Beschreibung | Bundesland | Klassenstufe | Fach |
+| Datensatz | Beschreibung | Bundesland | Klassenstufe | Fach |
 |---|---|---|---|---|
-| EvoMentor Thüringen 7–8 | Integration von Evolution in den Biologielehrplan | Thüringen | 7–8 | Biologie |
+| EvoMentor Thüringen 5–10 | Integration von Evolution in den Biologie-/MNT-Lehrplan | Thüringen | 5–10 | Biologie, MNT |
 
-> Weitere Apps für andere Bundesländer, Klassenstufen und Fächer sind in Planung.
+> Weitere Datensätze für andere Bundesländer, Klassenstufen und Fächer sind in Planung.
+
+---
+
+## 🖥️ Alle Apps
+
+Alle Apps sind eigenständige HTML-Dateien ohne Build-Schritt — direkt über GitHub Pages nutzbar, kein Download nötig. Mehrere Versionsstände sind parallel verfügbar (siehe Spalte „Stand"), damit ältere Auswertungen und Exporte nachvollziehbar bleiben.
+
+| App | Beschreibung | Stand |
+|---|---|---|
+| [🧭 LehrplanKompass](https://openevo-ccs.github.io/EvoMentor_DE/apps/index.html) | **Aktuelles Hauptwerkzeug.** Vereint Konzept-Explorer (Konzeptnetz mit Kohärenzfaden-Ansicht, Dashboard, Detailansicht) und Sequenzplaner (Jahresplanung, Qualitätsanalyse, Export) in einer Oberfläche | v4.0 (aktuell) |
+| [🗺️ LehrplanNavigator](https://openevo-ccs.github.io/EvoMentor_DE/apps/lehrplannavigator.html) | Eigenständige Einzeldatei-Variante von LehrplanKompass — Konzeptnetz und Sequenzplaner in einer HTML-Datei ohne iframe-Aufbau | — |
+| [📋 EvoMentor DE v1.1](https://openevo-ccs.github.io/EvoMentor_DE/apps/evomentor_de_v1_1.html) | Lernziel-Browser mit Filtern, eigenen Tags, Favoriten, Notizen, KI-Prompt-Generierung und Export; deckt Klassen 5–10 ab | v1.1 |
+| [📋 EvoMentor DE v1.0](https://openevo-ccs.github.io/EvoMentor_DE/apps/evomentor_de.html) | Vorläuferversion desselben Lernziel-Browsers, aus dem ursprünglichen Prototyp-Repository | v1.0 |
+| [🧬 Evolutionsbezug Biologie](https://openevo-ccs.github.io/EvoMentor_DE/apps/lernziele_evolution.html) | Übersicht der Evolutionsbezüge einzelner Lernziele (Klassen 7–8) mit wissenschaftlicher Begründung | — |
+| [🤖 Evolutionsbezug – LLM-Prompter](https://openevo-ccs.github.io/EvoMentor_DE/apps/lernziele_evolution_llmprompter.html) | Wie oben, zusätzlich mit Generierung von KI-Prompts zur Unterstützung der Evolutionsintegration | — |
+
+> Der Konzept-Explorer (`apps/explore.html`) und der Sequenzplaner (`apps/sequenz.html`) sind als eigene Ansichten in LehrplanKompass eingebettet, lassen sich aber auch direkt öffnen.
 
 ---
 
@@ -67,7 +84,10 @@ cd EvoMentor_DE
 ```
 
 Öffnen Sie [`apps/index.html`](apps/index.html) direkt im Browser — die Apps sind
-eigenständige HTML-Dateien ohne Build-Schritt oder Server.
+eigenständige HTML-Dateien ohne Build-Schritt oder Server. Da die Apps ihre
+Daten per `fetch()` nachladen, funktionieren sie über GitHub Pages
+zuverlässiger als über `file://` — siehe die Linkliste weiter oben unter
+„🖥️ Alle Apps".
 
 ---
 
