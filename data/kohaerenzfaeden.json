@@ -2,8 +2,8 @@
   "metadaten": {
     "titel": "Basiskonzept-Kohärenzfäden – Evolution als verbindender Erklärungsfaden über die KMK-Basiskonzepte, Klassen 5–10",
     "beschreibung": "Evidenzbasierte Kohärenzfäden, die zeigen, wie mehrere KMK-Basiskonzepte durch eine gemeinsame evolutionäre Erklärung verbunden sind -- verankert an echten Lernzielen aus data/lernziele_MNT56.json, lernziele_gy78.json und lernziele_gy910.json. Jeder Faden geht über bloße Ko-Vorkommen von Basiskonzept-Tags hinaus: er liefert eine explizite Erklärung, WARUM die Stationen zusammenhängen, plus einen konkreten Unterrichtsimpuls.",
-    "version": "1.0",
-    "methode": "Jeder Faden wurde datengetrieben identifiziert, nicht a priori konstruiert: (1) Ko-Vorkommen von bk_individuelle_evolutive_entwicklung mit anderen Basiskonzepten in basiskonzepte_primaer/sekundaer (95 von 271 Lernzielen betroffen); (2) echte ermoeglichende_lernziele/voraussetzende_lernziele-Ketten, die die primaere Basiskonzept-Zuordnung wechseln (138 solcher Kanten gefunden, 53 davon mit Evolution als Quelle oder Ziel); (3) wiederkehrende unterthema-Stichworte über Klassenstufen-Dateien hinweg (z. B. 'Fortpflanzung, Entwicklung und Sexualität' in MNT56 UND Gy78; 'Die Rolle des Menschen in der Natur' in MNT56 vs. 'Evolution des Menschen' in Gy910). Wichtiger Befund: es gibt aktuell 0 explizite klassenstufen-übergreifende (dateiübergreifende) voraussetzende_lernziele/ermoeglichende_lernziele-Referenzen im Datensatz -- vertikale Kohärenz über Klassenstufen hinweg ist derzeit NICHT strukturell kodiert, nur thematisch erkennbar. Die hier gesammelten Fäden schließen diese Lücke, indem sie echte Lernziele explizit über Klassenstufen hinweg verknüpfen.",
+    "version": "1.1",
+    "methode": "Jeder Faden wurde datengetrieben identifiziert, nicht a priori konstruiert: (1) Ko-Vorkommen von bk_individuelle_evolutive_entwicklung mit anderen Basiskonzepten in basiskonzepte_primaer/sekundaer (95 von 271 Lernzielen betroffen); (2) echte ermoeglichende_lernziele/voraussetzende_lernziele-Ketten, die die primaere Basiskonzept-Zuordnung wechseln (138 solcher Kanten gefunden, 53 davon mit Evolution als Quelle oder Ziel); (3) wiederkehrende unterthema-Stichworte über Klassenstufen-Dateien hinweg (z. B. 'Fortpflanzung, Entwicklung und Sexualität' in MNT56 UND Gy78; 'Die Rolle des Menschen in der Natur' in MNT56 vs. 'Evolution des Menschen' in Gy910). Wichtiger Befund: es gibt aktuell 0 explizite klassenstufen-übergreifende (dateiübergreifende) voraussetzende_lernziele/ermoeglichende_lernziele-Referenzen im Datensatz -- vertikale Kohärenz über Klassenstufen hinweg ist derzeit NICHT strukturell kodiert, nur thematisch erkennbar. Die hier gesammelten Fäden schließen diese Lücke, indem sie echte Lernziele explizit über Klassenstufen hinweg verknüpfen. [v1.2: bk_individuelle_evolutive_entwicklung wurde zwischenzeitlich in bk_individuelle_entwicklung/bk_evolutive_entwicklung aufgeteilt; alle Referenzen in diesem Dokument sind entsprechend aktualisiert, die Methodenbeschreibung selbst bleibt als historischer Befund unveraendert.]",
     "kompatibilitaet": "basiskonzeptPfad[].basiskonzeptTag und relationTypeZumNaechsten verwenden exakt dasselbe kontrollierte Vokabular wie conceptbase RFC-0018 (schemas/frameworkRelation.schema.yaml, framework-relations/KMK-BASISKONZEPTE-BIOLOGIE-RELATIONS-v1.0.0.yaml). lernzielStationen[].lernzielId sind die rohen Quell-IDs aus data/lernziele_*.json (wie in basiskonzepte.json lernziel_ids_thuringia) -- daraus mechanisch ableitbar: em-item:thuringia-{id.lower()} (EvoMentor v2 canonical items, siehe EvoMentor/importers/thuringia_custom_importer.py) und thsh:lz-{gradeband}-{slug} (MEM-Schattengraph, siehe mem-ontology/lehrplan-th-shadow.ttl).",
     "validiert_gegen": "schema/kohaerenzfaden.schema.json"
   },
@@ -15,7 +15,7 @@
       "evolutionaererKern": "Die Frage 'Welche Rolle spielt der Mensch in der Natur?' wird in Klasse 6 alltagssprachlich-wertend gestellt (Eingriffe bewerten, Umweltschutz begründen) und in Klasse 10 mit der vollen Tiefenzeit-Perspektive der Evolutionstheorie neu beantwortet: der Mensch ist selbst Produkt derselben evolutionären Prozesse (Selektion, gemeinsame Abstammung mit anderen Hominiden), die seine Eingriffe in die Natur überhaupt erst wirksam machen -- und dieselbe evolutionäre Perspektive liefert zugleich die biologische Widerlegung des Rassenkonzepts.",
       "basiskonzeptPfad": [
         {
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_evolutive_entwicklung",
           "rolleImFaden": "Klasse 6: der Mensch wird erstmals explizit als Akteur mit Einfluss auf die Natur eingeführt -- noch ohne evolutionstheoretische Tiefe",
           "relationTypeZumNaechsten": "requires"
         },
@@ -25,7 +25,7 @@
           "relationTypeZumNaechsten": "isExplainedBy"
         },
         {
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_evolutive_entwicklung",
           "rolleImFaden": "Klasse 10: formale Evolutionstheorie (Kladogramm der Hominiden, Belege für Hominisation) liefert die Tiefenzeit-Perspektive, die die früh gestellte Frage fundiert beantwortet",
           "relationTypeZumNaechsten": "requires"
         },
@@ -36,11 +36,11 @@
       ],
       "lernzielStationen": [
         {
-          "lernzielId": "MNT-56-M5-MEN-1",
+          "lernzielId": "MNT-56-M5-MEN-1a",
           "datei": "lernziele_MNT56.json",
           "klassenstufe": "6",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
-          "rolleBeschreibung": "Eingriffe des Menschen in die Natur bewerten -- naive Einstiegsfragestellung"
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_evolutive_entwicklung",
+          "rolleBeschreibung": "Eingriffe des Menschen in die Natur bewerten (Einfluss auf einzelne Lebewesen) -- naive Einstiegsfragestellung"
         },
         {
           "lernzielId": "MNT-56-M5-MEN-2",
@@ -53,7 +53,7 @@
           "lernzielId": "GY-910-EVO-HUM-1",
           "datei": "lernziele_gy910.json",
           "klassenstufe": "10",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_evolutive_entwicklung",
           "rolleBeschreibung": "Kladogramm der Hominiden -- formale evolutionäre Einordnung des Menschen"
         },
         {
@@ -87,7 +87,7 @@
           "relationTypeZumNaechsten": "enables"
         },
         {
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleImFaden": "Fortpflanzungsstrategien (geschlechtlich/ungeschlechtlich, innere/äußere Befruchtung) als artspezifische Life-History-Lösungen desselben evolutionären Problems",
           "relationTypeZumNaechsten": "isRegulatedBy"
         },
@@ -113,14 +113,14 @@
           "lernzielId": "MNT-56-M2-FOR-5",
           "datei": "lernziele_MNT56.json",
           "klassenstufe": "5",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleBeschreibung": "Geschlechtliche und ungeschlechtliche Fortpflanzung vergleichen -- erste Strategievielfalt bei Pflanzen"
         },
         {
           "lernzielId": "MNT-56-M3-FOR-2",
           "datei": "lernziele_MNT56.json",
           "klassenstufe": "5",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleBeschreibung": "Befruchtungsformen bei Wirbeltieren vergleichen -- Strategievielfalt bei Tieren"
         },
         {
@@ -134,7 +134,7 @@
           "lernzielId": "MNT-56-M4-SEX-1",
           "datei": "lernziele_MNT56.json",
           "klassenstufe": "6",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleBeschreibung": "Körperliche Veränderungen in der Pubertät nennen -- erster Einstieg beim Menschen"
         },
         {
@@ -155,7 +155,7 @@
           "lernzielId": "GY-78-HUM-FES-2",
           "datei": "lernziele_gy78.json",
           "klassenstufe": "8",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleBeschreibung": "Pubertät als Entwicklungsphase charakterisieren -- Rückkehr zum evolutiven Rahmen mit voller mechanistischer Tiefe"
         },
         {
@@ -174,7 +174,7 @@
       "id": "kf-003-zelle-enzym-immun-puberaet",
       "titel": "Vom Zellorganell zum Regelkreis: eine reale Ermöglichungskette durch vier Basiskonzepte",
       "typ": "horizontal",
-      "evolutionaererKern": "Das Schlüssel-Schloss-Prinzip (räumliche Komplementarität zwischen Molekülen) ist ein einziger evolvierter Mechanismus, der in mehreren Basiskonzepten wiederkehrt: als Enzymspezifität (Stoff/Energie), als Antigen-Antikörper-Erkennung (Information/Kommunikation) und -- weil Immunsystem und Hormonsystem über dieselbe Rezeptor-Logik funktionieren -- als Grundlage hormoneller Entwicklungssteuerung (Steuerung/Regelung, individuell-evolutive Entwicklung). Die Kette ist keine didaktische Konstruktion: sie folgt einer echten ermoeglichende_lernziele-Sequenz im Datensatz.",
+      "evolutionaererKern": "Das Schlüssel-Schloss-Prinzip (räumliche Komplementarität zwischen Molekülen) ist ein einziger evolvierter Mechanismus, der in mehreren Basiskonzepten wiederkehrt: als Enzymspezifität (Stoff/Energie), als Antigen-Antikörper-Erkennung (Information/Kommunikation) und -- weil Immunsystem und Hormonsystem über dieselbe Rezeptor-Logik funktionieren -- als Grundlage hormoneller Entwicklungssteuerung (Steuerung/Regelung, individuelle Entwicklung). Die Kette ist keine didaktische Konstruktion: sie folgt einer echten ermoeglichende_lernziele-Sequenz im Datensatz.",
       "basiskonzeptPfad": [
         {
           "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_struktur_funktion",
@@ -192,7 +192,7 @@
           "relationTypeZumNaechsten": "enables"
         },
         {
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleImFaden": "Pubertät als hormonell gesteuerter Entwicklungsprozess -- Timing und Ablauf selbst evolutionär erklärbar"
         }
       ],
@@ -222,7 +222,7 @@
           "lernzielId": "GY-78-HUM-FES-2",
           "datei": "lernziele_gy78.json",
           "klassenstufe": "8",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleBeschreibung": "Pubertät charakterisieren -- Endpunkt der realen ermoeglichende_lernziele-Kette in den Quelldaten"
         }
       ],
@@ -250,7 +250,7 @@
           "relationTypeZumNaechsten": "isExplainedBy"
         },
         {
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_evolutive_entwicklung",
           "rolleImFaden": "Warum lösen Insekt und Mensch dasselbe Problem unterschiedlich? Unterscheidung Analogie (konvergente Evolution) vs. Homologie (gemeinsame Abstammung)"
         }
       ],
@@ -294,7 +294,7 @@
           "lernzielId": "GY-78-WIR-INS-7",
           "datei": "lernziele_gy78.json",
           "klassenstufe": "7",
-          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_evolutive_entwicklung",
+          "basiskonzeptTag": "kmk-basiskonzepte-biologie:bk_individuelle_entwicklung",
           "rolleBeschreibung": "Metamorphose als Angepasstheit an Lebensweise/Lebensraum -- expliziter evolutiver Rahmen im Insektenblock"
         }
       ],

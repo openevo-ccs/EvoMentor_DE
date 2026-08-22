@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openevo-ccs.github.io/EvoMentor_DE/schema/basiskonzept.schema.json",
+  "title": "EvoMentor_DE Basiskonzept",
+  "description": "Validiert einen Eintrag in data/basiskonzepte.json (Ebene 1: 'basiskonzepte' Array-Elemente, oder Ebene 2: deren 'teilkonzepte' Array-Elemente). Es gibt genau 6 Ebene-1-Basiskonzepte, jedes mit genau 2 Ebene-2-Teilkonzepten (struktur_hinweis). beziehungstyp-Werte in bk_verbindungen entsprechen 1:1 dem RFC-0018 frameworkRelation-Vokabular (conceptbase, Branch rfc-0018-framework-relations-and-basiskonzepte-coherence): ermöglicht=enables, benoetigt=requires, reguliert/regelt=regulates, wird_reguliert_durch/wird_geregelt_durch=isRegulatedBy, implementiert=implements, wird_implementiert_durch=isImplementedBy, steuert=controls, wird_gesteuert_durch=isControlledBy, erklaert_entstehung_von=explainsOriginOf, wird_erklaert_durch=isExplainedBy.",
+  "type": "object",
+  "required": ["id", "ebene", "bezeichnung", "lernziel_ids_thuringia"],
+  "allOf": [
+    {
+      "if": { "properties": { "ebene": { "const": 1 } } },
+      "then": {
+        "required": ["definition_kmk", "definition_didaktisch", "wesentliche_prinzipien_kmk", "paired_concept", "bk_verbindungen", "teilkonzepte"]
+      }
+    },
+    {
+      "if": { "properties": { "ebene": { "const": 2 } } },
+      "then": {
+        "required": ["beschreibung_kmk", "beschreibung_didaktisch", "fokus_prinzipien", "uebergeordnetes_bk", "paired_teilkonzept"]
+      }
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^bk_[a-z0-9_]+$"
+    },
+    "ebene": {
+      "type": "integer",
+      "enum": [1, 2]
+    },
+    "bezeichnung": { "type": "string", "minLength": 1 },
+    "kurzbezeichnung": { "type": "string" },
+    "paired_concept": {
+      "type": "string",
+      "description": "bezeichnung des wechselseitig gepaarten Basiskonzepts (nur bei ebene=1). Muss eine echte, wechselseitige Paarung sein: A.paired_concept == B.bezeichnung UND B.paired_concept == A.bezeichnung."
+    },
+    "uebergeordnetes_bk": {
+      "type": "string",
+      "pattern": "^bk_[a-z0-9_]+$",
+      "description": "Nur bei ebene=2: id des Ebene-1-Elternkonzepts."
+    },
+    "paired_teilkonzept": {
+      "type": "string",
+      "description": "Nur bei ebene=2: id des anderen Teilkonzepts desselben Elternkonzepts."
+    },
+    "definition_kmk": { "type": "string", "minLength": 1 },
+    "definition_didaktisch": { "type": "string", "minLength": 1 },
+    "beschreibung_kmk": { "type": "string", "description": "Bei ebene=2 äquivalent zu definition_kmk." },
+    "beschreibung_didaktisch": { "type": "string", "description": "Bei ebene=2 äquivalent zu definition_didaktisch." },
+    "wesentliche_prinzipien_kmk": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Darf keinen Eintrag enthalten, der wörtlich der bezeichnung dieses Basiskonzepts entspricht (keine Selbstreferenz)."
+    },
+    "fokus_prinzipien": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Bei ebene=2 äquivalent zu wesentliche_prinzipien_kmk."
+    },
+    "systemebenen": { "type": "array", "items": { "type": "string" } },
+    "typische_zeitskalen": { "type": "array", "items": { "type": "string" } },
+    "beispielthemen_gy78": { "type": "array", "items": { "type": "string" } },
+    "typische_mechanismen": { "type": "array", "items": { "type": "string" } },
+    "epistemische_rollen": { "type": "array", "items": { "type": "string" } },
+    "kausale_rollen": { "type": "array", "items": { "type": "string" } },
+    "haeufige_schuelervorstellungen": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["fehlvorstellung", "korrekte_vorstellung", "didaktischer_hinweis"],
+        "properties": {
+          "fehlvorstellung": { "type": "string" },
+          "korrekte_vorstellung": { "type": "string" },
+          "didaktischer_hinweis": { "type": "string" }
+        }
+      }
+    },
+    "typische_misskonzeptionen_entstehung": { "type": "array", "items": { "type": "string" } },
+    "konzeptuelle_voraussetzungen": { "type": "array", "items": { "type": "string" } },
+    "sequenzierungsempfehlung": { "type": "object" },
+    "interleaving_partner": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["begruendung"],
+        "properties": {
+          "partner_bk": { "type": "string", "pattern": "^bk_[a-z0-9_]+$" },
+          "partner": { "type": "string", "pattern": "^bk_[a-z0-9_]+$" },
+          "begruendung": { "type": "string" },
+          "empfohlene_verschraenkung": { "type": "string" }
+        }
+      }
+    },
+    "ersteinfuehrung_empfehlung": { "type": "object" },
+    "kognitive_komplexitaet_gy78": { "type": "object" },
+    "bk_verbindungen": {
+      "type": "array",
+      "description": "Nur bei ebene=1: gerichtete, typisierte Kanten zu anderen Ebene-1-Basiskonzepten.",
+      "items": {
+        "type": "object",
+        "required": ["ziel_bk", "beziehungstyp", "beschreibung"],
+        "properties": {
+          "ziel_bk": { "type": "string", "pattern": "^bk_[a-z0-9_]+$" },
+          "beziehungstyp": {
+            "type": "string",
+            "enum": [
+              "ermöglicht", "benoetigt", "reguliert", "regelt",
+              "wird_reguliert_durch", "wird_geregelt_durch",
+              "implementiert", "wird_implementiert_durch",
+              "implementiert_durch",
+              "steuert", "wird_gesteuert_durch",
+              "erklaert_entstehung_von", "wird_erklaert_durch"
+            ]
+          },
+          "beschreibung": { "type": "string" }
+        }
+      }
+    },
+    "lernziel_ids_thuringia": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Rohe Lernziel-ids aus lernziele_MNT56.json / lernziele_gy78.json / lernziele_gy910.json."
+    },
+    "konzeptanker_lernziele": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["lernziel_id", "begruendung"],
+        "properties": {
+          "lernziel_id": { "type": "string" },
+          "begruendung": { "type": "string" }
+        }
+      }
+    },
+    "diagnostische_fragen": { "type": "array", "items": { "type": "string" } },
+    "darstellungsformen_progression": { "type": "array", "items": { "type": "string" } },
+    "alltagsanker": { "type": "array", "items": { "type": "string" } },
+    "sprachliche_stolpersteine": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["begriff", "problem", "empfehlung"],
+        "properties": {
+          "begriff": { "type": "string" },
+          "problem": { "type": "string" },
+          "empfehlung": { "type": "string" }
+        }
+      }
+    },
+    "wissenschaftliche_praktiken": { "type": "array", "items": { "type": "string" } },
+    "transfer_potential": { "type": "number", "minimum": 0, "maximum": 1 },
+    "complexity_level_gy78": { "type": "number", "minimum": 0, "maximum": 1 },
+    "centrality_estimate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "hinweis_zur_einordnung": { "type": "string" },
+    "evolutionskonzepte_referenz": { "type": "string", "description": "Nur beim Evolutions-Basiskonzept: Pfad zu data/evolutionskonzepte.json." },
+    "teilkonzepte": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "Nur bei ebene=1: genau 2 Teilkonzepte (ebene=2), rekursiv gegen dieses Schema validierbar.",
+      "items": { "$ref": "https://openevo-ccs.github.io/EvoMentor_DE/schema/basiskonzept.schema.json" }
+    }
+  }
+}

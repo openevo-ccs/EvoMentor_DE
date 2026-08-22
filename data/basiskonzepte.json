@@ -2,12 +2,13 @@
   "metadaten": {
     "titel": "KMK-Basiskonzepte Biologie – Umfassendes didaktisches Referenzdataset für Klassen 7–8",
     "beschreibung": "Vollständige, hierarchisch strukturierte und didaktisch angereicherte Darstellung der fünf KMK-Basiskonzepte Biologie. Jedes Basiskonzept (Ebene 1) wird in zwei Teilkonzepte (Ebene 2) gegliedert. Das Dataset integriert curriculumtheoretische, kognitionswissenschaftliche und fachdidaktische Dimensionen zur Unterstützung einer optimalen Sequenzplanung für den Biologieunterricht der Klassen 7–8 am Thüringer Gymnasium.",
-    "version": "4.1",
+    "version": "5.0",
     "quellen": [
       "KMK Bildungsstandards Biologie, Abschnitt 2.5",
       "Thüringer Lehrplan Biologie Gymnasium Klassen 7–8",
       "Fachdidaktische Forschung zur konzeptbasierten Biologiedidaktik",
-      "Kognitionswissenschaftliche Grundlagen der Sequenzplanung"
+      "Kognitionswissenschaftliche Grundlagen der Sequenzplanung",
+      "EvoMentor 1.2 notes.md (Basiskonzepte-Split, Sub-Konzept-Korrekturen)"
     ],
     "struktur_hinweis": "Jedes Basiskonzept (Ebene 1) gliedert sich in genau zwei Teilkonzepte (Ebene 2). Alle Einträge sind eigenständig verwendbar und durch Querverweise vernetzt.",
     "aenderungen_v4": [
@@ -21,6 +22,14 @@
       "Kohärenzlücke geschlossen: bk_stoff_energie_umwandlung, bk_information_kommunikation und bk_steuerung_regelung erhalten je eine neue 'wird_erklaert_durch'-Verbindung zu bk_individuelle_evolutive_entwicklung (mit spiegelbildlicher 'erklaert_entstehung_von'-Verbindung auf der Evolutionsseite) -- vorher hatte nur bk_struktur_funktion diese explizite Verbindung",
       "Damit ist für alle vier Nicht-Evolutions-Basiskonzepte explizit modelliert, warum sie selbst (nicht nur die von ihnen erklärten Phänomene) nur im Licht der Evolution verständlich sind (Dobzhansky-Kohärenzfaden)",
       "Rechtschreibkorrektur: 'ermoeglicht' vereinheitlicht zu 'ermöglicht' in bk_information_kommunikation.bk_verbindungen"
+    ],
+    "aenderungen_v5": [
+      "bk_individuelle_evolutive_entwicklung (Ebene 1) aufgeteilt in zwei eigenständige Basiskonzepte: bk_individuelle_entwicklung und bk_evolutive_entwicklung (entspricht der KMK-Gliederung für die Oberschule, in der beide getrennt geführt werden). Beide vormaligen Teilkonzepte __individuell/__evolutiv wurden zu vollwertigen Ebene-1-Basiskonzepten mit je zwei neuen, eigenen Teilkonzepten ausgebaut",
+      "paired_concept ist jetzt für alle 6 Basiskonzepte eine echte, wechselseitige Paarung: Struktur/Funktion <-> Stoff-/Energieumwandlung (korrigiert, vorher zeigte stoff_energie_umwandlung fälschlich auf Steuerung/Regelung), Information/Kommunikation <-> Steuerung/Regelung (unverändert), Individuelle Entwicklung <-> Evolutive Entwicklung (neu)",
+      "Alle bk_verbindungen der vier unveränderten Basiskonzepte, die zuvor auf bk_individuelle_evolutive_entwicklung zeigten, wurden inhaltlich aufgelöst und zeigen jetzt gezielt auf bk_individuelle_entwicklung oder bk_evolutive_entwicklung, je nachdem, ob die Verbindung sich auf Ontogenese oder Phylogenese bezieht",
+      "wesentliche_prinzipien_kmk um die in EvoMentor 1.2 notes.md dokumentierten, aus den Thüringer Lehrplandokumenten stammenden Teilaspekte ergänzt: 'Morphologische und anatomische Angepasstheit' (Struktur/Funktion), 'Biologisches System als offenes System' (Stoff-/Energieumwandlung), 'Kommunikation zwischen Organismen' und 'Kommunikation innerhalb eines Organismus' (Information/Kommunikation), 'Änderung eines inneren Zustands durch äußere Faktoren' (Steuerung/Regelung); Rückkopplungs-Prinzipien um den synonymen Lehrplanbegriff '(Rückwirkung)' ergänzt",
+      "Selbstreferenzielle Teilaspekte entfernt (ein Basiskonzept kann nicht sein eigenes Unterkonzept sein) -- betraf zuvor v. a. 'Stoff- und Energieumwandlung' als vermeintliches Unterkonzept seiner selbst und 'evolutive Entwicklung' als vermeintliches Unterkonzept seiner selbst",
+      "Neu: data/evolutionskonzepte.json als eigenständiges, schema-validiertes kontrolliertes Vokabular für relevante_evolutionskonzepte[]; bk_evolutive_entwicklung referenziert diese Datei explizit"
     ]
   },
   "basiskonzepte": [
@@ -34,6 +43,7 @@
       "definition_didaktisch": "Biologische Strukturen sind auf allen Organisationsebenen nicht zufällig geformt, sondern durch evolutive Selektion auf ihre spezifischen Funktionen hin optimiert. Das Verstehen dieses Zusammenhangs ermöglicht es, aus dem Bau eines biologischen Systems Rückschlüsse auf seine Funktion zu ziehen und umgekehrt. Dieses Basiskonzept ist das am häufigsten anwendbare Erklärungsprinzip im Biologieunterricht der Sekundarstufe I.",
       "wesentliche_prinzipien_kmk": [
         "Kompartimentierung",
+        "Morphologische und anatomische Angepasstheit",
         "Schlüssel-Schloss-Prinzip",
         "Oberflächenvergrößerung",
         "Gegenspielerprinzip",
@@ -145,9 +155,9 @@
           "empfohlene_verschraenkung": "Immer wenn eine Stoff/Energie-Funktion eingeführt wird, explizit die strukturelle Grundlage ergänzen"
         },
         {
-          "partner_bk": "bk_individuelle_evolutive_entwicklung",
-          "begruendung": "Strukturelle Angepasstheit ist das Ergebnis evolutiver Selektion; Str/Fkt erklärt das 'Wie', Ind/Evo erklärt das 'Warum'",
-          "empfohlene_verschraenkung": "Angepasstheit von Insekten als Brücke: Struktur erklären (Str/Fkt), dann evolutiven Ursprung ergänzen (Ind/Evo)"
+          "partner_bk": "bk_evolutive_entwicklung",
+          "begruendung": "Strukturelle Angepasstheit ist das Ergebnis evolutiver Selektion; Str/Fkt erklärt das 'Wie', die evolutive Entwicklung erklärt das 'Warum'",
+          "empfohlene_verschraenkung": "Angepasstheit von Insekten als Brücke: Struktur erklären (Str/Fkt), dann evolutiven Ursprung ergänzen (Evolutive Entwicklung)"
         }
       ],
       "ersteinfuehrung_empfehlung": {
@@ -187,9 +197,9 @@
           "beschreibung": "Die Struktur von Nervenzellen, Sinnesorganen und Rezeptormolekülen ist die notwendige Bedingung für Informationsaufnahme, -weiterleitung und -verarbeitung."
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_evolutive_entwicklung",
           "beziehungstyp": "wird_erklaert_durch",
-          "beschreibung": "Strukturelle Angepasstheiten sind das Ergebnis evolutiver Selektion. Ind/Evo liefert die historisch-kausale Erklärung für das Vorhandensein bestimmter Strukturen."
+          "beschreibung": "Strukturelle Angepasstheiten sind das Ergebnis evolutiver Selektion. Die evolutive Entwicklung liefert die historisch-kausale Erklärung für das Vorhandensein bestimmter Strukturen."
         },
         {
           "ziel_bk": "bk_steuerung_regelung",
@@ -651,12 +661,13 @@
       "ebene": 1,
       "bezeichnung": "Stoff- und Energieumwandlung",
       "kurzbezeichnung": "Stoff/Energie",
-      "paired_concept": "Steuerung und Regelung",
+      "paired_concept": "Struktur und Funktion",
       "definition_kmk": "Beschreibt den Sachverhalt, dass biologische Systeme offene, sich selbst organisierende Systeme sind, die im ständigen Austausch mit der Umwelt stehen. Alle Lebensprozesse benötigen Energie und laufen unter Energieumwandlungen ab. Lebewesen nehmen Stoffe auf, wandeln sie um und scheiden Stoffe wieder aus.",
       "definition_didaktisch": "Lebewesen sind keine geschlossenen Systeme, sondern stehen im ständigen Stoff- und Energieaustausch mit ihrer Umwelt. Dieser Austausch ist die materielle Grundlage aller Lebensprozesse. Das Konzept verbindet Chemie und Physik mit der Biologie und ist die Grundlage für das Verständnis von Verdauung, Atmung, Kreislauf, Zellatmung und Ökologie.",
       "wesentliche_prinzipien_kmk": [
+        "Biologisches System als offenes System",
         "Fließgleichgewicht",
-        "Stoffkreislauf",
+        "Stoffkreislauf und Energiefluss",
         "Energieentwertung",
         "Energetische Kopplung"
       ],
@@ -798,12 +809,12 @@
           "beschreibung": "Metabolische Zustandsgrößen (Blutzucker, CO₂-Konzentration, Osmolalität) werden durch Regelkreise konstant gehalten"
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_individuelle_entwicklung",
           "beziehungstyp": "ermöglicht",
           "beschreibung": "Stoffwechselprozesse liefern die Energie für Wachstum, Zellteilung und Differenzierung in der Ontogenese"
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_evolutive_entwicklung",
           "beziehungstyp": "wird_erklaert_durch",
           "beschreibung": "Stoffwechselwege selbst sind keine optimal konstruierten Systeme, sondern das Ergebnis evolutiver Bastelei (evolutionary tinkering) auf bereits vorhandenen biochemischen Grundlagen: Der umständliche Umweg der Glykolyse, die Mehrfachnutzung derselben Enzymfamilien in unterschiedlichen Stoffwechselwegen und Kompromisslösungen wie die Sauerstoffabhängigkeit der Zellatmung sind nur als historisch-kontingente Produkte natürlicher Selektion verständlich, nicht als von Grund auf geplantes Design"
         }
@@ -1117,7 +1128,9 @@
       "definition_didaktisch": "Biologische Systeme verhalten sich zielgerichtet, weil sie Informationen verarbeiten. Das Nervensystem, das Hormonsystem und das Immunsystem sind drei verschiedene Implementierungen desselben grundlegenden Informationsarchitektur-Musters: Reiz → Rezeptor → Codierung → Weiterleitung → Verarbeitung → Reaktion.",
       "wesentliche_prinzipien_kmk": [
         "Signaltransduktion",
-        "Codierung und Decodierung von Information"
+        "Codierung und Decodierung von Information",
+        "Kommunikation zwischen Organismen",
+        "Kommunikation innerhalb eines Organismus"
       ],
       "systemebenen": [
         "Molekül",
@@ -1252,12 +1265,12 @@
           "beschreibung": "Nervenzellstruktur, Synapsenaufbau, Rezeptorstruktur und Sinnesorganarchitektur sind strukturelle Grundlagen aller Informationsprozesse."
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_individuelle_entwicklung",
           "beziehungstyp": "ermöglicht",
           "beschreibung": "Das Hormonsystem (Info/Komm) steuert die individuelle Entwicklung (Pubertät, Menstruationszyklus, Metamorphose); Informationsprozesse sind die kausalen Mechanismen der Ontogenese."
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_evolutive_entwicklung",
           "beziehungstyp": "wird_erklaert_durch",
           "beschreibung": "Die Architektur biologischer Informations- und Kommunikationssysteme ist selbst ein evolutives Produkt: die Wiederverwendung uralter Hormonrezeptor-Familien für immer neue Signalfunktionen, redundante parallele Kommunikationskanäle (Nerven, Hormone, Immunsystem) und suboptimal 'verdrahtete' Sinnes- und Nervenbahnen sind nur als schrittweise Modifikation bereits vorhandener evolutionärer Strukturen erklärbar, nicht als kohärent geplantes Kommunikationssystem"
         }
@@ -1528,9 +1541,10 @@
       "definition_kmk": "Beschreibt den Sachverhalt, dass biologische Systeme viele Zustandsgrößen in Grenzen halten, auch wenn innere oder äußere Faktoren sich kurzfristig stark ändern. Dabei werden innere Zustände aufrechterhalten oder funktionsbezogen verändert.",
       "definition_didaktisch": "Biologische Systeme sind stabil, weil sie kontinuierlich über ihren Zustand informiert werden und korrigierend eingreifen können. Das Regelkreismodell (Sollwert, Istwert, Sensor, Komparator, Stellglied, Rückkopplung) ist das konzeptuelle Kernmodell dieses Basiskonzepts.",
       "wesentliche_prinzipien_kmk": [
-        "Positive Rückkopplung",
-        "Negative Rückkopplung",
-        "Prinzip der Homöostase"
+        "Positive Rückkopplung (Rückwirkung)",
+        "Negative Rückkopplung (Rückwirkung)",
+        "Prinzip der Homöostase",
+        "Änderung eines inneren Zustands durch äußere Faktoren"
       ],
       "systemebenen": [
         "Molekül",
@@ -1663,12 +1677,12 @@
           "beschreibung": "Stoff- und Energieumwandlungsgrößen (Blutzucker, CO₂-Konzentration, Osmolalität) sind die Regelgrößen biologischer Kreise"
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_individuelle_entwicklung",
           "beziehungstyp": "steuert",
           "beschreibung": "Hormonelle Regelkreise steuern ontogenetische Prozesse (Pubertät, Menstruationszyklus, Metamorphose)"
         },
         {
-          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "ziel_bk": "bk_evolutive_entwicklung",
           "beziehungstyp": "wird_erklaert_durch",
           "beschreibung": "Regelkreise selbst sind evolvierte Kontrollarchitekturen mit historischem Gepäck: suboptimale Sollwerte, verzögerte Rückkopplungsschleifen und mehrere parallele, teils redundante Regelmechanismen (z. B. verschiedene Wege der Blutzuckerregulation) sind nur erklärbar, wenn man Steuerung und Regelung als Ergebnis schrittweiser Selektion auf bereits bestehenden physiologischen Systemen begreift, nicht als optimales technisches Design"
         }
@@ -1912,81 +1926,64 @@
       ]
     },
     {
-      "id": "bk_individuelle_evolutive_entwicklung",
+      "id": "bk_individuelle_entwicklung",
       "ebene": 1,
-      "bezeichnung": "Individuelle und evolutive Entwicklung",
-      "kurzbezeichnung": "Ind/Evo",
-      "paired_concept": "Information und Kommunikation",
-      "definition_kmk": "Beschreibt den Sachverhalt, dass sich lebende Systeme über verschiedene Zeiträume im Zusammenhang mit Umwelteinflüssen verändern. Die individuelle Entwicklung von Lebewesen und die Weitergabe ihrer genetischen Information durch Fortpflanzung sind die Grundlage für evolutive Entwicklung. Sexuelle Fortpflanzung führt zur Rekombination von genetischem Material und erhöht die genetische Variation. Zusammen mit Selektion ist genetische Variation eine wichtige Ursache für Artwandel.",
-      "definition_didaktisch": "Lebewesen verändern sich auf zwei grundlegend verschiedenen Zeitskalen: innerhalb eines Lebens (Ontogenese) und über Generationen hinweg (Phylogenese). Beide Prozesse hängen zusammen: Individuelle Entwicklung (Zelldifferenzierung, Fortpflanzung) ist die Grundlage dafür, dass genetische Information weitergegeben und durch Selektion geformt werden kann. Das Basiskonzept verbindet die Biologie des Menschen (Pubertät, Schwangerschaft, Nervensystem-Plastizität, Immungedächtnis) mit der Evolutionsbiologie (Angepasstheit der Insekten, Stammbaum der Wirbellosen) und schlägt eine Brücke zwischen zwei sehr unterschiedlichen Zeitskalen.",
+      "bezeichnung": "Individuelle Entwicklung",
+      "kurzbezeichnung": "Ind. Entw.",
+      "paired_concept": "Evolutive Entwicklung",
+      "definition_kmk": "Beschreibt den Sachverhalt, dass sich ein Lebewesen von der befruchteten Eizelle bis zum Tod fortlaufend verändert (Ontogenese). Zelldifferenzierung, Wachstum, Reifung und Fortpflanzung sind zentrale Teilprozesse. Reproduktion ist zugleich die notwendige Grundlage dafür, dass genetische Information an die nächste Generation weitergegeben werden kann.",
+      "definition_didaktisch": "Die individuelle Entwicklung beschreibt den Lebenslauf eines einzelnen Organismus als biologischen Prozess auf der Zeitskala eines einzelnen Lebens. Im Mittelpunkt stehen Zelldifferenzierung (wie entstehen aus einer Zelle viele verschiedene Zelltypen?), die hormonelle Steuerung von Reifung und Fortpflanzung sowie die vorgeburtliche Entwicklung. Besonders bedeutsam ist die Biologie des Menschen: die verlängerte Kindheitsphase, die postnatale Hirnentwicklung und das Immungedächtnis sind ontogenetische Besonderheiten, die erst durch ihre evolutive Entstehungsgeschichte (Basiskonzept Evolutive Entwicklung) vollständig erklärbar werden.",
       "wesentliche_prinzipien_kmk": [
         "Zelldifferenzierung",
-        "Reproduktion",
-        "Selektion"
+        "Reproduktion und Individualentwicklung",
+        "Wachstum und Reifung"
       ],
       "systemebenen": [
-        "Molekül (DNA)",
-        "Zelle",
-        "Organismus",
-        "Population",
-        "Art"
+        "Molekül (DNA, Hormone)",
+        "Zelle (Zygote, Stammzellen, differenzierte Zellen)",
+        "Organ (Drüsen, Gonaden, Gehirn)",
+        "Organismus"
       ],
       "typische_zeitskalen": [
-        "Tage bis Monate (Embryonalentwicklung)",
-        "Jahre bis Jahrzehnte (Pubertät, Lebenszeit)",
-        "Generationen (kurzfristige evolutive Veränderungen, z. B. Antibiotikaresistenz)",
-        "Jahrmillionen (Makroevolution, Artentstehung)"
+        "Stunden bis Tage (frühe Zellteilung nach Befruchtung)",
+        "Wochen bis Monate (Embryonalentwicklung, Organogenese)",
+        "Jahre (Pubertät, Adoleszenz, postnatale Hirnentwicklung)",
+        "Lebenslang (gesamte Ontogenese, immunologisches Gedächtnis)"
       ],
       "beispielthemen_gy78": [
-        "Pubertät: hormonelle Steuerung von Körperveränderungen durch Hypophyse, Gonaden",
-        "Menstruationszyklus: zyklischer Entwicklungsprozess unter hormoneller Steuerung",
-        "Vorgeburtliche Entwicklung: Befruchtung → Zygote → Embryo → Fetus",
-        "Metamorphose bei Insekten: vollständige und unvollständige Verwandlung",
-        "Sexualität: biologische Diversität von Geschlecht und sexueller Orientierung",
-        "Angepasstheit von Insekten an Lebensräume als Ergebnis evolutiver Selektion",
-        "Variabilität als Voraussetzung für Selektion",
-        "Natürliche Selektion als Mechanismus des Artwandels",
-        "Nervensystem-Plastizität als Entwicklungsmerkmal des menschlichen Gehirns",
-        "Immunologisches Gedächtnis als adaptive Lernkapazität des Immunsystems",
-        "Stammbaum der Wirbellosen: phylogenetische Verwandtschaft",
-        "Evolution des menschlichen Gehirns im Vergleich: Strickleiternervensystem vs. ZNS/PNS"
+        "Pubertät: hormonelle Aktivitätsänderung von Hypophyse, Hoden und Eierstöcken",
+        "Menstruationszyklus: Aufbau und Abstoßung der Gebärmutterschleimhaut unter hormoneller Steuerung",
+        "Vorgeburtliche Entwicklung: Befruchtung → Zygote → Furchung → Embryo → Fetus",
+        "Metamorphose bei Insekten als ontogenetischer Umbauprozess",
+        "Zelldifferenzierung: aus einer Zygote entstehen über 200 verschiedene Zelltypen",
+        "Postnatale Hirnentwicklung des Menschen: Synaptogenese, Pruning, Myelinisierung",
+        "Immunologisches Gedächtnis als adaptive ontogenetische Kapazität"
       ],
       "typische_mechanismen": [
-        "Zelldifferenzierung durch gezielte Genexpression: Zygote → spezialisierte Zelltypen",
-        "Mitose für Wachstum, Meiose für Rekombination und Gametbildung",
-        "Hormonelle Steuerung der Fortpflanzung (FSH, LH, Östrogen, Progesteron, Testosteron)",
-        "Metamorphose durch Häutungshormone (Ecdyson) – hormonelle Steuerung",
-        "Natürliche Selektion: Differenzielle Reproduktion bevorzugt gut angepasste Individuen",
-        "Mutation als zufällige Quelle neuer genetischer Varianten",
-        "Rekombination erhöht genetische Variabilität in Populationen",
-        "Synaptische Plastizität als Mechanismus des Lernens und der Anpassung des Nervensystems"
+        "Mitose für Wachstum: identische Tochterzellen",
+        "Meiose für Gametbildung: Rekombination und Haploidisierung",
+        "Zelldifferenzierung durch gezielte Genexpression: identisches Erbgut, verschiedene Genaktivität",
+        "Hormonelle Steuerung der Pubertät: GnRH → FSH/LH → Testosteron/Östrogen → Körperveränderungen",
+        "Synaptische Plastizität: Stärkung häufig genutzter Verbindungen, Pruning ungenutzter Synapsen",
+        "Klonale Selektion von B-Zellen: passendes Antikörper-B-Zell-Klon proliferiert → Gedächtniszellen entstehen"
       ],
       "epistemische_rollen": [
-        "Historisch-narratives Erklärungsframework: biologische Merkmale werden durch ihre Entstehungsgeschichte erklärt",
-        "Verbindet individuelle Zeitskala (Ontogenese) mit evolutiver Zeitskala (Phylogenese)",
-        "Erklärt biologische Diversität als Ergebnis historisch kontingenter Prozesse",
-        "Grundlage für Verständnis von Angepasstheit als Ergebnis, nicht als Absicht",
-        "Verbindet Genetik, Entwicklungsbiologie und Evolutionsbiologie zu einem Rahmenkonzept",
-        "Erklärt Besonderheiten der menschlichen Biologie (Gehirnentwicklung, Immungedächtnis, lange Kindheitsphase) als evolutive Strategien"
+        "Beschreibt die Zeitskala eines einzelnen Lebens als eigenständiges Erklärungsniveau, komplementär zur evolutiven (Populations-)Zeitskala",
+        "Grundlage für das Verständnis von Gesundheit, Reifung und Entwicklungsstörungen",
+        "Verbindet Zellbiologie, Genetik und Physiologie zu einem entwicklungsbiologischen Rahmenkonzept",
+        "Erklärt, warum Ontogenese die notwendige Voraussetzung jeder evolutiven Veränderung ist: nur reproduktionsfähige Individuen geben genetische Information weiter"
       ],
       "kausale_rollen": [
-        "Natürliche Selektion als kausaler Mechanismus des Artwandels: differenzielle Reproduktion führt zu Häufigkeitsverschiebungen",
         "Zelldifferenzierung durch epigenetische Steuerung als kausales Entwicklungsmodell",
-        "Mutation als zufällige kausale Quelle neuer genetischer Variation",
-        "Rekombination als kausaler Mechanismus zur Erhöhung genetischer Variabilität",
         "Hormonelle Kaskaden als kausaler Mechanismus der Pubertätsentwicklung",
-        "Synaptische Plastizität als kausaler Mechanismus der Gehirnentwicklung und des Lernens"
+        "Synaptische Plastizität als kausaler Mechanismus der Gehirnentwicklung und des Lernens",
+        "Reproduktion als kausale Voraussetzung für die Weitergabe genetischer Variation an die nächste Generation"
       ],
       "haeufige_schuelervorstellungen": [
         {
-          "fehlvorstellung": "Lebewesen entwickeln Merkmale, weil sie diese brauchen (Lamarckismus / teleologisches Denken)",
-          "korrekte_vorstellung": "Merkmale entstehen durch zufällige Variation (Mutation, Rekombination); Selektion bevorzugt diejenigen Varianten, die unter den gegebenen Bedingungen besser reproduzieren",
-          "didaktischer_hinweis": "Explizit den Unterschied zwischen Lamarck und Darwin thematisieren; teleologische Schülerformulierungen aufgreifen und umformulieren"
-        },
-        {
-          "fehlvorstellung": "Evolution ist gerichtet und hat ein Ziel (z. B. 'der Mensch ist das Ziel der Evolution')",
-          "korrekte_vorstellung": "Evolution ist ungerichtet; Selektion wirkt auf den aktuellen Selektionsdruck, nicht auf ein zukünftiges Ziel",
-          "didaktischer_hinweis": "Artenvielfalt der Insekten als Gegenbeispiel: viele verschiedene 'Lösungen' für ähnliche Probleme"
+          "fehlvorstellung": "Alle Körperzellen sind genetisch unterschiedlich, weil sie verschiedene Aufgaben haben",
+          "korrekte_vorstellung": "Alle Körperzellen eines Organismus haben (mit wenigen Ausnahmen) identisches Erbgut; Unterschiede entstehen durch verschiedene Genexpression (Zelldifferenzierung)",
+          "didaktischer_hinweis": "Klonierungsbeispiel: Aus einer Körperzelle kann theoretisch ein ganzer Organismus entstehen"
         },
         {
           "fehlvorstellung": "Ontogenese und Phylogenese sind dasselbe oder haben nichts miteinander zu tun",
@@ -1994,140 +1991,92 @@
           "didaktischer_hinweis": "Explizit die Brücke bauen: Ohne Fortpflanzung keine Evolution; Fortpflanzung ist Teil der Ontogenese"
         },
         {
-          "fehlvorstellung": "Alle Individuen einer Art sind genetisch identisch",
-          "korrekte_vorstellung": "Genetische Variabilität ist die Norm; sie ist die Voraussetzung für Selektion und damit für evolutive Entwicklung",
-          "didaktischer_hinweis": "Variation innerhalb einer Klasse oder Insektenpopulation beobachten und dokumentieren"
-        },
-        {
-          "fehlvorstellung": "Pubertät ist ein sozialer, nicht biologischer Prozess",
-          "korrekte_vorstellung": "Pubertät ist ein biologisch gesteuerter Entwicklungsprozess durch hormonelle Aktivitätsänderungen der Hypophyse und der Gonaden",
-          "didaktischer_hinweis": "Biologische und soziale Dimension unterscheiden, aber Verbindung anerkennen"
-        },
-        {
-          "fehlvorstellung": "Das menschliche Gehirn ist bei der Geburt fertig entwickelt",
-          "korrekte_vorstellung": "Das menschliche Gehirn entwickelt sich postnatal über viele Jahre weiter; Synaptogenese, Pruning und Myelinisierung dauern bis ins frühe Erwachsenenalter – eine evolutive Besonderheit des Menschen",
-          "didaktischer_hinweis": "Vergleich: Insektengehirn (Strickleiternervensystem, bei Schlupf funktional) vs. menschliches Gehirn (jahrelange Reifung)"
+          "fehlvorstellung": "Das Gehirn ist bei der Geburt fertig und lernt nur durch Erfahrungen 'neue Inhalte'",
+          "korrekte_vorstellung": "Das Gehirn entwickelt sich strukturell nach der Geburt weiter: Synaptogenese, Pruning und Myelinisierung dauern bis ins frühe Erwachsenenalter; Lernen verändert die Synapsenstruktur physisch",
+          "didaktischer_hinweis": "Verknüpfung mit Nervensystem-Plastizität und mit Suchtmittelwirkung als Beleg"
         }
       ],
       "typische_misskonzeptionen_entstehung": [
-        "Teleologisches Denken ist tief in der Alltagssprache verankert ('damit', 'um zu', 'weil es nötig ist') und erfordert aktive Umformulierung im Unterricht",
-        "Gerichtetheitsmisskonzeption entsteht durch lineare Stammbaumdarstellungen, die den Menschen als Endpunkt zeigen",
-        "Ontogenese-Phylogenese-Verwechslung entsteht durch fehlende explizite Unterscheidung der Zeitskalen"
+        "Verwechslung von Ontogenese und Phylogenese entsteht durch fehlende explizite Unterscheidung der Zeitskalen",
+        "Die Vorstellung genetisch unterschiedlicher Körperzellen entsteht durch Analogie zu sichtbar unterschiedlichen Zelltypen"
       ],
       "konzeptuelle_voraussetzungen": [
-        "Grundverständnis der Zellbiologie: Zellteilung (Mitose) und Zellstruktur (ZEL-PTZ-2)",
-        "Grundverständnis des Hormonsystems als Steuerungssystem (Info/Komm und Steu/Reg)",
-        "Grundverständnis von genetischer Information als Träger von Erbinformation (mindestens konzeptuell)",
-        "Grundverständnis von Variabilität als beobachtbares Phänomen in Populationen"
+        "Grundverständnis der Zellbiologie: Zellteilung (Mitose) und Zellstruktur",
+        "Grundverständnis des Hormonsystems als Steuerungssystem (Information/Kommunikation, Steuerung/Regelung)",
+        "Grundverständnis von genetischer Information als Träger von Erbinformation (mindestens konzeptuell)"
       ],
       "sequenzierungsempfehlung": {
-        "empfohlene_phase_ontogenese": "Klasse 8 (zweites Halbjahr) – nach Einführung des Nervensystems und des Hormonsystems",
-        "empfohlene_phase_phylogenese": "Klasse 7 (erstes Halbjahr) – im Kontext der Wirbellosen als phänomenologischer Einstieg; vertieft in Klasse 8",
-        "begruendung": "Die ontogenetischen Inhalte (Pubertät, Fortpflanzung, vorgeburtliche Entwicklung) setzen Verständnis des Hormonsystems (Info/Komm, Steu/Reg) voraus. Die phylogenetischen Inhalte (Angepasstheit, Selektion) können phänomenologisch früh eingeführt werden (Insekten).",
-        "empfohlene_einführungsreihenfolge_ontogenese": [
+        "empfohlene_phase": "Klasse 8 (zweites Halbjahr) – nach Einführung des Nervensystems und des Hormonsystems",
+        "begruendung": "Die hormonelle Steuerung der Pubertät und des Menstruationszyklus setzt Verständnis des Hormonsystems und von Regelkreisen voraus. Die persönliche Relevanz der Pubertät für Schüler in diesem Alter macht dieses Thema zu einem besonders wirksamen Motivationsanker.",
+        "empfohlene_einführungsreihenfolge": [
           "1. Phänomenologischer Einstieg: Pubertät – was verändert sich und warum?",
           "2. Hormonsystem als Steuerungssystem der Pubertät (Hypophyse, Gonaden)",
-          "3. Menstruationszyklus als hormoneller Regelkreis (Verknüpfung mit Steu/Reg)",
+          "3. Menstruationszyklus als hormoneller Regelkreis",
           "4. Vorgeburtliche Entwicklung: Befruchtung, Zelldifferenzierung, Organogenese",
           "5. Zelldifferenzierung als Mechanismus: eine Zelle – viele Typen"
-        ],
-        "empfohlene_einführungsreihenfolge_phylogenese": [
-          "1. Beobachtung: Variabilität innerhalb einer Insektenart (Käfersammlung, Schmetterlingsflügelzeichnungen)",
-          "2. Angepasstheit beschreiben: Mundwerkzeuge verschiedener Insekten – welche passt zu welchem Lebensraum?",
-          "3. Mechanismus der Angepasstheit: Variation + Selektion als kausale Erklärung",
-          "4. Vertiefung: Mutation und Rekombination als Quellen der Variation",
-          "5. Stammbäume lesen und interpretieren"
         ]
       },
       "interleaving_partner": [
         {
+          "partner_bk": "bk_evolutive_entwicklung",
+          "begruendung": "Reproduktion (Ontogenese) ist die notwendige Grundlage für Selektion (Phylogenese); beide Basiskonzepte müssen explizit verknüpft werden",
+          "empfohlene_verschraenkung": "Nach Einführung der Fortpflanzung direkt die Frage stellen: 'Was passiert, wenn manche Individuen mehr Nachkommen haben als andere?'"
+        },
+        {
           "partner_bk": "bk_steuerung_regelung",
-          "begruendung": "Hormonelle Steuerung der Pubertät und des Menstruationszyklus verbindet Ind/Evo und Steu/Reg; beide Konzepte müssen gemeinsam behandelt werden",
-          "empfohlene_verschraenkung": "Menstruationszyklus gleichzeitig als Regelkreis (Steu/Reg) und als Entwicklungsprozess (Ind/Evo) analysieren"
-        },
-        {
-          "partner_bk": "bk_struktur_funktion",
-          "begruendung": "Angepasstheit als Ergebnis evolutiver Selektion manifestiert sich als strukturell-funktionale Anpassung; Str/Fkt erklärt das 'Wie', Ind/Evo das 'Warum'",
-          "empfohlene_verschraenkung": "Bei jedem Str/Fkt-Thema evolutiven Ursprung ergänzen: 'Wie entstand diese Struktur? Welcher Selektionsvorteil erklärt sie?'"
-        },
-        {
-          "partner_bk": "bk_information_kommunikation",
-          "begruendung": "Hormonelle Kommunikation ist der Mechanismus der Ontogenese; Info/Komm und Ind/Evo sind im Kontext der Pubertät und des Menstruationszyklus untrennbar. Zudem ist Nervensystem-Plastizität (Info/Komm) ein evolutiv einzigartiges Merkmal des menschlichen Gehirns (Ind/Evo).",
-          "empfohlene_verschraenkung": "Pubertät als Beispiel für hormonelle Kommunikation (Info/Komm) und Entwicklungsprozess (Ind/Evo) gleichzeitig behandeln; Lernprozesse als Schnittstelle von NER-10 und evolutiver Hirnanpassung thematisieren"
-        },
-        {
-          "partner_bk": "bk_stoff_energie_umwandlung",
-          "begruendung": "Wachstum, Zellteilung und Differenzierung erfordern Energie; der erhöhte Energiebedarf in der Pubertät und der Schwangerschaft verbindet Stoff/Energie mit Ind/Evo direkt",
-          "empfohlene_verschraenkung": "Energiebedarf in Entwicklungsphasen (Schwangerschaft, Pubertät, Wachstum) als Anwendung von Stoff/Energie im Kontext Ind/Evo thematisieren"
+          "begruendung": "Hormonelle Steuerung der Pubertät und des Menstruationszyklus verbindet beide Basiskonzepte unmittelbar",
+          "empfohlene_verschraenkung": "Menstruationszyklus gleichzeitig als Entwicklungsprozess und als Regelkreis analysieren"
         }
       ],
       "ersteinfuehrung_empfehlung": {
-        "jahrgangsstufe_ontogenese": "8 (zweites Halbjahr)",
-        "jahrgangsstufe_phylogenese": "7 (erstes Halbjahr, phänomenologisch im Kontext Wirbellose)",
-        "phänomenologischer_einstieg_ontogenese": "Pubertät: Was verändert sich an meinem Körper? Warum jetzt, warum so?",
-        "phänomenologischer_einstieg_phylogenese": "Warum haben verschiedene Insekten so unterschiedliche Mundwerkzeuge? Wer hat diese Vielfalt 'geplant'?",
-        "alltagsphänomen_ontogenese": "Körperveränderungen in der Pubertät, Schwangerschaft als beobachtbarer Entwicklungsprozess",
-        "alltagsphänomen_phylogenese": "Beobachtung von Insektenvielfalt in der Natur, Haustierrassen als Beispiel für künstliche Selektion",
-        "vom_konkreten_zum_abstrakten_phylogenese": [
-          "Schritt 1: Variation beobachten (Käferzeichnungen, Schneckengehäuse)",
-          "Schritt 2: Angepasstheit beschreiben (wer passt besser wohin?)",
-          "Schritt 3: Selektion als Mechanismus einführen (wer überlebt und reproduziert?)",
-          "Schritt 4: Mutation und Rekombination als Quellen der Variation",
-          "Schritt 5: Artwandel über Generationen als Ergebnis"
+        "jahrgangsstufe": "8 (zweites Halbjahr)",
+        "phänomenologischer_einstieg": "Pubertät: Schüler sammeln anonym Fragen zu körperlichen Veränderungen; Fragen werden biologisch beantwortet",
+        "alltagsphänomen": "Körperveränderungen in der Pubertät, sichtbare Entwicklung eines Säuglings zu einem Kind",
+        "vom_konkreten_zum_abstrakten": [
+          "Schritt 1: Beobachtbare Veränderungen in der Pubertät beschreiben und ordnen",
+          "Schritt 2: Hormonsystem als Ursache: Hypophyse → Gonaden → Körperveränderungen",
+          "Schritt 3: Vorgeburtliche Entwicklung: von der Zygote zum Fetus",
+          "Schritt 4: Zelldifferenzierung als Kernmechanismus: eine Zygote → viele Zelltypen"
         ]
       },
       "kognitive_komplexitaet_gy78": {
-        "abstraktionsgrad": "mittel (Ontogenese) bis sehr hoch (Phylogenese)",
+        "abstraktionsgrad": "mittel",
         "skalenspruenge_erforderlich": true,
         "hoehere_denkprozesse": [
-          "Historisch-kausal Erklären",
-          "Zeitskalen unterscheiden",
-          "Mechanismus von Ergebnis trennen",
-          "Populationsdenken entwickeln",
-          "Teleologisches Denken überwinden"
+          "Zeitliche Prozesse beschreiben und erklären",
+          "Hormonelle Kausalketten verfolgen",
+          "Gesundheitliche Maßnahmen ableiten"
         ],
         "typische_kognitionsprobleme": [
-          "Teleologisches Denken: Lebewesen entwickeln Merkmale 'weil sie sie brauchen'",
-          "Zeitskalen-Verwechslung: Ontogenese (Jahre) mit Phylogenese (Jahrmillionen) gleichsetzen",
-          "Individuum-Population-Verwechslung: Selektion wirkt auf Populationen, nicht auf Individuen",
-          "Gerichtetheitsillusion: Evolution als Fortschritt hin zu einem Ziel missverstehen"
+          "Verwechslung von Steuerung (Pubertät) und Regelung (Menstruationszyklus)",
+          "Fehlende Verbindung zwischen Zelldifferenzierung (molekular) und Organentwicklung (makroskopisch)"
         ]
       },
       "bk_verbindungen": [
         {
-          "ziel_bk": "bk_struktur_funktion",
-          "beziehungstyp": "erklaert_entstehung_von",
-          "beschreibung": "Evolutive Entwicklung (Ind/Evo) erklärt, warum bestimmte Strukturen und ihre Funktionen (Str/Fkt) existieren: Sie sind das Ergebnis langfristiger Selektion auf funktionale Effizienz"
-        },
-        {
           "ziel_bk": "bk_steuerung_regelung",
           "beziehungstyp": "wird_gesteuert_durch",
-          "beschreibung": "Individuelle Entwicklungsprozesse (Pubertät, Menstruationszyklus, Metamorphose) werden durch hormonelle Regelkreise gesteuert; Steu/Reg ist der Mechanismus der Ontogenese"
-        },
-        {
-          "ziel_bk": "bk_steuerung_regelung",
-          "beziehungstyp": "erklaert_entstehung_von",
-          "beschreibung": "Regelkreise selbst sind evolvierte Kontrollarchitekturen mit historischem Gepäck: suboptimale Sollwerte, verzögerte Rückkopplungsschleifen und mehrere parallele, teils redundante Regelmechanismen sind nur erklärbar, wenn man Steuerung und Regelung als Ergebnis schrittweiser Selektion auf bereits bestehenden physiologischen Systemen begreift, nicht als optimales technisches Design"
+          "beschreibung": "Individuelle Entwicklungsprozesse (Pubertät, Menstruationszyklus, Metamorphose) werden durch hormonelle Regelkreise gesteuert."
         },
         {
           "ziel_bk": "bk_information_kommunikation",
           "beziehungstyp": "wird_implementiert_durch",
-          "beschreibung": "Hormonelle Kommunikation ist der informationstheoretische Mechanismus, durch den Entwicklungsprozesse gesteuert werden; genetische Information ist die molekulare Grundlage der Weitergabe über Generationen; Nervensystem-Plastizität ist eine evolutiv entstandene Kapazität des menschlichen Gehirns"
-        },
-        {
-          "ziel_bk": "bk_information_kommunikation",
-          "beziehungstyp": "erklaert_entstehung_von",
-          "beschreibung": "Die Architektur biologischer Informations- und Kommunikationssysteme ist selbst ein evolutives Produkt: die Wiederverwendung uralter Hormonrezeptor-Familien für immer neue Signalfunktionen und redundante parallele Kommunikationskanäle (Nerven, Hormone, Immunsystem) sind nur als schrittweise Modifikation bereits vorhandener evolutionärer Strukturen erklärbar, nicht als kohärent geplantes Kommunikationssystem"
+          "beschreibung": "Hormonelle Kommunikation ist der informationstheoretische Mechanismus, durch den Entwicklungsprozesse gesteuert werden."
         },
         {
           "ziel_bk": "bk_stoff_energie_umwandlung",
           "beziehungstyp": "benoetigt",
-          "beschreibung": "Wachstum, Zellteilung und Differenzierung in der Ontogenese erfordern Energie und Baustoffe; Stoff- und Energieumwandlung ist die materielle Grundlage aller Entwicklungsprozesse"
+          "beschreibung": "Wachstum, Zellteilung und Differenzierung erfordern Energie und Baustoffe."
         },
         {
-          "ziel_bk": "bk_stoff_energie_umwandlung",
-          "beziehungstyp": "erklaert_entstehung_von",
-          "beschreibung": "Stoffwechselwege selbst sind keine optimal konstruierten Systeme, sondern das Ergebnis evolutiver Bastelei (evolutionary tinkering) auf bereits vorhandenen biochemischen Grundlagen: der umständliche Umweg der Glykolyse und die Mehrfachnutzung derselben Enzymfamilien in unterschiedlichen Stoffwechselwegen sind nur als historisch-kontingente Produkte natürlicher Selektion verständlich, nicht als von Grund auf geplantes Design"
+          "ziel_bk": "bk_evolutive_entwicklung",
+          "beziehungstyp": "wird_erklaert_durch",
+          "beschreibung": "Ontogenetische Programme sind selbst evolvierte Merkmale: die verlängerte menschliche Kindheitsphase, die Reihenfolge hormoneller Reifungsschritte und die Existenz eines lernfähigen Immungedächtnisses sind nur als Ergebnis natürlicher Selektion auf Entwicklungsprogramme erklärbar, nicht als notwendige oder optimale Konstruktion"
+        },
+        {
+          "ziel_bk": "bk_evolutive_entwicklung",
+          "beziehungstyp": "ermöglicht",
+          "beschreibung": "Reproduktion, der Kernprozess der individuellen Entwicklung, ist zugleich die notwendige Voraussetzung für jede evolutive Veränderung: ohne Weitergabe genetischer Information an Nachkommen gibt es keine Selektion und keinen Artwandel"
         }
       ],
       "lernziel_ids_thuringia": [
@@ -2146,478 +2095,595 @@
         "GY-78-HUM-VD-4",
         "GY-78-HUM-VD-5",
         "GY-78-HUM-VD-7",
-        "GY-78-WIR-INS-5",
-        "GY-78-WIR-INS-6",
         "GY-78-WIR-INS-7",
-        "GY-78-WIR-INS-8",
-        "GY-78-WIR-WTG-1",
-        "GY-78-WIR-WTG-5",
-        "GY-78-WIR-WTG-6",
-        "GY-78-WIR-WTG-7",
         "GY-78-ZEL-PTZ-5",
         "GY-78-ZEL-PTZ-7",
-        "GY-78-ZEL-BAK-2",
-        "GY-78-HUM-ZUS-1",
-        "GY-78-HUM-ATM-4",
-        "GY-78-HUM-BHK-3"
+        "GY-78-HUM-ZUS-1"
       ],
       "konzeptanker_lernziele": [
-        {
-          "lernziel_id": "GY-78-WIR-INS-7",
-          "begruendung": "Die Metamorphose ist der phänomenologisch stärkste Einstieg in das Basiskonzept Ind/Evo: Ein und dasselbe Individuum durchläuft dramatische Entwicklungsphasen; der evolutive Vorteil dieser Strategie ist diskutierbar"
-        },
         {
           "lernziel_id": "GY-78-HUM-FES-4",
           "begruendung": "Die vorgeburtliche Entwicklung verbindet Zelldifferenzierung (molekulare Ebene) mit Organogenese (Organ- und Organismusebene) und ist der zentrale Konzeptanker für die Ontogenese"
         },
         {
-          "lernziel_id": "GY-78-WIR-WTG-5",
-          "begruendung": "Das begründete Zuordnen von Tiergruppen ist die erste systematische Anwendung evolutiver Denkweise: Merkmale als Ausdruck evolutiver Verwandtschaft verstehen"
+          "lernziel_id": "GY-78-HUM-FES-1",
+          "begruendung": "Das Hormonsystem als Informationssystem zu charakterisieren ist der konzeptuelle Kern dieses Basiskonzepts: Es verknüpft Entwicklung mit Kommunikation und Regelkreis"
         },
         {
           "lernziel_id": "GY-78-HUM-NER-10",
-          "begruendung": "Nervenzellplastizität als Grundlage des Lernens ist ein einzigartiges evolutives Merkmal des menschlichen Gehirns; dieser Konzeptanker verbindet Info/Komm und Ind/Evo über die Biologie des Menschen"
-        },
-        {
-          "lernziel_id": "GY-78-HUM-ABW-5",
-          "begruendung": "Das immunologische Gedächtnis ist eine evolutiv entstandene adaptive Kapazität; die Analogie zum Lerngedächtnis des Nervensystems zeigt, dass Informationsspeicherung auf Zellebene eine evolutive Errungenschaft ist"
+          "begruendung": "Nervenzellplastizität als Grundlage des Lernens ist ein zentrales ontogenetisches Merkmal des menschlichen Gehirns"
         }
       ],
       "diagnostische_fragen": [
-        "Ein Schüler sagt: 'Der Schmetterling hat bunte Flügel entwickelt, weil er damit Feinde abschrecken muss.' Was ist an dieser Aussage biologisch falsch? Formuliere sie korrekt um.",
         "Erkläre, wie aus einer befruchteten Eizelle ein Organismus mit vielen verschiedenen Zelltypen entsteht. Was ist der entscheidende Mechanismus?",
-        "Vergleiche die vollständige und die unvollständige Metamorphose bei Insekten. Welchen evolutiven Vorteil könnte die vollständige Metamorphose haben?",
-        "Warum ist genetische Variabilität eine Voraussetzung für natürliche Selektion? Was würde ohne Variabilität passieren?",
-        "Das menschliche Gehirn ist bei der Geburt noch lange nicht fertig entwickelt. Welchen evolutiven Vorteil könnte diese verlängerte Entwicklungszeit haben?",
-        "Erkläre, warum das immunologische Gedächtnis als eine Form von 'evolutivem Lernen auf Zellebene' bezeichnet werden kann."
+        "Warum können aus einer einzigen befruchteten Eizelle so viele verschiedene Zelltypen entstehen, obwohl alle dieselbe DNA haben?",
+        "Warum braucht das menschliche Gehirn so viel länger zur Reifung als das Insektengehirn?",
+        "Erkläre, wie das immunologische Gedächtnis entsteht und warum es als 'biologisches Lernen' bezeichnet werden kann."
       ],
       "darstellungsformen_progression": [
-        "Stufe 1: Lebenszyklusdiagramme (Insektenmetamorphose, menschliche Entwicklung)",
-        "Stufe 2: Zeitpfeil-Darstellungen (Ontogenese von der Zygote bis zum Erwachsenen)",
-        "Stufe 3: Hormongraphen (Östrogen, Progesteron im Menstruationszyklus)",
-        "Stufe 4: Selektionsdiagramme (Variation → Selektion → veränderte Populationsfrequenz)",
-        "Stufe 5: Stammbäume mit Merkmalsangaben (phylogenetische Verwandtschaft)"
+        "Stufe 1: Körpersilhouetten mit eingetragenen Pubertätsveränderungen",
+        "Stufe 2: Hormongraph des Menstruationszyklus",
+        "Stufe 3: Zeitstrahl der vorgeburtlichen Entwicklung (Befruchtung bis Geburt)",
+        "Stufe 4: Schema synaptische Plastizität: Nutzung → Stärkung / Nichtnutzung → Pruning"
       ],
       "alltagsanker": [
-        "Pubertät: persönliche Erfahrung der Schüler als phänomenologischer Einstieg",
-        "Schmetterling aus der Raupe: dramatische Metamorphose als Motivation für Entwicklungsbiologie",
-        "Hunderassen: extreme Variabilität durch künstliche Selektion – Analogie zur natürlichen Selektion",
-        "Antibiotikaresistenz: Evolution in Echtzeit beobachtbar (Generationsfolge von Bakterien)",
-        "Impfung und Immungedächtnis: Der Körper 'lernt' aus Erfahrung – evolutiv entstandene Fähigkeit",
-        "Lernen und Vergessen: Synaptische Plastizität als biologische Grundlage – einzigartiges evolutives Erbe des Menschen"
+        "Pubertät als eigene Erfahrung: Was hat sich verändert? Wann begann es?",
+        "Raupe wird zum Schmetterling: beobachtbare Metamorphose als Einstieg in Zelldifferenzierung",
+        "Eineiige Zwillinge: selbes Erbgut → warum werden sie trotzdem unterschiedlich?",
+        "Impfung als Eingriff in das Immungedächtnis: Immunsystem wird 'trainiert'"
       ],
       "sprachliche_stolpersteine": [
         {
           "begriff": "Entwicklung",
-          "problem": "Im Alltag bedeutet 'Entwicklung' oft 'Verbesserung' oder 'Fortschritt'; in der Biologie ist Evolution nicht gerichtet und kein Fortschritt",
-          "empfehlung": "Konsequent unterscheiden: 'Individualentwicklung' (Ontogenese) vs. 'evolutive Entwicklung' (Phylogenese); 'Entwicklung' allein vermeiden"
+          "problem": "Im Alltag bedeutet 'Entwicklung' oft 'Verbesserung' oder 'Fortschritt'",
+          "empfehlung": "Konsequent unterscheiden: 'Individualentwicklung' (Ontogenese) vs. 'evolutive Entwicklung' (Phylogenese)"
         },
         {
-          "begriff": "Anpassung",
-          "problem": "Im Alltag: aktiver Vorgang ('ich passe mich an'); in der Biologie: passiver Selektionsprozess über Generationen",
-          "empfehlung": "Formulierung: 'Diese Struktur ist eine evolutive Anpassung an...' statt 'Das Tier hat sich angepasst'"
-        },
-        {
-          "begriff": "Selektion / Auslese",
-          "problem": "Klingt nach bewusstem Auswählen; tatsächlich: differenzielle Reproduktion aufgrund von Merkmalseigenschaften",
-          "empfehlung": "Immer operationalisieren: 'Selektion bedeutet: Individuen mit Merkmal X hinterlassen unter Bedingung Y mehr Nachkommen'"
-        },
-        {
-          "begriff": "Mutation",
-          "problem": "Im Alltag und in der Populärkultur: Mutation als dramatische, sichtbare Veränderung; in der Biologie: oft neutral oder schädlich, selten vorteilhaft",
-          "empfehlung": "Klären: Mutationen sind zufällig und überwiegend neutral; sie sind keine gezielten Anpassungen"
+          "begriff": "Differenzierung",
+          "problem": "Im Alltag: 'sich unterscheiden'; in der Biologie: Prozess der spezialisierten Ausprägung einer Zelle durch selektive Genexpression",
+          "empfehlung": "Immer den Prozesscharakter betonen"
         }
       ],
       "wissenschaftliche_praktiken": [
         "Entwicklungsbiologisches Beobachten und Dokumentieren (Metamorphose, Embryonalentwicklung anhand von Modellen)",
-        "Phylogenetische Analyse: Stammbäume lesen, interpretieren und einfache Stammbäume konstruieren",
-        "Argumentieren mit Selektionstheorie: evolutionäre Erklärungen formulieren und bewerten",
-        "Vergleichende Analyse von Angepasstheiten verschiedener Tiergruppen",
         "Ableiten gesundheitlicher Maßnahmen aus entwicklungsbiologischen Kenntnissen",
-        "Vergleichende Betrachtung menschlicher Merkmale (Gehirnentwicklung, Immunsystem) als evolutive Besonderheiten"
+        "Auswertung von Hormongraphen (Menstruationszyklus)"
       ],
-      "transfer_potential": 0.87,
-      "complexity_level_gy78": 0.76,
-      "centrality_estimate": 0.88,
-      "hinweis_zur_einordnung": "Reproduktion, Variabilität und Angepasstheit sind keine eigenständigen KMK-Basiskonzepte, sondern werden als wesentliche Aspekte innerhalb dieses Basiskonzepts behandelt. Die Biologie des Menschen (Pubertät, vorgeburtliche Entwicklung, Nervensystem-Plastizität, Immungedächtnis) ist als evolutiv erklärbare Ontogenese explizit eingebunden.",
+      "transfer_potential": 0.84,
+      "complexity_level_gy78": 0.68,
+      "centrality_estimate": 0.82,
       "teilkonzepte": [
         {
-          "id": "bk_individuelle_evolutive_entwicklung__individuell",
+          "id": "bk_individuelle_entwicklung__zelldifferenzierung",
           "ebene": 2,
-          "bezeichnung": "Individuelle Entwicklung (Ontogenese)",
-          "kurzbezeichnung": "Ind/Evo – Individuell",
-          "uebergeordnetes_bk": "bk_individuelle_evolutive_entwicklung",
-          "paired_teilkonzept": "bk_individuelle_evolutive_entwicklung__evolutiv",
-          "beschreibung_kmk": "Die individuelle Entwicklung (Ontogenese) umfasst alle Veränderungen eines Lebewesens von der befruchteten Eizelle bis zum Tod. Sie schließt Zellteilung, Zelldifferenzierung, Wachstum, Fortpflanzung und Altern ein. Umwelteinflüsse und genetische Programme steuern die Ontogenese gemeinsam. Reproduktion ist die Grundlage für die Weitergabe genetischer Information an die nächste Generation.",
-          "beschreibung_didaktisch": "Das Teilkonzept 'Individuelle Entwicklung' beschreibt den Lebenslauf eines einzelnen Organismus als biologischen Prozess. Im Mittelpunkt stehen Zelldifferenzierung (wie entstehen aus einer Zelle viele verschiedene Zelltypen?), die hormonelle Steuerung der Pubertät und des Menstruationszyklus sowie die vorgeburtliche Entwicklung. Besonders bedeutsam ist die Biologie des Menschen: Die verlängerte Kindheitsphase, die postnatale Hirnentwicklung (Synaptogenese, Pruning) und das Immungedächtnis sind evolutiv entstandene ontogenetische Besonderheiten des Menschen, die dieses Teilkonzept mit dem evolutiven Teilkonzept direkt verbinden.",
+          "bezeichnung": "Zelldifferenzierung und Embryonalentwicklung",
+          "kurzbezeichnung": "Ind. Entw. – Zelldiff.",
+          "uebergeordnetes_bk": "bk_individuelle_entwicklung",
+          "paired_teilkonzept": "bk_individuelle_entwicklung__reifung",
+          "beschreibung_kmk": "Aus einer befruchteten Eizelle entsteht durch Zellteilung und Zelldifferenzierung ein Organismus mit vielen spezialisierten Zelltypen. Differenzierung beruht auf selektiver Genexpression bei identischem Erbgut.",
+          "beschreibung_didaktisch": "Dieses Teilkonzept behandelt die frühe, strukturbildende Seite der Ontogenese: Wie entsteht aus einer Zelle ein vielzelliger, funktional gegliederter Organismus? Metamorphose bei Insekten wird hier als besonders dramatisches Beispiel ontogenetischer Umgestaltung behandelt.",
           "fokus_prinzipien": [
             "Zelldifferenzierung",
-            "Reproduktion"
+            "Organogenese"
           ],
           "systemebenen": [
-            "Molekül (DNA, Hormone)",
-            "Zelle (Zygote, Stammzellen, differenzierte Zellen)",
-            "Organ (Drüsen, Gonaden, Gehirn)",
+            "Molekül (DNA)",
+            "Zelle (Zygote, Stammzellen)",
+            "Organ",
             "Organismus"
           ],
           "typische_zeitskalen": [
-            "Stunden bis Tage (frühe Zellteilung nach Befruchtung)",
-            "Wochen bis Monate (Embryonalentwicklung, Organogenese)",
-            "Jahre (Pubertät, Adoleszenz, postnatale Hirnentwicklung)",
-            "Lebenslang (gesamte Ontogenese, immunologisches Gedächtnis)"
+            "Stunden bis Tage (frühe Zellteilung)",
+            "Wochen bis Monate (Embryonalentwicklung)"
           ],
           "beispielthemen_gy78": [
-            "Pubertät: hormonelle Aktivitätsänderung von Hypophyse, Hoden und Eierstöcken",
-            "Menstruationszyklus: Aufbau und Abstoßung der Gebärmutterschleimhaut unter hormoneller Steuerung",
             "Vorgeburtliche Entwicklung: Befruchtung → Zygote → Furchung → Embryo → Fetus",
             "Einflussfaktoren auf die vorgeburtliche Entwicklung: Alkohol, Nikotin, Infektionen",
             "Metamorphose bei Insekten: vollständige (Ei → Larve → Puppe → Imago) und unvollständige Verwandlung",
-            "Zelldifferenzierung: aus einer Zygote entstehen über 200 verschiedene Zelltypen",
-            "Sexualität: Varianten des biologischen Geschlechts, Geschlechtsidentitäten, sexuelle Orientierungen",
-            "Postnatale Hirnentwicklung des Menschen: Synaptogenese, synaptisches Pruning, Myelinisierung als evolutive Besonderheit",
-            "Immunologisches Gedächtnis als adaptive ontogenetische Kapazität: Aufbau durch Infektion oder Impfung",
-            "Sucht als Fehlentwicklung neuronaler Plastizität: Veränderung von Synapsenverbindungen durch Suchtmittel"
+            "Zelldifferenzierung: aus einer Zygote entstehen über 200 verschiedene Zelltypen"
           ],
           "typische_mechanismen": [
             "Mitose für Wachstum: identische Tochterzellen",
-            "Meiose für Gametbildung: Rekombination und Haploidisierung",
-            "Zelldifferenzierung durch gezielte Genexpression: identisches Erbgut, verschiedene Genaktivität",
-            "Hormonelle Steuerung der Pubertät: GnRH → FSH/LH → Testosteron/Östrogen → Körperveränderungen",
-            "Menstruationszyklus: FSH → Follikelreifung → Östrogen → LH-Gipfel → Ovulation → Gelbkörper → Progesteron → Menstruation oder Schwangerschaft",
-            "Metamorphose durch Ecdyson (Häutungshormon) und Juvenilhormon",
-            "Synaptische Plastizität: Stärkung häufig genutzter Verbindungen, Pruning ungenutzter Synapsen",
-            "Klonale Selektion von B-Zellen: passendes Antikörper-B-Zell-Klon proliferiert → Gedächtniszellen entstehen"
+            "Zelldifferenzierung durch gezielte Genexpression",
+            "Metamorphose durch Ecdyson (Häutungshormon) und Juvenilhormon"
           ],
           "haeufige_schuelervorstellungen": [
             {
               "fehlvorstellung": "Alle Körperzellen sind genetisch unterschiedlich, weil sie verschiedene Aufgaben haben",
-              "korrekte_vorstellung": "Alle Körperzellen eines Organismus haben (mit wenigen Ausnahmen) identisches Erbgut; Unterschiede entstehen durch verschiedene Genexpression (Zelldifferenzierung)",
-              "didaktischer_hinweis": "Klonierungsbeispiel: Aus einer Körperzelle kann theoretisch ein ganzer Organismus entstehen"
-            },
-            {
-              "fehlvorstellung": "Die Pubertät beginnt beim Mädchen früher als beim Jungen, weil Mädchen schneller 'reifen'",
-              "korrekte_vorstellung": "Der durchschnittlich frühere Pubertätsbeginn bei Mädchen ist biologisch durch unterschiedliche hormonelle Setpoints bedingt, nicht durch unterschiedliche 'Reife'",
-              "didaktischer_hinweis": "Sachliche, biologische Erklärung ohne Wertung; Variation im Zeitpunkt des Pubertätsbeginns ist normal"
-            },
-            {
-              "fehlvorstellung": "Das Gehirn ist bei der Geburt fertig und lernt nur durch Erfahrungen 'neue Inhalte'",
-              "korrekte_vorstellung": "Das Gehirn entwickelt sich strukturell nach der Geburt weiter: Synaptogenese, Pruning und Myelinisierung dauern bis ins frühe Erwachsenenalter; Lernen verändert die Synapsenstruktur physisch",
-              "didaktischer_hinweis": "Verknüpfung mit NER-10: Nervenzellverbindungen als plastische Strukturen; Einfluss von Suchtmitteln als Beleg (NER-12)"
+              "korrekte_vorstellung": "Alle Körperzellen haben identisches Erbgut; Unterschiede entstehen durch unterschiedliche Genexpression",
+              "didaktischer_hinweis": "Klonierungsbeispiel nutzen"
             }
           ],
           "konzeptuelle_voraussetzungen": [
-            "Grundverständnis der Zellstruktur und Zellteilung (ZEL-PTZ-2)",
-            "Grundverständnis des Hormonsystems als Informationssystem (Info/Komm)",
-            "Grundverständnis hormoneller Regelkreise (Steu/Reg – Regelung)",
-            "Grundverständnis der Blutbestandteile und des Kreislaufs als Transportweg für Hormone (BHK)",
-            "Grundverständnis des Nervensystems und synaptischer Plastizität (NER-9, NER-10)"
+            "Grundverständnis der Zellstruktur und Zellteilung"
           ],
           "sequenzierungsempfehlung": {
-            "empfohlene_phase": "Klasse 8 (zweites Halbjahr) – nach Einführung des Nervensystems und des Hormonsystems",
-            "begruendung": "Die hormonelle Steuerung der Pubertät und des Menstruationszyklus setzt Verständnis des Hormonsystems (Info/Komm) und von Regelkreisen (Steu/Reg) voraus. Die persönliche Relevanz der Pubertät für Schüler in diesem Alter macht dieses Thema zu einem besonders wirksamen Motivationsanker.",
-            "warnung": "Fortpflanzung und Entwicklung sollten nicht am Anfang der Jahrgangsstufe 7 eingeführt werden, da die konzeptuellen Voraussetzungen (Hormonsystem, Regelkreise) noch fehlen"
+            "empfohlene_phase": "Klasse 8 (zweites Halbjahr), erster Teil",
+            "begruendung": "Zelldifferenzierung ist die strukturelle Grundlage, auf der die hormonell gesteuerte Reifung (zweites Teilkonzept) aufbaut"
           },
-          "interleaving_partner": [
+          "lernziel_ids_thuringia": [
+            "GY-78-HUM-FES-4",
+            "GY-78-HUM-FES-5",
+            "GY-78-HUM-FES-7",
+            "GY-78-ZEL-PTZ-5",
+            "GY-78-ZEL-PTZ-7",
+            "GY-78-WIR-INS-7",
+            "GY-78-HUM-VD-4",
+            "GY-78-HUM-VD-5",
+            "GY-78-HUM-VD-7",
+            "GY-78-HUM-ZUS-1"
+          ],
+          "konzeptanker_lernziele": [
             {
-              "partner": "bk_steuerung_regelung__regelung",
-              "begruendung": "Der Menstruationszyklus ist gleichzeitig ein Entwicklungsprozess (Ind/Evo) und ein hormoneller Regelkreis (Steu/Reg); beide Perspektiven müssen explizit verknüpft werden",
-              "empfohlene_verschraenkung": "Menstruationszyklus-Diagramm gleichzeitig als Entwicklungsdiagramm und als Regelkreisdiagramm analysieren"
-            },
-            {
-              "partner": "bk_information_kommunikation__information",
-              "begruendung": "Synaptische Plastizität (NER-10) ist gleichzeitig ein Informationsspeicherungsprozess (Info/Komm) und ein individueller Entwicklungsprozess (Ind/Evo – Individuell); Suchtmittelmissbrauch (NER-12) zeigt die Verletzbarkeit ontogenetischer Gehirnentwicklung",
-              "empfohlene_verschraenkung": "NER-10 und NER-12 explizit als Entwicklungsbiologie des Gehirns rahmen, nicht nur als Physiologie"
-            },
-            {
-              "partner": "bk_individuelle_evolutive_entwicklung__evolutiv",
-              "begruendung": "Metamorphose bei Insekten verbindet Ontogenese (Teilkonzept Individuell) mit evolutiver Angepasstheit (Teilkonzept Evolutiv); beide Perspektiven ergänzen sich",
-              "empfohlene_verschraenkung": "Metamorphose: Ablauf (Ontogenese) und evolutiver Vorteil (Phylogenese) gemeinsam diskutieren"
+              "lernziel_id": "GY-78-HUM-FES-4",
+              "begruendung": "Zentraler Konzeptanker: verbindet Zelldifferenzierung mit Organogenese und hat hohe persönliche Relevanz"
             }
           ],
-          "ersteinfuehrung_empfehlung": {
-            "jahrgangsstufe": "8 (zweites Halbjahr)",
-            "phänomenologischer_einstieg": "Pubertät: Schüler sammeln anonym Fragen zu körperlichen Veränderungen; Fragen werden biologisch beantwortet",
-            "alltagsphänomen": "Körperveränderungen in der Pubertät, sichtbare Entwicklung eines Säuglings zu einem Kind",
-            "vom_konkreten_zum_abstrakten": [
-              "Schritt 1: Beobachtbare Veränderungen in der Pubertät beschreiben und ordnen",
-              "Schritt 2: Hormonsystem als Ursache: Hypophyse → Gonaden → Körperveränderungen",
-              "Schritt 3: Menstruationszyklus als zyklischer Entwicklungsprozess unter hormoneller Steuerung",
-              "Schritt 4: Vorgeburtliche Entwicklung: von der Zygote zum Fetus",
-              "Schritt 5: Zelldifferenzierung als Kernmechanismus: eine Zygote → viele Zelltypen",
-              "Schritt 6: Postnatale Hirnentwicklung: Warum braucht der Mensch so lange zum Erwachsenwerden?",
-              "Schritt 7: Immungedächtnis: Der Körper lernt aus Erfahrung – Parallele zur neuronalen Plastizität"
-            ]
-          },
-          "kognitive_komplexitaet_gy78": {
-            "abstraktionsgrad": "mittel",
-            "skalenspruenge_erforderlich": true,
-            "hoehere_denkprozesse": [
-              "Zeitliche Prozesse beschreiben und erklären",
-              "Hormonelle Kausalketten verfolgen",
-              "Gesundheitliche Maßnahmen ableiten",
-              "Biologische und soziale Dimension unterscheiden",
-              "Ontogenese als evolutiv entstandenen Prozess verstehen"
-            ],
-            "typische_kognitionsprobleme": [
-              "Verwechslung von Steuerung (Pubertät) und Regelung (Menstruationszyklus)",
-              "Fehlende Verbindung zwischen Zelldifferenzierung (molekular) und Organentwicklung (makroskopisch)",
-              "Biologische Fakten und normative Wertungen nicht klar trennen",
-              "Fehlende Verbindung zwischen Synaptischer Plastizität (NER-10) und Entwicklungsbiologie des Gehirns"
-            ]
+          "diagnostische_fragen": [
+            "Beschreibe den Weg von der befruchteten Eizelle zum Embryo mit erkennbaren Organanlagen.",
+            "Vergleiche vollständige und unvollständige Metamorphose bei Insekten."
+          ],
+          "alltagsanker": [
+            "Raupe wird zum Schmetterling: beobachtbare Metamorphose",
+            "Ultraschallbilder der Schwangerschaftsvorsorge als reales Beispiel für Embryonalentwicklung"
+          ],
+          "transfer_potential": 0.8,
+          "complexity_level_gy78": 0.62,
+          "centrality_estimate": 0.76
+        },
+        {
+          "id": "bk_individuelle_entwicklung__reifung",
+          "ebene": 2,
+          "bezeichnung": "Hormonelle Reifung und erworbene Anpassungsfähigkeit",
+          "kurzbezeichnung": "Ind. Entw. – Reifung",
+          "uebergeordnetes_bk": "bk_individuelle_entwicklung",
+          "paired_teilkonzept": "bk_individuelle_entwicklung__zelldifferenzierung",
+          "beschreibung_kmk": "Hormonelle Regelkreise steuern Reifungsprozesse wie Pubertät und Menstruationszyklus. Zusätzlich erwirbt der Organismus im Laufe seines Lebens anpassungsfähige Kapazitäten wie synaptische Plastizität und immunologisches Gedächtnis.",
+          "beschreibung_didaktisch": "Dieses Teilkonzept fasst zwei eng verwandte Phänomene zusammen: die hormonell gesteuerte körperliche Reifung (Pubertät, Zyklus) und die im Laufe des Lebens erworbenen, erfahrungsabhängigen Anpassungskapazitäten des Nerven- und Immunsystems. Beide zeigen, dass Ontogenese nicht nur vorprogrammiertes Wachstum, sondern auch lebenslange, umweltsensitive Feinabstimmung ist.",
+          "fokus_prinzipien": [
+            "Hormonelle Steuerung",
+            "Erfahrungsabhängige Plastizität"
+          ],
+          "systemebenen": [
+            "Molekül (Hormone, Antikörper)",
+            "Zelle (Neuron, Lymphozyt)",
+            "Organ (Gonaden, Gehirn)",
+            "Organismus"
+          ],
+          "typische_zeitskalen": [
+            "Jahre (Pubertät, Adoleszenz)",
+            "Lebenslang (synaptische Plastizität, Immungedächtnis)"
+          ],
+          "beispielthemen_gy78": [
+            "Pubertät: hormonelle Aktivitätsänderung von Hypophyse, Hoden und Eierstöcken",
+            "Menstruationszyklus als hormoneller Regelkreis",
+            "Postnatale Hirnentwicklung: Synaptogenese, Pruning, Myelinisierung",
+            "Sucht als Fehlentwicklung neuronaler Plastizität",
+            "Immunologisches Gedächtnis als adaptive ontogenetische Kapazität"
+          ],
+          "typische_mechanismen": [
+            "Hormonelle Kaskade: GnRH → FSH/LH → Testosteron/Östrogen",
+            "Synaptische Plastizität: Stärkung genutzter, Pruning ungenutzter Verbindungen",
+            "Klonale Selektion von B-Zellen → Gedächtniszellen"
+          ],
+          "haeufige_schuelervorstellungen": [
+            {
+              "fehlvorstellung": "Das Gehirn ist bei der Geburt fertig entwickelt",
+              "korrekte_vorstellung": "Das Gehirn reift strukturell bis ins frühe Erwachsenenalter weiter",
+              "didaktischer_hinweis": "Verknüpfung mit Suchtprävention"
+            }
+          ],
+          "konzeptuelle_voraussetzungen": [
+            "Grundverständnis des Hormonsystems und von Regelkreisen",
+            "Grundverständnis der Nervenzellstruktur"
+          ],
+          "sequenzierungsempfehlung": {
+            "empfohlene_phase": "Klasse 8 (zweites Halbjahr), zweiter Teil",
+            "begruendung": "Baut auf dem Verständnis von Hormonsystem und Regelkreisen auf"
           },
           "lernziel_ids_thuringia": [
             "GY-78-HUM-FES-1",
             "GY-78-HUM-FES-2",
             "GY-78-HUM-FES-3",
-            "GY-78-HUM-FES-4",
-            "GY-78-HUM-FES-5",
             "GY-78-HUM-FES-6",
-            "GY-78-HUM-FES-7",
             "GY-78-HUM-NER-10",
             "GY-78-HUM-NER-12",
             "GY-78-HUM-ABW-5",
             "GY-78-HUM-ABW-6",
-            "GY-78-HUM-ABW-7",
-            "GY-78-HUM-VD-4",
-            "GY-78-HUM-VD-5",
-            "GY-78-HUM-VD-7",
-            "GY-78-HUM-ZUS-1",
-            "GY-78-WIR-INS-7",
-            "GY-78-ZEL-PTZ-5",
-            "GY-78-ZEL-PTZ-7"
+            "GY-78-HUM-ABW-7"
           ],
           "konzeptanker_lernziele": [
             {
-              "lernziel_id": "GY-78-HUM-FES-1",
-              "begruendung": "Das Hormonsystem als Informationssystem zu charakterisieren ist der konzeptuelle Kern dieses Teilkonzepts: Es verknüpft Ind/Evo (Entwicklung) mit Info/Komm (Kommunikation) und Steu/Reg (Regelkreis)"
-            },
-            {
-              "lernziel_id": "GY-78-HUM-FES-4",
-              "begruendung": "Die vorgeburtliche Entwicklung verbindet Zelldifferenzierung mit Gesundheitsbildung und hat hohe persönliche Relevanz für Schüler"
-            },
-            {
               "lernziel_id": "GY-78-HUM-NER-10",
-              "begruendung": "Nervenzellplastizität als Grundlage von Lernprozessen ist ein ontogenetisches Schlüsselthema der Humanbiologie: Sie verbindet Entwicklungsbiologie (Ind/Evo – Individuell) mit Informationsverarbeitung (Info/Komm) und hat evolutiven Erklärungswert (langer Reifungsprozess des menschlichen Gehirns)"
-            },
-            {
-              "lernziel_id": "GY-78-HUM-ABW-5",
-              "begruendung": "Das immunologische Gedächtnis ist eine ontogenetisch erworbene Kapazität: Jedes Individuum baut im Laufe seines Lebens sein eigenes Immungedächtnis auf; die Parallele zur synaptischen Plastizität macht das allgemeine Prinzip der biologischen Informationsspeicherung deutlich"
+              "begruendung": "Nervenzellplastizität als Grundlage des Lernens ist das Kernbeispiel erworbener Anpassungsfähigkeit"
             }
           ],
           "diagnostische_fragen": [
-            "Erkläre, welche Drüsen in der Pubertät aktiver werden und welche Veränderungen das auslöst. Was ist die Ursache, was ist die Wirkung?",
-            "Beschreibe die Phasen des Menstruationszyklus und erkläre, welche Hormone jeweils dominant sind.",
-            "Warum können aus einer einzigen befruchteten Eizelle so viele verschiedene Zelltypen entstehen, obwohl alle dieselbe DNA haben?",
-            "Nenne drei Faktoren, die die vorgeburtliche Entwicklung schädigen können, und erkläre jeweils den biologischen Mechanismus der Schädigung.",
-            "Warum braucht das menschliche Gehirn so viel länger zur Reifung als das Insektengehirn? Welchen biologischen Vorteil könnte diese verlängerte Entwicklungszeit haben?",
-            "Erkläre, wie das immunologische Gedächtnis entsteht und warum es als 'biologisches Lernen' bezeichnet werden kann."
-          ],
-          "darstellungsformen_progression": [
-            "Stufe 1: Körpersilhouetten mit eingetragenen Pubertätsveränderungen",
-            "Stufe 2: Hormongraph des Menstruationszyklus (Östrogen, Progesteron, FSH, LH über 28 Tage)",
-            "Stufe 3: Kausalkettendiagramm: Hypophyse → FSH → Follikelreifung → Östrogen → Uterusschleimhaut",
-            "Stufe 4: Zeitstrahl der vorgeburtlichen Entwicklung (Befruchtung bis Geburt)",
-            "Stufe 5: Vergleichsdiagramm: vollständige vs. unvollständige Metamorphose",
-            "Stufe 6: Schema synaptische Plastizität: Nutzung → Stärkung / Nichtnutzung → Pruning"
+            "Beschreibe die Phasen des Menstruationszyklus.",
+            "Erkläre, wie das immunologische Gedächtnis entsteht."
           ],
           "alltagsanker": [
-            "Pubertät als eigene Erfahrung: Was hat sich verändert? Wann begann es?",
-            "Filmaufnahmen der Embryonalentwicklung: sichtbare Zellteilung und Organbildung",
-            "Raupe wird zum Schmetterling: beobachtbare Metamorphose als Einstieg in Zelldifferenzierung",
-            "Eineiige Zwillinge: selbes Erbgut → warum werden sie trotzdem unterschiedlich?",
-            "Impfung als Eingriff in das Immungedächtnis: Immunsystem wird 'trainiert'",
-            "Lernen für die Schule: Synaptische Verstärkung durch Wiederholung – biologischer Mechanismus des Lernens"
+            "Impfung als Training des Immunsystems",
+            "Lernen für die Schule als synaptische Verstärkung"
           ],
-          "sprachliche_stolpersteine": [
-            {
-              "begriff": "Differenzierung",
-              "problem": "Im Alltag: 'sich unterscheiden'; in der Biologie: Prozess der spezialisierten Ausprägung einer Zelle durch selektive Genexpression",
-              "empfehlung": "Immer den Prozesscharakter betonen: 'Zelldifferenzierung ist der Prozess, durch den eine Zelle ihre spezifische Form und Funktion ausbildet'"
-            },
-            {
-              "begriff": "Zyklus",
-              "problem": "Im Alltag: 'Kreislauf' oder 'Wiederholung'; in der Biologie: zeitlich strukturierter Prozess mit definierten Phasen",
-              "empfehlung": "Menstruationszyklus immer mit Tagesangaben und Phasennamen einführen; Phasengraph von Anfang an nutzen"
-            },
-            {
-              "begriff": "Plastizität",
-              "problem": "Im Alltag: 'formbar' oder 'biegsam'; in der Neurobiologie: Fähigkeit des Gehirns, seine synaptische Verschaltung zu verändern",
-              "empfehlung": "Immer konkret erklären: 'Neuronale Plastizität bedeutet: Das Gehirn kann seine Verbindungen zwischen Nervenzellen stärken, schwächen oder neu bilden'"
-            },
-            {
-              "begriff": "Geschlecht / Geschlechtsidentität / sexuelle Orientierung",
-              "problem": "Im Alltag oft synonym oder verwechselt; in der Biologie und Psychologie klar unterschiedene Konzepte",
-              "empfehlung": "Klare Definitionen: biologisches Geschlecht (chromosomal, gonadal, hormonell), Geschlechtsidentität (Selbstwahrnehmung), sexuelle Orientierung (Anziehung)"
-            }
-          ],
-          "wissenschaftliche_praktiken": [
-            "Beschreiben und Erklären von Entwicklungsabläufen anhand von Diagrammen und Modellen",
-            "Ableiten gesundheitlicher Maßnahmen aus entwicklungsbiologischen Kenntnissen",
-            "Bewertung von Verhütungsmethoden nach biologischen Kriterien",
-            "Auswertung von Hormongraphen (Menstruationszyklus)",
-            "Sachliche Auseinandersetzung mit biologischen Aspekten von Sexualität und Geschlecht",
-            "Verknüpfung von Suchtmittelwirkung (NER-12) mit Entwicklungsbiologie des Gehirns"
-          ],
-          "transfer_potential": 0.82,
-          "complexity_level_gy78": 0.65,
-          "centrality_estimate": 0.8
+          "transfer_potential": 0.83,
+          "complexity_level_gy78": 0.66,
+          "centrality_estimate": 0.79
+        }
+      ]
+    },
+    {
+      "id": "bk_evolutive_entwicklung",
+      "ebene": 1,
+      "bezeichnung": "Evolutive Entwicklung",
+      "kurzbezeichnung": "Evol. Entw.",
+      "paired_concept": "Individuelle Entwicklung",
+      "definition_kmk": "Beschreibt den Sachverhalt, dass sich Populationen und Arten über Generationen hinweg verändern. Genetische Variation (durch Mutation und Rekombination) und natürliche Selektion sind die zentralen Mechanismen. Angepasstheit ist das Ergebnis evolutiver Prozesse, Variabilität deren Voraussetzung.",
+      "definition_didaktisch": "Die evolutive Entwicklung beschreibt Veränderung auf der Zeitskala von Generationen bis Jahrmillionen und erfordert Populationsdenken statt Individualdenken. Sie ist zugleich das Basiskonzept, das erklärt, warum die anderen fünf Basiskonzepte in ihrer jeweiligen Form existieren: Strukturen, Stoffwechselwege, Kommunikationssysteme, Regelkreise und ontogenetische Programme sind selbst Produkte historisch-kontingenter Selektion, nicht optimal geplantes Design (Dobzhansky-Prinzip). Der Vokabular-Referenzrahmen für dieses Basiskonzept ist data/evolutionskonzepte.json.",
+      "wesentliche_prinzipien_kmk": [
+        "Selektion",
+        "Genetische Variation durch Mutation und Rekombination",
+        "Entwicklung von Ökosystemen (ökologische Sukzession)"
+      ],
+      "systemebenen": [
+        "Molekül (DNA: Mutation)",
+        "Organismus (Phänotyp, Angepasstheit)",
+        "Population (Variabilität, Selektion)",
+        "Art",
+        "Ökosystem"
+      ],
+      "typische_zeitskalen": [
+        "Generationen (wenige Jahre bei Bakterien: Antibiotikaresistenz)",
+        "Jahrzehnte bis Jahrhunderte (beobachtbare Selektion bei kurzlebigen Organismen)",
+        "Jahrtausende bis Jahrmillionen (Makroevolution, Artentstehung)"
+      ],
+      "beispielthemen_gy78": [
+        "Natürliche Selektion als Mechanismus des Artwandels: Variation → Selektion → Anpassung",
+        "Angepasstheiten von Insekten an Lebensräume: Mundwerkzeuge, Tarnfarben, Verhaltensweisen",
+        "Artenvielfalt der Insekten als Ergebnis evolutiver Radiation",
+        "Stammbäume der Wirbellosen: phylogenetische Verwandtschaft aus Merkmalsvergleichen ableiten",
+        "Nervensystem-Evolution: Strickleiternervensystem (Insekten) vs. ZNS/PNS (Mensch)",
+        "Immunsystem als evolutive Errungenschaft: von unspezifischer zu spezifischer Abwehr",
+        "Antibiotikaresistenz: Evolution in Echtzeit",
+        "Haustierrassen als Beispiel für künstliche Selektion"
+      ],
+      "typische_mechanismen": [
+        "Natürliche Selektion: Individuen mit vorteilhaften Merkmalen hinterlassen mehr Nachkommen",
+        "Mutation: zufällige Veränderung der DNA-Sequenz → neues Allel",
+        "Rekombination bei der Meiose: neue Merkmalskombinationen",
+        "Isolation: geografische oder reproduktive Trennung → unabhängige Selektion → Artentstehung"
+      ],
+      "epistemische_rollen": [
+        "Historisch-narratives Erklärungsframework: biologische Merkmale werden durch ihre Entstehungsgeschichte erklärt",
+        "Erklärt biologische Diversität als Ergebnis historisch kontingenter Prozesse",
+        "Grundlage für Verständnis von Angepasstheit als Ergebnis, nicht als Absicht",
+        "Nabe statt Speiche: erklärt, warum die übrigen fünf Basiskonzepte selbst nur im Licht der Evolution vollständig verständlich sind (Dobzhansky 1973)"
+      ],
+      "kausale_rollen": [
+        "Natürliche Selektion als kausaler Mechanismus des Artwandels: differenzielle Reproduktion führt zu Häufigkeitsverschiebungen",
+        "Mutation als zufällige kausale Quelle neuer genetischer Variation",
+        "Rekombination als kausaler Mechanismus zur Erhöhung genetischer Variabilität"
+      ],
+      "haeufige_schuelervorstellungen": [
+        {
+          "fehlvorstellung": "Selektion 'sucht' oder 'wählt' gezielt die besten Individuen aus",
+          "korrekte_vorstellung": "Selektion ist passiv: besser angepasste Individuen reproduzieren sich unter gegebenen Bedingungen häufiger; niemand 'wählt' sie aus",
+          "didaktischer_hinweis": "Formulierung: 'Individuen mit Merkmal X hinterlassen unter Bedingung Y mehr Nachkommen'"
         },
         {
-          "id": "bk_individuelle_evolutive_entwicklung__evolutiv",
+          "fehlvorstellung": "Evolution ist gerichtet und hat ein Ziel (z. B. 'der Mensch ist das Ziel der Evolution')",
+          "korrekte_vorstellung": "Evolution ist ungerichtet; Selektion wirkt auf den aktuellen Selektionsdruck, nicht auf ein zukünftiges Ziel",
+          "didaktischer_hinweis": "Artenvielfalt der Insekten als Gegenbeispiel"
+        },
+        {
+          "fehlvorstellung": "Ein Individuum kann sich im Laufe seines Lebens evolutiv anpassen (Lamarckismus)",
+          "korrekte_vorstellung": "Evolution betrifft Populationen über Generationen, nicht Individuen; erworbene Merkmale werden nicht vererbt",
+          "didaktischer_hinweis": "Giraffenhals-Analogie ausführlich diskutieren"
+        }
+      ],
+      "typische_misskonzeptionen_entstehung": [
+        "Teleologisches Denken ist kulturell tief verankert und muss aktiv umformuliert werden",
+        "Lamarckismus entspricht der Alltagserfahrung (Training verbessert Körper)",
+        "Individuum-Population-Verwechslung entsteht, weil wir intuitiv über Individuen, nicht über Populationen nachdenken"
+      ],
+      "konzeptuelle_voraussetzungen": [
+        "Grundverständnis biologischer Variabilität als beobachtbares Phänomen",
+        "Grundverständnis von Fortpflanzung und Vererbung (Basiskonzept Individuelle Entwicklung)",
+        "Bereitschaft zum Populationsdenken (oft explizit einzuüben)"
+      ],
+      "sequenzierungsempfehlung": {
+        "empfohlene_phase": "Klasse 7 (phänomenologische Einführung im Kontext Wirbellose) – vertieft in Klasse 8 nach Einführung der Reproduktion",
+        "begruendung": "Die phänomenologische Ebene (Angepasstheit von Insekten) ist früh zugänglich. Der Selektionsmechanismus als kausale Erklärung erfordert Vorverständnis von Variation und Fortpflanzung.",
+        "empfohlene_einführungsreihenfolge": [
+          "1. Phänomenologie: Variabilität und Angepasstheit bei Insekten beobachten und beschreiben",
+          "2. Selektion als Mechanismus formal einführen",
+          "3. Mutation und Rekombination als Quellen der Variation einführen",
+          "4. Stammbäume lesen und phylogenetische Verwandtschaft interpretieren",
+          "5. Transfer auf menschliche Merkmale"
+        ]
+      },
+      "interleaving_partner": [
+        {
+          "partner_bk": "bk_struktur_funktion",
+          "begruendung": "Angepasstheit manifestiert sich als Struktur-Funktion-Beziehung",
+          "empfohlene_verschraenkung": "Jede Str/Fkt-Analyse bei Insekten mit der evolutiven Frage ergänzen: 'Welchen Selektionsvorteil bietet diese Struktur?'"
+        },
+        {
+          "partner_bk": "bk_individuelle_entwicklung",
+          "begruendung": "Reproduktion ist die notwendige Grundlage für Selektion",
+          "empfohlene_verschraenkung": "Nach Einführung der Fortpflanzung direkt fragen: 'Was passiert, wenn manche Individuen mehr Nachkommen haben?'"
+        }
+      ],
+      "ersteinfuehrung_empfehlung": {
+        "jahrgangsstufe": "7 (erstes Halbjahr, phänomenologisch im Kontext Wirbellose)",
+        "phänomenologischer_einstieg": "Warum haben verschiedene Insektenarten so unterschiedliche Mundwerkzeuge? Wer hat diese Vielfalt 'entworfen'?",
+        "alltagsphänomen": "Schmetterlingsvariation, Hunderassen als künstliche Selektion",
+        "vom_konkreten_zum_abstrakten": [
+          "Schritt 1: Variation innerhalb einer Population beobachten und dokumentieren",
+          "Schritt 2: Angepasstheitsanalyse: Wer überlebt wo besser?",
+          "Schritt 3: Selektion als Mechanismus formal einführen",
+          "Schritt 4: Mutation und Rekombination als Variationsquellen",
+          "Schritt 5: Teleologische Formulierungen identifizieren und umformulieren"
+        ]
+      },
+      "kognitive_komplexitaet_gy78": {
+        "abstraktionsgrad": "sehr hoch",
+        "skalenspruenge_erforderlich": true,
+        "hoehere_denkprozesse": [
+          "Populationsdenken entwickeln",
+          "Zeitskalen von Generationen bis Jahrmillionen denken",
+          "Teleologisches Denken bewusst überwinden"
+        ],
+        "typische_kognitionsprobleme": [
+          "Teleologisches Denken ist hartnäckig",
+          "Populationsdenken erfordert bewusste Übung",
+          "Zeitskalen von Jahrmillionen sind kognitiv schwer zugänglich"
+        ]
+      },
+      "bk_verbindungen": [
+        {
+          "ziel_bk": "bk_struktur_funktion",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Evolutive Entwicklung erklärt, warum bestimmte Strukturen und ihre Funktionen existieren: Sie sind das Ergebnis langfristiger Selektion auf funktionale Effizienz"
+        },
+        {
+          "ziel_bk": "bk_stoff_energie_umwandlung",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Stoffwechselwege sind das Ergebnis evolutiver Bastelei (evolutionary tinkering) auf bereits vorhandenen biochemischen Grundlagen, nicht von Grund auf geplantes Design"
+        },
+        {
+          "ziel_bk": "bk_information_kommunikation",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Die Architektur biologischer Informationssysteme ist selbst ein evolutives Produkt: Wiederverwendung uralter Rezeptor-Familien, redundante parallele Kommunikationskanäle"
+        },
+        {
+          "ziel_bk": "bk_steuerung_regelung",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Regelkreise sind evolvierte Kontrollarchitekturen mit historischem Gepäck: suboptimale Sollwerte, verzögerte Rückkopplungsschleifen, redundante Regelmechanismen"
+        },
+        {
+          "ziel_bk": "bk_individuelle_entwicklung",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Ontogenetische Programme (Reifungsreihenfolge, verlängerte Kindheit, Immungedächtnis) sind selbst evolvierte Merkmale, kein notwendiges oder optimales Design"
+        },
+        {
+          "ziel_bk": "bk_individuelle_entwicklung",
+          "beziehungstyp": "benoetigt",
+          "beschreibung": "Evolutive Veränderung setzt Reproduktion voraus: ohne Weitergabe genetischer Information an Nachkommen gibt es keine Selektion und keinen Artwandel"
+        }
+      ],
+      "lernziel_ids_thuringia": [
+        "GY-78-WIR-WTG-1",
+        "GY-78-WIR-WTG-5",
+        "GY-78-WIR-WTG-6",
+        "GY-78-WIR-WTG-7",
+        "GY-78-WIR-INS-1",
+        "GY-78-WIR-INS-2",
+        "GY-78-WIR-INS-3",
+        "GY-78-WIR-INS-4",
+        "GY-78-WIR-INS-5",
+        "GY-78-WIR-INS-6",
+        "GY-78-WIR-INS-8",
+        "GY-78-WIR-INS-9",
+        "GY-78-ZEL-PTZ-7",
+        "GY-78-ZEL-BAK-2",
+        "GY-78-HUM-NER-8",
+        "GY-78-HUM-NER-10",
+        "GY-78-HUM-ABW-5",
+        "GY-78-HUM-ABW-6",
+        "GY-78-HUM-ATM-4",
+        "GY-78-HUM-BHK-3",
+        "GY-78-HUM-ZUS-1"
+      ],
+      "konzeptanker_lernziele": [
+        {
+          "lernziel_id": "GY-78-WIR-INS-5",
+          "begruendung": "Die Angepasstheit bei der Nahrungsaufnahme von Insekten ist der ideale phänomenologische Einstieg: Variabilität ist sichtbar, Selektionsvorteil ist diskutierbar"
+        },
+        {
+          "lernziel_id": "GY-78-HUM-NER-8",
+          "begruendung": "Der Vergleich von ZNS/PNS mit dem Strickleiternervensystem ist ein direkter evolutiver Vergleich zweier Lösungen für dasselbe Problem"
+        },
+        {
+          "lernziel_id": "GY-78-ZEL-PTZ-7",
+          "begruendung": "Die Evolution von Einzellern zu Vielzellern ist der direkteste Beleg für evolutiven Artwandel im Zellbiologie-Block"
+        }
+      ],
+      "diagnostische_fragen": [
+        "Ein Schüler schreibt: 'Die Käfer wurden dunkler, weil sie sich besser tarnen wollten.' Was ist daran biologisch falsch?",
+        "Was würde passieren, wenn alle Individuen einer Population genetisch identisch wären?",
+        "Erkläre anhand eines Beispiels, wie Mutation und Selektion zusammenwirken, um eine Population über Generationen zu verändern.",
+        "Warum gilt das spezifische Immunsystem der Wirbeltiere als evolutive Weiterentwicklung gegenüber der unspezifischen Abwehr der Insekten?"
+      ],
+      "darstellungsformen_progression": [
+        "Stufe 1: Fotodokumentation von Variabilität innerhalb einer Art",
+        "Stufe 2: Selektionsdiagramm: Ausgangspopulation → Selektion → veränderte Population",
+        "Stufe 3: Einfacher Stammbaum mit Merkmalszuordnung",
+        "Stufe 4: Komplexer Stammbaum der Wirbellosen mit phylogenetischen Merkmalen"
+      ],
+      "alltagsanker": [
+        "Hunderassen: extreme Formenvielfalt durch künstliche Selektion in kurzer Zeit",
+        "Antibiotikaresistenz: Evolution in Echtzeit",
+        "Schmetterlingssammlung: Variabilität innerhalb einer Art direkt beobachtbar",
+        "Fossilien: Lebewesen, die es heute nicht mehr gibt"
+      ],
+      "sprachliche_stolpersteine": [
+        {
+          "begriff": "Anpassung",
+          "problem": "Aktiver Alltagsbegriff ('sich anpassen') vs. passives evolutives Ergebnis",
+          "empfehlung": "Immer als Adjektiv/Nomen verwenden: 'angepasst sein', 'evolutive Angepasstheit'"
+        },
+        {
+          "begriff": "Überleben des Stärksten",
+          "problem": "'stärkste' suggeriert physische Stärke; tatsächlich: 'am besten Reproduzierende'",
+          "empfehlung": "Ersetzen durch: 'Überleben der am besten Angepassten', sofort konkretisieren: 'angepasst an was?'"
+        },
+        {
+          "begriff": "Höherentwicklung / primitiv",
+          "problem": "Wertendes Vokabular, das eine Hierarchie impliziert",
+          "empfehlung": "Ersetzen durch 'basale' und 'abgeleitete' Merkmale"
+        }
+      ],
+      "wissenschaftliche_praktiken": [
+        "Evolutionäres Argumentieren: teleologische Aussagen identifizieren und in selektionstheoretische Sprache übersetzen",
+        "Phylogenetische Analyse: Stammbäume lesen, Merkmalszuordnungen vornehmen",
+        "Vergleichende evolutive Analyse menschlicher Merkmale mit anderen Tiergruppen"
+      ],
+      "transfer_potential": 0.86,
+      "complexity_level_gy78": 0.78,
+      "centrality_estimate": 0.86,
+      "evolutionskonzepte_referenz": "data/evolutionskonzepte.json",
+      "teilkonzepte": [
+        {
+          "id": "bk_evolutive_entwicklung__variation_selektion",
           "ebene": 2,
-          "bezeichnung": "Evolutive Entwicklung (Phylogenese)",
-          "kurzbezeichnung": "Ind/Evo – Evolutiv",
-          "uebergeordnetes_bk": "bk_individuelle_evolutive_entwicklung",
-          "paired_teilkonzept": "bk_individuelle_evolutive_entwicklung__individuell",
-          "beschreibung_kmk": "Die evolutive Entwicklung (Phylogenese) beschreibt die Veränderung von Populationen und Arten über lange Zeiträume. Genetische Variation (durch Mutation und Rekombination) und Selektion sind die zentralen Mechanismen. Angepasstheit ist das Ergebnis evolutiver Prozesse, Variabilität deren Voraussetzung.",
-          "beschreibung_didaktisch": "Das Teilkonzept 'Evolutive Entwicklung' ist das konzeptuell anspruchsvollste des gesamten Lehrgangs, weil es ein fundamental anderes Denkmuster erfordert: Populationsdenken statt Individualdenken, statistische Variation statt Einzelmerkmal, Zeiträume von Generationen bis Jahrmillionen. Das Überwinden des teleologischen Denkens ist das zentrale Lernziel. Besonders bedeutsam ist der Bezug zur Humanbiologie: Spezifische menschliche Merkmale (großes Gehirn, lange Kindheitsphase, aufrechter Gang, Sprachfähigkeit, soziales Leben, komplexes Immunsystem) lassen sich als evolutive Anpassungen an spezifische Selektionsdrücke erklären – und sind gleichzeitig Teil der Ontogenese (Ind/Evo – Individuell).",
+          "bezeichnung": "Variation, Angepasstheit und Selektion",
+          "kurzbezeichnung": "Evol. Entw. – Var./Sel.",
+          "uebergeordnetes_bk": "bk_evolutive_entwicklung",
+          "paired_teilkonzept": "bk_evolutive_entwicklung__stammesgeschichte",
+          "beschreibung_kmk": "Genetische Variation (durch Mutation und Rekombination) ist die Voraussetzung für natürliche Selektion. Individuen mit vorteilhaften Merkmalen hinterlassen unter gegebenen Bedingungen mehr Nachkommen, wodurch sich die Merkmalshäufigkeit einer Population über Generationen verändert.",
+          "beschreibung_didaktisch": "Dieses Teilkonzept behandelt den Mechanismus der Evolution: Woher kommt Variation, und wie wirkt Selektion darauf? Die Angepasstheit von Insekten an ihre Lebensräume ist der zentrale phänomenologische Zugang.",
           "fokus_prinzipien": [
-            "Selektion",
-            "Genetische Variation durch Mutation und Rekombination"
+            "Genetische Variation",
+            "Natürliche Selektion",
+            "Angepasstheit"
           ],
           "systemebenen": [
             "Molekül (DNA: Mutation)",
-            "Organismus (Phänotyp, Angepasstheit)",
-            "Population (Variabilität, Selektion)",
-            "Art (Artwandel, Taxonomie)"
+            "Organismus (Phänotyp)",
+            "Population"
           ],
           "typische_zeitskalen": [
-            "Generationen (wenige Jahre bei Bakterien: Antibiotikaresistenz)",
-            "Jahrzehnte bis Jahrhunderte (beobachtbare Selektion bei kurzlebigen Organismen)",
-            "Jahrtausende bis Jahrmillionen (Makroevolution, Artentstehung)"
+            "Generationen (Antibiotikaresistenz bei Bakterien)",
+            "Jahrzehnte bis Jahrhunderte (beobachtbare Selektion)"
           ],
           "beispielthemen_gy78": [
-            "Natürliche Selektion als Mechanismus des Artwandels: Variation → Selektion → Anpassung",
-            "Genetische Variation als Voraussetzung für Selektion: Variabilität in einer Insektenpopulation",
-            "Mutation als Quelle neuer genetischer Varianten",
             "Angepasstheiten von Insekten an Lebensräume: Mundwerkzeuge, Tarnfarben, Verhaltensweisen",
-            "Artenvielfalt der Insekten als Ergebnis evolutiver Radiation",
-            "Stammbäume der Wirbellosen: phylogenetische Verwandtschaft aus Merkmalsvergleichen ableiten",
-            "Abgrenzung von Wirbellosen und Wirbeltieren anhand evolutiver Merkmale",
-            "Menschliche Merkmale als evolutive Anpassungen: großes Gehirn, Sprachfähigkeit, aufrechter Gang, lange Kindheitsphase, soziales Leben",
-            "Nervensystem-Evolution: Strickleiternervensystem (Insekten) vs. ZNS/PNS (Mensch) als evolutive Stufen der Informationsverarbeitung",
-            "Immunsystem als evolutive Errungenschaft: von unspezifischer zu spezifischer Abwehr",
-            "Antibiotikaresistenz: Evolution in Echtzeit – Selektion durch Antibiotika macht resistente Stämme häufiger",
+            "Genetische Variation als Voraussetzung für Selektion: Variabilität in einer Insektenpopulation",
+            "Antibiotikaresistenz: Evolution in Echtzeit",
             "Haustierrassen als Beispiel für künstliche Selektion (Analogie zur natürlichen Selektion)"
           ],
           "typische_mechanismen": [
-            "Natürliche Selektion: Individuen mit vorteilhaften Merkmalen hinterlassen mehr Nachkommen → Merkmalhäufigkeit verändert sich in der Population",
-            "Mutation: zufällige Veränderung der DNA-Sequenz → neues Allel → mögliche neue Eigenschaft",
-            "Rekombination bei der Meiose: neue Merkmalskombinationen → erhöhte genetische Variabilität in der Population",
-            "Isolation: geografische oder reproduktive Trennung → unabhängige Selektion → Artentstehung"
+            "Natürliche Selektion: differenzielle Reproduktion verändert Merkmalshäufigkeit",
+            "Mutation als zufällige Quelle neuer genetischer Varianten",
+            "Rekombination bei der Meiose erhöht Variabilität"
           ],
           "haeufige_schuelervorstellungen": [
             {
-              "fehlvorstellung": "Selektion 'sucht' oder 'wählt' gezielt die besten Individuen aus",
-              "korrekte_vorstellung": "Selektion ist ein passiver Prozess: Individuen mit besserer Angepasstheit reproduzieren sich unter den gegebenen Bedingungen häufiger; niemand 'wählt' sie aus",
-              "didaktischer_hinweis": "Formulierung: 'Individuen mit Merkmal X hinterlassen unter Bedingung Y mehr Nachkommen' statt 'die Natur wählt X'"
-            },
-            {
-              "fehlvorstellung": "Ein Individuum kann sich im Laufe seines Lebens evolutiv anpassen (Lamarckismus)",
-              "korrekte_vorstellung": "Evolution betrifft Populationen über Generationen, nicht Individuen innerhalb eines Lebens; erworbene Merkmale werden nicht vererbt",
-              "didaktischer_hinweis": "Gegenbeispiel: Bodybuilder-Muskeln werden nicht vererbt; Giraffenhals-Analogie ausführlich diskutieren"
-            },
-            {
-              "fehlvorstellung": "Der Mensch ist das 'höchste' oder 'vollkommenste' Produkt der Evolution",
-              "korrekte_vorstellung": "Evolution führt zu besser an den aktuellen Selektionsdruck angepassten Organismen; 'besser' ist kontextabhängig und relativ; alle lebenden Arten sind gleich 'erfolgreich' im Sinne der Reproduktion",
-              "didaktischer_hinweis": "Insekten: mit über einer Million Arten die artenreichste Tiergruppe – evolutiv mindestens ebenso 'erfolgreich' wie der Mensch"
-            },
-            {
               "fehlvorstellung": "Alle Individuen einer Art sind gleich; Variation ist Ausnahme",
-              "korrekte_vorstellung": "Variation ist die Regel; jedes Individuum ist einzigartig; Variation ist die notwendige Grundlage für Selektion",
-              "didaktischer_hinweis": "Fingerabdrücke in der Klasse: alle verschieden – Variation als Normalzustand"
+              "korrekte_vorstellung": "Variation ist die Regel und die notwendige Grundlage für Selektion",
+              "didaktischer_hinweis": "Fingerabdrücke in der Klasse als Analogie nutzen"
             }
-          ],
-          "typische_misskonzeptionen_entstehung": [
-            "Teleologisches Denken ist kulturell tief verankert (religiöse Schöpfungsvorstellungen, Alltagssprache mit 'damit' und 'um zu')",
-            "Lamarckismus entspricht der Alltagserfahrung (Training verbessert Körper) und muss explizit widerlegt werden",
-            "Individuum-Population-Verwechslung entsteht, weil wir intuitiv über Individuen, nicht über Populationen nachdenken",
-            "Gerichtetheitsillusion entsteht durch lineare Stammbaumdarstellungen, die den Menschen als Endpunkt zeigen"
           ],
           "konzeptuelle_voraussetzungen": [
             "Grundverständnis biologischer Variabilität als beobachtbares Phänomen",
-            "Grundverständnis von Fortpflanzung und Vererbung (aus Ind/Evo – Individuell)",
-            "Grundverständnis struktureller Merkmale biologischer Organismen (Str/Fkt – Struktur)",
-            "Bereitschaft zum Populationsdenken (oft explizit einzuüben)"
+            "Grundverständnis struktureller Merkmale biologischer Organismen"
           ],
           "sequenzierungsempfehlung": {
-            "empfohlene_phase": "Klasse 7 (phänomenologische Einführung im Kontext Wirbellose) – vertieft in Klasse 8 nach Einführung der Reproduktion",
-            "begruendung": "Die phänomenologische Ebene (Angepasstheit von Insekten) ist früh zugänglich. Der Selektionsmechanismus als kausale Erklärung erfordert Vorverständnis von Variation und Fortpflanzung.",
-            "empfohlene_einführungsreihenfolge": [
-              "1. Phänomenologie: Variabilität und Angepasstheit bei Insekten beobachten und beschreiben",
-              "2. Selektionsgedankenexperiment: Welche Motten überleben auf heller/dunkler Rinde besser?",
-              "3. Selektion als Mechanismus formal einführen: Variation → differenzielle Reproduktion → veränderte Populationsfrequenz",
-              "4. Mutation und Rekombination als Quellen der Variation einführen",
-              "5. Stammbäume lesen und phylogenetische Verwandtschaft interpretieren",
-              "6. Überwindung teleologischen Denkens: explizite Umformulierungsübungen",
-              "7. Transfer auf menschliche Merkmale: Welche menschlichen Eigenschaften lassen sich als evolutive Anpassungen erklären?"
-            ]
-          },
-          "interleaving_partner": [
-            {
-              "partner": "bk_struktur_funktion",
-              "begruendung": "Angepasstheit manifestiert sich als Struktur-Funktion-Beziehung; evolutive Erklärung (Ind/Evo) und strukturell-funktionale Beschreibung (Str/Fkt) sind komplementäre Perspektiven auf dasselbe Phänomen",
-              "empfohlene_verschraenkung": "Jede Str/Fkt-Analyse bei Insekten mit der evolutiven Frage ergänzen: 'Welchen Selektionsvorteil bietet diese Struktur?'"
-            },
-            {
-              "partner": "bk_individuelle_evolutive_entwicklung__individuell",
-              "begruendung": "Reproduktion (Ontogenese) ist die notwendige Grundlage für Selektion (Phylogenese); beide Teilkonzepte sollten explizit verknüpft werden",
-              "empfohlene_verschraenkung": "Nach Einführung der Fortpflanzung (Ind/Evo – Individuell) direkt die Frage stellen: 'Was passiert, wenn manche Individuen mehr Nachkommen haben als andere?'"
-            },
-            {
-              "partner": "bk_information_kommunikation",
-              "begruendung": "Der Vergleich von Insekten-Nervensystem (Strickleiternervensystem) mit menschlichem ZNS/PNS ist eine evolutive Analyse von Informationsverarbeitungssystemen; Nervensystem-Evolution verbindet Info/Komm mit Ind/Evo – Evolutiv direkt",
-              "empfohlene_verschraenkung": "Im Nervensystem-Block (NER-8) explizit den evolutiven Vergleich ziehen: Strickleiternervensystem der Insekten (INS-4) als evolutiv einfachere Lösung desselben Problems (Informationsverarbeitung)"
-            }
-          ],
-          "ersteinfuehrung_empfehlung": {
-            "jahrgangsstufe": "7 (erstes Halbjahr, phänomenologisch im Kontext Wirbellose)",
-            "phänomenologischer_einstieg": "Warum haben verschiedene Insektenarten so unterschiedliche Mundwerkzeuge? Wer hat diese Vielfalt 'entworfen'?",
-            "alltagsphänomen": "Schmetterlingsvariation (Flügelzeichnung innerhalb einer Art), Hunderassen als künstliche Selektion",
-            "vom_konkreten_zum_abstrakten": [
-              "Schritt 1: Variation innerhalb einer Population beobachten und dokumentieren",
-              "Schritt 2: Angepasstheitsanalyse: Wer überlebt wo besser?",
-              "Schritt 3: Gedankenexperiment: Was passiert über viele Generationen?",
-              "Schritt 4: Selektion als Mechanismus formal einführen",
-              "Schritt 5: Mutation und Rekombination als Variationsquellen",
-              "Schritt 6: Teleologische Formulierungen identifizieren und umformulieren",
-              "Schritt 7: Transfer auf menschliche Merkmale als evolutive Anpassungen"
-            ]
-          },
-          "kognitive_komplexitaet_gy78": {
-            "abstraktionsgrad": "sehr hoch",
-            "skalenspruenge_erforderlich": true,
-            "hoehere_denkprozesse": [
-              "Populationsdenken entwickeln",
-              "Zeitskalen von Generationen bis Jahrmillionen denken",
-              "Teleologisches Denken bewusst überwinden",
-              "Kausale Mechanismen von Ergebnissen unterscheiden",
-              "Wahrscheinlichkeitsdenken: differentielle Reproduktion",
-              "Vergleichend-evolutives Denken: Menschliche Merkmale als evolutive Anpassungen erkennen"
-            ],
-            "typische_kognitionsprobleme": [
-              "Teleologisches Denken ist hartnäckig und kehrt unter Zeitdruck zurück",
-              "Populationsdenken erfordert bewusste Übung; intuitiv denken Schüler über Individuen",
-              "Zeitskalen von Jahrmillionen sind kognitiv schwer zugänglich",
-              "Unterschied zwischen Variation (innerhalb einer Generation) und Artwandel (über Generationen) unklar",
-              "Schwierigkeit, menschliche Biologie als evolutiv kontingent (nicht notwendig) zu verstehen"
-            ]
+            "empfohlene_phase": "Klasse 7, erster Teil",
+            "begruendung": "Phänomenologisch zugänglich über Insektenvielfalt, Grundlage für das vertiefende zweite Teilkonzept"
           },
           "lernziel_ids_thuringia": [
-            "GY-78-WIR-WTG-1",
-            "GY-78-WIR-WTG-5",
-            "GY-78-WIR-WTG-6",
-            "GY-78-WIR-WTG-7",
             "GY-78-WIR-INS-1",
             "GY-78-WIR-INS-2",
             "GY-78-WIR-INS-3",
-            "GY-78-WIR-INS-4",
             "GY-78-WIR-INS-5",
             "GY-78-WIR-INS-6",
             "GY-78-WIR-INS-8",
             "GY-78-WIR-INS-9",
-            "GY-78-ZEL-PTZ-7",
             "GY-78-ZEL-BAK-2",
+            "GY-78-WIR-WTG-6"
+          ],
+          "konzeptanker_lernziele": [
+            {
+              "lernziel_id": "GY-78-WIR-INS-5",
+              "begruendung": "Ideal geeigneter phänomenologischer Einstieg: Variabilität sichtbar, Selektionsvorteil diskutierbar"
+            }
+          ],
+          "diagnostische_fragen": [
+            "Warum gelten Insekten als eine der evolutiv erfolgreichsten Tiergruppen?",
+            "Erkläre anhand eines Beispiels, wie Mutation und Selektion zusammenwirken."
+          ],
+          "alltagsanker": [
+            "Hunderassen als künstliche Selektion",
+            "Antibiotikaresistenz als Evolution in Echtzeit"
+          ],
+          "transfer_potential": 0.85,
+          "complexity_level_gy78": 0.74,
+          "centrality_estimate": 0.83
+        },
+        {
+          "id": "bk_evolutive_entwicklung__stammesgeschichte",
+          "ebene": 2,
+          "bezeichnung": "Stammesgeschichte und vergleichende Systeme",
+          "kurzbezeichnung": "Evol. Entw. – Stammesg.",
+          "uebergeordnetes_bk": "bk_evolutive_entwicklung",
+          "paired_teilkonzept": "bk_evolutive_entwicklung__variation_selektion",
+          "beschreibung_kmk": "Stammbäume bilden Verwandtschaftsverhältnisse zwischen Taxa auf Grundlage gemeinsamer Merkmale ab. Der Vergleich funktional ähnlicher, aber phylogenetisch unterschiedlich komplexer Systeme (z. B. Nervensystem, Immunsystem) macht evolutive Steigerung sichtbar.",
+          "beschreibung_didaktisch": "Dieses Teilkonzept behandelt die historische, vergleichende Seite der Evolution: Wie lassen sich Verwandtschaftsverhältnisse aus Merkmalen ableiten, und wie lassen sich unterschiedlich komplexe biologische Systeme als Stufen derselben evolutiven Geschichte verstehen?",
+          "fokus_prinzipien": [
+            "Stammbäume",
+            "Vergleichende Systematik"
+          ],
+          "systemebenen": [
+            "Organismus",
+            "Art"
+          ],
+          "typische_zeitskalen": [
+            "Jahrtausende bis Jahrmillionen (Makroevolution, Artentstehung)"
+          ],
+          "beispielthemen_gy78": [
+            "Stammbäume der Wirbellosen: phylogenetische Verwandtschaft aus Merkmalsvergleichen ableiten",
+            "Abgrenzung von Wirbellosen und Wirbeltieren anhand evolutiver Merkmale",
+            "Nervensystem-Evolution: Strickleiternervensystem (Insekten) vs. ZNS/PNS (Mensch)",
+            "Immunsystem als evolutive Errungenschaft: von unspezifischer zu spezifischer Abwehr",
+            "Evolution von Einzellern zu Vielzellern am Beispiel der Grünalgen"
+          ],
+          "typische_mechanismen": [
+            "Isolation: geografische oder reproduktive Trennung → unabhängige Selektion → Artentstehung",
+            "Merkmalsvergleich als Methode zur Rekonstruktion von Verwandtschaft"
+          ],
+          "haeufige_schuelervorstellungen": [
+            {
+              "fehlvorstellung": "Der Mensch ist das 'höchste' oder 'vollkommenste' Produkt der Evolution",
+              "korrekte_vorstellung": "Alle lebenden Arten sind gleich 'erfolgreich' im Sinne der Reproduktion",
+              "didaktischer_hinweis": "Insekten als artenreichste Tiergruppe als Gegenbeispiel"
+            }
+          ],
+          "konzeptuelle_voraussetzungen": [
+            "Grundverständnis von Fortpflanzung und Vererbung",
+            "Grundverständnis des Nervensystems und des Immunsystems"
+          ],
+          "sequenzierungsempfehlung": {
+            "empfohlene_phase": "Klasse 7/8, zweiter Teil",
+            "begruendung": "Baut auf dem Verständnis von Variation und Selektion auf und vertieft es an konkreten Vergleichsfällen"
+          },
+          "lernziel_ids_thuringia": [
+            "GY-78-WIR-WTG-1",
+            "GY-78-WIR-WTG-5",
+            "GY-78-WIR-WTG-7",
+            "GY-78-WIR-INS-4",
+            "GY-78-ZEL-PTZ-7",
             "GY-78-HUM-NER-8",
             "GY-78-HUM-NER-10",
             "GY-78-HUM-ABW-5",
@@ -2628,82 +2694,21 @@
           ],
           "konzeptanker_lernziele": [
             {
-              "lernziel_id": "GY-78-WIR-INS-5",
-              "begruendung": "Die Angepasstheit bei der Nahrungsaufnahme von Insekten (Mundwerkzeuge) ist der ideale phänomenologische Einstieg in die Evolutive Entwicklung: Variabilität ist sichtbar, Selektionsvorteil ist diskutierbar"
-            },
-            {
-              "lernziel_id": "GY-78-WIR-WTG-7",
-              "begruendung": "Das Bewerten und Begründen von Schutzmaßnahmen für Wirbellose verknüpft evolutive Denkweise mit Bildung für nachhaltige Entwicklung und schafft Anwendungsrelevanz"
-            },
-            {
               "lernziel_id": "GY-78-HUM-NER-8",
-              "begruendung": "Der Vergleich von ZNS/PNS (Mensch) mit dem Strickleiternervensystem (Insekten, INS-4) ist ein direkter evolutiver Vergleich: Beide sind Lösungen für dasselbe Problem (Informationsverarbeitung), aber evolutiv verschieden komplex – ein zentrales Konzeptanker-Lernziel für humane Evolution"
-            },
-            {
-              "lernziel_id": "GY-78-HUM-ABW-5",
-              "begruendung": "Das spezifische Immunsystem (Antigen-Antikörper, Gedächtniszellen) ist eine evolutiv entstandene Errungenschaft der Wirbeltiere; der Vergleich mit unspezifischer Abwehr (ABW-4) macht die evolutive Steigerung der Abwehrkomplexität sichtbar"
-            },
-            {
-              "lernziel_id": "GY-78-ZEL-PTZ-7",
-              "begruendung": "Die Evolution von Einzellern zu Vielzellern am Beispiel der Grünalgen ist der direkteste Beleg für evolutiven Artwandel im Zellbiologie-Block; Zelldifferenzierung als evolutive Innovation wird hier erstmals sichtbar"
+              "begruendung": "Direkter evolutiver Vergleich zweier Lösungen für dasselbe Problem (Informationsverarbeitung)"
             }
           ],
           "diagnostische_fragen": [
-            "Ein Schüler schreibt: 'Die Käfer wurden dunkler, weil sie sich besser tarnen wollten.' Erkläre, was an dieser Aussage biologisch falsch ist, und formuliere eine korrekte evolutive Erklärung.",
-            "Was würde passieren, wenn alle Individuen einer Population genetisch identisch wären? Welche Konsequenz hätte das für die evolutive Entwicklung?",
-            "Warum gelten Insekten als eine der evolutiv erfolgreichsten Tiergruppen? Welche Merkmale könnten dazu beigetragen haben?",
-            "Erkläre anhand eines Beispiels, wie Mutation und Selektion zusammenwirken, um eine Population über Generationen zu verändern.",
-            "Erkläre, warum das Nervensystem des Menschen als evolutive Weiterentwicklung des Strickleiternervensystems der Insekten betrachtet werden kann. Welche Vorteile bietet ein ZNS mit großem Gehirn?",
-            "Das spezifische Immunsystem (mit Gedächtniszellen) ist evolutiv nur bei Wirbeltieren vorhanden. Welchen Selektionsvorteil könnte diese Entwicklung gegenüber dem rein unspezifischen Immunsystem der Insekten bieten?"
-          ],
-          "darstellungsformen_progression": [
-            "Stufe 1: Fotodokumentation von Variabilität innerhalb einer Art (Schmetterlinge, Käfer)",
-            "Stufe 2: Selektionsdiagramm: Ausgangspopulation → Selektion → veränderte Population (drei Generationen)",
-            "Stufe 3: Balkendiagramm: Merkmalhäufigkeit vor und nach Selektion",
-            "Stufe 4: Einfacher Stammbaum mit Merkmalszuordnung",
-            "Stufe 5: Komplexer Stammbaum der Wirbellosen mit phylogenetischen Merkmalen",
-            "Stufe 6: Vergleichsdiagramm Nervensystem: Strickleiternervensystem (Insekt) vs. ZNS/PNS (Mensch) als evolutive Stufendarstellung"
+            "Erkläre, warum das menschliche Nervensystem als evolutive Weiterentwicklung des Strickleiternervensystems der Insekten betrachtet werden kann.",
+            "Welchen Selektionsvorteil könnte das spezifische Immunsystem gegenüber rein unspezifischer Abwehr bieten?"
           ],
           "alltagsanker": [
-            "Hunderassen: extreme Formenvielfalt durch künstliche Selektion in kurzer Zeit",
-            "Antibiotikaresistenz: Evolution in Echtzeit – Selektion durch Antibiotika macht resistente Stämme häufiger",
-            "Schmetterlingssammlung: Variabilität innerhalb einer Art direkt beobachtbar",
-            "Fossilien: Lebewesen, die es heute nicht mehr gibt – Artwandel über Zeit",
-            "Menschliches Gehirn im Vergleich: Warum haben Menschen kein Strickleiternervensystem wie Insekten? Was war der Selektionsdruck für ein großes Gehirn?"
+            "Fossilien als Belege für Artwandel über Zeit",
+            "Vergleich Insektengehirn vs. menschliches Gehirn"
           ],
-          "sprachliche_stolpersteine": [
-            {
-              "begriff": "Anpassung",
-              "problem": "Aktiver Alltagsbegriff ('sich anpassen') vs. passives evolutives Ergebnis",
-              "empfehlung": "Immer als Adjektiv oder Nomen verwenden: 'angepasst sein', 'evolutive Angepasstheit'; Verb 'sich anpassen' vermeiden"
-            },
-            {
-              "begriff": "Überleben des Stärksten",
-              "problem": "Volkstümliche Formel für Selektion; 'stärkste' suggeriert physische Stärke; tatsächlich: 'am besten Reproduzierende'",
-              "empfehlung": "Ersetzen durch: 'Überleben der am besten Angepassten' und sofort konkretisieren: 'angepasst an was?'"
-            },
-            {
-              "begriff": "Höherentwicklung / primitiv",
-              "problem": "Wertendes Vokabular, das eine Hierarchie impliziert; in der Evolutionsbiologie gibt es keine 'höheren' oder 'primitiveren' Arten",
-              "empfehlung": "Ersetzen durch: 'basale' und 'abgeleitete' Merkmale; alle lebenden Arten sind gleich 'erfolgreich' im Sinne der Reproduktion"
-            },
-            {
-              "begriff": "Evolution des Menschen",
-              "problem": "Schüler denken oft an den Übergang Affe → Mensch als linearen Prozess mit dem Menschen als Ziel",
-              "empfehlung": "Klarstellen: Menschen und Menschenaffen haben gemeinsame Vorfahren; kein Tier ist 'Vorfahre' eines anderen heute lebenden Tieres; Menschen sind eine von vielen Evolutionslinien"
-            }
-          ],
-          "wissenschaftliche_praktiken": [
-            "Evolutionäres Argumentieren: teleologische Aussagen identifizieren und in selektionstheoretische Sprache übersetzen",
-            "Phylogenetische Analyse: Stammbäume lesen, Merkmalszuordnungen vornehmen",
-            "Angepasstheitsanalyse: Struktur beschreiben (Str/Fkt) und Selektionsvorteil erklären (Ind/Evo)",
-            "Bewertung von Schutzmaßnahmen für Arten und Lebensräume aus evolutionsbiologischer Perspektive",
-            "Vergleichende Analyse von Tiergruppen nach phylogenetischen Merkmalen",
-            "Vergleichende evolutive Analyse menschlicher Merkmale (Gehirn, Immunsystem, Fortpflanzungsstrategie) mit anderen Tiergruppen"
-          ],
-          "transfer_potential": 0.85,
-          "complexity_level_gy78": 0.8,
-          "centrality_estimate": 0.84
+          "transfer_potential": 0.84,
+          "complexity_level_gy78": 0.79,
+          "centrality_estimate": 0.82
         }
       ]
     }

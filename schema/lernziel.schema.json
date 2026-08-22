@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openevo-ccs.github.io/EvoMentor_DE/schema/lernziel.schema.json",
+  "title": "EvoMentor_DE Lernziel",
+  "description": "Validiert einen Eintrag im 'lernziele'-Array von data/lernziele_MNT56.json, data/lernziele_gy78.json und data/lernziele_gy910.json. Vereinheitlicht ab v1.2 die zuvor getrennten Schemas: die 'Sequenzierungs'-Felder (bereits in allen drei Dateien vorhanden) und die 'Evolutionsbezug/Didaktische-Strategien'-Felder (zuvor nur in der separaten Datei lernziele_gy78_evolution.json, jetzt inline in allen drei Dateien).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "thema", "unterthema", "kurzbezeichnung", "originaltext",
+    "basiskonzepte_primaer", "basiskonzepte_sekundaer",
+    "voraussetzende_lernziele", "ermoeglichende_lernziele",
+    "evolutionsbezug", "didaktische_strategien"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "z. B. MNT-56-M1-NWA-1a, GY-78-WIR-INS-1, GY-910-EVO-ZUS-1. Suffix-Buchstaben (a, b, c, ...) kennzeichnen Lernziele, die aus einem gemeinsamen amtlichen Lehrplan-Kompetenzpunkt aufgesplittet wurden."
+    },
+    "thema": { "type": "string" },
+    "unterthema": { "type": "string" },
+    "kurzbezeichnung": { "type": "string" },
+    "originaltext": { "type": "string", "description": "Wortlaut aus dem amtlichen Lehrplan (ggf. auf einen einzelnen Kompetenzpunkt aufgesplittet)." },
+    "kognitionsverb": { "type": "string" },
+    "kognitive_anforderung": {
+      "type": "string",
+      "enum": ["reproduktion_und_verstaendnis", "anwendung", "analyse_und_bewertung", "synthese"]
+    },
+    "geschaetzte_unterrichtsstunden": { "type": "number", "minimum": 0 },
+    "ist_praktisch": { "type": "boolean" },
+    "empfohlene_klassenstufe": { "type": "string" },
+    "empfohlenes_quartal": { "type": "string" },
+    "basiskonzepte_primaer": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["bk_struktur_funktion", "bk_stoff_energie_umwandlung", "bk_information_kommunikation", "bk_steuerung_regelung", "bk_individuelle_entwicklung", "bk_evolutive_entwicklung"] }
+    },
+    "basiskonzepte_sekundaer": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["bk_struktur_funktion", "bk_stoff_energie_umwandlung", "bk_information_kommunikation", "bk_steuerung_regelung", "bk_individuelle_entwicklung", "bk_evolutive_entwicklung"] }
+    },
+    "teilkonzept_primaer": {
+      "type": ["string", "null"],
+      "enum": [
+        "bk_struktur_funktion__struktur", "bk_struktur_funktion__funktion",
+        "bk_stoff_energie_umwandlung__stoff", "bk_stoff_energie_umwandlung__energie",
+        "bk_information_kommunikation__information", "bk_information_kommunikation__kommunikation",
+        "bk_steuerung_regelung__steuerung", "bk_steuerung_regelung__regelung",
+        "bk_individuelle_entwicklung__zelldifferenzierung", "bk_individuelle_entwicklung__reifung",
+        "bk_evolutive_entwicklung__variation_selektion", "bk_evolutive_entwicklung__stammesgeschichte",
+        null
+      ]
+    },
+    "bk_prinzipien": { "type": "array", "items": { "type": "string" } },
+    "systemebene_primaer": { "type": ["string", "null"] },
+    "systemebene_sekundaer": { "type": ["string", "null"] },
+    "skalenuebergang_erforderlich": { "type": "boolean" },
+    "voraussetzende_lernziele": { "type": "array", "items": { "type": "string" } },
+    "ermoeglichende_lernziele": { "type": "array", "items": { "type": "string" } },
+    "ist_konzeptanker": { "type": "boolean" },
+    "konzeptanker_begruendung": { "type": "string" },
+    "alltagsnaehe": { "type": "string", "enum": ["niedrig", "mittel", "hoch", "sehr hoch"] },
+    "abstraktionsgrad": { "type": "string", "enum": ["niedrig", "niedrig bis mittel", "mittel", "mittel bis hoch", "hoch", "sehr hoch"] },
+    "interleaving_empfehlung": { "type": "array", "items": { "type": "string" } },
+    "anmerkung": { "type": "string" },
+    "evolutionsbezug": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["wissenschaftliche_begruendung", "relevante_evolutionskonzepte", "evolutionsrelevanz_beurteilung"],
+      "properties": {
+        "wissenschaftliche_begruendung": { "type": "string", "minLength": 1, "description": "Paragraph text explaining the scientific link between this learning goal and evolutionary biology." },
+        "relevante_evolutionskonzepte": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Werte müssen exakt einer 'bezeichnung' aus data/evolutionskonzepte.json entsprechen."
+        },
+        "evolutionsrelevanz_beurteilung": { "type": "integer", "enum": [1, 2, 3], "description": "1=gering, 2=mittel, 3=hoch." }
+      }
+    },
+    "didaktische_strategien": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top3_methoden", "evolutionsdidaktischer_impuls", "moegliche_fehlvorstellungen", "bezug_zum_lehrplan_kontext"],
+      "properties": {
+        "top3_methoden": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["rang", "methode", "beschreibung", "favorit"],
+            "properties": {
+              "rang": { "type": "integer", "enum": [1, 2, 3] },
+              "methode": {
+                "type": "string",
+                "enum": [
+                  "Forschendes Lernen", "Analogien und Vergleiche", "Konzeptuelles Lernen", "Diskussion",
+                  "Narrativer Zugang", "Modelle und Simulationen", "Erfahrungsbasiertes Lernen", "Digitale Medien",
+                  "Einblick in Wissenschaftsgeschichte", "Recherche", "Kooperative Lernformen", "Projektbasiertes Lernen"
+                ]
+              },
+              "beschreibung": { "type": "string" },
+              "favorit": { "type": "boolean", "description": "App-Annotationsfeld, im kanonischen Datensatz immer false." }
+            }
+          }
+        },
+        "evolutionsdidaktischer_impuls": { "type": "string" },
+        "moegliche_fehlvorstellungen": { "type": "string" },
+        "bezug_zum_lehrplan_kontext": { "type": "string" }
+      }
+    }
+  }
+}

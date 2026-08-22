@@ -1,0 +1,483 @@
+{
+  "metadaten": {
+    "titel": "Evolutionäre Konzepte – kontrollierte Vokabular-Hierarchie",
+    "beschreibung": "Hierarchisch strukturierte Liste evolutionärer Konzepte, gegen die die Felder relevante_evolutionskonzepte[] in lernziele_MNT56.json, lernziele_gy78.json und lernziele_gy910.json validiert werden. Löst die zuvor unvalidierte, nur clientseitig in apps/lernziele_evolution_llmprompter.html vorhandene EVO_HIERARCHY-Konstante ab.",
+    "version": "1.0",
+    "quellen": [
+      "EvoMentor 1.2 notes.md (Abschnitt 'Evolutionary concepts')",
+      "Bereits in data/lernziele_gy78_evolution.json verwendete Konzeptbezeichnungen (Rückwärtskompatibilität geprüft)"
+    ],
+    "struktur_hinweis": "Ebene 1 sind eigenständige evolutionäre Hauptkonzepte, gleichrangig nebeneinander. Ebene 2 sind Unterkonzepte, jeweils genau einem Ebene-1-Konzept zugeordnet über uebergeordnetes_konzept. Nicht jedes Ebene-1-Konzept hat Unterkonzepte. WICHTIG: die Hierarchietiefe folgt exakt der Vorgabe in EvoMentor 1.2 notes.md — insbesondere sind 'Migration/Genfluss', 'Flaschenhalseffekt' und 'Gründereffekt' EIGENSTÄNDIGE Ebene-1-Konzepte (Geschwister von 'Gendrift'), NICHT dessen Unterkonzepte, anders als in der zuvor verwendeten EVO_HIERARCHY-Konstante.",
+    "verwendung": "lernziel.relevante_evolutionskonzepte[] speichert exakte 'bezeichnung'-Strings (Ebene 1 oder Ebene 2) aus dieser Datei, keine ids — damit bleiben die 90 bereits in lernziele_gy78.json vorhandenen Werte gültig, ohne umgeschrieben werden zu müssen."
+  },
+  "evolutionskonzepte": [
+    {
+      "id": "ek_variation_diversitaet",
+      "ebene": 1,
+      "bezeichnung": "Variation und Diversität",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 1,
+      "definition": "Innerhalb jeder Population unterscheiden sich Individuen in ihren Merkmalen – genetisch, phänotypisch und im Verhalten. Diese Variation ist die notwendige Voraussetzung für jede Form von Selektion und damit für Evolution überhaupt.",
+      "beispiel": "Schneckenhäuser derselben Art unterscheiden sich in Farbe und Bänderung; Unterrichtsbezug: Artenvergleich, Erweiterung der Artenkenntnis."
+    },
+    {
+      "id": "ek_variation_diversitaet__genetische_variation",
+      "ebene": 2,
+      "bezeichnung": "genetische Variation",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 1,
+      "definition": "Unterschiede in der DNA-Sequenz zwischen Individuen einer Population, entstanden durch Mutation, Rekombination und Gentransfer.",
+      "beispiel": "Unterschiedliche Blutgruppen oder Fellfarb-Allele innerhalb einer Population."
+    },
+    {
+      "id": "ek_variation_diversitaet__phaenotypische_variation",
+      "ebene": 2,
+      "bezeichnung": "phänotypische Variation",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 2,
+      "definition": "Sichtbare Unterschiede in Merkmalen zwischen Individuen, die auf genetischer Variation, Umwelteinflüssen oder deren Zusammenspiel beruhen.",
+      "beispiel": "Unterschiedliche Körpergröße oder Blattform innerhalb einer Pflanzenart."
+    },
+    {
+      "id": "ek_variation_diversitaet__modifikation",
+      "ebene": 2,
+      "bezeichnung": "Modifikation",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 3,
+      "definition": "Nicht erbliche, umweltbedingte Veränderung des Phänotyps innerhalb der durch das Genom vorgegebenen Reaktionsnorm.",
+      "beispiel": "Bräunung der Haut durch UV-Strahlung; unterschiedliche Blattgröße derselben Pflanze in Sonne und Schatten."
+    },
+    {
+      "id": "ek_variation_diversitaet__rekombination",
+      "ebene": 2,
+      "bezeichnung": "Rekombination",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 4,
+      "definition": "Neukombination elterlicher Allele bei der sexuellen Fortpflanzung (Meiose, Crossing-over), eine zentrale Quelle genetischer Variation ohne neue Mutationen.",
+      "beispiel": "Geschwister mit unterschiedlichen Merkmalskombinationen derselben Eltern."
+    },
+    {
+      "id": "ek_variation_diversitaet__gentransfer",
+      "ebene": 2,
+      "bezeichnung": "Gentransfer",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 5,
+      "definition": "Übertragung genetischen Materials zwischen Organismen außerhalb der vertikalen Vererbung (horizontaler Gentransfer), besonders bedeutsam bei Bakterien.",
+      "beispiel": "Übertragung von Antibiotikaresistenz-Genen zwischen Bakterienstämmen über Plasmide."
+    },
+    {
+      "id": "ek_variation_diversitaet__epigenetik",
+      "ebene": 2,
+      "bezeichnung": "Epigenetik",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 6,
+      "definition": "Vererbbare Veränderungen der Genaktivität (z. B. durch DNA-Methylierung), die nicht auf einer Änderung der DNA-Sequenz selbst beruhen.",
+      "beispiel": "Unterschiedliche Genexpression bei genetisch identischen Bienen (Königin vs. Arbeiterin) durch Fütterung."
+    },
+    {
+      "id": "ek_variation_diversitaet__phaenotypische_plastizitaet",
+      "ebene": 2,
+      "bezeichnung": "Phänotypische Plastizität",
+      "uebergeordnetes_konzept": "ek_variation_diversitaet",
+      "reihenfolge": 7,
+      "definition": "Die Fähigkeit eines Genotyps, je nach Umweltbedingungen unterschiedliche Phänotypen auszubilden.",
+      "beispiel": "Wasserflöhe (Daphnia) bilden bei Anwesenheit von Fraßfeinden schützende 'Helme' aus."
+    },
+    {
+      "id": "ek_vererbung_merkmalen",
+      "ebene": 1,
+      "bezeichnung": "Vererbung von Merkmalen",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 2,
+      "definition": "Weitergabe von Merkmalen von einer Generation an die nächste über verschiedene, teils nicht-genetische Kanäle.",
+      "beispiel": "Kinder ähneln ihren Eltern nicht nur genetisch, sondern z. B. auch in erlernten Verhaltensweisen."
+    },
+    {
+      "id": "ek_vererbung_merkmalen__genetische",
+      "ebene": 2,
+      "bezeichnung": "genetische Vererbung",
+      "uebergeordnetes_konzept": "ek_vererbung_merkmalen",
+      "reihenfolge": 1,
+      "definition": "Weitergabe von Merkmalen über die DNA-Sequenz von Eltern an Nachkommen.",
+      "beispiel": "Vererbung der Blutgruppe oder von Erbkrankheiten."
+    },
+    {
+      "id": "ek_vererbung_merkmalen__epigenetische",
+      "ebene": 2,
+      "bezeichnung": "epigenetische Vererbung",
+      "uebergeordnetes_konzept": "ek_vererbung_merkmalen",
+      "reihenfolge": 2,
+      "definition": "Weitergabe von Genaktivitätsmustern (nicht der DNA-Sequenz selbst) über Generationen hinweg.",
+      "beispiel": "Auswirkungen mütterlicher Ernährung während der Schwangerschaft auf die Genregulation der Nachkommen."
+    },
+    {
+      "id": "ek_vererbung_merkmalen__soziale_kulturelle",
+      "ebene": 2,
+      "bezeichnung": "soziale/kulturelle Vererbung",
+      "uebergeordnetes_konzept": "ek_vererbung_merkmalen",
+      "reihenfolge": 3,
+      "definition": "Weitergabe von Verhaltensweisen, Wissen und Fertigkeiten durch Beobachtung, Nachahmung und Lehren statt über die Gene.",
+      "beispiel": "Werkzeuggebrauch bei Schimpansen, der innerhalb einer Gruppe von Generation zu Generation weitergegeben wird."
+    },
+    {
+      "id": "ek_vererbung_merkmalen__oekologische",
+      "ebene": 2,
+      "bezeichnung": "ökologische Vererbung",
+      "uebergeordnetes_konzept": "ek_vererbung_merkmalen",
+      "reihenfolge": 4,
+      "definition": "Weitergabe einer von den Eltern veränderten Umwelt (statt genetischer Information) als Vererbungskanal, eng verknüpft mit Nischenkonstruktion.",
+      "beispiel": "Ein Biberdamm bzw. Bau, den nachfolgende Bibergenerationen übernehmen und weiter nutzen."
+    },
+    {
+      "id": "ek_natuerliche_selektion",
+      "ebene": 1,
+      "bezeichnung": "Natürliche Selektion und Selektionsdruck",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 3,
+      "definition": "Individuen mit vorteilhaften Merkmalen überleben und pflanzen sich unter gegebenen Umweltbedingungen häufiger fort; dieser Unterschied im Fortpflanzungserfolg treibt die Veränderung von Populationen über Generationen.",
+      "beispiel": "Birkenspanner: dunklere Falter wurden während der Industrialisierung durch Vogelfraß seltener erbeutet als helle."
+    },
+    {
+      "id": "ek_natuerliche_selektion__stabilisierende_selektion",
+      "ebene": 2,
+      "bezeichnung": "stabilisierende Selektion",
+      "uebergeordnetes_konzept": "ek_natuerliche_selektion",
+      "reihenfolge": 1,
+      "definition": "Selektion, die extreme Merkmalsausprägungen benachteiligt und den mittleren Bereich einer Merkmalsverteilung begünstigt.",
+      "beispiel": "Geburtsgewicht beim Menschen: sehr niedriges und sehr hohes Gewicht ist mit höherer Sterblichkeit verbunden."
+    },
+    {
+      "id": "ek_natuerliche_selektion__gerichtete_selektion",
+      "ebene": 2,
+      "bezeichnung": "gerichtete Selektion",
+      "uebergeordnetes_konzept": "ek_natuerliche_selektion",
+      "reihenfolge": 2,
+      "definition": "Selektion, die ein Extrem einer Merkmalsverteilung begünstigt und den Mittelwert der Population über Generationen in eine Richtung verschiebt.",
+      "beispiel": "Zunehmende Schnabelgröße bei Darwinfinken während trockener Jahre mit harten Samen."
+    },
+    {
+      "id": "ek_natuerliche_selektion__balancierende_selektion",
+      "ebene": 2,
+      "bezeichnung": "balancierende Selektion",
+      "uebergeordnetes_konzept": "ek_natuerliche_selektion",
+      "reihenfolge": 3,
+      "definition": "Selektionsform, die genetische Variation in einer Population aktiv erhält, etwa weil heterozygote Individuen im Vorteil sind.",
+      "beispiel": "Sichelzellanlage: heterozygote Träger sind vor Malaria geschützt, ohne die Krankheit selbst auszubilden."
+    },
+    {
+      "id": "ek_natuerliche_selektion__frequenzabhaengige_selektion",
+      "ebene": 2,
+      "bezeichnung": "frequenzabhängige Selektion",
+      "uebergeordnetes_konzept": "ek_natuerliche_selektion",
+      "reihenfolge": 4,
+      "definition": "Der Selektionsvorteil eines Merkmals hängt davon ab, wie häufig es in der Population bereits vorkommt.",
+      "beispiel": "Seltene Beutefarbmuster werden von Fressfeinden seltener erkannt und dadurch begünstigt (apostatische Selektion)."
+    },
+    {
+      "id": "ek_natuerliche_selektion__trade_offs",
+      "ebene": 2,
+      "bezeichnung": "Trade-offs/Zielkonflikte",
+      "uebergeordnetes_konzept": "ek_natuerliche_selektion",
+      "reihenfolge": 5,
+      "definition": "Evolutionäre Kompromisse, bei denen ein Merkmal in einer Hinsicht vorteilhaft, in anderer Hinsicht nachteilig ist, sodass kein Merkmal alle Anforderungen gleichzeitig optimieren kann.",
+      "beispiel": "Große Geweihe bei Hirschen erhöhen den Fortpflanzungserfolg, verringern aber die Beweglichkeit vor Fressfeinden."
+    },
+    {
+      "id": "ek_natuerliche_selektion__sexuelle_selektion",
+      "ebene": 2,
+      "bezeichnung": "sexuelle Selektion",
+      "uebergeordnetes_konzept": "ek_natuerliche_selektion",
+      "reihenfolge": 6,
+      "definition": "Selektion durch unterschiedlichen Fortpflanzungserfolg, die aus Partnerwahl oder Konkurrenz um Paarungspartner resultiert, unabhängig vom Überlebensvorteil.",
+      "beispiel": "Das auffällige Pfauenrad, das Weibchen bei der Partnerwahl bevorzugen."
+    },
+    {
+      "id": "ek_fitness",
+      "ebene": 1,
+      "bezeichnung": "Fitness",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 4,
+      "definition": "Maß für den relativen Beitrag eines Genotyps/Phänotyps zum Genpool der nächsten Generation, bestimmt durch Überleben und Fortpflanzungserfolg – nicht zu verwechseln mit körperlicher Fitness im Alltagssinn.",
+      "beispiel": "Ein Individuum mit vielen überlebensfähigen Nachkommen hat eine hohe biologische Fitness, unabhängig von seiner Körperkraft."
+    },
+    {
+      "id": "ek_anpassung_angepasstheit",
+      "ebene": 1,
+      "bezeichnung": "Anpassung und Angepasstheit",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 5,
+      "definition": "Merkmale, die durch natürliche Selektion entstanden sind, weil sie das Überleben oder den Fortpflanzungserfolg in einer bestimmten Umwelt erhöht haben.",
+      "beispiel": "Das Fell des Eisbären als Anpassung an arktische Kälte."
+    },
+    {
+      "id": "ek_anpassung_angepasstheit__funktion_von_merkmalen",
+      "ebene": 2,
+      "bezeichnung": "Funktion von Merkmalen",
+      "uebergeordnetes_konzept": "ek_anpassung_angepasstheit",
+      "reihenfolge": 1,
+      "definition": "Die durch Selektion erklärbare biologische Leistung, die ein Merkmal für seinen Träger erbringt.",
+      "beispiel": "Die Funktion der Tarnfarbe eines Insekts besteht im Schutz vor Fressfeinden."
+    },
+    {
+      "id": "ek_anpassung_angepasstheit__exaptation",
+      "ebene": 2,
+      "bezeichnung": "Exaptation (Umfunktionieren von Merkmalen)",
+      "uebergeordnetes_konzept": "ek_anpassung_angepasstheit",
+      "reihenfolge": 2,
+      "definition": "Ein Merkmal, das ursprünglich für eine andere Funktion entstand (oder ohne Funktion war) und im Laufe der Evolution eine neue Funktion übernommen hat.",
+      "beispiel": "Vogelfedern entstanden vermutlich zur Wärmeisolation und wurden erst später für den Flug genutzt."
+    },
+    {
+      "id": "ek_anpassung_angepasstheit__evolutionaeres_mismatch",
+      "ebene": 2,
+      "bezeichnung": "Evolutionäres Mismatch",
+      "uebergeordnetes_konzept": "ek_anpassung_angepasstheit",
+      "reihenfolge": 3,
+      "definition": "Eine Anpassung passt nicht mehr zur aktuellen Umwelt, weil sich diese schneller verändert hat als die biologische Anpassung selbst (z. B. durch kulturellen Wandel).",
+      "beispiel": "Der Heißhunger auf Zucker und Fett war in Zeiten von Nahrungsknappheit vorteilhaft, führt im heutigen Nahrungsüberfluss aber zu Übergewicht."
+    },
+    {
+      "id": "ek_gendrift",
+      "ebene": 1,
+      "bezeichnung": "Gendrift",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 6,
+      "definition": "Zufällige Veränderung der Allelhäufigkeiten in einer Population von Generation zu Generation, unabhängig von Selektionsvorteilen; wirkt besonders stark in kleinen Populationen.",
+      "beispiel": "Ein zufälliges Ereignis (z. B. ein Sturm) dezimiert eine kleine Population und verändert dadurch zufällig die Allelhäufigkeiten der Überlebenden."
+    },
+    {
+      "id": "ek_migration_genfluss",
+      "ebene": 1,
+      "bezeichnung": "Migration/Genfluss",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 7,
+      "definition": "Austausch genetischen Materials zwischen Populationen durch Zu- und Abwanderung von Individuen; wirkt Differenzierung zwischen Populationen entgegen.",
+      "beispiel": "Wandernde Wölfe bringen neue Allele in eine bislang isolierte Population ein."
+    },
+    {
+      "id": "ek_flaschenhalseffekt",
+      "ebene": 1,
+      "bezeichnung": "Flaschenhalseffekt",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 8,
+      "definition": "Starke, plötzliche Verringerung der genetischen Vielfalt einer Population durch ein Ereignis, das nur einen kleinen, nicht-repräsentativen Teil der Population überleben lässt.",
+      "beispiel": "Geparden weisen aufgrund eines historischen Flaschenhalses eine außergewöhnlich geringe genetische Vielfalt auf."
+    },
+    {
+      "id": "ek_gruendereffekt",
+      "ebene": 1,
+      "bezeichnung": "Gründereffekt",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 9,
+      "definition": "Verringerte genetische Vielfalt einer neu gegründeten Population, die von einer kleinen Anzahl von Gründerindividuen einer größeren Ursprungspopulation abstammt.",
+      "beispiel": "Erhöhte Häufigkeit bestimmter Erbkrankheiten in isolierten Inselpopulationen, die auf wenige Erstsiedler zurückgehen."
+    },
+    {
+      "id": "ek_lebensgeschichte",
+      "ebene": 1,
+      "bezeichnung": "Lebensgeschichte / Life-History-Theorie",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 10,
+      "definition": "Theorie über die evolutionäre Optimierung des zeitlichen Ablaufs von Wachstum, Fortpflanzung und Alterung eines Organismus unter begrenzten Ressourcen (Trade-off zwischen Anzahl und Investition pro Nachkommen).",
+      "beispiel": "Arten mit vielen, wenig umsorgten Nachkommen (r-Strategen) im Vergleich zu Arten mit wenigen, intensiv umsorgten Nachkommen (K-Strategen)."
+    },
+    {
+      "id": "ek_koevolution",
+      "ebene": 1,
+      "bezeichnung": "Koevolution",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 11,
+      "definition": "Wechselseitige evolutionäre Anpassung zweier oder mehrerer Arten aneinander, bei der Veränderungen der einen Art Selektionsdruck auf die andere ausüben.",
+      "beispiel": "Blüten und ihre spezialisierten Bestäuber entwickeln passgenaue Formen aneinander angepasst."
+    },
+    {
+      "id": "ek_koevolution__domestikation",
+      "ebene": 2,
+      "bezeichnung": "Domestikation",
+      "uebergeordnetes_konzept": "ek_koevolution",
+      "reihenfolge": 1,
+      "definition": "Ein Sonderfall der Koevolution, bei dem der Mensch durch gezielte oder unbewusste künstliche Selektion die Evolution von Nutz- und Haustierarten lenkt.",
+      "beispiel": "Die Züchtung verschiedener Hunderassen aus dem Wolf durch den Menschen."
+    },
+    {
+      "id": "ek_nischenkonstruktion",
+      "ebene": 1,
+      "bezeichnung": "Nischenkonstruktion",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 12,
+      "definition": "Organismen verändern aktiv ihre Umwelt und damit die Selektionsbedingungen für sich selbst und andere Arten.",
+      "beispiel": "Biber bauen Dämme und verändern dadurch ihren eigenen und den Lebensraum vieler anderer Arten grundlegend."
+    },
+    {
+      "id": "ek_multilevel_selektion",
+      "ebene": 1,
+      "bezeichnung": "Multilevel-Selektion",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 13,
+      "definition": "Selektion kann gleichzeitig auf mehreren biologischen Organisationsebenen wirken – von Genen über Zellen und Individuen bis zu Gruppen.",
+      "beispiel": "Der Übergang von Einzellern zu Vielzellern erforderte, dass Selektion auf Zellebene teilweise durch Selektion auf Organismusebene ersetzt wurde."
+    },
+    {
+      "id": "ek_multilevel_selektion__endosymbiontentheorie",
+      "ebene": 2,
+      "bezeichnung": "Endosymbiontentheorie",
+      "uebergeordnetes_konzept": "ek_multilevel_selektion",
+      "reihenfolge": 1,
+      "definition": "Theorie, wonach Mitochondrien und Chloroplasten aus einst frei lebenden Bakterien hervorgingen, die von Vorläufern eukaryotischer Zellen aufgenommen wurden und zu Zellorganellen wurden.",
+      "beispiel": "Mitochondrien besitzen eigene, bakterienähnliche DNA als Beleg ihrer symbiontischen Herkunft."
+    },
+    {
+      "id": "ek_multilevel_selektion__einzeller_vielzeller",
+      "ebene": 2,
+      "bezeichnung": "Evolution von Einzellern zu Vielzellern",
+      "uebergeordnetes_konzept": "ek_multilevel_selektion",
+      "reihenfolge": 2,
+      "definition": "Der mehrfach unabhängig vollzogene evolutionäre Übergang von einzelligen zu vielzelligen Organismen mit spezialisierten, kooperierenden Zellen.",
+      "beispiel": "Kolonienbildende Grünalgen wie Volvox als Übergangsform zwischen Einzeller und echtem Vielzeller."
+    },
+    {
+      "id": "ek_multilevel_selektion__verwandtenselektion",
+      "ebene": 2,
+      "bezeichnung": "Verwandtenselektion",
+      "uebergeordnetes_konzept": "ek_multilevel_selektion",
+      "reihenfolge": 3,
+      "definition": "Selektion, die altruistisches Verhalten gegenüber genetisch verwandten Individuen begünstigt, weil dadurch anteilig eigene Gene weitergegeben werden (Verwandtschaftsgrad × Nutzen > Kosten).",
+      "beispiel": "Arbeiterinnen bei sozialen Insekten verzichten auf eigene Fortpflanzung und ziehen stattdessen Geschwister auf."
+    },
+    {
+      "id": "ek_multilevel_selektion__kooperation_altruismus",
+      "ebene": 2,
+      "bezeichnung": "Evolution von Kooperation/Altruismus",
+      "uebergeordnetes_konzept": "ek_multilevel_selektion",
+      "reihenfolge": 4,
+      "definition": "Erklärung, wie kooperatives und scheinbar selbstloses Verhalten trotz individueller Kosten durch Selektion entstehen und stabil bleiben kann.",
+      "beispiel": "Wechselseitige Fellpflege bei Primaten, die auf Gegenseitigkeit (reziproker Altruismus) beruht."
+    },
+    {
+      "id": "ek_multilevel_selektion__prozesse_innerhalb_organismen",
+      "ebene": 2,
+      "bezeichnung": "Evolutionäre Prozesse innerhalb von Organismen",
+      "uebergeordnetes_konzept": "ek_multilevel_selektion",
+      "reihenfolge": 5,
+      "definition": "Selektionsähnliche Prozesse, die innerhalb eines einzelnen Organismus zwischen Zellen oder Zelllinien ablaufen.",
+      "beispiel": "Somatische Selektion zwischen B-Zell-Klonen im Immunsystem während der Antikörperreifung; Tumorentstehung als Selektion zwischen Zelllinien."
+    },
+    {
+      "id": "ek_tiefenzeit",
+      "ebene": 1,
+      "bezeichnung": "Tiefenzeit",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 14,
+      "definition": "Die Vorstellung von den enormen, für die Alltagserfahrung kaum fassbaren Zeiträumen der Erd- und Lebensgeschichte, die evolutive Veränderungen erst ermöglichen.",
+      "beispiel": "Der Vergleich der Erdgeschichte mit einem einzigen Kalenderjahr, in dem die gesamte Menschheitsgeschichte erst in den letzten Sekunden des 31. Dezembers stattfindet."
+    },
+    {
+      "id": "ek_tiefenzeit__geologische_epochen",
+      "ebene": 2,
+      "bezeichnung": "geologische Epochen",
+      "uebergeordnetes_konzept": "ek_tiefenzeit",
+      "reihenfolge": 1,
+      "definition": "Die Gliederung der Erdgeschichte in Zeitabschnitte (z. B. Kambrium, Kreide, Känozoikum), die den Rahmen für die Einordnung evolutionärer Ereignisse liefert.",
+      "beispiel": "Die 'kambrische Explosion' als Zeitabschnitt rascher Diversifizierung vielzelliger Tierstämme."
+    },
+    {
+      "id": "ek_tiefenzeit__fossilien",
+      "ebene": 2,
+      "bezeichnung": "Fossilien",
+      "uebergeordnetes_konzept": "ek_tiefenzeit",
+      "reihenfolge": 2,
+      "definition": "Erhaltene Überreste oder Spuren vergangener Lebewesen, die direkte materielle Belege für die Geschichte des Lebens und seine Veränderung über die Zeit liefern.",
+      "beispiel": "Ammoniten als Leitfossilien zur Datierung von Gesteinsschichten."
+    },
+    {
+      "id": "ek_tiefenzeit__uebergangsformen",
+      "ebene": 2,
+      "bezeichnung": "Übergangsformen/Entwicklungslinien",
+      "uebergeordnetes_konzept": "ek_tiefenzeit",
+      "reihenfolge": 3,
+      "definition": "Fossilfunde, die Merkmale sowohl einer Vorläufer- als auch einer Nachfolgergruppe kombinieren und damit stufenweise evolutive Übergänge belegen.",
+      "beispiel": "Archaeopteryx mit Merkmalen sowohl von Reptilien (Zähne, langer knöcherner Schwanz) als auch von Vögeln (Federn)."
+    },
+    {
+      "id": "ek_stammbaeume_phylogenetik",
+      "ebene": 1,
+      "bezeichnung": "Stammbäume und phylogenetische Systematik",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 15,
+      "definition": "Die grafische und methodische Darstellung von Verwandtschaftsverhältnissen zwischen Taxa auf Grundlage gemeinsamer abgeleiteter Merkmale.",
+      "beispiel": "Ein Kladogramm der Wirbeltiergruppen, das Verzweigungspunkte gemeinsamer Vorfahren zeigt."
+    },
+    {
+      "id": "ek_stammbaeume_phylogenetik__gemeinsame_abstammung",
+      "ebene": 2,
+      "bezeichnung": "gemeinsame Abstammung/Verwandtschaft",
+      "uebergeordnetes_konzept": "ek_stammbaeume_phylogenetik",
+      "reihenfolge": 1,
+      "definition": "Das Grundprinzip, dass alle heutigen Arten von gemeinsamen Vorfahren abstammen und dadurch in einem einzigen, verzweigten Lebensbaum miteinander verbunden sind.",
+      "beispiel": "Menschen und Schimpansen teilen einen gemeinsamen Vorfahren, der vor etwa 6-7 Millionen Jahren lebte."
+    },
+    {
+      "id": "ek_konservierung_merkmalen",
+      "ebene": 1,
+      "bezeichnung": "Konservierung von Merkmalen (gemeinsame genetische Grundlagen, Baupläne, Entwicklungsprozesse usw.)",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 16,
+      "definition": "Grundlegende genetische Steuerungsmechanismen, Körperbaupläne und Entwicklungsprozesse bleiben über sehr lange evolutionäre Zeiträume und weit auseinanderliegende Tiergruppen hinweg erstaunlich ähnlich.",
+      "beispiel": "Hox-Gene steuern die Körperachsengliederung sowohl bei Fruchtfliegen als auch beim Menschen in vergleichbarer Weise."
+    },
+    {
+      "id": "ek_homologie_analogie",
+      "ebene": 1,
+      "bezeichnung": "Homologie und Analogie/Konvergente und divergente Evolution",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 17,
+      "definition": "Homologe Strukturen gehen auf ein gemeinsames Grundmuster eines Vorfahren zurück (divergente Evolution), analoge Strukturen sind unabhängig voneinander funktionell ähnlich entstanden (konvergente Evolution).",
+      "beispiel": "Der Vordergliedmaßenbau von Fledermausflügel, Walflosse und Menschenarm ist homolog; Fledermausflügel und Insektenflügel sind dagegen analog."
+    },
+    {
+      "id": "ek_artbildung_radiation",
+      "ebene": 1,
+      "bezeichnung": "Artbildung und adaptive Radiation",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 18,
+      "definition": "Der Prozess, durch den aus einer Ausgangsart eine oder mehrere neue Arten entstehen, oft durch geografische Isolation; adaptive Radiation bezeichnet die rasche Aufspaltung in viele ökologisch spezialisierte Arten.",
+      "beispiel": "Die Darwinfinken der Galápagos-Inseln, die sich aus einer Stammart in viele auf unterschiedliche Nahrungsquellen spezialisierte Arten aufgespalten haben."
+    },
+    {
+      "id": "ek_aussterben",
+      "ebene": 1,
+      "bezeichnung": "Aussterben",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 19,
+      "definition": "Das endgültige Verschwinden einer Art, wenn kein Individuum mehr überlebt; ein integraler, ständig ablaufender Teil der Evolutionsgeschichte, der durch Massenaussterben-Ereignisse stark beschleunigt sein kann.",
+      "beispiel": "Das Aussterben der nicht-avischen Dinosaurier am Ende der Kreidezeit."
+    },
+    {
+      "id": "ek_evo_devo",
+      "ebene": 1,
+      "bezeichnung": "Evolutionäre Entwicklungsbiologie (Evo-Devo)",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 20,
+      "definition": "Forschungsrichtung, die untersucht, wie Veränderungen in den genetischen Steuerungsprogrammen der individuellen Entwicklung (Ontogenese) zu evolutionären Veränderungen von Körperbauplänen führen.",
+      "beispiel": "Unterschiede in der Ausprägung von Hox-Genen erklären die verschiedene Anzahl von Körpersegmenten bei Insekten."
+    },
+    {
+      "id": "ek_evo_devo__biogenetische_grundregel",
+      "ebene": 2,
+      "bezeichnung": "biogenetische Grundregel",
+      "uebergeordnetes_konzept": "ek_evo_devo",
+      "reihenfolge": 1,
+      "definition": "Haeckels historische, in ihrer strengen Form widerlegte These, die Individualentwicklung (Ontogenese) wiederhole die Stammesgeschichte (Phylogenese); im modernen Evo-Devo-Verständnis ersetzt durch die Erkenntnis geteilter, aber modifizierter Entwicklungsprogramme.",
+      "beispiel": "Kiemenspalten-ähnliche Strukturen im menschlichen Embryo als Hinweis auf gemeinsame Entwicklungsprogramme mit Fischen, nicht als wörtliche Wiederholung der Stammesgeschichte."
+    },
+    {
+      "id": "ek_kulturelle_evolution",
+      "ebene": 1,
+      "bezeichnung": "kulturelle Evolution",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 21,
+      "definition": "Die Veränderung von Wissen, Verhaltensweisen, Werkzeugen und sozialen Praktiken über Generationen durch Lernen, Weitergabe und Selektion kultureller Varianten – analog zur biologischen Evolution, aber mit eigenen Mechanismen (z. B. schnellerer, teils gerichteter Weitergabe).",
+      "beispiel": "Die rasche weltweite Verbreitung und Weiterentwicklung landwirtschaftlicher Techniken innerhalb weniger Generationen."
+    }
+  ]
+}

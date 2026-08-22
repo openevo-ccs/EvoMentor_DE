@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EvoMentor DE v1.2 — Integriertes Lehrplan- und Evolutionswerkzeug</title>
+<style>
+:root{
+  --bg:#f4f6fb; --bg-alt:#eef1f8; --panel:#ffffff; --panel-2:#f8f9fd;
+  --border:#e0e4ee; --border-2:#cbd2e3;
+  --txt:#0f172a; --txt-2:#475569; --txt-3:#8592ab;
+  --teal:#0d9488; --teal-pale:#e6f7f5;
+  --blue:#2563eb; --blue-pale:#e8effe;
+  --purple:#7c3aed; --purple-pale:#f2eafe;
+  --amber:#d97706; --amber-pale:#fdf1e0;
+  --rose:#e11d48; --rose-pale:#fce8ed;
+  --green:#16a34a; --green-pale:#e8f7ec;
+  --shadow: 0 1px 2px rgba(15,23,42,.04), 0 6px 20px -6px rgba(15,23,42,.10);
+  --shadow-lg: 0 12px 40px -12px rgba(15,23,42,.22);
+  --radius: 12px; --radius-sm: 8px;
+  --sidebar-w: 250px;
+  --bk-struktur:#2563eb; --bk-stoff:#d97706; --bk-info:#7c3aed; --bk-steuerung:#0d9488;
+  --bk-individuell:#e11d48; --bk-evolutiv:#16a34a;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+:root[data-theme="dark"], :root:not([data-theme="light"]){
+  --scheme-auto: 1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0b1220; --bg-alt:#0e1626; --panel:#121b2d; --panel-2:#16213610;
+    --panel-2:#16213a; --border:#233150; --border-2:#2c3c60;
+    --txt:#e6ebf5; --txt-2:#aab6cc; --txt-3:#7686a3;
+    --teal-pale:#0d3733; --blue-pale:#152a52; --purple-pale:#2c1f4d; --amber-pale:#3a2a0e; --rose-pale:#3a1420; --green-pale:#123822;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px -6px rgba(0,0,0,.5);
+    --shadow-lg: 0 16px 48px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1220; --bg-alt:#0e1626; --panel:#121b2d; --panel-2:#16213a; --border:#233150; --border-2:#2c3c60;
+  --txt:#e6ebf5; --txt-2:#aab6cc; --txt-3:#7686a3;
+  --teal-pale:#0d3733; --blue-pale:#152a52; --purple-pale:#2c1f4d; --amber-pale:#3a2a0e; --rose-pale:#3a1420; --green-pale:#123822;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px -6px rgba(0,0,0,.5);
+  --shadow-lg: 0 16px 48px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{
+  font-family:var(--font); background:var(--bg); color:var(--txt);
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--blue)}
+button{font-family:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:6px}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ---------- App shell ---------- */
+#app{display:flex; height:100vh; overflow:hidden}
+
+/* Sidebar */
+#sidebar{
+  width:var(--sidebar-w); flex:0 0 auto; background:var(--panel); border-right:1px solid var(--border);
+  display:flex; flex-direction:column; transition:width .18s ease, transform .18s ease;
+}
+#sidebar.collapsed{width:64px}
+.brand{
+  display:flex; align-items:center; gap:10px; padding:16px 16px 14px 16px; border-bottom:1px solid var(--border);
+}
+.brand-mark{
+  width:34px;height:34px;border-radius:10px;flex:0 0 auto;
+  background:linear-gradient(135deg,var(--teal),var(--blue) 55%,var(--purple));
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+}
+.brand-text{overflow:hidden}
+.brand-text b{display:block;font-size:14.5px;letter-spacing:.2px;white-space:nowrap}
+.brand-text span{display:block;font-size:10.5px;color:var(--txt-3);white-space:nowrap}
+#sidebar.collapsed .brand-text{display:none}
+
+nav.viewnav{flex:1; overflow-y:auto; padding:10px 10px}
+.nav-item{
+  display:flex; align-items:center; gap:11px; padding:9px 11px; border-radius:9px; cursor:pointer;
+  color:var(--txt-2); font-size:13.3px; font-weight:500; margin-bottom:2px; white-space:nowrap;
+  border:1px solid transparent;
+}
+.nav-item:hover{background:var(--bg-alt); color:var(--txt)}
+.nav-item.active{background:var(--teal-pale); color:var(--teal); border-color:color-mix(in srgb, var(--teal) 25%, transparent)}
+.nav-item .ic{width:19px; text-align:center; flex:0 0 auto; font-size:15px}
+#sidebar.collapsed .nav-item span.lbl{display:none}
+.nav-section-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--txt-3); padding:14px 11px 5px}
+#sidebar.collapsed .nav-section-label{display:none}
+
+.sidebar-foot{padding:10px; border-top:1px solid var(--border); display:flex; gap:6px}
+.icon-btn{
+  width:32px;height:32px;border-radius:8px;border:1px solid var(--border); background:var(--panel-2);
+  color:var(--txt-2); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px;
+}
+.icon-btn:hover{background:var(--bg-alt); color:var(--txt)}
+
+/* Main area */
+#main{flex:1; display:flex; flex-direction:column; min-width:0}
+#topbar{
+  height:56px; flex:0 0 auto; border-bottom:1px solid var(--border); background:var(--panel);
+  display:flex; align-items:center; gap:12px; padding:0 18px;
+}
+#topbar h1{font-size:15.5px; margin:0; font-weight:650}
+#topbar .sub{color:var(--txt-3); font-size:12px}
+.topbar-spacer{flex:1}
+.searchbox{
+  display:flex; align-items:center; gap:7px; background:var(--bg-alt); border:1px solid var(--border);
+  border-radius:9px; padding:6px 11px; min-width:230px;
+}
+.searchbox input{border:0; background:transparent; outline:0; font-size:13px; color:var(--txt); width:100%}
+.pill-btn{
+  border:1px solid var(--border-2); background:var(--panel); color:var(--txt-2); border-radius:8px;
+  padding:6px 12px; font-size:12.5px; cursor:pointer; font-weight:600; display:flex; align-items:center; gap:6px;
+}
+.pill-btn:hover{background:var(--bg-alt)}
+.pill-btn.primary{background:var(--teal); border-color:var(--teal); color:#fff}
+.pill-btn.primary:hover{filter:brightness(1.06)}
+
+#viewport{flex:1; overflow:auto; position:relative}
+.view{display:none; padding:20px 22px 40px; max-width:1500px; margin:0 auto}
+.view.active{display:block}
+.view-loading, .view-empty{padding:60px 20px; text-align:center; color:var(--txt-3)}
+
+/* Generic building blocks */
+.card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow)}
+.card-pad{padding:16px 18px}
+.grid{display:grid; gap:14px}
+.kpi{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px}
+.kpi .n{font-size:24px; font-weight:750; letter-spacing:-.02em}
+.kpi .l{font-size:11.5px; color:var(--txt-3); margin-top:2px}
+.tag{
+  display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:650; padding:3px 8px;
+  border-radius:100px; border:1px solid transparent; white-space:nowrap;
+}
+.badge-dot{width:7px;height:7px;border-radius:50%; display:inline-block}
+.chip{
+  display:inline-flex; align-items:center; gap:5px; border:1px solid var(--border-2); background:var(--panel);
+  color:var(--txt-2); border-radius:100px; padding:4px 10px; font-size:12px; cursor:pointer; user-select:none;
+}
+.chip:hover{background:var(--bg-alt)}
+.chip.on{background:var(--teal); border-color:var(--teal); color:#fff}
+.section-h{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--txt-3); margin:18px 0 8px}
+.section-h:first-child{margin-top:0}
+hr.sep{border:0;border-top:1px solid var(--border); margin:16px 0}
+
+textarea, input[type=text], input[type=number], select{
+  font-family:inherit; font-size:13px; border:1px solid var(--border-2); border-radius:8px; padding:7px 9px;
+  background:var(--panel); color:var(--txt);
+}
+
+/* Modal */
+.modal-backdrop{position:fixed; inset:0; background:rgba(10,15,25,.45); display:none; align-items:center; justify-content:center; z-index:200}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--panel); border-radius:14px; box-shadow:var(--shadow-lg); width:min(640px,92vw); max-height:85vh; overflow:auto; border:1px solid var(--border)}
+.modal-head{display:flex; align-items:center; padding:16px 18px; border-bottom:1px solid var(--border)}
+.modal-head h3{margin:0; font-size:15px}
+.modal-body{padding:16px 18px}
+.modal-foot{padding:12px 18px; border-top:1px solid var(--border); display:flex; justify-content:flex-end; gap:8px}
+
+/* Toast */
+#toastwrap{position:fixed; bottom:18px; right:18px; z-index:300; display:flex; flex-direction:column; gap:8px}
+.toast{background:var(--txt); color:var(--bg); padding:9px 14px; border-radius:9px; font-size:12.5px; box-shadow:var(--shadow-lg); opacity:0; transform:translateY(6px); transition:.2s}
+.toast.show{opacity:1; transform:none}
+
+/* Mobile */
+@media (max-width:880px){
+  #sidebar{position:fixed; z-index:150; height:100%; transform:translateX(-100%)}
+  #sidebar.mobile-open{transform:none}
+  .searchbox{min-width:120px}
+  #btnMobileNav{display:flex !important}
+  #sidebarScrim{display:none; position:fixed; inset:0; background:rgba(10,15,25,.4); z-index:140}
+  #sidebarScrim.show{display:block}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">🧬</div>
+      <div class="brand-text"><b>EvoMentor DE</b><span>v1.2 · Integriertes Werkzeug</span></div>
+    </div>
+    <nav class="viewnav" id="viewnav"></nav>
+    <div class="sidebar-foot">
+      <button class="icon-btn" id="btnCollapse" title="Seitenleiste ein-/ausklappen">⇤</button>
+      <button class="icon-btn" id="btnTheme" title="Hell/Dunkel">🌓</button>
+      <button class="icon-btn" id="btnExportAll" title="Alles exportieren">⭳</button>
+    </div>
+  </aside>
+
+  <div id="main">
+    <div id="topbar">
+      <button class="icon-btn" id="btnMobileNav" style="display:none">☰</button>
+      <h1 id="viewTitle">Lernziele</h1>
+      <span class="sub" id="viewSub"></span>
+      <div class="topbar-spacer"></div>
+      <div class="searchbox"><span>🔎</span><input id="globalSearch" placeholder="Suche über alle Klassenstufen…"></div>
+      <button class="pill-btn" id="btnFavorites">★ <span id="favCount">0</span></button>
+    </div>
+    <div id="viewport">
+      <div id="viewLernziele" class="view"></div>
+      <div id="viewBasiskonzepte" class="view"></div>
+      <div id="viewEvokonzepte" class="view"></div>
+      <div id="viewSequenz" class="view"></div>
+      <div id="viewPrompt" class="view"></div>
+      <div id="viewForschung" class="view"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" id="modalBox"></div></div>
+<div id="toastwrap"></div>
+<div id="sidebarScrim"></div>
+
+<script>
+/* =========================================================================
+   EvoMentor DE v1.2 — core: data loading, unified annotation store, shared UI
+   ========================================================================= */
+(function(){
+'use strict';
+
+const EM = window.EM = {
+  data: { mnt56:null, gy78:null, gy910:null, basiskonzepte:null, evolutionskonzepte:null, kohaerenzfaeden:null },
+  lz: [],           // flattened array of all lernziele across grade bands, each tagged with .band
+  lzById: {},
+  bkById: {},
+  tkById: {},
+  ekById: {},       // evolutionskonzept by id
+  ekByLabel: {},    // evolutionskonzept by bezeichnung (controlled-vocab lookup)
+  threads: [],
+  view: 'lernziele',
+};
+
+const BAND_META = {
+  mnt56: { label:'Kl. 5/6', color:'#7c3aed', file:'lernziele_MNT56.json' },
+  gy78:  { label:'Kl. 7/8', color:'#2563eb', file:'lernziele_gy78.json' },
+  gy910: { label:'Kl. 9/10',color:'#0d9488', file:'lernziele_gy910.json' },
+};
+EM.BAND_META = BAND_META;
+
+const BK_COLOR = {
+  bk_struktur_funktion:'var(--bk-struktur)',
+  bk_stoff_energie_umwandlung:'var(--bk-stoff)',
+  bk_information_kommunikation:'var(--bk-info)',
+  bk_steuerung_regelung:'var(--bk-steuerung)',
+  bk_individuelle_entwicklung:'var(--bk-individuell)',
+  bk_evolutive_entwicklung:'var(--bk-evolutiv)',
+};
+EM.BK_COLOR = BK_COLOR;
+
+/* ---------- tiny utils ---------- */
+function esc(s){ return (s==null?'':String(s)).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+EM.esc = esc;
+function el(tag, attrs, html){ const e=document.createElement(tag); if(attrs) for(const k in attrs) e.setAttribute(k, attrs[k]); if(html!=null) e.innerHTML = html; return e; }
+EM.el = el;
+function toast(msg){
+  const t = el('div', {class:'toast'}, esc(msg));
+  document.getElementById('toastwrap').appendChild(t);
+  requestAnimationFrame(()=>t.classList.add('show'));
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(), 250); }, 2600);
+}
+EM.toast = toast;
+
+function openModal(titleHtml, bodyHtml, footHtml){
+  const box = document.getElementById('modalBox');
+  box.innerHTML = `<div class="modal-head"><h3>${titleHtml}</h3><div style="flex:1"></div><button class="icon-btn" id="modalClose">✕</button></div>`+
+                   `<div class="modal-body">${bodyHtml}</div>`+
+                   (footHtml ? `<div class="modal-foot">${footHtml}</div>` : '');
+  document.getElementById('modalBackdrop').classList.add('open');
+  document.getElementById('modalClose').onclick = closeModal;
+  return box;
+}
+function closeModal(){ document.getElementById('modalBackdrop').classList.remove('open'); }
+EM.openModal = openModal; EM.closeModal = closeModal;
+document.getElementById('modalBackdrop').addEventListener('click', e => { if(e.target.id==='modalBackdrop') closeModal(); });
+
+/* ---------- unified annotation / edit / favorites / tags store ----------
+   Single localStorage namespace replacing v1.1's evomentor_*_v1, the
+   lernziele_evolution* apps' bio_*_v2/v3, and lehrplannavigator's
+   lk_edits/lk_annots + sequenz.html's session-only accept/dismiss state.  */
+const LS_KEY = 'em2_state_v1';
+function loadState(){
+  try{
+    const raw = localStorage.getItem(LS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){ /* ignore corrupt state */ }
+  return { annotations:{}, edits:{}, tags:[], seqPlan:{}, seqEmphasis:{}, seqCustomLessons:{}, prefs:{ theme:'auto', sidebarCollapsed:false } };
+}
+EM.state = loadState();
+let saveTimer=null;
+function saveState(){
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(()=>{
+    try{ localStorage.setItem(LS_KEY, JSON.stringify(EM.state)); }catch(e){ console.warn('state save failed', e); }
+  }, 150);
+}
+EM.saveState = saveState;
+
+function ann(id){
+  if(!EM.state.annotations[id]) EM.state.annotations[id] = { favorit:false, notizen:'', userTags:[], methFavs:{} };
+  return EM.state.annotations[id];
+}
+EM.ann = ann;
+function isFav(id){ return !!(EM.state.annotations[id] && EM.state.annotations[id].favorit); }
+EM.isFav = isFav;
+function toggleFav(id){
+  const a = ann(id); a.favorit = !a.favorit; saveState(); refreshFavCount();
+  return a.favorit;
+}
+EM.toggleFav = toggleFav;
+function refreshFavCount(){
+  const n = Object.values(EM.state.annotations).filter(a=>a.favorit).length;
+  const elx = document.getElementById('favCount'); if(elx) elx.textContent = n;
+}
+EM.refreshFavCount = refreshFavCount;
+
+/* ---------- data loading ---------- */
+async function fetchJson(path){
+  const res = await fetch(path);
+  if(!res.ok) throw new Error(`${path}: HTTP ${res.status}`);
+  return res.json();
+}
+
+async function loadAll(){
+  const [mnt56, gy78, gy910, bkData, ekData, kfData] = await Promise.all([
+    fetchJson('../data/lernziele_MNT56.json'),
+    fetchJson('../data/lernziele_gy78.json'),
+    fetchJson('../data/lernziele_gy910.json'),
+    fetchJson('../data/basiskonzepte.json'),
+    fetchJson('../data/evolutionskonzepte.json'),
+    fetchJson('../data/kohaerenzfaeden.json'),
+  ]);
+  EM.data.mnt56=mnt56; EM.data.gy78=gy78; EM.data.gy910=gy910;
+  EM.data.basiskonzepte=bkData; EM.data.evolutionskonzepte=ekData; EM.data.kohaerenzfaeden=kfData;
+
+  EM.lz = [];
+  for(const band of ['mnt56','gy78','gy910']){
+    const src = EM.data[band].lernziele || [];
+    for(const item of src){
+      const copy = Object.assign({}, item, { band });
+      EM.lz.push(copy);
+      EM.lzById[item.id] = copy;
+    }
+  }
+
+  EM.bkById = {}; EM.tkById = {};
+  for(const bk of bkData.basiskonzepte){
+    EM.bkById[bk.id] = bk;
+    for(const tk of (bk.teilkonzepte||[])) EM.tkById[tk.id] = tk;
+  }
+
+  EM.ekById = {}; EM.ekByLabel = {};
+  for(const ek of ekData.evolutionskonzepte){
+    EM.ekById[ek.id] = ek;
+    EM.ekByLabel[ek.bezeichnung] = ek;
+  }
+
+  EM.threads = kfData.kohaerenzfaeden || [];
+}
+EM.loadAll = loadAll;
+
+/* ---------- view registry & navigation ---------- */
+const VIEWS = [
+  { section:'Erkunden' },
+  { id:'lernziele', icon:'📋', label:'Lernziele', sub:'Browser über alle Klassenstufen 5–10' },
+  { id:'basiskonzepte', icon:'🕸️', label:'Basiskonzepte', sub:'Konzeptnetz, Dashboard, Kohärenzfäden' },
+  { id:'evokonzepte', icon:'🧬', label:'Evolutionskonzepte', sub:'Taxonomie & Lernziel-Querverweise' },
+  { section:'Planen' },
+  { id:'sequenz', icon:'🗓️', label:'Sequenzplaner', sub:'Jahresplanung mit Qualitätsanalyse' },
+  { id:'prompt', icon:'🤖', label:'KI-Prompt', sub:'Unterrichtsvorbereitung mit KI-Unterstützung' },
+  { section:'Forschen' },
+  { id:'forschung', icon:'🔬', label:'Forschung', sub:'Datenqualität, Abdeckung, Konsistenz' },
+];
+EM.VIEWS = VIEWS;
+
+function buildNav(){
+  const nav = document.getElementById('viewnav');
+  nav.innerHTML = '';
+  for(const v of VIEWS){
+    if(v.section){ nav.appendChild(el('div',{class:'nav-section-label'}, esc(v.section))); continue; }
+    const item = el('div', {class:'nav-item', 'data-view':v.id}, `<span class="ic">${v.icon}</span><span class="lbl">${esc(v.label)}</span>`);
+    item.onclick = () => setView(v.id);
+    nav.appendChild(item);
+  }
+}
+
+function setView(id){
+  EM.view = id;
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.view===id));
+  document.querySelectorAll('.view').forEach(n => n.classList.remove('active'));
+  const meta = VIEWS.find(v=>v.id===id);
+  document.getElementById('viewTitle').textContent = meta ? meta.label : id;
+  document.getElementById('viewSub').textContent = meta ? meta.sub : '';
+  const map = { lernziele:'viewLernziele', basiskonzepte:'viewBasiskonzepte', evokonzepte:'viewEvokonzepte', sequenz:'viewSequenz', prompt:'viewPrompt', forschung:'viewForschung' };
+  const node = document.getElementById(map[id]);
+  node.classList.add('active');
+  location.hash = id;
+  if(EM.renderers[id]) EM.renderers[id]();
+}
+EM.setView = setView;
+EM.renderers = {}; // populated by each view module below
+
+/* ---------- boot ---------- */
+async function boot(){
+  buildNav();
+  refreshFavCount();
+  // theme
+  const savedTheme = EM.state.prefs.theme;
+  if(savedTheme && savedTheme!=='auto') document.documentElement.setAttribute('data-theme', savedTheme);
+  document.getElementById('btnTheme').onclick = () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur==='dark' ? 'light' : (cur==='light' ? null : 'dark');
+    if(next) document.documentElement.setAttribute('data-theme', next); else document.documentElement.removeAttribute('data-theme');
+    EM.state.prefs.theme = next || 'auto'; saveState();
+  };
+  document.getElementById('btnCollapse').onclick = () => {
+    document.getElementById('sidebar').classList.toggle('collapsed');
+  };
+  const scrim = document.getElementById('sidebarScrim');
+  document.getElementById('btnMobileNav').onclick = () => {
+    document.getElementById('sidebar').classList.add('mobile-open');
+    scrim.classList.add('show');
+  };
+  scrim.onclick = () => { document.getElementById('sidebar').classList.remove('mobile-open'); scrim.classList.remove('show'); };
+  document.getElementById('viewnav').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('mobile-open'); scrim.classList.remove('show');
+  });
+
+  try{
+    await loadAll();
+  }catch(e){
+    document.getElementById('viewLernziele').classList.add('active');
+    document.getElementById('viewLernziele').innerHTML = `<div class="view-empty">⚠️ Daten konnten nicht geladen werden: ${esc(e.message)}.<br>Diese App lädt Daten per <code>fetch()</code> relativ zu <code>../data/</code> — bitte über einen lokalen Server öffnen (z. B. <code>python -m http.server</code> im Repo-Root) oder über GitHub Pages, nicht per Doppelklick/<code>file://</code>.</div>`;
+    return;
+  }
+
+  const startView = (location.hash||'').replace('#','') || 'lernziele';
+  setView(VIEWS.find(v=>v.id===startView) ? startView : 'lernziele');
+
+  document.getElementById('globalSearch').addEventListener('input', e => {
+    EM.globalQuery = e.target.value.trim().toLowerCase();
+    if(EM.view==='lernziele' && EM.renderers.lernziele) EM.renderers.lernziele();
+  });
+  document.getElementById('btnFavorites').onclick = () => {
+    setView('lernziele');
+    EM.lernzieleFilters.favOnly = true;
+    EM.renderers.lernziele();
+  };
+}
+
+document.addEventListener('DOMContentLoaded', boot);
+})();
+</script>
+
+<script>
+/* =========================================================================
+   VIEW: Lernziele-Browser
+   ========================================================================= */
+(function(){
+'use strict';
+EM.lernzieleFilters = { bands:new Set(['mnt56','gy78','gy910']), bks:new Set(), relevance:new Set(), thema:'', praktischOnly:false, ankerOnly:false, favOnly:false, sort:'id', view:'card' };
+
+const METHOD_ICON = { 'Forschendes Lernen':'🔬','Analogien und Vergleiche':'🔗','Konzeptuelles Lernen':'🧩','Diskussion':'💬','Narrativer Zugang':'📖','Modelle und Simulationen':'🧪','Erfahrungsbasiertes Lernen':'🖐️','Digitale Medien':'💻','Einblick in Wissenschaftsgeschichte':'🏛️','Recherche':'📚','Kooperative Lernformen':'👥','Projektbasiertes Lernen':'🛠️' };
+
+function bkLabel(id){ const bk = EM.bkById[id]; return bk ? bk.kurzbezeichnung : id; }
+function bkChip(id){
+  const bk = EM.bkById[id]; if(!bk) return '';
+  return `<span class="tag" style="background:color-mix(in srgb, ${EM.BK_COLOR[id]} 15%, transparent); color:${EM.BK_COLOR[id]}"><span class="badge-dot" style="background:${EM.BK_COLOR[id]}"></span>${esc(bk.kurzbezeichnung)}</span>`;
+}
+
+function matchesFilters(e){
+  const F = EM.lernzieleFilters;
+  if(!F.bands.has(e.band)) return false;
+  if(F.bks.size && !e.basiskonzepte_primaer.concat(e.basiskonzepte_sekundaer).some(b=>F.bks.has(b))) return false;
+  if(F.relevance.size && !(e.evolutionsbezug && F.relevance.has(e.evolutionsbezug.evolutionsrelevanz_beurteilung))) return false;
+  if(F.thema && e.thema !== F.thema) return false;
+  if(F.praktischOnly && !e.ist_praktisch) return false;
+  if(F.ankerOnly && !e.ist_konzeptanker) return false;
+  if(F.favOnly && !EM.isFav(e.id)) return false;
+  const q = (EM.globalQuery||'') || (F.q||'');
+  if(q){
+    const hay = (e.id+' '+e.kurzbezeichnung+' '+e.originaltext+' '+e.thema+' '+e.unterthema).toLowerCase();
+    if(!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+function sortEntries(list){
+  const F = EM.lernzieleFilters;
+  const arr = list.slice();
+  if(F.sort==='id') arr.sort((a,b)=>a.id.localeCompare(b.id));
+  else if(F.sort==='band') arr.sort((a,b)=> a.band.localeCompare(b.band) || a.id.localeCompare(b.id));
+  else if(F.sort==='relevance') arr.sort((a,b)=> ((b.evolutionsbezug?.evolutionsrelevanz_beurteilung)||0) - ((a.evolutionsbezug?.evolutionsrelevanz_beurteilung)||0));
+  else if(F.sort==='fav') arr.sort((a,b)=> (EM.isFav(b.id)?1:0) - (EM.isFav(a.id)?1:0));
+  return arr;
+}
+
+function renderFilterPanel(){
+  const F = EM.lernzieleFilters;
+  const themen = Array.from(new Set(EM.lz.filter(e=>F.bands.has(e.band)).map(e=>e.thema)));
+  return `
+  <div class="card card-pad" style="position:sticky; top:0">
+    <div class="section-h">Klassenstufe</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px">
+      ${Object.entries(EM.BAND_META).map(([b,m])=>`<span class="chip ${F.bands.has(b)?'on':''}" data-band="${b}">${m.label}</span>`).join('')}
+    </div>
+    <div class="section-h">Basiskonzept</div>
+    <div style="display:flex; flex-direction:column; gap:6px">
+      ${Object.keys(EM.BK_COLOR).map(id=>{
+        const bk = EM.bkById[id]; if(!bk) return '';
+        const on = F.bks.has(id);
+        return `<span class="chip ${on?'on':''}" data-bk="${id}" style="${on?`background:${EM.BK_COLOR[id]};border-color:${EM.BK_COLOR[id]}`:''}"><span class="badge-dot" style="background:${on?'#fff':EM.BK_COLOR[id]}"></span>${esc(bk.bezeichnung)}</span>`;
+      }).join('')}
+    </div>
+    <div class="section-h">Evolutionsrelevanz</div>
+    <div style="display:flex; gap:6px">
+      ${[1,2,3].map(r=>`<span class="chip ${F.relevance.has(r)?'on':''}" data-rel="${r}">${'●'.repeat(r)}</span>`).join('')}
+    </div>
+    <div class="section-h">Thema</div>
+    <select id="filThema" style="width:100%">
+      <option value="">Alle Themen</option>
+      ${themen.map(t=>`<option ${F.thema===t?'selected':''}>${esc(t)}</option>`).join('')}
+    </select>
+    <div class="section-h">Weitere Filter</div>
+    <label style="display:flex;gap:7px;align-items:center;margin-bottom:6px;font-size:12.5px"><input type="checkbox" id="filPraktisch" ${F.praktischOnly?'checked':''}> nur praktische Lernziele</label>
+    <label style="display:flex;gap:7px;align-items:center;margin-bottom:6px;font-size:12.5px"><input type="checkbox" id="filAnker" ${F.ankerOnly?'checked':''}> nur Konzeptanker</label>
+    <label style="display:flex;gap:7px;align-items:center;font-size:12.5px"><input type="checkbox" id="filFav" ${F.favOnly?'checked':''}> nur Favoriten ★</label>
+    <div class="section-h">Sortierung</div>
+    <select id="filSort" style="width:100%">
+      <option value="id" ${F.sort==='id'?'selected':''}>ID</option>
+      <option value="band" ${F.sort==='band'?'selected':''}>Klassenstufe</option>
+      <option value="relevance" ${F.sort==='relevance'?'selected':''}>Evolutionsrelevanz</option>
+      <option value="fav" ${F.sort==='fav'?'selected':''}>Favoriten zuerst</option>
+    </select>
+    <hr class="sep">
+    <button class="pill-btn" id="filReset" style="width:100%">Filter zurücksetzen</button>
+  </div>`;
+}
+
+function evoBlockHtml(e){
+  if(!e.evolutionsbezug) return '<div style="color:var(--txt-3); font-size:12.5px">Noch keine Evolutions-Anreicherung vorhanden.</div>';
+  const eb = e.evolutionsbezug, ds = e.didaktische_strategien;
+  const relDots = '●'.repeat(eb.evolutionsrelevanz_beurteilung) + '○'.repeat(3-eb.evolutionsrelevanz_beurteilung);
+  let html = `<div class="acc" data-acc="wiss-${e.id}">
+    <div class="acc-h">🔬 Wissenschaftlicher Evolutionsbezug <span style="color:var(--green); letter-spacing:1px">${relDots}</span> <span class="acc-arrow">▾</span></div>
+    <div class="acc-b">
+      <p style="margin:8px 0">${esc(eb.wissenschaftliche_begruendung)}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:6px">${(eb.relevante_evolutionskonzepte||[]).map(k=>`<span class="chip" style="cursor:default">${esc(k)}</span>`).join('')}</div>
+    </div>
+  </div>`;
+  if(ds){
+    html += `<div class="acc" data-acc="dida-${e.id}">
+      <div class="acc-h">🎓 Didaktische Strategien <span class="acc-arrow">▾</span></div>
+      <div class="acc-b">
+        <p style="margin:8px 0"><b>${esc(ds.evolutionsdidaktischer_impuls)}</b></p>
+        <ol style="margin:6px 0; padding-left:18px">
+          ${(ds.top3_methoden||[]).map(m=>`<li style="margin-bottom:5px">${METHOD_ICON[m.methode]||'•'} <b>${esc(m.methode)}</b> — ${esc(m.beschreibung)}</li>`).join('')}
+        </ol>
+        <p style="margin:8px 0; color:var(--amber)"><b>⚠ Fehlvorstellungen:</b> ${esc(ds.moegliche_fehlvorstellungen)}</p>
+        <p style="margin:0; color:var(--txt-3); font-size:12px">${esc(ds.bezug_zum_lehrplan_kontext||'')}</p>
+      </div>
+    </div>`;
+  }
+  return html;
+}
+
+function cardHtml(e){
+  const bandM = EM.BAND_META[e.band];
+  const rel = e.evolutionsbezug ? e.evolutionsbezug.evolutionsrelevanz_beurteilung : null;
+  const fav = EM.isFav(e.id);
+  return `<div class="card lz-card" data-id="${esc(e.id)}" style="border-top:3px solid ${bandM.color}">
+    <div class="card-pad">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px">
+        <div>
+          <div style="font-size:10.5px; color:var(--txt-3); font-weight:650">${esc(e.id)} · ${bandM.label}</div>
+          <div style="font-weight:650; font-size:14px; margin-top:2px">${esc(e.kurzbezeichnung)}</div>
+        </div>
+        <button class="icon-btn fav-btn" data-id="${esc(e.id)}" style="${fav?'color:var(--amber); border-color:var(--amber)':''}">${fav?'★':'☆'}</button>
+      </div>
+      <p style="font-size:12.5px; color:var(--txt-2); margin:8px 0">${esc(e.originaltext)}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px">
+        ${e.basiskonzepte_primaer.map(bkChip).join('')}
+        ${e.ist_praktisch?'<span class="tag" style="background:var(--blue-pale);color:var(--blue)">🧪 praktisch</span>':''}
+        ${e.ist_konzeptanker?'<span class="tag" style="background:var(--purple-pale);color:var(--purple)">⚓ Konzeptanker</span>':''}
+        ${rel?`<span class="tag" style="background:var(--green-pale); color:var(--green)">Relevanz ${'●'.repeat(rel)}${'○'.repeat(3-rel)}</span>`:''}
+      </div>
+      <div class="acc-wrap">${evoBlockHtml(e)}</div>
+      <div style="margin-top:10px; display:flex; gap:6px; align-items:center; flex-wrap:wrap">
+        ${(EM.ann(e.id).userTags||[]).map(t=>`<span class="chip" style="background:var(--purple-pale);color:var(--purple)">#${esc(t)}</span>`).join('')}
+        <button class="pill-btn tag-btn" data-id="${esc(e.id)}" style="margin-left:auto; font-size:11px; padding:4px 9px">🏷️ Tag/Notiz</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const host = document.getElementById('viewLernziele');
+  const F = EM.lernzieleFilters;
+  const filtered = sortEntries(EM.lz.filter(matchesFilters));
+  host.innerHTML = `
+  <div style="display:grid; grid-template-columns:250px 1fr; gap:16px; align-items:start">
+    <div id="lzFilterPanel">${renderFilterPanel()}</div>
+    <div>
+      <div style="display:flex; align-items:center; margin-bottom:12px; gap:8px">
+        <div style="font-size:13px; color:var(--txt-2)"><b>${filtered.length}</b> von ${EM.lz.length} Lernzielen</div>
+        <div style="flex:1"></div>
+        <button class="pill-btn" id="btnExportLz">⭳ Export</button>
+      </div>
+      <div id="lzResults" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); gap:14px"></div>
+      ${filtered.length===0 ? '<div class="view-empty">Keine Lernziele entsprechen den aktuellen Filtern.</div>' : ''}
+    </div>
+  </div>
+  <style>
+    .acc-h{cursor:pointer; font-size:12.5px; font-weight:650; padding:8px 0; display:flex; align-items:center; gap:6px; border-top:1px solid var(--border)}
+    .acc-arrow{margin-left:auto; transition:.15s}
+    .acc.open .acc-arrow{transform:rotate(180deg)}
+    .acc-b{display:none; font-size:12.5px; color:var(--txt-2)}
+    .acc.open .acc-b{display:block}
+  </style>`;
+
+  const resHost = document.getElementById('lzResults');
+  resHost.innerHTML = filtered.map(cardHtml).join('');
+
+  // wire filter panel
+  document.querySelectorAll('#lzFilterPanel [data-band]').forEach(c=>c.onclick=()=>{ const b=c.dataset.band; F.bands.has(b)?F.bands.delete(b):F.bands.add(b); render(); });
+  document.querySelectorAll('#lzFilterPanel [data-bk]').forEach(c=>c.onclick=()=>{ const b=c.dataset.bk; F.bks.has(b)?F.bks.delete(b):F.bks.add(b); render(); });
+  document.querySelectorAll('#lzFilterPanel [data-rel]').forEach(c=>c.onclick=()=>{ const r=+c.dataset.rel; F.relevance.has(r)?F.relevance.delete(r):F.relevance.add(r); render(); });
+  const t = document.getElementById('filThema'); if(t) t.onchange = ()=>{ F.thema = t.value; render(); };
+  const fp = document.getElementById('filPraktisch'); if(fp) fp.onchange = ()=>{ F.praktischOnly = fp.checked; render(); };
+  const fa = document.getElementById('filAnker'); if(fa) fa.onchange = ()=>{ F.ankerOnly = fa.checked; render(); };
+  const ff = document.getElementById('filFav'); if(ff) ff.onchange = ()=>{ F.favOnly = ff.checked; render(); };
+  const fs = document.getElementById('filSort'); if(fs) fs.onchange = ()=>{ F.sort = fs.value; render(); };
+  const fr = document.getElementById('filReset'); if(fr) fr.onclick = ()=>{ EM.lernzieleFilters = { bands:new Set(['mnt56','gy78','gy910']), bks:new Set(), relevance:new Set(), thema:'', praktischOnly:false, ankerOnly:false, favOnly:false, sort:'id', view:'card' }; render(); };
+
+  // wire cards
+  resHost.querySelectorAll('.acc-h').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('open'));
+  resHost.querySelectorAll('.fav-btn').forEach(b=>b.onclick=(ev)=>{ ev.stopPropagation(); EM.toggleFav(b.dataset.id); render(); });
+  resHost.querySelectorAll('.tag-btn').forEach(b=>b.onclick=()=>openTagModal(b.dataset.id));
+
+  document.getElementById('btnExportLz').onclick = ()=>EM.openExportModal(filtered);
+}
+
+function openTagModal(id){
+  const a = EM.ann(id);
+  const body = `
+    <div class="section-h">Eigene Tags (Komma-getrennt)</div>
+    <input type="text" id="tagInput" style="width:100%" value="${esc((a.userTags||[]).join(', '))}">
+    <div class="section-h">Notiz</div>
+    <textarea id="noteInput" style="width:100%; min-height:90px">${esc(a.notizen||'')}</textarea>`;
+  const foot = `<button class="pill-btn" onclick="EM.closeModal()">Abbrechen</button><button class="pill-btn primary" id="tagSave">Speichern</button>`;
+  EM.openModal(`Anmerkungen — ${esc(id)}`, body, foot);
+  document.getElementById('tagSave').onclick = () => {
+    a.userTags = document.getElementById('tagInput').value.split(',').map(s=>s.trim()).filter(Boolean);
+    a.notizen = document.getElementById('noteInput').value;
+    EM.saveState(); EM.closeModal(); EM.toast('Gespeichert'); render();
+  };
+}
+
+EM.renderers.lernziele = render;
+})();
+</script>
+
+<script>
+/* =========================================================================
+   SHARED: unified export (JSON / CSV / Markdown-Unterrichtsplan / Print)
+   Replaces the disjoint export paths of v1.1, sequenz.html and the
+   lernziele_evolution* apps with one export surface over the same
+   annotation store for every view.
+   ========================================================================= */
+(function(){
+'use strict';
+
+function csvEscape(v){ const s = (v==null?'':String(v)); return '"'+s.replace(/"/g,'""')+'"'; }
+
+function toCsv(list){
+  const headers = ['id','band','thema','unterthema','kurzbezeichnung','originaltext','basiskonzepte_primaer','evolutionsrelevanz','favorit','tags','notizen'];
+  const rows = [headers.join(';')];
+  for(const e of list){
+    const a = EM.ann(e.id);
+    rows.push([
+      e.id, e.band, e.thema, e.unterthema, e.kurzbezeichnung, e.originaltext,
+      e.basiskonzepte_primaer.join('|'),
+      e.evolutionsbezug ? e.evolutionsbezug.evolutionsrelevanz_beurteilung : '',
+      a.favorit ? 'ja':'nein',
+      (a.userTags||[]).join('|'),
+      a.notizen||''
+    ].map(csvEscape).join(';'));
+  }
+  return rows.join('\r\n');
+}
+
+function toMarkdownPlan(list){
+  const favs = list.filter(e=>EM.isFav(e.id));
+  const useList = favs.length ? favs : list;
+  const byThema = {};
+  for(const e of useList) (byThema[e.thema] = byThema[e.thema]||[]).push(e);
+  let md = `# Unterrichtsplan — EvoMentor DE Export\n\n_Erstellt: ${new Date().toLocaleString('de-DE')}_\n\n`;
+  if(favs.length) md += `> Nur Favoriten (${favs.length} von ${list.length} Lernzielen im aktuellen Filter)\n\n`;
+  for(const thema in byThema){
+    md += `## ${thema}\n\n`;
+    for(const e of byThema[thema]){
+      const a = EM.ann(e.id);
+      md += `### ${e.id} — ${e.kurzbezeichnung}\n\n`;
+      md += `${e.originaltext}\n\n`;
+      md += `**Basiskonzepte:** ${e.basiskonzepte_primaer.join(', ')}\n\n`;
+      if(e.evolutionsbezug) md += `**Evolutionsbezug** (Relevanz ${e.evolutionsbezug.evolutionsrelevanz_beurteilung}/3): ${e.evolutionsbezug.wissenschaftliche_begruendung}\n\n`;
+      if(e.didaktische_strategien){
+        md += `**Leitfrage:** ${e.didaktische_strategien.evolutionsdidaktischer_impuls}\n\n`;
+        md += `**Methoden:** ${e.didaktische_strategien.top3_methoden.map(m=>m.methode).join(', ')}\n\n`;
+      }
+      if(a.notizen) md += `**Notiz:** ${a.notizen}\n\n`;
+      md += `---\n\n`;
+    }
+  }
+  return md;
+}
+
+function download(filename, content, mime){
+  const blob = new Blob([content], {type: mime+';charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 2000);
+}
+
+EM.openExportModal = function(list){
+  const body = `
+    <p style="font-size:12.5px; color:var(--txt-2)">Export bezieht sich auf die aktuell gefilterte Liste (<b>${list.length}</b> Lernziele) inklusive Ihrer Favoriten, Tags und Notizen.</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px">
+      <button class="pill-btn" id="exJson">📄 JSON</button>
+      <button class="pill-btn" id="exCsv">📊 CSV (Excel)</button>
+      <button class="pill-btn" id="exMd">📝 Markdown-Unterrichtsplan</button>
+      <button class="pill-btn" id="exPrint">🖨️ Drucken / PDF</button>
+    </div>`;
+  EM.openModal('Exportieren', body, `<button class="pill-btn" onclick="EM.closeModal()">Schließen</button>`);
+  document.getElementById('exJson').onclick = () => {
+    const payload = { exportiert: new Date().toISOString(), tool:'EvoMentor DE v1.2', anzahl:list.length, lernziele:list.map(e=>Object.assign({}, e, {_annotation: EM.ann(e.id)})) };
+    download('evomentor_export.json', JSON.stringify(payload, null, 2), 'application/json');
+    EM.toast('JSON heruntergeladen');
+  };
+  document.getElementById('exCsv').onclick = () => { download('evomentor_export.csv', toCsv(list), 'text/csv'); EM.toast('CSV heruntergeladen'); };
+  document.getElementById('exMd').onclick = () => { download('unterrichtsplan.md', toMarkdownPlan(list), 'text/markdown'); EM.toast('Markdown heruntergeladen'); };
+  document.getElementById('exPrint').onclick = () => { window.print(); };
+};
+
+document.getElementById('btnExportAll').addEventListener('click', () => EM.openExportModal(EM.lz));
+})();
+</script>
+
+<script>
+/* =========================================================================
+   VIEW: Basiskonzepte-Explorer (Netz / Dashboard / Kohärenzfäden / Detail)
+   ========================================================================= */
+(function(){
+'use strict';
+let sub = 'netz';
+let selectedThread = null;
+let selectedConcept = null;
+
+const REL_STYLE = {
+  ermöglicht:{color:'#2563eb', dash:'0'}, benoetigt:{color:'#2563eb', dash:'4,3'},
+  implementiert:{color:'#7c3aed', dash:'0'}, wird_implementiert_durch:{color:'#7c3aed', dash:'4,3'},
+  implementiert_durch:{color:'#7c3aed', dash:'4,3'},
+  steuert:{color:'#0d9488', dash:'0'}, wird_gesteuert_durch:{color:'#0d9488', dash:'4,3'},
+  reguliert:{color:'#0d9488', dash:'0'}, regelt:{color:'#0d9488', dash:'0'},
+  wird_reguliert_durch:{color:'#0d9488', dash:'4,3'}, wird_geregelt_durch:{color:'#0d9488', dash:'4,3'},
+  erklaert_entstehung_von:{color:'#16a34a', dash:'0'}, wird_erklaert_durch:{color:'#e11d48', dash:'2,3'},
+};
+const EVO_THREAD_RELS = new Set(['wird_erklaert_durch','erklaert_entstehung_von']);
+
+function bkList(){ return EM.data.basiskonzepte.basiskonzepte; }
+
+function hexPositions(n, cx, cy, r){
+  const pts=[];
+  for(let i=0;i<n;i++){ const a = -Math.PI/2 + i*2*Math.PI/n; pts.push([cx+r*Math.cos(a), cy+r*Math.sin(a)]); }
+  return pts;
+}
+
+function renderNetz(host, threadHighlight){
+  const W=900,H=560, cx=W/2, cy=H/2-10, R=190;
+  const bks = bkList();
+  const pos = {};
+  hexPositions(bks.length, cx, cy, R).forEach((p,i)=>pos[bks[i].id]=p);
+  // teilkonzepte around each parent
+  const tkPos = {};
+  bks.forEach(bk=>{
+    const [px,py] = pos[bk.id];
+    const angle = Math.atan2(py-cy, px-cx);
+    (bk.teilkonzepte||[]).forEach((tk,i)=>{
+      const off = (i===0?-1:1)*0.34;
+      const a = angle+off;
+      tkPos[tk.id] = [cx+(R+70)*Math.cos(a), cy+(R+70)*Math.sin(a)];
+    });
+  });
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%; height:560px">`;
+  // edges
+  bks.forEach(bk=>{
+    (bk.bk_verbindungen||[]).forEach(v=>{
+      const a = pos[bk.id], b = pos[v.ziel_bk]; if(!a||!b) return;
+      const style = REL_STYLE[v.beziehungstyp] || {color:'#94a3b8', dash:'0'};
+      const isThreadEdge = EVO_THREAD_RELS.has(v.beziehungstyp);
+      let opacity = 0.55, width=1.6;
+      if(threadHighlight){
+        opacity = isThreadEdge ? 0.95 : 0.05;
+        width = isThreadEdge ? 2.6 : 1;
+      }
+      svg += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${style.color}" stroke-width="${width}" stroke-dasharray="${style.dash}" opacity="${opacity}"><title>${esc(bk.kurzbezeichnung)} ${esc(v.beziehungstyp)} ${esc(EM.bkById[v.ziel_bk]?.kurzbezeichnung||v.ziel_bk)}</title></line>`;
+    });
+  });
+  // hierarchy edges + TK nodes
+  bks.forEach(bk=>{
+    (bk.teilkonzepte||[]).forEach(tk=>{
+      const a = pos[bk.id], b = tkPos[tk.id];
+      svg += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="#cbd5e1" stroke-width="1"/>`;
+    });
+  });
+  bks.forEach(bk=>{
+    (bk.teilkonzepte||[]).forEach(tk=>{
+      const [x,y] = tkPos[tk.id];
+      const on = selectedConcept===tk.id;
+      svg += `<circle cx="${x}" cy="${y}" r="15" stroke-width="2" class="tk-node" data-id="${tk.id}" style="cursor:pointer; fill:${on?EM.BK_COLOR[bk.id]:'var(--panel)'}; stroke:${EM.BK_COLOR[bk.id]}"/>`;
+      svg += `<text x="${x}" y="${y+27}" text-anchor="middle" font-size="9" fill="var(--txt-3)">${esc(tk.kurzbezeichnung.split('–')[1]||tk.bezeichnung).trim().slice(0,14)}</text>`;
+    });
+  });
+  // BK nodes
+  bks.forEach(bk=>{
+    const [x,y] = pos[bk.id];
+    svg += `<circle cx="${x}" cy="${y}" r="38" opacity="${threadHighlight?0.92:0.85}" class="bk-node" data-id="${bk.id}" style="cursor:pointer; fill:${EM.BK_COLOR[bk.id]}"/>`;
+    svg += `<text x="${x}" y="${y-4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">${esc(bk.kurzbezeichnung)}</text>`;
+    svg += `<text x="${x}" y="${y+11}" text-anchor="middle" font-size="8" fill="#fff" opacity=".85">Kl. ${bk.id.includes('evolut')||bk.id.includes('individuelle')?'5–10':'7–8'}</text>`;
+  });
+  svg += `</svg>`;
+
+  host.innerHTML = `
+    <div style="display:flex; gap:8px; align-items:center; margin-bottom:10px; flex-wrap:wrap">
+      <label style="font-size:12.5px; display:flex; gap:6px; align-items:center">
+        <input type="checkbox" id="threadToggle" ${threadHighlight?'checked':''}> Kohärenzfaden-Modus (Dobzhansky-Kanten hervorheben)
+      </label>
+      <span style="color:var(--txt-3); font-size:11.5px; margin-left:auto">Kreise = Basiskonzepte (groß) und Teilkonzepte (klein) · Linien = bk_verbindungen · Klick für Details</span>
+    </div>
+    <div class="card" style="padding:8px">${svg}</div>
+    ${threadHighlight?`<div class="card card-pad" style="margin-top:10px; background:var(--rose-pale)"><b>Dobzhansky-Prinzip:</b> Rote Kanten zeigen, wo ein Basiskonzept explizit "durch Evolution erklärt wird" (<code>wird_erklaert_durch</code> / <code>erklaert_entstehung_von</code>) — evolutive Entwicklung ist die Nabe, nicht eine Speiche unter vielen.</div>`:''}
+  `;
+  host.querySelectorAll('.bk-node').forEach(n=>n.onclick=()=>{ selectedConcept=n.dataset.id; sub='detail'; renderSub(); });
+  host.querySelectorAll('.tk-node').forEach(n=>n.onclick=()=>{ selectedConcept=n.dataset.id; sub='detail'; renderSub(); });
+  document.getElementById('threadToggle').onchange = e => renderNetz(host, e.target.checked);
+}
+
+function renderDashboard(host){
+  const lz = EM.lz;
+  const withEvo = lz.filter(e=>e.evolutionsbezug);
+  const byBand = {}; for(const b in EM.BAND_META) byBand[b] = lz.filter(e=>e.band===b).length;
+  const byBk = {}; for(const id in EM.BK_COLOR) byBk[id] = lz.filter(e=>e.basiskonzepte_primaer.includes(id)).length;
+  const relDist = [1,2,3].map(r=>withEvo.filter(e=>e.evolutionsbezug.evolutionsrelevanz_beurteilung===r).length);
+  const maxBk = Math.max(...Object.values(byBk),1);
+  const konzeptanker = lz.filter(e=>e.ist_konzeptanker).length;
+  const praktisch = lz.filter(e=>e.ist_praktisch).length;
+  const avgHours = (lz.reduce((s,e)=>s+(e.geschaetzte_unterrichtsstunden||0),0)).toFixed(0);
+
+  host.innerHTML = `
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); margin-bottom:16px">
+    <div class="kpi"><div class="n">${lz.length}</div><div class="l">Lernziele gesamt</div></div>
+    <div class="kpi"><div class="n">${withEvo.length}</div><div class="l">mit Evolutionsbezug</div></div>
+    <div class="kpi"><div class="n">6</div><div class="l">Basiskonzepte</div></div>
+    <div class="kpi"><div class="n">${konzeptanker}</div><div class="l">Konzeptanker</div></div>
+    <div class="kpi"><div class="n">${praktisch}</div><div class="l">praktische Lernziele</div></div>
+    <div class="kpi"><div class="n">${avgHours}</div><div class="l">Unterrichtsstunden gesamt</div></div>
+  </div>
+  <div class="grid" style="grid-template-columns:1fr 1fr">
+    <div class="card card-pad">
+      <div class="section-h">Lernziele je Basiskonzept</div>
+      ${Object.entries(byBk).map(([id,n])=>`
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:7px">
+          <div style="width:120px; font-size:11.5px; color:var(--txt-2)">${esc(EM.bkById[id]?.kurzbezeichnung||id)}</div>
+          <div style="flex:1; background:var(--bg-alt); border-radius:6px; overflow:hidden; height:14px">
+            <div style="width:${(n/maxBk*100)}%; height:100%; background:${EM.BK_COLOR[id]}"></div>
+          </div>
+          <div style="width:28px; text-align:right; font-size:11.5px">${n}</div>
+        </div>`).join('')}
+    </div>
+    <div class="card card-pad">
+      <div class="section-h">Lernziele je Klassenstufe</div>
+      ${Object.entries(byBand).map(([b,n])=>`
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:7px">
+          <div style="width:70px; font-size:11.5px; color:var(--txt-2)">${EM.BAND_META[b].label}</div>
+          <div style="flex:1; background:var(--bg-alt); border-radius:6px; overflow:hidden; height:14px">
+            <div style="width:${(n/lz.length*100)}%; height:100%; background:${EM.BAND_META[b].color}"></div>
+          </div>
+          <div style="width:28px; text-align:right; font-size:11.5px">${n}</div>
+        </div>`).join('')}
+      <div class="section-h">Evolutionsrelevanz-Verteilung</div>
+      ${relDist.map((n,i)=>`
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:7px">
+          <div style="width:70px; font-size:11.5px; color:var(--txt-2)">${'●'.repeat(i+1)}</div>
+          <div style="flex:1; background:var(--bg-alt); border-radius:6px; overflow:hidden; height:14px">
+            <div style="width:${withEvo.length?(n/withEvo.length*100):0}%; height:100%; background:var(--green)"></div>
+          </div>
+          <div style="width:28px; text-align:right; font-size:11.5px">${n}</div>
+        </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderThreads(host){
+  const threads = EM.threads;
+  host.innerHTML = `<div style="display:flex; flex-direction:column; gap:14px">` + threads.map(kf=>`
+    <div class="card card-pad">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span class="tag" style="background:var(--purple-pale);color:var(--purple)">${esc(kf.typ)}</span>
+        <b style="font-size:14.5px">${esc(kf.titel)}</b>
+        <button class="pill-btn" style="margin-left:auto" data-thread="${esc(kf.id)}">🕸️ im Netz zeigen</button>
+      </div>
+      <p style="font-size:12.5px; color:var(--txt-2); margin:8px 0"><i>${esc(kf.evolutionaererKern)}</i></p>
+      <div style="display:flex; gap:6px; flex-wrap:wrap; margin:8px 0">
+        ${kf.basiskonzeptPfad.map(p=>`<span class="chip" style="cursor:default">${esc(p.rolleImFaden)}</span>`).join(' → ')}
+      </div>
+      <div class="section-h">Lernziel-Stationen</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap">
+        ${kf.lernzielStationen.map(s=>`<span class="tag" style="background:var(--bg-alt); color:var(--txt-2); cursor:pointer" data-goto="${esc(s.lernzielId)}">${esc(s.lernzielId)} <span style="opacity:.6">Kl.${esc(s.klassenstufe)}</span></span>`).join('')}
+      </div>
+      <p style="font-size:12.5px; margin-top:10px">${esc(kf.kohaerenzErklaerung)}</p>
+      ${kf.unterrichtsimpuls?`<p style="font-size:12.5px; background:var(--teal-pale); padding:8px 10px; border-radius:8px; color:var(--txt)"><b>💡 Unterrichtsimpuls:</b> ${esc(kf.unterrichtsimpuls)}</p>`:''}
+      ${kf.luecken&&kf.luecken.length?`<p style="font-size:12px; color:var(--amber)"><b>Lücken:</b> ${kf.luecken.map(esc).join('; ')}</p>`:''}
+    </div>`).join('') + `</div>`;
+  host.querySelectorAll('[data-thread]').forEach(b=>b.onclick=()=>{ sub='netz'; renderSub(true); });
+  host.querySelectorAll('[data-goto]').forEach(s=>s.onclick=()=>{
+    if(EM.lzById[s.dataset.goto]){ EM.setView('lernziele'); EM.lernzieleFilters.q = s.dataset.goto; EM.globalQuery = s.dataset.goto.toLowerCase(); document.getElementById('globalSearch').value = s.dataset.goto; EM.renderers.lernziele(); }
+    else EM.toast('Lernziel liegt außerhalb des Klassenstufenbereichs dieser Datenbasis.');
+  });
+}
+
+function conceptDetailHtml(id){
+  const isTop = !!EM.bkById[id];
+  const c = isTop ? EM.bkById[id] : EM.tkById[id];
+  if(!c) return '<div class="view-empty">Konzept auswählen…</div>';
+  const linkedLz = EM.lz.filter(e=> (c.lernziel_ids_thuringia||[]).includes(e.id));
+  const misconceptions = c.haeufige_schuelervorstellungen||[];
+  return `
+  <div class="card card-pad">
+    <div style="display:flex; align-items:center; gap:10px">
+      <span class="badge-dot" style="width:14px;height:14px;background:${EM.BK_COLOR[isTop?id:c.uebergeordnetes_bk]}"></span>
+      <h2 style="margin:0; font-size:18px">${esc(c.bezeichnung)}</h2>
+      <span class="tag" style="background:var(--bg-alt);color:var(--txt-2)">${isTop?'Basiskonzept':'Teilkonzept'}</span>
+    </div>
+    <p style="margin:10px 0; font-size:13px">${esc(c.definition_kmk||c.beschreibung_kmk||'')}</p>
+    <p style="margin:0 0 10px; font-size:12.5px; color:var(--txt-2)">${esc(c.definition_didaktisch||c.beschreibung_didaktisch||'')}</p>
+    <div class="section-h">Wesentliche Prinzipien</div>
+    <div style="display:flex; gap:6px; flex-wrap:wrap">${(c.wesentliche_prinzipien_kmk||c.fokus_prinzipien||[]).map(p=>`<span class="chip" style="cursor:default">${esc(p)}</span>`).join('')}</div>
+    ${misconceptions.length?`<div class="section-h">Schülervorstellungen</div>${misconceptions.map(m=>`
+      <div style="margin-bottom:8px; font-size:12.5px"><span style="color:var(--rose)">✗ ${esc(m.fehlvorstellung)}</span><br><span style="color:var(--green)">✓ ${esc(m.korrekte_vorstellung)}</span><br><span style="color:var(--txt-3)">${esc(m.didaktischer_hinweis)}</span></div>`).join('')}`:''}
+    ${(c.alltagsanker||[]).length?`<div class="section-h">Alltagsanker</div><ul style="font-size:12.5px; padding-left:18px">${(c.alltagsanker||[]).map(a=>`<li>${esc(a)}</li>`).join('')}</ul>`:''}
+    ${isTop && (c.bk_verbindungen||[]).length?`<div class="section-h">Verbindungen zu anderen Basiskonzepten</div>${c.bk_verbindungen.map(v=>`
+      <div style="font-size:12.5px; margin-bottom:6px"><b>${esc(v.beziehungstyp)}</b> → ${esc(EM.bkById[v.ziel_bk]?.bezeichnung||v.ziel_bk)}: ${esc(v.beschreibung)}</div>`).join('')}`:''}
+    <div class="section-h">Verknüpfte Lernziele (${linkedLz.length})</div>
+    <div style="display:flex; gap:6px; flex-wrap:wrap">${linkedLz.map(e=>`<span class="tag" style="background:var(--bg-alt);color:var(--txt-2); cursor:pointer" data-goto="${esc(e.id)}">${esc(e.id)}</span>`).join('')}</div>
+  </div>`;
+}
+
+function renderDetail(host){
+  const bks = bkList();
+  host.innerHTML = `<div style="display:grid; grid-template-columns:230px 1fr; gap:16px">
+    <div class="card card-pad" style="max-height:70vh; overflow:auto">
+      ${bks.map(bk=>`
+        <div class="nav-item" data-sel="${bk.id}" style="${selectedConcept===bk.id?'background:var(--teal-pale);color:var(--teal)':''}"><span class="badge-dot" style="background:${EM.BK_COLOR[bk.id]}"></span><span class="lbl">${esc(bk.kurzbezeichnung)}</span></div>
+        ${(bk.teilkonzepte||[]).map(tk=>`<div class="nav-item" data-sel="${tk.id}" style="padding-left:26px; font-size:12px; ${selectedConcept===tk.id?'background:var(--teal-pale);color:var(--teal)':''}">${esc(tk.bezeichnung)}</div>`).join('')}
+      `).join('')}
+    </div>
+    <div id="conceptDetailHost">${conceptDetailHtml(selectedConcept || bks[0].id)}</div>
+  </div>`;
+  if(!selectedConcept) selectedConcept = bks[0].id;
+  host.querySelectorAll('[data-sel]').forEach(n=>n.onclick=()=>{ selectedConcept=n.dataset.sel; renderDetail(host); });
+  host.querySelectorAll('[data-goto]').forEach(s=>s.onclick=()=>{ EM.setView('lernziele'); document.getElementById('globalSearch').value=s.dataset.goto; EM.globalQuery=s.dataset.goto.toLowerCase(); EM.renderers.lernziele(); });
+}
+
+function renderSub(threadHighlight){
+  const host = document.getElementById('viewBasiskonzepte');
+  const tabs = [['netz','🕸️ Netz'],['dashboard','📊 Dashboard'],['threads','🧵 Kohärenzfäden'],['detail','📖 Detail']];
+  host.innerHTML = `<div style="display:flex; gap:6px; margin-bottom:14px">${tabs.map(([id,l])=>`<button class="pill-btn ${sub===id?'primary':''}" data-tab="${id}">${l}</button>`).join('')}</div><div id="bkSubHost"></div>`;
+  host.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{ sub=b.dataset.tab; renderSub(); });
+  const subHost = document.getElementById('bkSubHost');
+  if(sub==='netz') renderNetz(subHost, threadHighlight);
+  else if(sub==='dashboard') renderDashboard(subHost);
+  else if(sub==='threads') renderThreads(subHost);
+  else if(sub==='detail') renderDetail(subHost);
+}
+
+EM.renderers.basiskonzepte = () => renderSub();
+})();
+</script>
+
+<script>
+/* =========================================================================
+   VIEW: Evolutionskonzepte-Taxonomie
+   ========================================================================= */
+(function(){
+'use strict';
+let selected = null;
+
+function lzForConcept(bezeichnung){
+  return EM.lz.filter(e => e.evolutionsbezug && (e.evolutionsbezug.relevante_evolutionskonzepte||[]).includes(bezeichnung));
+}
+
+function countForConcept(ek){
+  const own = lzForConcept(ek.bezeichnung).length;
+  if(ek.ebene===1){
+    const children = EM.data.evolutionskonzepte.evolutionskonzepte.filter(c=>c.uebergeordnetes_konzept===ek.id);
+    return own + children.reduce((s,c)=>s+lzForConcept(c.bezeichnung).length, 0);
+  }
+  return own;
+}
+
+function detailHtml(ek){
+  const linked = lzForConcept(ek.bezeichnung);
+  return `<div class="card card-pad">
+    <h2 style="margin:0 0 6px; font-size:17px">${esc(ek.bezeichnung)}</h2>
+    <span class="tag" style="background:var(--green-pale);color:var(--green)">${ek.ebene===1?'Hauptkonzept':'Unterkonzept'}</span>
+    <p style="margin:10px 0; font-size:13px">${esc(ek.definition)}</p>
+    <p style="margin:0 0 10px; font-size:12.5px; color:var(--txt-2)"><b>Beispiel:</b> ${esc(ek.beispiel)}</p>
+    <div class="section-h">Lernziele mit diesem Bezug (${linked.length})</div>
+    <div style="display:flex; flex-direction:column; gap:6px; max-height:50vh; overflow:auto">
+      ${linked.map(e=>`<div class="chip" style="justify-content:space-between; cursor:pointer" data-goto="${esc(e.id)}"><span>${esc(e.id)} — ${esc(e.kurzbezeichnung)}</span><span style="color:var(--txt-3)">${EM.BAND_META[e.band].label}</span></div>`).join('') || '<span style="color:var(--txt-3); font-size:12.5px">Noch keine direkten Treffer — Relevanz wird oft über das übergeordnete Hauptkonzept vermittelt.</span>'}
+    </div>
+  </div>`;
+}
+
+function render(){
+  const host = document.getElementById('viewEvokonzepte');
+  const all = EM.data.evolutionskonzepte.evolutionskonzepte.slice().sort((a,b)=>a.reihenfolge-b.reihenfolge);
+  const top = all.filter(e=>e.ebene===1);
+  if(!selected) selected = top[0];
+
+  const treeHtml = top.map(t=>{
+    const children = all.filter(c=>c.uebergeordnetes_konzept===t.id).sort((a,b)=>a.reihenfolge-b.reihenfolge);
+    const n = countForConcept(t);
+    return `<div class="nav-item" data-sel="${t.id}" style="${selected.id===t.id?'background:var(--teal-pale);color:var(--teal)':''}"><span style="flex:1">${esc(t.bezeichnung)}</span><span class="tag" style="background:var(--bg-alt)">${n}</span></div>`+
+      children.map(c=>{
+        const cn = countForConcept(c);
+        return `<div class="nav-item" data-sel="${c.id}" style="padding-left:24px; font-size:12px; ${selected.id===c.id?'background:var(--teal-pale);color:var(--teal)':''}"><span style="flex:1">${esc(c.bezeichnung)}</span><span class="tag" style="background:var(--bg-alt); font-size:10px">${cn}</span></div>`;
+      }).join('');
+  }).join('');
+
+  host.innerHTML = `
+  <p style="color:var(--txt-2); font-size:12.5px; margin-bottom:14px">Kontrollierte, hierarchische Vokabular-Liste evolutionärer Konzepte (<code>data/evolutionskonzepte.json</code>) — jedes Lernziel mit Evolutionsbezug verweist auf 1–4 dieser Konzepte. Zahlen zeigen, wie viele Lernziele über alle Klassenstufen hinweg dieses Konzept berühren.</p>
+  <div style="display:grid; grid-template-columns:290px 1fr; gap:16px">
+    <div class="card card-pad" style="max-height:75vh; overflow:auto">${treeHtml}</div>
+    <div id="ekDetailHost">${detailHtml(selected)}</div>
+  </div>`;
+
+  host.querySelectorAll('[data-sel]').forEach(n=>n.onclick=()=>{ selected = EM.ekById[n.dataset.sel]; render(); });
+  host.querySelectorAll('[data-goto]').forEach(n=>n.onclick=()=>{ EM.setView('lernziele'); document.getElementById('globalSearch').value=n.dataset.goto; EM.globalQuery=n.dataset.goto.toLowerCase(); EM.renderers.lernziele(); });
+}
+
+EM.renderers.evokonzepte = render;
+})();
+</script>
+
+<script>
+/* =========================================================================
+   VIEW: Sequenzplaner — Jahresplanung über Klassenstufen 5-10 mit
+   Qualitätsanalyse, inkl. klassenstufenübergreifender Kohärenzfaden-Prüfung.
+   ========================================================================= */
+(function(){
+'use strict';
+const GRADES = ['5','6','7','8','9','10'];
+const QUARTERS = ['Q1','Q2','Q3','Q4'];
+function cellKey(g,q){ return g+'-'+q; }
+function plan(){ return EM.state.seqPlan; }
+function cellList(g,q){ const k=cellKey(g,q); return plan()[k] || (plan()[k]=[]); }
+function placedIds(){ const s=new Set(); for(const k in plan()) plan()[k].forEach(id=>s.add(id)); return s; }
+function gradeOf(e){ return String(e.empfohlene_klassenstufe||'').match(/\d+/)?.[0] || ''; }
+
+function unplacedList(query){
+  const placed = placedIds();
+  return EM.lz.filter(e => !placed.has(e.id) && (!query || (e.id+e.kurzbezeichnung).toLowerCase().includes(query)));
+}
+
+function autoFill(){
+  for(const e of EM.lz){
+    const g = gradeOf(e); const q = e.empfohlenes_quartal || 'Q1';
+    if(!g || !GRADES.includes(g)) continue;
+    const k = cellKey(g,q);
+    const list = plan()[k] || (plan()[k]=[]);
+    if(!placedIds().has(e.id)) list.push(e.id);
+  }
+  EM.saveState(); render();
+  EM.toast('Automatisch nach empfohlener Klassenstufe/Quartal befüllt');
+}
+
+function clearPlan(){ EM.state.seqPlan = {}; EM.saveState(); render(); }
+
+function computeFindings(){
+  const findings = [];
+  const placedAt = {}; // id -> {g,q,idx}
+  GRADES.forEach(g=>QUARTERS.forEach(q=>{ (plan()[cellKey(g,q)]||[]).forEach((id,idx)=>{ placedAt[id] = {g,q,order:GRADES.indexOf(g)*4+QUARTERS.indexOf(q)}; }); }));
+
+  // 1. prerequisites out of order
+  for(const e of EM.lz){
+    const pa = placedAt[e.id]; if(!pa) continue;
+    for(const req of (e.voraussetzende_lernziele||[])){
+      const rp = placedAt[req];
+      if(rp && rp.order > pa.order){
+        findings.push({sev:'critical', text:`${e.id} steht vor seiner Voraussetzung ${req} im Plan.`});
+      }
+    }
+  }
+  // 2. missing konzeptanker
+  const ankerMissing = EM.lz.filter(e=>e.ist_konzeptanker && !placedAt[e.id]);
+  if(ankerMissing.length) findings.push({sev:'advisory', text:`${ankerMissing.length} Konzeptanker-Lernziele sind noch nicht eingeplant: ${ankerMissing.slice(0,5).map(e=>e.id).join(', ')}${ankerMissing.length>5?'…':''}`});
+
+  // 3. BK with zero placed
+  for(const bkid in EM.BK_COLOR){
+    const any = EM.lz.some(e=>placedAt[e.id] && e.basiskonzepte_primaer.includes(bkid));
+    if(!any) findings.push({sev:'advisory', text:`Basiskonzept "${EM.bkById[bkid].kurzbezeichnung}" hat noch kein eingeplantes Lernziel.`});
+  }
+  // 4. overloaded quarter (>18h)
+  GRADES.forEach(g=>QUARTERS.forEach(q=>{
+    const hrs = (plan()[cellKey(g,q)]||[]).reduce((s,id)=>s+(EM.lzById[id]?.geschaetzte_unterrichtsstunden||0),0);
+    if(hrs>18) findings.push({sev:'advisory', text:`Klasse ${g}, ${q}: ${hrs}h geplant (Richtwert ~15h/Quartal überschritten).`});
+  }));
+  // 5. cross-grade coherence threads (kohaerenzfaeden.json) out of order
+  for(const kf of EM.threads){
+    const stations = kf.lernzielStationen.map(s=>({...s, at: placedAt[s.lernzielId]})).filter(s=>s.at);
+    for(let i=1;i<stations.length;i++){
+      if(stations[i].at.order < stations[i-1].at.order){
+        findings.push({sev:'suggestion', text:`Kohärenzfaden "${kf.titel}": Station ${stations[i].lernzielId} liegt vor ${stations[i-1].lernzielId} — Fadenreihenfolge prüfen.`});
+      }
+    }
+  }
+  return findings;
+}
+
+function scoreFromFindings(findings){
+  let score = 100;
+  for(const f of findings) score -= f.sev==='critical'?14:(f.sev==='advisory'?5:2);
+  return Math.max(0, score);
+}
+
+function cardChip(id){
+  const e = EM.lzById[id]; if(!e) return '';
+  return `<div class="chip" draggable="true" data-id="${esc(id)}" style="cursor:grab; background:${EM.BAND_META[e.band].color}22; border-color:${EM.BAND_META[e.band].color}66">${esc(id)}</div>`;
+}
+
+function render(){
+  const host = document.getElementById('viewSequenz');
+  const findings = computeFindings();
+  const score = scoreFromFindings(findings);
+
+  host.innerHTML = `
+  <div style="display:flex; gap:8px; margin-bottom:14px; align-items:center; flex-wrap:wrap">
+    <button class="pill-btn primary" id="btnAutoFill">⚡ Automatisch befüllen</button>
+    <button class="pill-btn" id="btnClearPlan">🗑️ Plan leeren</button>
+    <div style="margin-left:auto; display:flex; align-items:center; gap:10px">
+      <div style="width:52px;height:52px;border-radius:50%;background:conic-gradient(${score>=80?'#16a34a':score>=55?'#d97706':'#e11d48'} ${score*3.6}deg, var(--bg-alt) 0); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px">${score}</div>
+      <button class="pill-btn" id="btnExportSeq">⭳ Plan exportieren</button>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:230px 1fr; gap:16px; align-items:start">
+    <div class="card card-pad" style="max-height:75vh; overflow:auto">
+      <div class="section-h">Nicht eingeplant</div>
+      <input type="text" id="seqSearch" placeholder="Suchen…" style="width:100%; margin-bottom:8px">
+      <div id="seqUnplaced" style="display:flex; flex-direction:column; gap:6px"></div>
+    </div>
+    <div>
+      <div class="card" style="overflow:auto">
+        <table style="border-collapse:collapse; width:100%">
+          <tr><th style="width:70px"></th>${QUARTERS.map(q=>`<th style="padding:8px; font-size:12px; color:var(--txt-3); text-align:left">${q}</th>`).join('')}</tr>
+          ${GRADES.map(g=>`<tr>
+            <td style="padding:8px; font-weight:700; font-size:12.5px; color:var(--txt-2); border-top:1px solid var(--border)">Kl. ${g}</td>
+            ${QUARTERS.map(q=>`<td class="seq-cell" data-g="${g}" data-q="${q}" style="border:1px dashed var(--border-2); border-radius:8px; padding:6px; vertical-align:top; min-width:150px; min-height:70px">
+              <div style="display:flex; flex-wrap:wrap; gap:4px">${cellList(g,q).map(cardChip).join('')}</div>
+            </td>`).join('')}
+          </tr>`).join('')}
+        </table>
+      </div>
+      <div class="section-h">Qualitätsanalyse (${findings.length} Hinweise)</div>
+      <div style="display:flex; flex-direction:column; gap:6px">
+        ${findings.length===0?'<div class="card card-pad" style="color:var(--green)">✓ Keine Befunde — Plan sieht stimmig aus.</div>':
+          findings.map(f=>`<div class="card card-pad" style="border-left:4px solid ${f.sev==='critical'?'var(--rose)':f.sev==='advisory'?'var(--amber)':'var(--blue)'}; font-size:12.5px">${esc(f.text)}</div>`).join('')}
+      </div>
+    </div>
+  </div>`;
+
+  document.getElementById('seqUnplaced').innerHTML = unplacedList((document.getElementById('seqSearch').value||'').toLowerCase()).map(cardChip).join('');
+  document.getElementById('btnAutoFill').onclick = autoFill;
+  document.getElementById('btnClearPlan').onclick = () => { if(confirm('Gesamten Plan leeren?')) clearPlan(); };
+  document.getElementById('btnExportSeq').onclick = () => {
+    const payload = { erstellt:new Date().toISOString(), plan:plan(), befunde:findings, score };
+    const blob = new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+    const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='sequenzplan.json'; a.click();
+  };
+  document.getElementById('seqSearch').oninput = (e) => { document.getElementById('seqUnplaced').innerHTML = unplacedList(e.target.value.toLowerCase()).map(cardChip).join(''); wireDrag(); };
+
+  wireDrag();
+}
+
+function wireDrag(){
+  document.querySelectorAll('.chip[draggable]').forEach(c=>{
+    c.ondragstart = (e) => { e.dataTransfer.setData('text/plain', c.dataset.id); };
+  });
+  document.querySelectorAll('.seq-cell').forEach(cell=>{
+    cell.ondragover = (e) => { e.preventDefault(); cell.style.background='var(--teal-pale)'; };
+    cell.ondragleave = () => { cell.style.background=''; };
+    cell.ondrop = (e) => {
+      e.preventDefault(); cell.style.background='';
+      const id = e.dataTransfer.getData('text/plain'); if(!id) return;
+      for(const k in plan()) plan()[k] = plan()[k].filter(x=>x!==id);
+      cellList(cell.dataset.g, cell.dataset.q).push(id);
+      EM.saveState(); render();
+    };
+  });
+}
+
+EM.renderers.sequenz = render;
+})();
+</script>
+
+<script>
+/* =========================================================================
+   VIEW: KI-Prompt-Generator — strukturierter Prompt zur Unterrichtsvorbereitung,
+   gebaut aus den ausgewählten Lernzielen inkl. Evolutionsbezug/Didaktik.
+   ========================================================================= */
+(function(){
+'use strict';
+const cfg = { scope:'favorites', band:'gy78', thema:'', klassenstufe:'', stunden:2, vorwissen:'', evoAnteil:'mittel', methodenfokus:'', ton:'sachlich, praxisnah', laenge:'mittel' };
+
+function scopeEntries(){
+  if(cfg.scope==='favorites') return EM.lz.filter(e=>EM.isFav(e.id));
+  if(cfg.scope==='thema') return EM.lz.filter(e=>e.thema===cfg.thema);
+  if(cfg.scope==='band') return EM.lz.filter(e=>e.band===cfg.band);
+  return EM.lz.filter(e=>EM.isFav(e.id));
+}
+
+function buildPrompt(){
+  const entries = scopeEntries();
+  const lines = [];
+  lines.push('='.repeat(70));
+  lines.push('UNTERRICHTSVORBEREITUNG MIT EVOLUTIONS-INTEGRATION');
+  lines.push('='.repeat(70));
+  lines.push('');
+  lines.push('Du bist eine erfahrene Biologie-Lehrkraft und Fachdidaktikerin. Erstelle');
+  lines.push('auf Basis der folgenden Lernziele eine konkrete Unterrichtsplanung, die');
+  lines.push('Evolution als roten Faden einbindet, ohne den Kernlehrplan zu verlassen.');
+  lines.push('');
+  lines.push(`Klassenstufe: ${cfg.klassenstufe || '(siehe Lernziele)'}    Geplante Stunden: ${cfg.stunden}`);
+  lines.push(`Vorwissen der Klasse: ${cfg.vorwissen || 'durchschnittlich, keine besonderen Vorkenntnisse'}`);
+  lines.push(`Gewünschter Evolutionsanteil: ${cfg.evoAnteil}`);
+  if(cfg.methodenfokus) lines.push(`Methodischer Schwerpunkt: ${cfg.methodenfokus}`);
+  lines.push('');
+  lines.push(`LERNZIELE (${entries.length}):`);
+  lines.push('-'.repeat(70));
+  for(const e of entries){
+    lines.push(`\n[${e.id}] ${e.kurzbezeichnung} (${EM.BAND_META[e.band].label})`);
+    lines.push(`  Wortlaut: ${e.originaltext}`);
+    lines.push(`  Basiskonzepte: ${e.basiskonzepte_primaer.map(b=>EM.bkById[b]?.kurzbezeichnung||b).join(', ')}`);
+    if(e.evolutionsbezug){
+      lines.push(`  Evolutionsrelevanz: ${'●'.repeat(e.evolutionsbezug.evolutionsrelevanz_beurteilung)} — ${e.evolutionsbezug.wissenschaftliche_begruendung}`);
+      lines.push(`  Konzepte: ${e.evolutionsbezug.relevante_evolutionskonzepte.join(', ')}`);
+    }
+    if(e.didaktische_strategien){
+      lines.push(`  Leitfrage: ${e.didaktische_strategien.evolutionsdidaktischer_impuls}`);
+      lines.push(`  Methoden: ${e.didaktische_strategien.top3_methoden.map(m=>m.methode).join(', ')}`);
+      lines.push(`  Fehlvorstellungen: ${e.didaktische_strategien.moegliche_fehlvorstellungen}`);
+    }
+    const a = EM.ann(e.id);
+    if(a.notizen) lines.push(`  Meine Notiz: ${a.notizen}`);
+  }
+  lines.push('');
+  lines.push('-'.repeat(70));
+  lines.push('GEWÜNSCHTE AUSGABE:');
+  lines.push(`- Ton: ${cfg.ton}, Länge: ${cfg.laenge}`);
+  lines.push('- Konkreter Stundenverlauf (Einstieg/Erarbeitung/Sicherung) je geplanter Stunde');
+  lines.push('- Mindestens ein Alltagsanker und eine mögliche Fehlvorstellung pro Lernziel aufgreifen');
+  lines.push('- Differenzierungshinweise für heterogene Lerngruppen');
+  lines.push('- Vorschlag für eine Lernerfolgskontrolle (formativ oder summativ)');
+  return lines.join('\n');
+}
+
+function render(){
+  const host = document.getElementById('viewPrompt');
+  const themen = Array.from(new Set(EM.lz.map(e=>e.thema)));
+  host.innerHTML = `
+  <div style="display:grid; grid-template-columns:340px 1fr; gap:16px; align-items:start">
+    <div class="card card-pad">
+      <div class="section-h">1. Auswahl der Lernziele</div>
+      <select id="cScope" style="width:100%; margin-bottom:8px">
+        <option value="favorites" ${cfg.scope==='favorites'?'selected':''}>Meine Favoriten (★)</option>
+        <option value="band" ${cfg.scope==='band'?'selected':''}>Ganze Klassenstufe</option>
+        <option value="thema" ${cfg.scope==='thema'?'selected':''}>Ein Thema</option>
+      </select>
+      <div id="scopeSub"></div>
+      <div class="section-h">2. Rahmenbedingungen</div>
+      <label style="font-size:12px">Klassenstufe</label>
+      <input type="text" id="cKlasse" value="${esc(cfg.klassenstufe)}" placeholder="z. B. 7" style="width:100%; margin-bottom:6px">
+      <label style="font-size:12px">Geplante Stunden</label>
+      <input type="number" id="cStunden" value="${cfg.stunden}" min="1" max="12" style="width:100%; margin-bottom:6px">
+      <label style="font-size:12px">Vorwissen der Klasse</label>
+      <input type="text" id="cVorwissen" value="${esc(cfg.vorwissen)}" style="width:100%; margin-bottom:6px">
+      <div class="section-h">3. Evolutionsanteil & Methodik</div>
+      <select id="cEvo" style="width:100%; margin-bottom:6px">
+        ${['gering','mittel','hoch','maximal'].map(v=>`<option ${cfg.evoAnteil===v?'selected':''}>${v}</option>`).join('')}
+      </select>
+      <input type="text" id="cMethoden" value="${esc(cfg.methodenfokus)}" placeholder="Methodischer Schwerpunkt (optional)" style="width:100%; margin-bottom:6px">
+      <div class="section-h">4. Ausgabeformat</div>
+      <input type="text" id="cTon" value="${esc(cfg.ton)}" style="width:100%; margin-bottom:6px">
+      <select id="cLaenge" style="width:100%">
+        ${['kurz','mittel','ausführlich'].map(v=>`<option ${cfg.laenge===v?'selected':''}>${v}</option>`).join('')}
+      </select>
+    </div>
+    <div class="card card-pad">
+      <div style="display:flex; align-items:center; margin-bottom:8px">
+        <b style="font-size:13px">Generierter Prompt</b>
+        <div style="flex:1"></div>
+        <button class="pill-btn" id="btnCopyPrompt">📋 Kopieren</button>
+        <button class="pill-btn primary" id="btnDlPrompt" style="margin-left:6px">⭳ Herunterladen</button>
+      </div>
+      <textarea id="promptOut" readonly style="width:100%; height:60vh; font-family:ui-monospace,monospace; font-size:11.5px"></textarea>
+    </div>
+  </div>`;
+
+  function renderScopeSub(){
+    const sub = document.getElementById('scopeSub');
+    if(cfg.scope==='band'){
+      sub.innerHTML = `<select id="cBand" style="width:100%; margin-bottom:8px">${Object.entries(EM.BAND_META).map(([b,m])=>`<option value="${b}" ${cfg.band===b?'selected':''}>${m.label}</option>`).join('')}</select>`;
+      document.getElementById('cBand').onchange = e => { cfg.band = e.target.value; refresh(); };
+    } else if(cfg.scope==='thema'){
+      sub.innerHTML = `<select id="cThema" style="width:100%; margin-bottom:8px"><option value="">– wählen –</option>${themen.map(t=>`<option ${cfg.thema===t?'selected':''}>${esc(t)}</option>`).join('')}</select>`;
+      document.getElementById('cThema').onchange = e => { cfg.thema = e.target.value; refresh(); };
+    } else { sub.innerHTML = `<div style="font-size:12px; color:var(--txt-3); margin-bottom:8px">${scopeEntries().length} Favoriten aktuell markiert.</div>`; }
+  }
+
+  function refresh(){ document.getElementById('promptOut').value = buildPrompt(); renderScopeSub(); }
+
+  document.getElementById('cScope').onchange = e => { cfg.scope = e.target.value; refresh(); };
+  document.getElementById('cKlasse').oninput = e => { cfg.klassenstufe = e.target.value; refresh(); };
+  document.getElementById('cStunden').oninput = e => { cfg.stunden = +e.target.value; refresh(); };
+  document.getElementById('cVorwissen').oninput = e => { cfg.vorwissen = e.target.value; refresh(); };
+  document.getElementById('cEvo').onchange = e => { cfg.evoAnteil = e.target.value; refresh(); };
+  document.getElementById('cMethoden').oninput = e => { cfg.methodenfokus = e.target.value; refresh(); };
+  document.getElementById('cTon').oninput = e => { cfg.ton = e.target.value; refresh(); };
+  document.getElementById('cLaenge').onchange = e => { cfg.laenge = e.target.value; refresh(); };
+  document.getElementById('btnCopyPrompt').onclick = () => { navigator.clipboard.writeText(document.getElementById('promptOut').value).then(()=>EM.toast('In Zwischenablage kopiert')); };
+  document.getElementById('btnDlPrompt').onclick = () => {
+    const blob = new Blob([document.getElementById('promptOut').value],{type:'text/plain'});
+    const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='ki_prompt.txt'; a.click();
+  };
+  renderScopeSub();
+  document.getElementById('promptOut').value = buildPrompt();
+}
+
+EM.renderers.prompt = render;
+})();
+</script>
+
+<script>
+/* =========================================================================
+   VIEW: Forschungs-Dashboard — Datenqualität, Abdeckung, Konsistenz.
+   Für Bildungsdesign-Forschende und Lehramtsstudierende, die den Datensatz
+   selbst als Untersuchungsgegenstand nutzen (Konsistenzprüfungen, Coverage).
+   ========================================================================= */
+(function(){
+'use strict';
+
+function computeReport(){
+  const lz = EM.lz;
+  const ids = new Set(lz.map(e=>e.id));
+  const dangling = [];
+  for(const e of lz){
+    for(const r of (e.voraussetzende_lernziele||[])) if(!ids.has(r)) dangling.push({from:e.id, to:r, kind:'voraussetzende_lernziele'});
+    for(const r of (e.ermoeglichende_lernziele||[])) if(!ids.has(r)) dangling.push({from:e.id, to:r, kind:'ermoeglichende_lernziele'});
+  }
+  const byBand = {};
+  for(const b in EM.BAND_META){
+    const list = lz.filter(e=>e.band===b);
+    const withEvo = list.filter(e=>e.evolutionsbezug);
+    byBand[b] = {
+      total:list.length,
+      withEvo:withEvo.length,
+      pctEvo: list.length ? Math.round(withEvo.length/list.length*100) : 0,
+      avgRelevance: withEvo.length ? (withEvo.reduce((s,e)=>s+e.evolutionsbezug.evolutionsrelevanz_beurteilung,0)/withEvo.length).toFixed(2) : '–',
+      praktisch: list.filter(e=>e.ist_praktisch).length,
+      anker: list.filter(e=>e.ist_konzeptanker).length,
+    };
+  }
+  // evolutionskonzepte usage frequency (gap detection: unused concepts)
+  const usage = {};
+  for(const ek of EM.data.evolutionskonzepte.evolutionskonzepte) usage[ek.bezeichnung] = 0;
+  for(const e of lz) if(e.evolutionsbezug) for(const k of e.evolutionsbezug.relevante_evolutionskonzepte||[]){
+    if(k in usage) usage[k]++; else usage['__unrecognized__:'+k] = (usage['__unrecognized__:'+k]||0)+1;
+  }
+  const unused = Object.entries(usage).filter(([k,v])=>v===0 && !k.startsWith('__unrecognized__'));
+  const unrecognized = Object.entries(usage).filter(([k])=>k.startsWith('__unrecognized__'));
+
+  // BK tag balance
+  const bkCounts = {}; for(const id in EM.BK_COLOR) bkCounts[id]=0;
+  for(const e of lz) for(const b of e.basiskonzepte_primaer) if(b in bkCounts) bkCounts[b]++;
+
+  // duplicate ids
+  const seen = new Set(); const dupes = [];
+  for(const e of lz){ if(seen.has(e.id)) dupes.push(e.id); seen.add(e.id); }
+
+  // kohaerenzfaeden resolution
+  let kfStations=0, kfResolved=0;
+  for(const kf of EM.threads) for(const s of kf.lernzielStationen){ kfStations++; if(ids.has(s.lernzielId)) kfResolved++; }
+
+  return { total:lz.length, byBand, dangling, unused, unrecognized, bkCounts, dupes, kfStations, kfResolved, threadCount:EM.threads.length };
+}
+
+function render(){
+  const host = document.getElementById('viewForschung');
+  const r = computeReport();
+  host.innerHTML = `
+  <p style="color:var(--txt-2); font-size:12.5px; margin-bottom:14px">Automatisierte Konsistenz- und Abdeckungsprüfungen über den gesamten Datensatz — als Ausgangspunkt für eigene Forschungsfragen zur Datenqualität, nicht als Ersatz für eine fachdidaktische Prüfung.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin-bottom:16px">
+    <div class="kpi"><div class="n">${r.total}</div><div class="l">Lernziele gesamt</div></div>
+    <div class="kpi"><div class="n" style="color:${r.dangling.length?'var(--rose)':'var(--green)'}">${r.dangling.length}</div><div class="l">hängende Referenzen</div></div>
+    <div class="kpi"><div class="n" style="color:${r.dupes.length?'var(--rose)':'var(--green)'}">${r.dupes.length}</div><div class="l">Doppelte IDs</div></div>
+    <div class="kpi"><div class="n">${r.kfResolved}/${r.kfStations}</div><div class="l">Kohärenzfaden-Stationen aufgelöst</div></div>
+    <div class="kpi"><div class="n">${r.unused.length}</div><div class="l">unbenutzte Evolutionskonzepte</div></div>
+    <div class="kpi"><div class="n" style="color:${r.unrecognized.length?'var(--rose)':'var(--green)'}">${r.unrecognized.length}</div><div class="l">nicht erkannte Konzeptbegriffe</div></div>
+  </div>
+
+  <div class="section-h">Abdeckung je Klassenstufe</div>
+  <div class="card" style="overflow:auto; margin-bottom:16px">
+    <table style="width:100%; border-collapse:collapse; font-size:12.5px">
+      <tr style="text-align:left; color:var(--txt-3)"><th style="padding:8px">Klassenstufe</th><th>Lernziele</th><th>mit Evolutionsbezug</th><th>Ø Relevanz</th><th>praktisch</th><th>Konzeptanker</th></tr>
+      ${Object.entries(r.byBand).map(([b,s])=>`<tr style="border-top:1px solid var(--border)">
+        <td style="padding:8px"><b>${EM.BAND_META[b].label}</b></td>
+        <td>${s.total}</td><td>${s.withEvo} (${s.pctEvo}%)</td><td>${s.avgRelevance}</td><td>${s.praktisch}</td><td>${s.anker}</td>
+      </tr>`).join('')}
+    </table>
+  </div>
+
+  <div class="grid" style="grid-template-columns:1fr 1fr">
+    <div class="card card-pad">
+      <div class="section-h">Basiskonzept-Balance</div>
+      ${Object.entries(r.bkCounts).map(([id,n])=>`<div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px"><span>${esc(EM.bkById[id]?.kurzbezeichnung||id)}</span><b>${n}</b></div>`).join('')}
+    </div>
+    <div class="card card-pad">
+      <div class="section-h">Auffälligkeiten</div>
+      ${r.dangling.length?`<div style="font-size:12px; color:var(--rose); margin-bottom:8px">${r.dangling.slice(0,8).map(d=>`${esc(d.from)} → ${esc(d.to)} (${d.kind})`).join('<br>')}</div>`:'<div style="font-size:12.5px; color:var(--green)">✓ Keine hängenden Referenzen.</div>'}
+      ${r.unrecognized.length?`<div style="font-size:12px; color:var(--amber)">Nicht erkannte Konzeptbegriffe: ${r.unrecognized.map(([k,v])=>`${esc(k.replace('__unrecognized__:',''))} (${v}×)`).join(', ')}</div>`:''}
+    </div>
+  </div>
+  <div class="card card-pad" style="margin-top:14px">
+    <div class="section-h">Unbenutzte Evolutionskonzepte (Kandidaten für gezielte Anreicherung)</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px">${r.unused.map(([k])=>`<span class="chip" style="cursor:default">${esc(k)}</span>`).join('') || '<span style="color:var(--txt-3); font-size:12.5px">Alle Konzepte werden mindestens einmal referenziert.</span>'}</div>
+  </div>
+  <div style="margin-top:14px">
+    <button class="pill-btn primary" id="btnExportReport">⭳ Forschungsbericht als JSON exportieren</button>
+  </div>`;
+
+  document.getElementById('btnExportReport').onclick = () => {
+    const blob = new Blob([JSON.stringify({erstellt:new Date().toISOString(), bericht:r}, null, 2)],{type:'application/json'});
+    const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='forschungsbericht.json'; a.click();
+  };
+}
+
+EM.renderers.forschung = render;
+})();
+</script>
+</body>
+</html>

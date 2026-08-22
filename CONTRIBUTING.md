@@ -8,8 +8,12 @@ verfasst, anders als die meist englischsprachigen CONTRIBUTING-Dateien im übrig
 ## Bevor Sie beginnen
 
 Lesen Sie die [README](README.md) für einen Überblick über das Projekt und den aktuellen Stand
-(derzeit eine App: Thüringen, Klassen 7–8, Biologie). Geplante Erweiterungen (weitere
-Bundesländer, Klassenstufen, Fächer) sind in der README aufgeführt.
+(Thüringen, Klassen 5–10, Biologie/MNT, mehrere Apps — aktuelles Hauptwerkzeug ist EvoMentor DE
+v1.2). Geplante Erweiterungen (weitere Bundesländer, Klassenstufen, Fächer) sind in der README
+aufgeführt. Neue oder geänderte Einträge in `data/lernziele_*.json` und `data/basiskonzepte.json`
+sollten gegen die zugehörigen Schemas in `schema/` validierbar bleiben
+(`lernziel.schema.json`, `basiskonzept.schema.json`, `evolutionskonzept.schema.json`,
+`kohaerenzfaden.schema.json`).
 
 ## Einen Beitrag vorschlagen
 

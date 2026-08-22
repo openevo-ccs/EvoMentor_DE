@@ -82,6 +82,19 @@ Reads data/lernziele_MNT56.json, data/lernziele_gy78.json,
 data/lernziele_gy910.json. Writes mem-ontology/lehrplan-th-shadow.ttl.
 Validates the output by parsing it back with rdflib before writing (fails
 loudly, writes nothing, if the graph doesn't parse).
+
+v1.2 NOTE: basiskonzepte_primaer/basiskonzepte_sekundaer are emitted verbatim
+as evomentor:basiskonzeptPrimaer/Sekundaer string literals regardless of which
+ids are present, so the 5->6 Basiskonzept split (bk_individuelle_evolutive_
+entwicklung -> bk_individuelle_entwicklung / bk_evolutive_entwicklung)
+required NO code change here -- it is fully data-driven. What v1.2 DID add:
+every source file now carries an inline `evolutionsbezug` block (previously
+only lernziele_gy78_evolution.json had it, and it was never exported at all);
+this script now also emits evomentor:evolutionsrelevanz (integer 1-3),
+evomentor:wissenschaftlicheBegruendung (string), and
+evomentor:relevantesEvolutionskonzept (string literal(s), matching a
+`bezeichnung` in data/evolutionskonzepte.json) for every Kompetenzerwartung_TH
+that has one.
 """
 
 from __future__ import annotations
@@ -262,6 +275,22 @@ def main() -> None:
                     props.append(f'evomentor:buildsOn thsh:lz-{stem}-{slugify(ref)}')
                 for ref in lz.get("ermoeglichende_lernziele") or []:
                     props.append(f'evomentor:buildsToward thsh:lz-{stem}-{slugify(ref)}')
+
+                # v1.2: evolution-enrichment layer, now inline in every source
+                # file (previously only in the separate, gy78-only
+                # lernziele_gy78_evolution.json, never exported at all).
+                evobezug = lz.get("evolutionsbezug")
+                if evobezug:
+                    props.append(
+                        f'evomentor:evolutionsrelevanz '
+                        f'{evobezug["evolutionsrelevanz_beurteilung"]}'
+                    )
+                    props.append(
+                        f'evomentor:wissenschaftlicheBegruendung '
+                        f'{lit(evobezug["wissenschaftliche_begruendung"])}'
+                    )
+                    for konzept in evobezug.get("relevante_evolutionskonzepte") or []:
+                        props.append(f'evomentor:relevantesEvolutionskonzept {lit(konzept, lang=None)}')
 
                 lb_blocks.append(f"thsh:{lz_local} " + " ;\n    ".join(props) + " .")
 

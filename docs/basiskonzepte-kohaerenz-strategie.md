@@ -9,6 +9,17 @@ conceptbase RFC-0018 (`frameworkRelation.schema.yaml`, dasselbe kontrollierte
 Vokabular), [`mem-ontology/`](../mem-ontology/) (die Fäden sind dort als
 `evomentor:teilVonKohaerenzfaden`-Kanten queryable).
 
+> **Update v1.2:** `bk_individuelle_evolutive_entwicklung` wurde in zwei
+> eigenständige Basiskonzepte aufgeteilt — `bk_individuelle_entwicklung` und
+> `bk_evolutive_entwicklung` — es gibt also inzwischen **6 statt 5**
+> Basiskonzepte; alle Referenzen darauf in diesem Dokument (Abschnitt 2's
+> empirische Zahlen, `kohaerenzfaeden.json`) wurden entsprechend aktualisiert,
+> die historischen Kennzahlen selbst (z. B. "95 Ko-Vorkommen-Treffer") beziehen
+> sich weiterhin auf den ursprünglichen v1.0-Datenstand und wurden nicht neu
+> berechnet. Der unter Abschnitt 7 als nächster Schritt vorgeschlagene
+> "Fadenansicht"-Toggle ist in `apps/evomentor_de_v1_2.html`s
+> Basiskonzepte-Explorer (Tab "Kohärenzfäden") jetzt umgesetzt.
+
 ---
 
 ## 1. Das Prinzip: Evolution als Nabe, nicht als Speiche

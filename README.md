@@ -41,23 +41,63 @@ Alle Apps sind eigenständige HTML-Dateien ohne Build-Schritt — direkt über G
 
 | App | Beschreibung | Stand |
 |---|---|---|
-| [🧭 LehrplanKompass](https://openevo-ccs.github.io/EvoMentor_DE/apps/index.html) | **Aktuelles Hauptwerkzeug.** Vereint Konzept-Explorer (Konzeptnetz mit Kohärenzfaden-Ansicht, Dashboard, Detailansicht) und Sequenzplaner (Jahresplanung, Qualitätsanalyse, Export) in einer Oberfläche | v4.0 (aktuell) |
+| [🧬 EvoMentor DE v1.2](https://openevo-ccs.github.io/EvoMentor_DE/apps/evomentor_de_v1_2.html) | **Neues Hauptwerkzeug.** Ein integriertes Werkzeug für Klassen 5–10: Lernziel-Browser, Basiskonzepte-Explorer (Konzeptnetz, Dashboard, Kohärenzfäden, Detailansicht), Evolutionskonzepte-Taxonomie, Sequenzplaner mit klassenstufenübergreifender Qualitätsanalyse, KI-Prompt-Generator und ein Forschungs-Dashboard für Bildungsdesign-Forschende — mit einem einzigen, einheitlichen Favoriten-/Tag-/Notiz-/Exportsystem statt der zuvor über die Apps verstreuten, inkompatiblen Ablagen | v1.2 (aktuell) |
+| [🧭 LehrplanKompass](https://openevo-ccs.github.io/EvoMentor_DE/apps/index.html) | Vereint Konzept-Explorer (Konzeptnetz mit Kohärenzfaden-Ansicht, Dashboard, Detailansicht) und Sequenzplaner (Jahresplanung, Qualitätsanalyse, Export) in einer Oberfläche — deckt Klassen 7/8 ab | v4.0 |
 | [🗺️ LehrplanNavigator](https://openevo-ccs.github.io/EvoMentor_DE/apps/lehrplannavigator.html) | Eigenständige Einzeldatei-Variante von LehrplanKompass — Konzeptnetz und Sequenzplaner in einer HTML-Datei ohne iframe-Aufbau | — |
 | [📋 EvoMentor DE v1.1](https://openevo-ccs.github.io/EvoMentor_DE/apps/evomentor_de_v1_1.html) | Lernziel-Browser mit Filtern, eigenen Tags, Favoriten, Notizen, KI-Prompt-Generierung und Export; deckt Klassen 5–10 ab | v1.1 |
 | [📋 EvoMentor DE v1.0](https://openevo-ccs.github.io/EvoMentor_DE/apps/evomentor_de.html) | Vorläuferversion desselben Lernziel-Browsers, aus dem ursprünglichen Prototyp-Repository | v1.0 |
 | [🧬 Evolutionsbezug Biologie](https://openevo-ccs.github.io/EvoMentor_DE/apps/lernziele_evolution.html) | Übersicht der Evolutionsbezüge einzelner Lernziele (Klassen 7–8) mit wissenschaftlicher Begründung | — |
 | [🤖 Evolutionsbezug – LLM-Prompter](https://openevo-ccs.github.io/EvoMentor_DE/apps/lernziele_evolution_llmprompter.html) | Wie oben, zusätzlich mit Generierung von KI-Prompts zur Unterstützung der Evolutionsintegration | — |
 
-> Der Konzept-Explorer (`apps/explore.html`) und der Sequenzplaner (`apps/sequenz.html`) sind als eigene Ansichten in LehrplanKompass eingebettet, lassen sich aber auch direkt öffnen.
+> Der Konzept-Explorer (`apps/explore.html`) und der Sequenzplaner (`apps/sequenz.html`) sind als eigene Ansichten in LehrplanKompass eingebettet, lassen sich aber auch direkt öffnen. Alle Vorläufer-Apps bleiben verfügbar, damit ältere Auswertungen und Exporte nachvollziehbar bleiben — **EvoMentor DE v1.2 ist aber das empfohlene Einstiegswerkzeug**, da es als einziges alle drei Klassenstufen-Datensätze mit vollständigem Evolutionsbezug vereint.
+
+---
+
+## 🧬 Sechs Basiskonzepte statt fünf
+
+Mit v1.2 wurde das KMK-Basiskonzept "Individuelle und evolutive Entwicklung"
+in zwei eigenständige Basiskonzepte aufgeteilt — **Individuelle Entwicklung**
+und **Evolutive Entwicklung** — analog zur KMK-Gliederung für die Oberschule,
+in der beide getrennt geführt werden. `data/basiskonzepte.json` enthält jetzt
+6 Basiskonzepte mit je 2 Teilkonzepten, einer echten wechselseitigen
+`paired_concept`-Zuordnung (Struktur/Funktion ↔ Stoff-/Energieumwandlung,
+Information/Kommunikation ↔ Steuerung/Regelung, Individuelle ↔ Evolutive
+Entwicklung) sowie bereinigten, um die amtlichen Lehrplan-Teilaspekte
+erweiterten `wesentliche_prinzipien_kmk`-Listen (keine Basiskonzepte mehr, die
+sich selbst als eigenes Unterkonzept auflisten).
+
+## 🧬 Evolutionskonzepte-Taxonomie
+
+[`data/evolutionskonzepte.json`](data/evolutionskonzepte.json) macht die bis
+v1.1 nur clientseitig in einer App vorhandene Evolutionskonzepte-Hierarchie
+(Variation und Diversität, Vererbung, Natürliche Selektion, Anpassung,
+Gendrift, Stammbäume, Homologie/Analogie u. v. m. — 21 Hauptkonzepte, 31
+Unterkonzepte) zu einem eigenständigen, schema-validierten
+(`schema/evolutionskonzept.schema.json`) kontrollierten Vokabular, gegen das
+jedes Lernziel mit Evolutionsbezug in allen drei Klassenstufen-Datensätzen
+referenziert.
 
 ## 🧵 Basiskonzept-Kohärenzfäden
 
 [`docs/basiskonzepte-kohaerenz-strategie.md`](docs/basiskonzepte-kohaerenz-strategie.md)
-beschreibt, wie die Beziehungen zwischen den fünf KMK-Basiskonzepten (v. a.
+beschreibt, wie die Beziehungen zwischen den sechs KMK-Basiskonzepten (v. a.
 "wird durch Evolution erklärt") datengetrieben genutzt werden, um horizontale
 und vertikale Kohärenz über die Klassenstufen 5–10 hinweg herzustellen — mit
 vier vollständig ausgearbeiteten, an echte Lernziele verankerten Fäden in
-[`data/kohaerenzfaeden.json`](data/kohaerenzfaeden.json).
+[`data/kohaerenzfaeden.json`](data/kohaerenzfaeden.json), die in
+EvoMentor DE v1.2 über den Basiskonzepte-Explorer (Tab "Kohärenzfäden")
+erstmals direkt in einer App sichtbar sind.
+
+## 📚 Lernziel-Datensätze: vollständig vereinheitlicht
+
+Alle drei Klassenstufen-Datensätze (`lernziele_MNT56.json`, `lernziele_gy78.json`,
+`lernziele_gy910.json`) folgen jetzt demselben, in
+[`schema/lernziel.schema.json`](schema/lernziel.schema.json) validierten Schema:
+Sequenzierungsmetadaten (Basiskonzepte, Voraussetzungen, Kognitionsstufe usw.)
+**und** ein `evolutionsbezug`/`didaktische_strategien`-Block liegen jetzt in
+jeder Datei inline vor, statt wie zuvor nur für Klasse 7/8 in einer separaten
+Datei. Grade 5/6 wurde außerdem auf die im amtlichen Lehrplan ausgewiesenen 121
+Einzelkompetenzen (statt zuvor 90 zusammengefasster Lernziele) aufgesplittet.
 
 ---
 
