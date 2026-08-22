@@ -461,6 +461,7 @@ document.addEventListener('DOMContentLoaded', boot);
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 EM.lernzieleFilters = { bands:new Set(['mnt56','gy78','gy910']), bks:new Set(), relevance:new Set(), thema:'', praktischOnly:false, ankerOnly:false, favOnly:false, sort:'id', view:'card' };
 
 const METHOD_ICON = { 'Forschendes Lernen':'🔬','Analogien und Vergleiche':'🔗','Konzeptuelles Lernen':'🧩','Diskussion':'💬','Narrativer Zugang':'📖','Modelle und Simulationen':'🧪','Erfahrungsbasiertes Lernen':'🖐️','Digitale Medien':'💻','Einblick in Wissenschaftsgeschichte':'🏛️','Recherche':'📚','Kooperative Lernformen':'👥','Projektbasiertes Lernen':'🛠️' };
@@ -672,6 +673,7 @@ EM.renderers.lernziele = render;
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 
 function csvEscape(v){ const s = (v==null?'':String(v)); return '"'+s.replace(/"/g,'""')+'"'; }
 
@@ -756,6 +758,7 @@ document.getElementById('btnExportAll').addEventListener('click', () => EM.openE
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 let sub = 'netz';
 let selectedThread = null;
 let selectedConcept = null;
@@ -998,6 +1001,7 @@ EM.renderers.basiskonzepte = () => renderSub();
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 let selected = null;
 
 function lzForConcept(bezeichnung){
@@ -1065,6 +1069,7 @@ EM.renderers.evokonzepte = render;
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 const GRADES = ['5','6','7','8','9','10'];
 const QUARTERS = ['Q1','Q2','Q3','Q4'];
 function cellKey(g,q){ return g+'-'+q; }
@@ -1225,6 +1230,7 @@ EM.renderers.sequenz = render;
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 const cfg = { scope:'favorites', band:'gy78', thema:'', klassenstufe:'', stunden:2, vorwissen:'', evoAnteil:'mittel', methodenfokus:'', ton:'sachlich, praxisnah', laenge:'mittel' };
 
 function scopeEntries(){
@@ -1363,6 +1369,7 @@ EM.renderers.prompt = render;
    ========================================================================= */
 (function(){
 'use strict';
+const esc = EM.esc;
 
 function computeReport(){
   const lz = EM.lz;
