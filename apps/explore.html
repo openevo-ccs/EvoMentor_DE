@@ -354,6 +354,15 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
             </div>
           </div>
           <div class="ncp">
+            <div class="ncp-title">🧬 Kohärenz</div>
+            <div class="ncp-row">
+              <button class="ntbtn" id="nt-evo-thread" onclick="toggleEvoThread()"
+                title="Zeigt nur, warum jedes Basiskonzept selbst im Licht der Evolution verständlich ist (Dobzhansky 1973)">
+                Kohärenzfaden
+              </button>
+            </div>
+          </div>
+          <div class="ncp">
             <div class="ncp-title">📦 Layout</div>
             <div class="layout-grid">
               <button class="ntbtn on" id="lay-radial" onclick="setLayout('radial')">🔵 Radial</button>
@@ -395,6 +404,10 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
         <div class="net-info-bar">
           <div class="nib">🔵 <strong id="ni-nodes">–</strong> Knoten &nbsp;🔗 <strong id="ni-edges">–</strong> Kanten</div>
           <div class="nib" id="ni-selected" style="display:none">Ausgewählt: <strong id="ni-sel-name">–</strong></div>
+          <div class="nib" id="ni-evo-caption" style="display:none;flex-direction:column;align-items:flex-start;gap:3px;width:230px;line-height:1.5;color:#166534;background:rgba(220,252,231,.96);border-color:#86efac">
+            <strong>🧬 Kohärenzfaden</strong>
+            <span>Jedes Basiskonzept ist nur im Licht der Evolution voll verständlich (Dobzhansky, 1973) — hervorgehoben: die <em>erklärt/wird erklärt durch Evolution</em>-Kanten.</span>
+          </div>
         </div>
         <svg id="nsvg"></svg>
         <div class="net-legend">
@@ -456,7 +469,7 @@ html, body { height: 100%; overflow: hidden; font-family: 'Inter', system-ui, -a
 /* ══════════════════════════════════════════════════
    DATA PATHS  (adjust if files live elsewhere)
 ══════════════════════════════════════════════════ */
-const PATHS = { bk: './basiskonzepte.json', lz: './lernziele_gy78.json' };
+const PATHS = { bk: '../data/basiskonzepte.json', lz: '../data/lernziele_gy78.json' };
 
 /* ══════════════════════════════════════════════════
    GLOBALS
@@ -464,6 +477,8 @@ const PATHS = { bk: './basiskonzepte.json', lz: './lernziele_gy78.json' };
 let BK = [], LZ = [];
 let netMode = 'e1';
 let edgeTypes = { bk: true, hier: true, lzedge: false, prereq: false };
+let netEvoThread = false;
+const EVO_THREAD_RELTYPES = new Set(['wird_erklaert_durch','erklaert_entstehung_von']);
 let netLayout = 'radial';
 let netT = { x: 0, y: 0, s: 1 };
 let simNodes = [], netEdges = [];
@@ -776,9 +791,18 @@ function renderNet() {
     if (!s || !t || !isVisible(s) || !isVisible(t)) return;
     const sk = e.type==='bk' ? `bk_${e.relType}` : e.type;
     const st = EDGE_STYLES[sk] || EDGE_STYLES[e.type] || { color:'#e2e8f0', dash:'none', w:1, mk:null };
-    const op = e.type==='lzedge'?.14 : e.type==='hier'?.38 : .5;
+    const isThread = e.type==='bk' && EVO_THREAD_RELTYPES.has(e.relType);
+    let op = e.type==='lzedge'?.14 : e.type==='hier'?.38 : .5;
+    let w = st.w;
+    if (netEvoThread) {
+      // Isolate the evolutionary-coherence thread: fade every other edge to
+      // near-invisible so only the isExplainedBy/explainsOriginOf pairs
+      // (the Dobzhansky thread) read clearly.
+      op = isThread ? 1 : .05;
+      w = isThread ? st.w + 1.5 : st.w;
+    }
     const ln = cSVG('line',{x1:s.x,y1:s.y,x2:t.x,y2:t.y,
-      stroke:st.color,'stroke-width':st.w,'stroke-opacity':op,
+      stroke:st.color,'stroke-width':w,'stroke-opacity':op,
       'stroke-dasharray':st.dash==='none'?'0':st.dash});
     if (st.mk) ln.setAttribute('marker-end',`url(#${st.mk})`);
     const ttl = cSVG('title'); ttl.textContent = `${e.relType||e.type}: ${e.desc||''}`; ln.appendChild(ttl);
@@ -917,6 +941,20 @@ function toggleEdgeType(type) {
   edgeTypes[type] = !edgeTypes[type];
   const btn = document.getElementById(`nt-${type}-edges`);
   if(btn) btn.classList.toggle('on', edgeTypes[type]);
+  renderNet();
+}
+
+function toggleEvoThread() {
+  netEvoThread = !netEvoThread;
+  const btn = document.getElementById('nt-evo-thread');
+  if (btn) {
+    btn.classList.toggle('on', netEvoThread);
+    btn.style.background = netEvoThread ? '#16a34a' : '';
+    btn.style.color = netEvoThread ? '#fff' : '';
+    btn.style.borderColor = netEvoThread ? '#16a34a' : '';
+  }
+  const cap = document.getElementById('ni-evo-caption');
+  if (cap) cap.style.display = netEvoThread ? 'flex' : 'none';
   renderNet();
 }
 

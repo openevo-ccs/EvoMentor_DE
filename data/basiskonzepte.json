@@ -2,7 +2,7 @@
   "metadaten": {
     "titel": "KMK-Basiskonzepte Biologie – Umfassendes didaktisches Referenzdataset für Klassen 7–8",
     "beschreibung": "Vollständige, hierarchisch strukturierte und didaktisch angereicherte Darstellung der fünf KMK-Basiskonzepte Biologie. Jedes Basiskonzept (Ebene 1) wird in zwei Teilkonzepte (Ebene 2) gegliedert. Das Dataset integriert curriculumtheoretische, kognitionswissenschaftliche und fachdidaktische Dimensionen zur Unterstützung einer optimalen Sequenzplanung für den Biologieunterricht der Klassen 7–8 am Thüringer Gymnasium.",
-    "version": "4.0",
+    "version": "4.1",
     "quellen": [
       "KMK Bildungsstandards Biologie, Abschnitt 2.5",
       "Thüringer Lehrplan Biologie Gymnasium Klassen 7–8",
@@ -16,6 +16,11 @@
       "Querverbindungen zwischen evolutivem Teilkonzept und Organsystemlernzielen expliziert",
       "Neue konzeptanker_lernziele für humane Entwicklung und Evolution",
       "Erweiterte lernziel_ids für das evolutive Teilkonzept inkl. Zellbiologie, Abwehrsystem, Nervensystem-Vergleich"
+    ],
+    "aenderungen_v4_1": [
+      "Kohärenzlücke geschlossen: bk_stoff_energie_umwandlung, bk_information_kommunikation und bk_steuerung_regelung erhalten je eine neue 'wird_erklaert_durch'-Verbindung zu bk_individuelle_evolutive_entwicklung (mit spiegelbildlicher 'erklaert_entstehung_von'-Verbindung auf der Evolutionsseite) -- vorher hatte nur bk_struktur_funktion diese explizite Verbindung",
+      "Damit ist für alle vier Nicht-Evolutions-Basiskonzepte explizit modelliert, warum sie selbst (nicht nur die von ihnen erklärten Phänomene) nur im Licht der Evolution verständlich sind (Dobzhansky-Kohärenzfaden)",
+      "Rechtschreibkorrektur: 'ermoeglicht' vereinheitlicht zu 'ermöglicht' in bk_information_kommunikation.bk_verbindungen"
     ]
   },
   "basiskonzepte": [
@@ -796,6 +801,11 @@
           "ziel_bk": "bk_individuelle_evolutive_entwicklung",
           "beziehungstyp": "ermöglicht",
           "beschreibung": "Stoffwechselprozesse liefern die Energie für Wachstum, Zellteilung und Differenzierung in der Ontogenese"
+        },
+        {
+          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "beziehungstyp": "wird_erklaert_durch",
+          "beschreibung": "Stoffwechselwege selbst sind keine optimal konstruierten Systeme, sondern das Ergebnis evolutiver Bastelei (evolutionary tinkering) auf bereits vorhandenen biochemischen Grundlagen: Der umständliche Umweg der Glykolyse, die Mehrfachnutzung derselben Enzymfamilien in unterschiedlichen Stoffwechselwegen und Kompromisslösungen wie die Sauerstoffabhängigkeit der Zellatmung sind nur als historisch-kontingente Produkte natürlicher Selektion verständlich, nicht als von Grund auf geplantes Design"
         }
       ],
       "lernziel_ids_thuringia": [
@@ -1243,8 +1253,13 @@
         },
         {
           "ziel_bk": "bk_individuelle_evolutive_entwicklung",
-          "beziehungstyp": "ermoeglicht",
+          "beziehungstyp": "ermöglicht",
           "beschreibung": "Das Hormonsystem (Info/Komm) steuert die individuelle Entwicklung (Pubertät, Menstruationszyklus, Metamorphose); Informationsprozesse sind die kausalen Mechanismen der Ontogenese."
+        },
+        {
+          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "beziehungstyp": "wird_erklaert_durch",
+          "beschreibung": "Die Architektur biologischer Informations- und Kommunikationssysteme ist selbst ein evolutives Produkt: die Wiederverwendung uralter Hormonrezeptor-Familien für immer neue Signalfunktionen, redundante parallele Kommunikationskanäle (Nerven, Hormone, Immunsystem) und suboptimal 'verdrahtete' Sinnes- und Nervenbahnen sind nur als schrittweise Modifikation bereits vorhandener evolutionärer Strukturen erklärbar, nicht als kohärent geplantes Kommunikationssystem"
         }
       ],
       "lernziel_ids_thuringia": [
@@ -1651,6 +1666,11 @@
           "ziel_bk": "bk_individuelle_evolutive_entwicklung",
           "beziehungstyp": "steuert",
           "beschreibung": "Hormonelle Regelkreise steuern ontogenetische Prozesse (Pubertät, Menstruationszyklus, Metamorphose)"
+        },
+        {
+          "ziel_bk": "bk_individuelle_evolutive_entwicklung",
+          "beziehungstyp": "wird_erklaert_durch",
+          "beschreibung": "Regelkreise selbst sind evolvierte Kontrollarchitekturen mit historischem Gepäck: suboptimale Sollwerte, verzögerte Rückkopplungsschleifen und mehrere parallele, teils redundante Regelmechanismen (z. B. verschiedene Wege der Blutzuckerregulation) sind nur erklärbar, wenn man Steuerung und Regelung als Ergebnis schrittweiser Selektion auf bereits bestehenden physiologischen Systemen begreift, nicht als optimales technisches Design"
         }
       ],
       "lernziel_ids_thuringia": [
@@ -2085,14 +2105,29 @@
           "beschreibung": "Individuelle Entwicklungsprozesse (Pubertät, Menstruationszyklus, Metamorphose) werden durch hormonelle Regelkreise gesteuert; Steu/Reg ist der Mechanismus der Ontogenese"
         },
         {
+          "ziel_bk": "bk_steuerung_regelung",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Regelkreise selbst sind evolvierte Kontrollarchitekturen mit historischem Gepäck: suboptimale Sollwerte, verzögerte Rückkopplungsschleifen und mehrere parallele, teils redundante Regelmechanismen sind nur erklärbar, wenn man Steuerung und Regelung als Ergebnis schrittweiser Selektion auf bereits bestehenden physiologischen Systemen begreift, nicht als optimales technisches Design"
+        },
+        {
           "ziel_bk": "bk_information_kommunikation",
           "beziehungstyp": "wird_implementiert_durch",
           "beschreibung": "Hormonelle Kommunikation ist der informationstheoretische Mechanismus, durch den Entwicklungsprozesse gesteuert werden; genetische Information ist die molekulare Grundlage der Weitergabe über Generationen; Nervensystem-Plastizität ist eine evolutiv entstandene Kapazität des menschlichen Gehirns"
         },
         {
+          "ziel_bk": "bk_information_kommunikation",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Die Architektur biologischer Informations- und Kommunikationssysteme ist selbst ein evolutives Produkt: die Wiederverwendung uralter Hormonrezeptor-Familien für immer neue Signalfunktionen und redundante parallele Kommunikationskanäle (Nerven, Hormone, Immunsystem) sind nur als schrittweise Modifikation bereits vorhandener evolutionärer Strukturen erklärbar, nicht als kohärent geplantes Kommunikationssystem"
+        },
+        {
           "ziel_bk": "bk_stoff_energie_umwandlung",
           "beziehungstyp": "benoetigt",
           "beschreibung": "Wachstum, Zellteilung und Differenzierung in der Ontogenese erfordern Energie und Baustoffe; Stoff- und Energieumwandlung ist die materielle Grundlage aller Entwicklungsprozesse"
+        },
+        {
+          "ziel_bk": "bk_stoff_energie_umwandlung",
+          "beziehungstyp": "erklaert_entstehung_von",
+          "beschreibung": "Stoffwechselwege selbst sind keine optimal konstruierten Systeme, sondern das Ergebnis evolutiver Bastelei (evolutionary tinkering) auf bereits vorhandenen biochemischen Grundlagen: der umständliche Umweg der Glykolyse und die Mehrfachnutzung derselben Enzymfamilien in unterschiedlichen Stoffwechselwegen sind nur als historisch-kontingente Produkte natürlicher Selektion verständlich, nicht als von Grund auf geplantes Design"
         }
       ],
       "lernziel_ids_thuringia": [
