@@ -84,9 +84,11 @@ beschreibt, wie die Beziehungen zwischen den sechs KMK-Basiskonzepten (v. a.
 "wird durch Evolution erklärt") datengetrieben genutzt werden, um horizontale
 und vertikale Kohärenz über die Klassenstufen 5–10 hinweg herzustellen — mit
 vier vollständig ausgearbeiteten, an echte Lernziele verankerten Fäden in
-[`data/kohaerenzfaeden.json`](data/kohaerenzfaeden.json), die in
-EvoMentor DE v1.2 über den Basiskonzepte-Explorer (Tab "Kohärenzfäden")
-erstmals direkt in einer App sichtbar sind.
+[`data/kohaerenzfaeden.json`](data/kohaerenzfaeden.json). Der zugehörige
+"Kohärenzfäden"-Tab im Basiskonzepte-Explorer ist in der aktuellen
+Nutzeroberfläche vorerst wieder ausgeblendet (zu theoretisch/fehleranfällig
+für den praktischen Einsatz) — Daten, Schema und Render-Code bleiben für eine
+spätere Wiederaufnahme erhalten.
 
 ## 📚 Lernziel-Datensätze: vollständig vereinheitlicht
 
@@ -94,10 +96,12 @@ Alle drei Klassenstufen-Datensätze (`lernziele_MNT56.json`, `lernziele_gy78.jso
 `lernziele_gy910.json`) folgen jetzt demselben, in
 [`schema/lernziel.schema.json`](schema/lernziel.schema.json) validierten Schema:
 Sequenzierungsmetadaten (Basiskonzepte, Voraussetzungen, Kognitionsstufe usw.)
-**und** ein `evolutionsbezug`/`didaktische_strategien`-Block liegen jetzt in
-jeder Datei inline vor, statt wie zuvor nur für Klasse 7/8 in einer separaten
-Datei. Grade 5/6 wurde außerdem auf die im amtlichen Lehrplan ausgewiesenen 121
-Einzelkompetenzen (statt zuvor 90 zusammengefasster Lernziele) aufgesplittet.
+**und** ein `basiskonzeptbezug`/`didaktische_strategien`-Block liegen jetzt in
+jeder Datei inline vor. `basiskonzeptbezug` bewertet Relevanz, Begründung und
+relevante Unterkonzepte für **alle 6 Basiskonzepte** einheitlich (nicht mehr
+nur für Evolution wie im früheren `evolutionsbezug`-Feld) — Grade 5/6 wurde
+außerdem auf die im amtlichen Lehrplan ausgewiesenen 121 Einzelkompetenzen
+(statt zuvor 90 zusammengefasster Lernziele) aufgesplittet.
 
 ---
 

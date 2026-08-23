@@ -9,7 +9,7 @@
     "id", "thema", "unterthema", "kurzbezeichnung", "originaltext",
     "basiskonzepte_primaer", "basiskonzepte_sekundaer",
     "voraussetzende_lernziele", "ermoeglichende_lernziele",
-    "evolutionsbezug", "didaktische_strategien"
+    "basiskonzeptbezug", "didaktische_strategien"
   ],
   "properties": {
     "id": {
@@ -61,18 +61,43 @@
     "abstraktionsgrad": { "type": "string", "enum": ["niedrig", "niedrig bis mittel", "mittel", "mittel bis hoch", "hoch", "sehr hoch"] },
     "interleaving_empfehlung": { "type": "array", "items": { "type": "string" } },
     "anmerkung": { "type": "string" },
-    "evolutionsbezug": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["wissenschaftliche_begruendung", "relevante_evolutionskonzepte", "evolutionsrelevanz_beurteilung"],
-      "properties": {
-        "wissenschaftliche_begruendung": { "type": "string", "minLength": 1, "description": "Paragraph text explaining the scientific link between this learning goal and evolutionary biology." },
-        "relevante_evolutionskonzepte": {
-          "type": "array",
-          "items": { "type": "string" },
-          "description": "Werte müssen exakt einer 'bezeichnung' aus data/evolutionskonzepte.json entsprechen."
-        },
-        "evolutionsrelevanz_beurteilung": { "type": "integer", "enum": [1, 2, 3], "description": "1=gering, 2=mittel, 3=hoch." }
+    "basiskonzeptbezug": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "description": "Bewertung der Relevanz dieses Lernziels für jedes der 6 Basiskonzepte — genau ein Eintrag pro Basiskonzept-Id (nicht nur für Evolution; ersetzt ab v1.2 das frühere evolutionsbezug-Feld). relevante_evolutionskonzepte ist nur beim Eintrag mit basiskonzept_id == bk_evolutive_entwicklung zulässig.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["basiskonzept_id", "relevanz_beurteilung", "begruendung", "relevante_teilkonzepte"],
+        "properties": {
+          "basiskonzept_id": {
+            "type": "string",
+            "enum": ["bk_struktur_funktion", "bk_stoff_energie_umwandlung", "bk_information_kommunikation", "bk_steuerung_regelung", "bk_individuelle_entwicklung", "bk_evolutive_entwicklung"]
+          },
+          "relevanz_beurteilung": { "type": "integer", "enum": [1, 2, 3], "description": "1=gering, 2=mittel, 3=hoch." },
+          "begruendung": { "type": "string", "minLength": 1, "description": "Kurze, konkrete Begründung, warum (oder warum nicht) dieses Lernziel für das jeweilige Basiskonzept relevant ist." },
+          "relevante_teilkonzepte": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+              "type": "string",
+              "enum": [
+                "bk_struktur_funktion__struktur", "bk_struktur_funktion__funktion",
+                "bk_stoff_energie_umwandlung__stoff", "bk_stoff_energie_umwandlung__energie",
+                "bk_information_kommunikation__information", "bk_information_kommunikation__kommunikation",
+                "bk_steuerung_regelung__steuerung", "bk_steuerung_regelung__regelung",
+                "bk_individuelle_entwicklung__zelldifferenzierung", "bk_individuelle_entwicklung__reifung",
+                "bk_evolutive_entwicklung__variation_selektion", "bk_evolutive_entwicklung__stammesgeschichte"
+              ]
+            }
+          },
+          "relevante_evolutionskonzepte": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Nur beim Eintrag für bk_evolutive_entwicklung. Werte müssen exakt einer 'bezeichnung' aus data/evolutionskonzepte.json entsprechen."
+          }
+        }
       }
     },
     "didaktische_strategien": {

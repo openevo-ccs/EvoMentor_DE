@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://openevo-ccs.github.io/EvoMentor_DE/schema/evolutionskonzept.schema.json",
   "title": "EvoMentor_DE Evolutionskonzept",
-  "description": "Validiert einen Eintrag in data/evolutionskonzepte.json — die kontrollierte, hierarchische Vokabular-Liste evolutionärer Konzepte, gegen die lernziel.evolutionsbezug.relevante_evolutionskonzepte[] Werte auflösen müssen.",
+  "description": "Validiert einen Eintrag in data/evolutionskonzepte.json — die kontrollierte, hierarchische Vokabular-Liste evolutionärer Konzepte, gegen die lernziel.basiskonzeptbezug[bk_evolutive_entwicklung].relevante_evolutionskonzepte[] Werte auflösen müssen.",
   "type": "object",
   "additionalProperties": false,
   "required": ["id", "ebene", "bezeichnung", "uebergeordnetes_konzept", "reihenfolge", "definition", "beispiel"],
@@ -20,7 +20,7 @@
     "bezeichnung": {
       "type": "string",
       "minLength": 1,
-      "description": "Anzeigename und zugleich der kontrollierte Vokabular-Wert, den lernziel.evolutionsbezug.relevante_evolutionskonzepte[] referenziert."
+      "description": "Anzeigename und zugleich der kontrollierte Vokabular-Wert, den lernziel.basiskonzeptbezug[bk_evolutive_entwicklung].relevante_evolutionskonzepte[] referenziert."
     },
     "uebergeordnetes_konzept": {
       "type": ["string", "null"],

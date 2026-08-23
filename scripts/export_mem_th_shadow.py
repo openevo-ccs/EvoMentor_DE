@@ -279,15 +279,23 @@ def main() -> None:
                 # v1.2: evolution-enrichment layer, now inline in every source
                 # file (previously only in the separate, gy78-only
                 # lernziele_gy78_evolution.json, never exported at all).
-                evobezug = lz.get("evolutionsbezug")
+                # Since the later v1.2 unification, this is the
+                # bk_evolutive_entwicklung entry of the per-Basiskonzept
+                # basiskonzeptbezug array (formerly its own evolutionsbezug
+                # field).
+                evobezug = next(
+                    (b for b in lz.get("basiskonzeptbezug") or []
+                     if b.get("basiskonzept_id") == "bk_evolutive_entwicklung"),
+                    None,
+                )
                 if evobezug:
                     props.append(
                         f'evomentor:evolutionsrelevanz '
-                        f'{evobezug["evolutionsrelevanz_beurteilung"]}'
+                        f'{evobezug["relevanz_beurteilung"]}'
                     )
                     props.append(
                         f'evomentor:wissenschaftlicheBegruendung '
-                        f'{lit(evobezug["wissenschaftliche_begruendung"])}'
+                        f'{lit(evobezug["begruendung"])}'
                     )
                     for konzept in evobezug.get("relevante_evolutionskonzepte") or []:
                         props.append(f'evomentor:relevantesEvolutionskonzept {lit(konzept, lang=None)}')
