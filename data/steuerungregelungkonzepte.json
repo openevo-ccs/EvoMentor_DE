@@ -1,0 +1,126 @@
+{
+  "metadaten": {
+    "titel": "Steuerung und Regelung – erweiterte Unterkonzept-Taxonomie",
+    "beschreibung": "Hierarchisch strukturierte, ausführliche Ergänzung zu den 2 schema-begrenzten Teilkonzepten von bk_steuerung_regelung in data/basiskonzepte.json, analog zu data/evolutionskonzepte.json für bk_evolutive_entwicklung.",
+    "version": "1.0",
+    "quellen": [
+      "EvoMentor_DE v1.2 Feedback-Runde 2 (2026-08-25): Basiskonzepte-Detail-Feedback, Unterkonzepte-Vereinheitlichung",
+      "data/basiskonzepte.json wesentliche_prinzipien_kmk je Basiskonzept als Ausgangspunkt der Ebene-1-Gliederung"
+    ],
+    "struktur_hinweis": "Ebene 1 folgt bewusst den 2 bestehenden teilkonzepte (Steuerung/Regelung) statt der vollen wesentliche_prinzipien_kmk-Liste. Positive Rückkopplung ist bei Regelung eingeordnet, nicht Steuerung, da sie trotz fehlender Stabilisierung weiterhin einen geschlossenen Wirkungskreis (Rückkopplung) voraussetzt. Reizaufnahme/Reizverarbeitung und Fließgleichgewicht sind bewusst leichte, querverwiesene Zweitinstanzen zu ihren primären Konzepten in data/informationkommunikationkonzepte.json bzw. data/stoffenergiekonzepte.json.",
+    "verwendung": "lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] speichert exakte 'bezeichnung'-Strings (Ebene 1 oder Ebene 2) aus dieser Datei, analog zu relevante_evolutionskonzepte bei bk_evolutive_entwicklung."
+  },
+  "steuerungregelungkonzepte": [
+    {
+      "id": "sr_steuerung",
+      "ebene": 1,
+      "bezeichnung": "Steuerung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 1,
+      "definition": "Die Beeinflussung eines Prozesses durch ein Eingangssignal ohne Rückmeldung des erzielten Ergebnisses an den Ausgangspunkt (offener Wirkungskreis) — im Unterschied zur Regelung erfolgt keine fortlaufende Korrektur anhand des tatsächlichen Ergebnisses.",
+      "beispiel": "Ein genetisches Entwicklungsprogramm steuert den Ablauf der Embryonalentwicklung nach einem festen Zeitplan, unabhängig davon, ob jeder Einzelschritt exakt gelingt."
+    },
+    {
+      "id": "sr_steuerung__offener_wirkungskreis",
+      "ebene": 2,
+      "bezeichnung": "Offener Wirkungskreis (Steuerkette)",
+      "uebergeordnetes_konzept": "sr_steuerung",
+      "reihenfolge": 1,
+      "definition": "Eine Wirkungskette, bei der ein Eingangssignal über mehrere Stationen zu einem Ausgangssignal führt, ohne dass das Ergebnis auf den Anfang der Kette zurückwirkt.",
+      "beispiel": "Ein Reflex wie das Zurückziehen der Hand von einer heißen Herdplatte läuft als feste Steuerkette ab, ohne dass das Ergebnis der Bewegung den auslösenden Reiz beeinflusst."
+    },
+    {
+      "id": "sr_steuerung__vorprogrammiert_genetisch",
+      "ebene": 2,
+      "bezeichnung": "Vorprogrammierte/genetisch determinierte Steuerungsprozesse",
+      "uebergeordnetes_konzept": "sr_steuerung",
+      "reihenfolge": 2,
+      "definition": "Entwicklungs- oder Verhaltensabläufe, die durch ein genetisch festgelegtes Programm gesteuert werden und weitgehend unabhängig von einer laufenden Rückmeldung ablaufen.",
+      "beispiel": "Das Nestbauverhalten vieler Vogelarten folgt einem angeborenen, artspezifischen Bewegungsmuster, das auch bei erstmals brütenden Tieren ohne vorherige Erfahrung abläuft."
+    },
+    {
+      "id": "sr_steuerung__reizaufnahme_reizverarbeitung",
+      "ebene": 2,
+      "bezeichnung": "Reizaufnahme und Reizverarbeitung",
+      "uebergeordnetes_konzept": "sr_steuerung",
+      "reihenfolge": 3,
+      "definition": "Die Aufnahme eines äußeren oder inneren Reizes als Auslöser, der einen Steuerungsprozess in Gang setzt.",
+      "beispiel": "Die Wahrnehmung von Dunkelheit durch die Netzhaut löst beim Menschen die Ausschüttung des Schlafhormons Melatonin aus.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_information_kommunikation",
+          "konzept_bezeichnung": "Reizaufnahme und Reizverarbeitung",
+          "beziehung": "Gleiches Konzept, hier als Auslöser eines Steuerungsprozesses behandelt; bei Information und Kommunikation als eigenständiges Thema der Sinnesphysiologie mit eigener Vertiefung."
+        }
+      ]
+    },
+    {
+      "id": "sr_regelung",
+      "ebene": 1,
+      "bezeichnung": "Regelung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 2,
+      "definition": "Die Beeinflussung eines Prozesses in einem geschlossenen Wirkungskreis, bei dem die tatsächliche Zustandsgröße fortlaufend gemessen, mit einem Sollwert verglichen und bei Abweichung korrigierend nachgesteuert wird.",
+      "beispiel": "Die Regelung der Körpertemperatur vergleicht fortlaufend die gemessene Temperatur mit einem Sollwert von etwa 37 °C und löst bei Abweichung Gegenmaßnahmen wie Schwitzen oder Zittern aus."
+    },
+    {
+      "id": "sr_regelung__regelkreis_struktur",
+      "ebene": 2,
+      "bezeichnung": "Regelkreis-Struktur (Sollwert, Regler, Regelgröße, Istwert)",
+      "uebergeordnetes_konzept": "sr_regelung",
+      "reihenfolge": 1,
+      "definition": "Der grundlegende Aufbau eines Regelkreises aus Sollwert (Zielzustand), Regler (vergleichende und steuernde Instanz), Regelgröße/Istwert (tatsächlich gemessener Zustand) und einer Rückkopplungsschleife zwischen ihnen.",
+      "beispiel": "Beim Blutzuckerregelkreis ist die Bauchspeicheldrüse der Regler, der Blutzuckerspiegel die Regelgröße und ein enger Normbereich der Sollwert."
+    },
+    {
+      "id": "sr_regelung__negative_rueckkopplung",
+      "ebene": 2,
+      "bezeichnung": "Negative Rückkopplung (inkl. Homöostase-Prinzip)",
+      "uebergeordnetes_konzept": "sr_regelung",
+      "reihenfolge": 2,
+      "definition": "Eine Rückkopplung, bei der eine Abweichung von einem Sollwert eine Gegenreaktion auslöst, die diese Abweichung verringert — der zentrale Mechanismus, durch den biologische Systeme innere Zustände in engen Grenzen konstant halten (Homöostase).",
+      "beispiel": "Steigt die Körpertemperatur über den Sollwert, wird durch Schwitzen Wärme abgegeben, bis die Temperatur wieder sinkt — ein klassisches Beispiel für negative Rückkopplung und Homöostase.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_individuelle_entwicklung",
+          "konzept_bezeichnung": "Hormonelle Regelkreise der Reifung",
+          "beziehung": "Ein konkretes Beispiel für negative Rückkopplung im Kontext individueller Entwicklung — dort mit Fokus auf den zeitlichen Ablauf von Reifungsprozessen statt auf das allgemeine Regelungsprinzip."
+        }
+      ]
+    },
+    {
+      "id": "sr_regelung__positive_rueckkopplung",
+      "ebene": 2,
+      "bezeichnung": "Positive Rückkopplung",
+      "uebergeordnetes_konzept": "sr_regelung",
+      "reihenfolge": 3,
+      "definition": "Eine Rückkopplung, bei der eine Abweichung von einem Ausgangszustand eine Reaktion auslöst, die diese Abweichung weiter verstärkt, statt sie auszugleichen — anders als negative Rückkopplung nicht stabilisierend, sondern selbstverstärkend, meist zeitlich begrenzt bis zu einem definierten Endpunkt.",
+      "beispiel": "Bei der Geburt verstärken die Wehen durch Ausschüttung von Oxytocin sich selbst immer weiter, bis das Kind geboren ist und die Rückkopplungsschleife endet."
+    },
+    {
+      "id": "sr_regelung__adaptation_gewoehnung",
+      "ebene": 2,
+      "bezeichnung": "Adaptation und Gewöhnung",
+      "uebergeordnetes_konzept": "sr_regelung",
+      "reihenfolge": 4,
+      "definition": "Die allmähliche Abnahme der Empfindlichkeit eines Sinnesrezeptors oder Nervensystems bei anhaltender oder wiederholter Reizung.",
+      "beispiel": "Nach einiger Zeit im selben Raum wird ein anfangs auffälliger Geruch kaum noch wahrgenommen, da sich die Riechrezeptoren an den gleichbleibenden Reiz gewöhnt haben."
+    },
+    {
+      "id": "sr_regelung__fliessgleichgewicht",
+      "ebene": 2,
+      "bezeichnung": "Fließgleichgewicht",
+      "uebergeordnetes_konzept": "sr_regelung",
+      "reihenfolge": 5,
+      "definition": "Der durch Regelungsprozesse aufrechterhaltene Zustand, in dem Zu- und Abfluss von Stoffen oder Energie trotz schwankender äußerer Bedingungen fortlaufend so aneinander angeglichen werden, dass innere Zustandsgrößen annähernd konstant bleiben.",
+      "beispiel": "Der Wasserhaushalt des Körpers wird durch die Regelung der Urinausscheidung an schwankende Trinkmengen angepasst, sodass der Wassergehalt des Körpers annähernd konstant bleibt.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_stoff_energie_umwandlung",
+          "konzept_bezeichnung": "Fließgleichgewicht",
+          "beziehung": "Gleiches Konzept, hier mit Fokus darauf, wie Regelungsprozesse das Fließgleichgewicht aktiv aufrechterhalten; bei Stoff- und Energieumwandlung als grundlegende thermodynamische Eigenschaft offener Systeme behandelt."
+        }
+      ]
+    }
+  ]
+}

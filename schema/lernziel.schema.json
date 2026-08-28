@@ -96,6 +96,11 @@
             "type": "array",
             "items": { "type": "string" },
             "description": "Nur beim Eintrag für bk_evolutive_entwicklung. Werte müssen exakt einer 'bezeichnung' aus data/evolutionskonzepte.json entsprechen."
+          },
+          "relevante_unterkonzepte": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Nur bei den 5 nicht-evolutionären Basiskonzept-Einträgen (analog zu relevante_evolutionskonzepte bei bk_evolutive_entwicklung). Werte müssen exakt einer 'bezeichnung' aus der für diese basiskonzept_id zuständigen erweiterten Taxonomie-Datei entsprechen (data/individuelleentwicklungkonzepte.json, data/strukturfunktionkonzepte.json, data/stoffenergiekonzepte.json, data/informationkommunikationkonzepte.json bzw. data/steuerungregelungkonzepte.json), siehe schema/unterkonzept.schema.json."
           }
         }
       }

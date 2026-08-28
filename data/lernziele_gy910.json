@@ -66,10 +66,13 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernanliegen ist exakt die Zuordnung von Struktur (Organ) und Funktion bei der Sprosspflanze.",
+          "begruendung": "Kernanliegen dieses Lernziels ist exakt die Zuordnung von Struktur, also dem jeweiligen Organ, und Funktion bei der Sprosspflanze: Wurzel, Sprossachse, Blatt und Blüte übernehmen jeweils eigene, klar abgrenzbare Aufgaben von der Verankerung über den Stofftransport bis zur Fortpflanzung. Diese explizite Zuordnung von Organen zu ihren Funktionen ist ein direkter, unmittelbarer Ausdruck des Struktur-Funktions-Prinzips dieses Basiskonzepts.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur",
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -81,9 +84,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Mehrere Organfunktionen (Wasseraufnahme der Wurzel, Stoffproduktion im Blatt) sind Stoff- und Energieprozesse, die hier nur benannt werden.",
+          "begruendung": "Mehrere Organfunktionen wie die Wasseraufnahme der Wurzel oder die Stoffproduktion im Blatt sind Stoff- und Energieprozesse, die hier jedoch nur benannt, nicht vertieft behandelt werden: Jedes Pflanzenorgan trägt auf seine Weise zum stofflichen Haushalt der Gesamtpflanze bei. Den Organen einer Sprosspflanze ihre Funktionen zuzuordnen berührt damit bereits diese stofflichen Zusammenhänge, ohne sie im Detail zu erklären.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -179,23 +185,32 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die genannten Transportmechanismen (Kapillarität, Transpirationssog) setzen den Bau von Leitgeweben voraus, der hier aber vorausgesetzt wird.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die genannten Transportmechanismen Kapillarität und Transpirationssog setzen den strukturellen Bau von Leitgeweben voraus, der in diesem Lernziel jedoch als bekannt vorausgesetzt und nicht selbst vertieft behandelt wird: Ohne durchgehende, röhrenförmige Leitbahnen könnten diese physikalischen Effekte gar nicht erst zum Ferntransport von Wasser genutzt werden. Der strukturelle Bezug bleibt hier also im Hintergrund, ist aber inhaltlich vorausgesetzt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Wasser- und Stofftransport wird durch physikalisch bedingte Zustandsänderungen (Transpirationssog) gesteuert – Steuerung ohne Rückkopplung.",
+          "begruendung": "Der Wasser- und Stofftransport in der Sprosspflanze wird durch physikalisch bedingte Zustandsänderungen wie den Transpirationssog gesteuert, nicht durch einen biologischen Regelkreis mit Rückmeldung: Verdunstet Wasser an der Blattoberfläche, entsteht ein Sog, der passiv Wasser und gelöste Stoffe von der Wurzel bis in die Blätter zieht, ohne dass die Pflanze diesen Prozess aktiv anhand einer gemessenen Zielgröße reguliert. Damit ist der Transpirationssog ein anschauliches Beispiel für Steuerung ohne Rückkopplung, das rein physikalischen Gesetzmäßigkeiten folgt.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Wasser- und CO2-Aufnahme sowie deren Transport sind unmittelbar Stoffumwandlungsprozesse der Pflanze.",
+          "begruendung": "Wasser- und CO2-Aufnahme sowie deren anschließender Transport sind unmittelbar Stoffumwandlungsprozesse der Pflanze: Über Diffusion, Osmose, Kapillarität und Transpirationssog gelangen diese lebensnotwendigen Stoffe aus der Umwelt in die Pflanze und werden von dort zu den Orten ihrer stofflichen Verwertung weitertransportiert. Diese physikalischen Mechanismen zu erklären beschreibt damit detailliert den pflanzlichen Stoffaustausch mit der Umwelt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -295,10 +310,14 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernthema ist der Zusammenhang von Blattstruktur (Kompartimentierung, Oberflächenvergrößerung) und deren Funktion.",
+          "begruendung": "Kernthema dieses Lernziels ist der Zusammenhang von Blattstruktur und ihrer Funktion, konkret die Kompartimentierung des Blattgewebes in unterschiedliche Zellschichten sowie die Oberflächenvergrößerung durch die innere Gewebearchitektur: Palisaden- und Schwammgewebe sind jeweils auf Lichtabsorption bzw. Gasaustausch spezialisiert, während die zerklüftete innere Oberfläche des Schwammgewebes den Gasaustausch zusätzlich begünstigt. Dieser Zusammenhang von Struktur und Funktion des Laubblattes ist explizit Kernthema und damit unmittelbarer Gegenstand des Basiskonzepts.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion",
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung",
+            "Oberflächenvergrößerung"
           ]
         },
         {
@@ -310,9 +329,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Blattbau ermöglicht Gasaustausch und Fotosynthese, zentrale Stoff- und Energieprozesse, die hier als Funktionshintergrund mitschwingen.",
+          "begruendung": "Der Blattbau ermöglicht Gasaustausch und Fotosynthese, zwei zentrale, eng gekoppelte Stoff- und Energieprozesse, die hier als Funktionshintergrund mitschwingen: Ohne die richtige Gewebeorganisation des Blattes könnten weder ausreichend CO2 aufgenommen noch die bei der Fotosynthese gewonnene Energie effizient genutzt werden. Der Zusammenhang von Struktur und Funktion des Laubblattes berührt damit indirekt auch diese gekoppelten stofflich-energetischen Prozesse.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -408,9 +430,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Chloroplast wird als kompartimentierter Ort der Fotosynthese eingeführt – klassisches Struktur-Funktions-Beispiel.",
+          "begruendung": "Der Chloroplast wird als kompartimentierter Ort der Fotosynthese eingeführt – ein klassisches Struktur-Funktions-Beispiel auf Zellebene: Seine innere Membranstruktur mit den Thylakoiden bietet die notwendige Oberfläche für die lichtabhängigen Reaktionen, während das umgebende Stroma den Ort der Stoffumwandlung bereitstellt. Diese enge Verknüpfung von Zellorganell-Struktur und Fotosynthesefunktion zeigt exemplarisch, wie stark biochemische Prozesse an bestimmte Kompartimente gebunden sind.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -422,9 +447,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Chloroplast ist der zentrale Ort der Energieumwandlung (Licht- in chemische Energie) der Pflanze.",
+          "begruendung": "Der Chloroplast ist der zentrale Ort der Energieumwandlung von Licht- in chemische Energie in der Pflanze: In seinen Membranstrukturen wird Lichtenergie eingefangen und über eine Reihe gekoppelter Reaktionen in die chemische Energie energiereicher organischer Stoffe überführt. Den Chloroplasten als Ort der Fotosynthese einzuführen benennt damit den zentralen Schauplatz dieser gekoppelten Stoff- und Energieumwandlung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -523,8 +551,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Chlorophyll und die beteiligten Membranstrukturen sind strukturelle Voraussetzung für die Energieumwandlung, stehen hier aber im Hintergrund.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Chlorophyll und die beteiligten Membranstrukturen der Chloroplasten sind strukturelle Voraussetzung für die hier beschriebene Energieumwandlung, stehen in diesem Lernziel aber eher im Hintergrund: Erst die geordnete Anordnung der Pigmente in den Thylakoidmembranen ermöglicht die effiziente Aufnahme von Lichtenergie und deren Umwandlung in chemische Energie. Der strukturelle Bezug bleibt hier vorausgesetzt, während der Fokus auf dem eigentlichen Stoff- und Energieumwandlungsprozess liegt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -535,10 +566,13 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernstück des Lernziels: Umwandlung von Licht- in chemische Energie und von anorganischen in organische Stoffe.",
+          "begruendung": "Kernstück dieses Lernziels ist die Umwandlung von Licht- in chemische Energie unter Beteiligung von Chlorophyll sowie die gleichzeitige Umwandlung anorganischer in organische Stoffe: Beide Prozesse laufen bei der Fotosynthese untrennbar gekoppelt ab, wobei Sauerstoff als Nebenprodukt freigesetzt wird. Diese doppelte Umwandlung von Energie und Stoff in einem einzigen Prozess macht die Fotosynthese zu einem Paradebeispiel energetischer Kopplung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie",
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -642,9 +676,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Wort- und Summengleichung ist die formale Bilanz des Stoff- und Energieumwandlungsprozesses Fotosynthese.",
+          "begruendung": "Die Wort- und Summengleichung ist die formale Bilanz des gekoppelten Stoff- und Energieumwandlungsprozesses Fotosynthese: Sie fasst kompakt zusammen, welche Ausgangsstoffe unter Lichtenergiezufuhr zu welchen Endprodukten umgesetzt werden, ohne dass dabei Materie oder Energie verloren gehen. Diese Gleichung formulieren zu können verdichtet den gesamten Fotosyntheseprozess auf eine überprüfbare, formale Darstellung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -740,8 +777,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Struktur- und Funktionsproteine werden als Beispiel genannt, der Fokus liegt aber auf dem Stoffumbau, nicht der Struktur.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Struktur- und Funktionsproteine werden hier zwar als Beispiel für aus Glucose gebildete pflanzliche Stoffe genannt, der eigentliche Fokus dieses Lernziels liegt jedoch auf dem Stoffumbau selbst und nicht auf der Struktur der entstehenden Moleküle: Dass Glucose als Ausgangsstoff für so unterschiedliche Stoffe wie Speicherstoffe und Strukturproteine dienen kann, berührt das Basiskonzept nur am Rande. Der Bezug zu diesem Basiskonzept bleibt entsprechend eher beiläufig.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -752,9 +792,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Klassisches Stoffumwandlungs-Lernziel: Glucose als Ausgangsstoff für Speicher-, Struktur- und Funktionsstoffe.",
+          "begruendung": "Ein klassisches Stoffumwandlungs-Lernziel: Glucose dient als zentraler Ausgangsstoff für die Bildung weiterer pflanzlicher Stoffe wie Stärke und Fette als Speicherstoffe oder Proteine als Struktur- und Funktionsstoffe. Unter Beteiligung von Mineralsalz-Ionen werden aus dieser einen Grundsubstanz ganz unterschiedliche, spezialisierte Stoffe aufgebaut, was die zentrale Bedeutung der Glucose im pflanzlichen Stoffwechsel unterstreicht.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -864,10 +907,13 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Fotosynthese als Grundlage der Stoff- und Energieversorgung der Pflanze und aller nachgeschalteten Nahrungsketten.",
+          "begruendung": "Die Fotosynthese bildet die Grundlage der Stoff- und Energieversorgung nicht nur der Pflanze selbst, sondern aller nachgeschalteten Nahrungsketten: Als einziger Prozess, der Lichtenergie in chemisch gebundene Energie umwandelt, speist die Fotosynthese letztlich den gesamten Energiefluss durch nahezu jedes Ökosystem. Die Bedeutung der Fotosynthese für Pflanze und weitere Lebewesen zu erläutern macht diese fundamentale, über die einzelne Pflanze hinausreichende Rolle sichtbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie",
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energiefluss durch Nahrungsketten"
           ]
         },
         {
@@ -968,16 +1014,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Lichtintensität als äußerer Faktor, der die Fotosyntheserate steuert – klassisches Steuerungsbeispiel ohne Rückkopplung.",
+          "begruendung": "Die Lichtintensität wirkt als äußerer Faktor, der die Fotosyntheserate direkt steuert, ohne dass die Pflanze diese Rate aktiv anhand eines internen Sollwerts regelt – ein klassisches Steuerungsbeispiel ohne Rückkopplung. Mit zunehmender Lichtintensität steigt die Fotosyntheserate zunächst proportional an, bis andere Faktoren wie CO2-Gehalt oder Temperatur zum limitierenden Faktor werden. Die Interpretation entsprechender Untersuchungsergebnisse macht diesen einseitig gerichteten Steuerungszusammenhang zwischen Umweltfaktor und Stoffwechselrate nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Fotosyntheserate als abhängige Größe ist ein Stoff-/Energieumwandlungsprozess, hier aus Steuerungsperspektive betrachtet.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Fotosyntheserate als abhängige Größe ist letztlich ein Stoff- und Energieumwandlungsprozess, der hier jedoch primär aus der Perspektive der Steuerung durch äußere Faktoren betrachtet wird: Wie stark Licht die Fotosyntheserate beeinflusst, hängt direkt davon ab, wie effizient Lichtenergie in den Chloroplasten in chemische Energie umgewandelt werden kann. Der stoffliche Bezug bleibt hier also Hintergrund der eigentlich im Fokus stehenden Steuerungsbetrachtung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1076,16 +1128,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "CO2-Gehalt und Temperatur als äußere Faktoren, die die Fotosyntheserate steuern.",
+          "begruendung": "CO2-Gehalt und Temperatur wirken ebenso wie die Lichtintensität als äußere Faktoren, die die Fotosyntheserate direkt steuern, ohne dass ein biologischer Regelkreis mit Rückmeldung zwischen ihnen vermittelt. Jeder dieser Faktoren kann limitierend wirken, sobald er unterhalb des für die aktuellen Bedingungen optimalen Werts liegt, was das Prinzip des Minimumfaktors mit dem Steuerungskonzept dieses Basiskonzepts verknüpft. Die Interpretation entsprechender Messreihen schult damit das Erkennen einseitig gerichteter Steuerungszusammenhänge.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die untersuchte Fotosyntheserate ist ein Stoffwechselprozess, hier jedoch aus Steuerungssicht analysiert.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die untersuchte Fotosyntheserate ist ein Stoffwechselprozess, der auch hier primär aus Steuerungssicht analysiert wird: CO2-Gehalt und Temperatur beeinflussen, wie effizient die gekoppelte Stoff- und Energieumwandlung der Fotosynthese ablaufen kann. Der stoffliche Bezug bleibt entsprechend Hintergrund der im Vordergrund stehenden Analyse äußerer Einflussfaktoren.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1183,17 +1241,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Zusatzbeleuchtung nutzt gezielt die Steuerung der Fotosyntheserate durch den äußeren Faktor Licht.",
+          "begruendung": "Die Zusatzbeleuchtung im Gewächshaus nutzt gezielt die Steuerung der Fotosyntheserate durch den äußeren Faktor Licht: Da Licht innerhalb bestimmter Grenzen die Fotosyntheserate direkt und ohne Rückkopplung erhöht, lässt sich der Ertrag durch künstliche Verlängerung oder Verstärkung der Beleuchtung gezielt steigern. Die Begründung dieser Maßnahme setzt ein Verständnis dieses einseitig gerichteten Steuerungszusammenhangs voraus.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Ertragssteigerung durch mehr Licht zielt direkt auf mehr Energieumwandlung (Fotosynthese) in der Pflanze.",
+          "begruendung": "Ertragssteigerung durch mehr Licht zielt direkt auf eine gesteigerte Energieumwandlung durch Fotosynthese in der Pflanze: Mehr verfügbares Licht bedeutet mehr eingefangene Lichtenergie, die in chemische Energie und damit letztlich in pflanzliche Biomasse umgewandelt werden kann. Maßnahmen zur Ertragssteigerung durch zusätzliche Beleuchtung im Gewächshaus zu begründen stützt sich unmittelbar auf diesen gekoppelten Stoff- und Energieumwandlungsprozess.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -1292,17 +1356,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Optimale Temperatur und CO2-Versorgung sind gezielt gesteuerte äußere Faktoren zur Ertragssteigerung.",
+          "begruendung": "Optimale Temperatur und erhöhter CO2-Gehalt sind gezielt gesteuerte äußere Faktoren zur Ertragssteigerung im Gewächshaus: Da beide Größen die Fotosyntheserate direkt beeinflussen, ohne dass die Pflanze selbst regelnd eingreift, lässt sich durch ihre gezielte Optimierung die Stoffproduktion der Kulturpflanzen steigern. Die Begründung entsprechender Maßnahmen stützt sich auf dieses Steuerungsprinzip.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Erhöhter CO2-Gehalt und optimale Temperatur steigern direkt den Stoffumsatz der Fotosynthese.",
+          "begruendung": "Erhöhter CO2-Gehalt und optimale Temperatur steigern direkt den Stoffumsatz der Fotosynthese: Mehr verfügbares CO2 als Ausgangsstoff und eine für die beteiligten Enzyme optimale Temperatur erhöhen gemeinsam die Rate, mit der Licht- in chemische Energie und anorganische in organische Stoffe umgewandelt werden. Diese Maßnahmen zur Ertragssteigerung zu begründen setzt ein Verständnis dieser gekoppelten Stoff- und Energieumwandlung voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -1397,9 +1467,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Mitochondrien als kompartimentierter Ort der Zellatmung – Struktur-Funktions-Zuordnung auf Zellebene.",
+          "begruendung": "Mitochondrien als kompartimentierter Ort der Zellatmung sind eine klare Struktur-Funktions-Zuordnung auf Zellebene: Ihre stark gefaltete innere Membran bietet die für die effiziente ATP-Synthese notwendige große Oberfläche, während das umgebende Kompartiment die räumliche Trennung von anderen Zellprozessen sicherstellt. Diese enge Kopplung von Organellstruktur und Stoffwechselfunktion macht das Mitochondrium zu einem Paradebeispiel dieses Basiskonzepts auf zellulärer Ebene.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -1411,9 +1484,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Mitochondrium ist der zentrale Ort der Energieumwandlung bei der Zellatmung.",
+          "begruendung": "Das Mitochondrium ist der zentrale Ort der Energieumwandlung bei der Zellatmung: In seiner stark gefalteten inneren Membran wird die chemische Energie der Glucose schrittweise über gekoppelte Redoxreaktionen in die für die Zelle direkt nutzbare Energieform ATP überführt. Die Einführung des Mitochondriums als Ort der Zellatmung benennt damit den zentralen Schauplatz dieser lebenswichtigen Energieumwandlung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -1511,8 +1587,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "ATP als universeller Energieträger setzt strukturell passende Enzyme und Membranen voraus, die hier aber nicht im Fokus stehen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "ATP als universeller Energieträger setzt strukturell passende Enzyme und Membranstrukturen voraus, die in diesem Lernziel jedoch nicht im Fokus stehen: Die Umwandlung der chemischen Energie der Glucose in die chemische Energie des ATP gelingt nur durch eine Reihe strukturell hochspezifischer Enzyme entlang der Atmungskette. Der strukturelle Bezug bleibt hier vorausgesetzter Hintergrund, während der eigentliche Fokus auf der Energieumwandlung selbst liegt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Enzym-Substrat-Spezifität"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -1523,9 +1602,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernthema: Umwandlung chemischer Energie der Glucose in ATP und Wärme.",
+          "begruendung": "Kernthema dieses Lernziels ist die Umwandlung der chemischen Energie der Glucose in die chemische Energie des ATP als universellem Energieträger sowie in Wärme: Diese gekoppelte Energieumwandlung stellt sicher, dass die in der Nahrung gespeicherte Energie in einer für die Zelle unmittelbar nutzbaren Form vorliegt. Die Bedeutung dieses Prozesses für die Pflanze zu erläutern macht deutlich, dass auch Pflanzen trotz eigener Fotosynthese auf Zellatmung angewiesen bleiben.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -1630,9 +1712,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Formale Bilanzgleichung des Stoff- und Energieumwandlungsprozesses Zellatmung.",
+          "begruendung": "Diese Gleichung ist die formale Bilanz des gekoppelten Stoff- und Energieumwandlungsprozesses Zellatmung: Sie fasst kompakt zusammen, wie energiereiche Nährstoffe unter Sauerstoffverbrauch zu Kohlenstoffdioxid und Wasser abgebaut werden, wobei die freiwerdende Energie für die ATP-Synthese genutzt wird. Wort- und Summengleichung der Zellatmung formulieren zu können macht diesen Prozess formal überprüfbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -1732,16 +1817,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Temperatur als äußerer Faktor steuert die Zellatmungsrate – Steuerung ohne Rückkopplung.",
+          "begruendung": "Temperatur wirkt als äußerer Faktor, der die Zellatmungsrate direkt steuert – ein weiteres Beispiel für Steuerung ohne Rückkopplung: Mit steigender Temperatur nimmt die Enzymaktivität und damit die Atmungsrate zunächst zu, bis oberhalb eines art- und enzymspezifischen Optimums die Proteinstruktur der beteiligten Enzyme geschädigt wird und die Rate wieder abfällt. Die Interpretation entsprechender Untersuchungsergebnisse macht diesen einseitig gerichteten Zusammenhang zwischen Umweltfaktor und Stoffwechselrate nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die untersuchte Atmungsrate ist ein Stoffwechselprozess, hier aus Steuerungsperspektive interpretiert.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die untersuchte Atmungsrate ist ein Stoffwechselprozess, der hier aus der Perspektive der Steuerung durch die Temperatur interpretiert wird: Wie effizient die gekoppelte Stoff- und Energieumwandlung der Zellatmung abläuft, hängt maßgeblich von der Enzymaktivität ab, die wiederum temperaturabhängig ist. Der stoffliche Bezug bleibt hier Hintergrund der im Vordergrund stehenden Steuerungsanalyse.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1840,16 +1931,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Sauerstoffgehalt als äußerer Faktor, der die Zellatmungsrate steuert.",
+          "begruendung": "Der Sauerstoffgehalt der Luft wirkt als äußerer Faktor, der die Zellatmungsrate direkt steuert, da Sauerstoff als letzter Elektronenakzeptor der Atmungskette benötigt wird: Sinkt sein Anteil unter einen kritischen Wert, verlangsamt sich die Zellatmung entsprechend, ohne dass ein biologischer Regelkreis diesen Zusammenhang aktiv ausgleicht. Die Interpretation entsprechender Messreihen veranschaulicht dieses einseitig gerichtete Steuerungsprinzip.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Atmungsrate als abhängige Größe ist ein Stoffumwandlungsprozess, hier aus Steuerungssicht betrachtet.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Atmungsrate als abhängige Größe ist letztlich ein Stoffumwandlungsprozess, der hier aus Steuerungssicht betrachtet wird: Der Sauerstoffgehalt der Luft beeinflusst direkt, wie schnell die gekoppelte Stoff- und Energieumwandlung der Zellatmung ablaufen kann, da Sauerstoff als letzter Elektronenakzeptor benötigt wird. Der stoffliche Bezug bleibt hier Hintergrund der im Vordergrund stehenden Analyse äußerer Einflussfaktoren.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1945,17 +2042,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Verringerte Temperatur ist eine gezielte Steuerung, um die Atmungsrate der gelagerten Pflanzenteile zu senken.",
+          "begruendung": "Verringerte Temperatur ist eine gezielt eingesetzte Steuerung, um die Atmungsrate gelagerter Pflanzenteile zu senken und damit den Abbau gespeicherter Reservestoffe zu verlangsamen. Da niedrigere Temperatur die Enzymaktivität der Zellatmung direkt und ohne Rückkopplung dämpft, lässt sich der Substanzverlust bei der Lagerung von Obst, Gemüse oder Getreide gezielt reduzieren.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Ziel ist die Verringerung des Stoff- und Energieverlusts durch reduzierte Zellatmung bei Lagerung.",
+          "begruendung": "Ziel der verringerten Lagertemperatur ist die Verminderung des Stoff- und Energieverlusts durch reduzierte Zellatmung: Da bei jeder Zellatmung ein Teil der Energie unweigerlich als nicht mehr nutzbare Wärme entwertet wird, verlangsamt eine niedrigere Temperatur diesen Entwertungsprozess und schont gleichzeitig die stofflichen Reserven des gelagerten Pflanzenmaterials. Diese Maßnahme zur verlustarmen Lagerung zu begründen setzt ein Verständnis von Energieentwertung durch Stoffwechselaktivität voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieentwertung"
           ]
         },
         {
@@ -2052,17 +2155,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Erhöhter CO2-Gehalt ist eine gezielte Steuerung zur Hemmung der Zellatmung bei der Lagerung.",
+          "begruendung": "Erhöhter CO2-Gehalt ist eine gezielt eingesetzte Steuerung zur Hemmung der Zellatmung bei der Lagerung: Ein hoher CO2-Anteil in der Lagerungsatmosphäre bremst die Atmungsrate der Pflanzenteile direkt, ohne dass ein biologischer Regelkreis diesem Effekt aktiv entgegenwirken könnte, wodurch sich Substanzverluste während der Lagerung verringern lassen.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Ziel ist die Reduktion des Stoffabbaus durch gehemmte Zellatmung bei erhöhtem CO2-Gehalt.",
+          "begruendung": "Ziel der CO2-Erhöhung bei der Lagerung ist die Reduktion des Stoffabbaus durch gehemmte Zellatmung: Ein erhöhter CO2-Gehalt in der Lageratmosphäre bremst die Atmungsaktivität der gelagerten Pflanzenteile, wodurch weniger gespeicherte Energie unnötig als Wärme entwertet und weniger Substanz abgebaut wird. Diese Maßnahme zur verlustarmen Lagerung zu begründen nutzt damit gezielt eine Verringerung der Energieentwertung durch Stoffwechselhemmung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieentwertung"
           ]
         },
         {
@@ -2158,9 +2267,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernthema ist der strukturelle Vergleich von Pilz-, Tier- und Pflanzenzellen.",
+          "begruendung": "Kernthema dieses Lernziels ist der strukturelle Vergleich von Pilz-, Tier- und Pflanzenzellen: Pilzzellen besitzen wie Pflanzenzellen eine Zellwand, allerdings aus Chitin statt Zellulose, und wie tierische Zellen fehlt ihnen die für Pflanzen typische Fotosynthesefähigkeit. Dieser direkte Vergleich der zellulären Ausstattung macht deutlich, dass Pilze strukturell eine eigenständige Zwischenposition zwischen Tier- und Pflanzenreich einnehmen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -2263,9 +2375,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Beschreibt gezielt den Bau vielzelliger Pilze am Beispiel der Hutpilze.",
+          "begruendung": "Dieses Lernziel beschreibt gezielt den Bau vielzelliger Pilze am Beispiel der Hutpilze: Das aus fadenförmigen Hyphen aufgebaute Myzel im Boden und der oberirdische Fruchtkörper mit Hut und Stiel sind strukturell klar voneinander abgegrenzte, funktional unterschiedliche Teile desselben Organismus. Diese strukturelle Gliederung in vegetative und reproduktive Teile ist ein anschauliches Beispiel für Kompartimentierung auf Organismenebene.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -2385,9 +2500,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kern ist die Charakterisierung der heterotrophen Ernährungsweise der Pilze als Stoffwechseltyp.",
+          "begruendung": "Kern dieses Lernziels ist die Charakterisierung der heterotrophen Ernährungsweise der Pilze als eigenständiger Stoffwechseltyp: Da Pilze keine Fotosynthese betreiben können, müssen sie bereits fertige organische Stoffe aus ihrer Umgebung aufnehmen und stofflich verwerten, ähnlich wie Tiere. Diese Charakterisierung als heterotrophe Organismen ordnet Pilze in das übergeordnete System stofflicher Ernährungsstrategien ein.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -2491,17 +2609,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Anaerobe Bedingungen steuern den Wechsel von Zellatmung zu Gärung bei der Hefe – ein äußerer Faktor beeinflusst den Stoffwechselweg.",
+          "begruendung": "Anaerobe Bedingungen steuern bei der Bäckerhefe den Wechsel von aerober Zellatmung zu alkoholischer Gärung: Fehlt Sauerstoff, schaltet die Hefe direkt und ohne Rückkopplungsmechanismus auf den energetisch weniger effizienten, aber sauerstoffunabhängigen Gärungsweg um. Dieser äußere Faktor Sauerstoffverfügbarkeit steuert damit unmittelbar, welcher Stoffwechselweg genutzt wird.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Zellatmung und alkoholische Gärung sind alternative Stoff-/Energieumwandlungswege der Hefe.",
+          "begruendung": "Zellatmung und alkoholische Gärung sind alternative, unterschiedlich effiziente Stoff- und Energieumwandlungswege der Bäckerhefe: Beide Wege bauen Glucose ab, um Energie zu gewinnen, unterscheiden sich jedoch darin, ob dafür Sauerstoff benötigt wird und welche Endprodukte dabei entstehen. Zellatmung und Gärung am Beispiel der Bäckerhefe zu charakterisieren zeigt damit anschaulich zwei verschiedene gekoppelte Stoff-Energie-Umwandlungswege innerhalb desselben Organismus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -2608,9 +2732,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernbegriffe Assimilation, Autotrophie und Heterotrophie sind grundlegende Kategorien der Stoffumwandlung.",
+          "begruendung": "Die Kernbegriffe Assimilation, Autotrophie und Heterotrophie bilden grundlegende Kategorien der Stoffumwandlung, die dieses Lernziel systematisch ordnet: Assimilation bezeichnet dabei ganz allgemein den Aufbau körpereigener Stoffe, Autotrophie und Heterotrophie die beiden grundsätzlich unterschiedlichen Strategien, wie Organismen an die dafür nötigen Ausgangsstoffe gelangen. Diese Begriffe in einem Begriffssystem zu klassifizieren schafft eine geordnete Übersicht über zentrale Stoffumwandlungs-Konzepte.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -2715,9 +2842,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Dissimilation, Zellatmung und Gärung sind zentrale Begriffe der Energieumwandlung im Begriffssystem.",
+          "begruendung": "Dissimilation, Zellatmung und Gärung sind zentrale Begriffe der Energieumwandlung, die in diesem Begriffssystem klassifiziert werden: Dissimilation bezeichnet dabei ganz allgemein den Abbau körpereigener Stoffe unter Energiegewinnung, Zellatmung und Gärung sind zwei konkrete, unterschiedlich effiziente Realisierungsformen dieses Abbaus. Diese Klassifikation ordnet zentrale Energieumwandlungsprozesse in ein einheitliches Begriffssystem ein.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -2817,16 +2947,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Fließgleichgewicht zwischen Auf- und Abbauprozessen lässt sich als reguliertes Zusammenspiel verstehen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Fließgleichgewicht zwischen Auf- und Abbauprozessen, also zwischen Assimilation und Dissimilation, lässt sich als reguliertes Zusammenspiel verstehen, bei dem beide Prozesse fortlaufend aneinander angeglichen werden. Überwiegt die Assimilation, wächst der Organismus bzw. speichert Reservestoffe; überwiegt die Dissimilation, werden Reserven abgebaut – im ausgeglichenen Zustand bleibt die Stoffbilanz konstant.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Fließgleichgewicht"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Erläutert das Zusammenspiel von Stoffaufbau (Assimilation) und Stoffabbau (Dissimilation) als Fließgleichgewicht.",
+          "begruendung": "Dieses Lernziel erläutert das Zusammenspiel von Stoffaufbau, der Assimilation, und Stoffabbau, der Dissimilation, als ein fortlaufendes Fließgleichgewicht: Solange beide Prozesse einander die Waage halten, bleibt die Stoffbilanz eines Organismus konstant, überwiegt einer der beiden Prozesse, resultiert daraus Wachstum bzw. Abbau von Reservestoffen. Die Zusammenhänge zwischen Assimilation und Dissimilation zu erläutern macht dieses dynamische, aber grundsätzlich ausgeglichene Wechselspiel nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff",
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Fließgleichgewicht"
           ]
         },
         {
@@ -2918,9 +3054,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Praktische Untersuchung des mikroskopischen Blattbaus – direkter Struktur-Bezug.",
+          "begruendung": "Die praktische Untersuchung des mikroskopischen Blattbaus liefert einen direkten Struktur-Bezug zu diesem Basiskonzept: Erst im Querschnitt werden die einzelnen Gewebeschichten des Laubblatts, von der schützenden Epidermis über das lichtabsorbierende Palisadengewebe bis zum gasaustauschenden Schwammgewebe, tatsächlich sichtbar und voneinander unterscheidbar. Diese mikroskopische Untersuchung macht die zuvor nur theoretisch beschriebene Gewebestruktur des Blattes konkret erfahrbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -3033,9 +3172,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Experimenteller Nachweis pflanzlicher Inhaltsstoffe – unmittelbarer Stoffbezug.",
+          "begruendung": "Der experimentelle Nachweis von Stärke, Glucose, Protein und Fett als pflanzlichen Inhaltsstoffen hat einen unmittelbaren Stoffbezug: Mithilfe einfacher chemischer Nachweisreaktionen lässt sich sichtbar machen, welche der zuvor theoretisch behandelten Stoffe tatsächlich in einer Pflanze enthalten sind. Dieses Experimentieren macht die stoffliche Zusammensetzung von Pflanzen konkret nachweisbar statt nur behauptet.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -3137,9 +3279,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Experimenteller Nachweis von CO2 als Reaktionsprodukt eines Stoffwechselprozesses.",
+          "begruendung": "Der experimentelle Nachweis von Kohlenstoffdioxid als Reaktionsprodukt der Pflanzenatmung oder Gärung macht einen gekoppelten Stoff- und Energieumwandlungsprozess unmittelbar sichtbar: Die Entstehung von CO2 belegt, dass im untersuchten Material fortlaufend Stoffwechselprozesse ablaufen, bei denen energiereiche Stoffe unter Energiefreisetzung abgebaut werden. Dieses Experiment macht einen sonst unsichtbaren Stoffwechselprozess konkret nachweisbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -3243,14 +3388,20 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Umweltfaktoren wirken als äußere Einflussgrößen, an die Organismen ihren inneren Zustand anpassen – Grundlage für spätere Steuerungsbetrachtungen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Umweltfaktoren wirken als äußere Einflussgrößen, an die Organismen ihren inneren Zustand anpassen müssen, und bilden damit die Grundlage für spätere, konkretere Steuerungsbetrachtungen in diesem Basiskonzept. Die Unterscheidung abiotischer von biotischen Faktoren schafft dabei die begriffliche Grundlage, um später zu erklären, welche dieser Faktoren als Reize von Organismen aufgenommen und verarbeitet werden.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Reizaufnahme und Reizverarbeitung"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Abiotische Faktoren wie Nährstoffe oder Temperatur sind zugleich Stoff-/Energiebedingungen des Ökosystems.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Abiotische Faktoren wie Nährstoffe oder Temperatur sind zugleich Stoff- bzw. Energiebedingungen des Ökosystems: Die Verfügbarkeit von Nährstoffen im Boden bestimmt stofflich, was Pflanzen aufnehmen können, die Temperatur beeinflusst energetisch, wie effizient Stoffwechselprozesse ablaufen können. Die Definition abiotischer und biotischer Umweltfaktoren legt damit eine begriffliche Grundlage, die auch stoffliche und energetische Aspekte einschließt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -3356,9 +3507,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Toleranzbereich und ökologische Potenz beschreiben, wie ein Organismus seinen inneren Zustand innerhalb der von Umweltfaktoren gesetzten Grenzen hält.",
+          "begruendung": "Toleranzbereich und ökologische Potenz beschreiben, wie ein Organismus seinen inneren Zustand innerhalb der von einem Umweltfaktor gesetzten Grenzen hält, bevor dessen Regelungsfähigkeit überschritten wird: Innerhalb des Toleranzbereichs kann der Organismus schwankende Umweltbedingungen durch physiologische Anpassungen kompensieren, außerhalb dieses Bereichs versagt die Regelung und die Lebensfunktionen werden beeinträchtigt oder unmöglich. Die ökologische Potenz beschreibt dabei die Breite dieses Toleranzbereichs im Vergleich zwischen verschiedenen Arten.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -3463,18 +3617,24 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Klassisches Struktur-Funktions-Beispiel: Der Blattbau von Licht- und Schattenblättern ist an die jeweilige Lichtintensität angepasst.",
+          "begruendung": "Der Blattbau von Licht- und Schattenblättern ist an die jeweilige Lichtintensität ihres Standorts angepasst – ein klassisches Struktur-Funktions-Beispiel: Lichtblätter besitzen ein dickeres Palisadengewebe zur effizienten Nutzung starker Beleuchtung, Schattenblätter dagegen ein dünneres Blatt mit größerer Fläche, um auch schwaches Licht optimal einzufangen. Die Erläuterung dieser Angepasstheit macht sichtbar, wie ein und dieselbe Pflanzenart ihre Blattstruktur je nach Lichtverhältnissen strukturell variiert.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion",
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die unterschiedliche Blattausbildung ist eine Reaktion (phänotypische Plastizität) auf den äußeren Faktor Licht.",
+          "begruendung": "Die unterschiedliche Ausbildung von Licht- und Schattenblättern ist eine Reaktion (phänotypische Plastizität) auf den äußeren Faktor Lichtintensität während der Blattentwicklung: Das Blatt reagiert einseitig auf die vorherrschende Lichtmenge, ohne dass eine Rückkopplung zwischen dem erreichten Blattzustand und dem auslösenden Lichtreiz besteht. Damit ist diese Angepasstheit ein Beispiel für Steuerung durch einen äußeren Faktor.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
@@ -3576,17 +3736,23 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Struktur-Funktions-Beispiel: Der Körperbau von Feucht- und Trockenlufttieren ist an den Wasserhaushalt der Umgebung angepasst.",
+          "begruendung": "Der Körperbau von Feucht- und Trockenlufttieren ist strukturell an den Wasserhaushalt ihrer jeweiligen Umgebung angepasst: Feuchtigkeitsliebende Tiere besitzen oft eine dünne, durchlässige Haut zur zusätzlichen Atmung, trockenheitsangepasste Tiere dagegen eine dicke, wasserundurchlässige Körperoberfläche zum Schutz vor Austrocknung. Diese gegensätzlichen strukturellen Lösungen für dasselbe Grundproblem des Wasserhaushalts veranschaulichen das Struktur-Funktions-Prinzip besonders klar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Angepasstheit an die Luftfeuchtigkeit betrifft die Fähigkeit, den inneren Wasserhaushalt trotz äußerer Bedingungen zu halten.",
+          "begruendung": "Die Angepasstheit an unterschiedliche Luftfeuchtigkeit betrifft die Fähigkeit eines Tieres, seinen inneren Wasserhaushalt trotz schwankender äußerer Bedingungen konstant zu halten. Feuchtigkeitsliebende Arten besitzen dafür oft nur begrenzte Regelmechanismen und sind auf feuchte Lebensräume angewiesen, während trockenheitsangepasste Arten über wirksamere Regelungsmechanismen des Wasserhaushalts verfügen.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -3698,9 +3864,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Räuber- und Beutepopulationen regulieren sich gegenseitig in einem dynamischen Rückkopplungssystem (Lotka-Volterra-Prinzip).",
+          "begruendung": "Räuber- und Beutepopulationen regulieren sich in einem dynamischen Rückkopplungssystem gegenseitig, wie es das Lotka-Volterra-Prinzip beschreibt: Nimmt die Beutepopulation zu, verbessert sich das Nahrungsangebot für Räuber, deren Population daraufhin ebenfalls wächst; die wachsende Räuberpopulation dezimiert wiederum die Beute, wodurch schließlich auch die Räuberpopulation zurückgeht. Dieses wechselseitige Auf- und Abschwellen zweier gekoppelter Populationen zeigt, wie Regelung nicht nur innerhalb eines Organismus, sondern auch zwischen Populationen wirken kann.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -3712,9 +3881,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Räuber und Beute nehmen sich gegenseitig wahr und reagieren aufeinander – Kommunikation zwischen Organismen im weiten Sinn.",
+          "begruendung": "Räuber und Beute nehmen sich gegenseitig wahr und reagieren aufeinander, was sich als Kommunikation zwischen Organismen im weiten Sinne verstehen lässt: Die Beute registriert etwa optische oder chemische Signale des nahenden Räubers und reagiert mit Flucht oder Tarnung, während der Räuber wiederum Signale der Beute zur Ortung nutzt. Dieses wechselseitige Wahrnehmen und Reagieren ist die informationelle Grundlage jeder Räuber-Beute-Beziehung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
           ]
         }
       ],
@@ -3811,23 +3983,32 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Symbiotische Partner regulieren ihr Zusammenleben oft über wechselseitige Anpassung der inneren Zustände.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Symbiotische Partner regulieren ihr Zusammenleben oft über eine wechselseitige Anpassung ihrer inneren Zustände, sodass beide Partner von der Beziehung profitieren, ohne dass einer den anderen übermäßig belastet. Diese aufeinander abgestimmte Regulation unterscheidet echte Symbiose von einseitig ausbeuterischen Beziehungen wie dem Parasitismus.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Viele Symbiosen beruhen auf wechselseitigem Stoff- oder Energieaustausch zwischen den Partnern.",
+          "begruendung": "Viele Symbiosen beruhen auf einem wechselseitigen Stoff- oder Energieaustausch zwischen den beteiligten Partnern: Mykorrhizapilze etwa versorgen eine Pflanze mit Wasser und Mineralstoffen und erhalten im Gegenzug energiereiche Kohlenhydrate aus deren Fotosynthese. Die Erläuterung der Symbiose als biotische Wechselbeziehung stützt sich damit unmittelbar auf diesen wechselseitigen stofflichen Austausch.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Symbiose basiert auf wechselseitiger Kommunikation und Signalaustausch zwischen den beteiligten Organismen.",
+          "begruendung": "Symbiose basiert auf wechselseitiger Kommunikation und Signalaustausch zwischen den beteiligten Organismen: Damit eine für beide Seiten vorteilhafte Beziehung entstehen und aufrechterhalten werden kann, müssen sich die Partner gegenseitig erkennen und aufeinander abgestimmt reagieren können, etwa über chemische Erkennungssignale. Ohne diese Form der Kommunikation wäre eine koordinierte, dauerhafte Partnerschaft zwischen zwei Arten nicht möglich.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
           ]
         }
       ],
@@ -3931,17 +4112,23 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Parasiten entziehen dem Wirt Stoffe und Energie – Grundprinzip des Parasitismus.",
+          "begruendung": "Parasiten entziehen ihrem Wirt Stoffe und Energie – das Grundprinzip des Parasitismus: Anders als bei der Symbiose profitiert beim Parasitismus nur der Parasit von diesem stofflichen Austausch, während der Wirt geschädigt wird, ohne selbst einen Nutzen zu erhalten. Die Erläuterung des Parasitismus als biotische Wechselbeziehung stützt sich unmittelbar auf diesen einseitigen Stoff- und Energieentzug.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Parasit-Wirt-Beziehungen beruhen auf Erkennung und Reaktion zwischen Organismen – Kommunikation im weiten Sinn.",
+          "begruendung": "Parasit-Wirt-Beziehungen beruhen auf Erkennung und Reaktion zwischen Organismen und lassen sich damit ebenfalls als Kommunikation im weiten Sinne verstehen: Der Parasit muss seinen Wirt anhand spezifischer Signale erkennen und sich mitunter aktiv vor dessen Immunabwehr tarnen, während der Wirt versucht, den Parasiten anhand molekularer Merkmale zu erkennen und abzuwehren. Dieses ständige wechselseitige Erkennen und Reagieren prägt die Beziehung zwischen beiden Organismen fortlaufend.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
           ]
         }
       ],
@@ -4044,9 +4231,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Ökosystembegriff basiert auf dem offenen Stoff-/Energieaustausch zwischen Biotop und Biozönose.",
+          "begruendung": "Der Ökosystembegriff basiert grundlegend auf dem offenen Stoff- und Energieaustausch zwischen Biotop und Biozönose: Der unbelebte Lebensraum liefert die stofflichen und energetischen Grundlagen wie Boden, Wasser und Licht, die Lebensgemeinschaft nutzt, verändert und gibt sie in veränderter Form wieder an den Biotop zurück. Ökosystem als Einheit von Biotop und Biozönose zu definieren stützt sich damit unmittelbar auf diesen fortlaufenden Stoffaustausch mit der Umwelt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -4149,10 +4339,13 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Direktes Beispiel für ein offenes System mit ständigem Stoff-/Energieaustausch.",
+          "begruendung": "Das Ökosystem als offenes System mit ständigem Stoff- und Energieaustausch ist ein direktes Beispiel für ein Fließgleichgewicht: Fortlaufend fließen Stoffe und Energie in das Ökosystem hinein und wieder heraus, während innere Zustandsgrößen wie Artenzusammensetzung oder Biomasse über längere Zeiträume relativ konstant bleiben können. Die Charakterisierung des Ökosystems als offenes System macht dieses dynamische, aber stabile Gleichgewicht anschaulich begreifbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie",
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Fließgleichgewicht"
           ]
         },
         {
@@ -4249,9 +4442,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Schichtung und Aspektfolge sind unmittelbar strukturelle Merkmale des Ökosystems.",
+          "begruendung": "Schichtung und Aspektfolge sind unmittelbar strukturelle Merkmale des Ökosystems auf einer höheren, überorganismischen Ebene: Die vertikale Schichtung eines Waldes in Kraut-, Strauch- und Baumschicht sowie die jahreszeitliche Aspektfolge der Vegetation gliedern den Lebensraum räumlich und zeitlich in unterschiedlich nutzbare Bereiche. Diese Charakterisierung von Ökosystemen anhand ihrer Struktur überträgt das Struktur-Funktions-Prinzip von der Organismus- auf die Ökosystemebene.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung von Ökosystemen"
           ]
         },
         {
@@ -4374,10 +4570,14 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Zentrales Stoffkreislauf-/Energiefluss-Lernziel entlang der trophischen Ebenen (Produzenten, Konsumenten, Destruenten).",
+          "begruendung": "Stoffkreislauf und Energiefluss entlang der trophischen Ebenen Produzenten, Konsumenten und Destruenten sind ein zentrales Lernziel dieses Basiskonzepts: Während Stoffe in einem geschlossenen Kreislauf zwischen diesen Ebenen zirkulieren und am Ende durch Destruenten wieder in den Kreislauf zurückgeführt werden, fließt Energie dagegen nur in eine Richtung durch das System und geht bei jedem Übergang zu einem erheblichen Teil als Wärme verloren. Die Charakterisierung von Ökosystemen anhand dieser Merkmale verknüpft damit Stoffkreislauf und gerichteten Energiefluss zu einem vollständigen Gesamtbild.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie",
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf",
+            "Trophieebenen und Energieverlust"
           ]
         },
         {
@@ -4480,9 +4680,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Selbstregulation des Ökosystems ist ein Paradebeispiel für Homöostase durch negative Rückkopplung auf Populationsebene.",
+          "begruendung": "Die Selbstregulation eines Ökosystems ist ein Paradebeispiel für Homöostase durch negative Rückkopplung auf Populationsebene: Weicht eine Populationsgröße von einem für das Ökosystem typischen Bereich ab, wirken Mechanismen wie Nahrungsknappheit, erhöhter Räuberdruck oder Konkurrenz dieser Abweichung entgegen und führen die Population tendenziell wieder in Richtung eines stabilen Bereichs zurück. Diese relative Stabilität ist jedoch kein starres Gleichgewicht, sondern das Ergebnis fortlaufender, gegenläufig wirkender Regelungsprozesse zwischen den Arten eines Ökosystems.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -4579,8 +4782,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Einteilung nach Kriterien nutzt strukturelle Merkmale der Ökosysteme, ohne diese vertieft zu erklären.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Einteilung von Ökosystemen nach ausgewählten Kriterien nutzt strukturelle Merkmale der Ökosysteme, ohne diese hier vertieft zu erklären: Kriterien wie Größe, Schichtung oder Artenzusammensetzung sind letztlich strukturelle Eigenschaften, anhand derer sich Ökosysteme systematisch unterscheiden und ordnen lassen. Der Bezug zum Basiskonzept bleibt hier eher instrumentell, als Werkzeug der Einteilung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung von Ökosystemen"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -4693,15 +4899,21 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Struktur- und Artenvielfalt sind strukturelle Systemmerkmale, deren funktionale Konsequenz (Stabilität) hier begründet wird.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Struktur- und Artenvielfalt sind strukturelle Systemmerkmale eines Ökosystems, deren funktionale Konsequenz für dessen Stabilität hier begründet wird: Ein strukturell vielfältiges System mit mehreren Schichten und vielen Arten bietet mehr ökologische Nischen und dadurch mehr Möglichkeiten, auf Störungen zu reagieren, als eine strukturell einfache Monokultur. Diese Begründung verknüpft strukturelle Systemeigenschaften direkt mit ihrer funktionalen Bedeutung für die Stabilität.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung von Ökosystemen"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Vielfalt erhöht die Fähigkeit des Ökosystems, Störungen abzupuffern – zentrales Homöostase-Argument.",
+          "begruendung": "Struktur- und Artenvielfalt erhöhen die Fähigkeit eines Ökosystems, Störungen abzupuffern, und sind damit ein zentrales Homöostase-Argument: Je mehr unterschiedliche Arten und ökologische Nischen ein System besitzt, desto mehr alternative Regelungswege stehen zur Verfügung, wenn eine Art durch eine Störung ausfällt oder geschwächt wird. Monokulturen besitzen dagegen kaum solche Ausweichmöglichkeiten, weshalb sie deutlich störanfälliger sind als artenreiche, renaturierte Systeme.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -4809,15 +5021,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Nachhaltigkeit erfordert, Entnahme und Regeneration von Ressourcen in einem Fließgleichgewicht zu halten.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Ökologische Nachhaltigkeit erfordert, Entnahme und Regeneration von Ressourcen in einem Fließgleichgewicht zu halten: Werden einem Ökosystem dauerhaft nicht mehr Ressourcen entnommen, als in derselben Zeit nachwachsen bzw. sich regenerieren können, bleibt der Bestand langfristig stabil. Wird dieses Gleichgewicht durch Übernutzung gestört, sinkt der verfügbare Bestand fortlaufend.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Fließgleichgewicht"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Nachhaltigkeit ist im Kern ein Prinzip des Stoffkreislaufs und Fließgleichgewichts von Ressourcen.",
+          "begruendung": "Nachhaltigkeit ist im Kern ein Prinzip des Stoffkreislaufs und des Fließgleichgewichts von Ressourcen: Ein System gilt als nachhaltig, wenn Entnahme und Regeneration von Ressourcen langfristig im Gleichgewicht bleiben, sodass der Stoffkreislauf nicht aus dem Takt gerät und der Bestand über Generationen hinweg erhalten bleibt. Das Prinzip der ökologischen Nachhaltigkeit zu erläutern verknüpft damit unmittelbar Stoffkreislauf-Denken mit dem allgemeinen Konzept des Fließgleichgewichts.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf",
+            "Fließgleichgewicht"
           ]
         },
         {
@@ -4913,21 +5132,31 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Naturnahe und intensiv genutzte Systeme unterscheiden sich strukturell (Artenvielfalt, Schichtung), was hier vergleichend betrachtet wird.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Naturnahe und intensiv genutzte Ökosysteme unterscheiden sich strukturell deutlich, etwa in Artenvielfalt und Schichtung, was hier vergleichend betrachtet wird: Ein naturnaher Wald weist typischerweise mehrere Vegetationsschichten und eine hohe Artenzahl auf, ein intensiv genutztes Feld dagegen meist nur eine einzige, strukturell einheitliche Schicht. Dieser strukturelle Vergleich bildet die Grundlage für die anschließende ökologische und ökonomische Bewertung beider Systemtypen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung von Ökosystemen"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Selbstregulationsfähigkeit unterscheidet sich zwischen naturnahen und intensiv genutzten Systemen deutlich.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Selbstregulationsfähigkeit unterscheidet sich zwischen naturnahen und intensiv genutzten Ökosystemen deutlich: Naturnahe Systeme mit hoher Artenvielfalt verfügen über zahlreiche interne Rückkopplungen, die Störungen abpuffern können, während intensiv genutzte, artenarme Systeme wie Monokulturen kaum eigene Regelfähigkeit besitzen und stärker auf äußere Eingriffe angewiesen sind.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Vergleich stützt sich wesentlich auf unterschiedliche Stoffkreisläufe und Energieflüsse beider Systemtypen.",
+          "begruendung": "Der Vergleich naturnaher und intensiv genutzter Ökosysteme stützt sich wesentlich auf ihre unterschiedlichen Stoffkreisläufe und Energieflüsse: Naturnahe Systeme weisen meist geschlossenere, komplexere Stoffkreisläufe und vielfältigere Energieflusswege über mehrere Nahrungskettenglieder auf, während intensiv genutzte Systeme oft auf wenige, stark vom Menschen gesteuerte Stoff- und Energieflüsse reduziert sind. Dieser Vergleich hinsichtlich ökologischer und ökonomischer Aspekte macht deutlich, wie menschliche Nutzung natürliche Stoffkreisläufe grundlegend verändert.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf",
+            "Energiefluss durch Nahrungsketten"
           ]
         },
         {
@@ -5022,16 +5251,22 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Direkte mikroskopische Untersuchung der strukturellen Unterschiede von Licht- und Schattenblatt.",
+          "begruendung": "Die direkte mikroskopische Untersuchung der strukturellen Unterschiede von Licht- und Schattenblatt macht das zuvor nur theoretisch behandelte Struktur-Funktions-Prinzip praktisch nachvollziehbar: Im Querschnitt wird sichtbar, dass Lichtblätter ein deutlich dickeres, mehrschichtiges Palisadengewebe besitzen als die dünneren Schattenblätter derselben Pflanze. Diese praktische Beobachtung verankert das abstrakte Prinzip der lichtabhängigen Blattstruktur an einem konkreten, selbst erarbeiteten Befund.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die untersuchten Unterschiede sind Ausdruck phänotypischer Plastizität als Reaktion auf den äußeren Faktor Licht.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die im Präparat sichtbaren strukturellen Unterschiede zwischen Licht- und Schattenblatt sind Ausdruck phänotypischer Plastizität als Reaktion auf den äußeren Faktor Licht: Das Blatt reagiert während seiner Entwicklung einseitig auf die vorherrschende Lichtintensität, ohne dass eine Rückkopplung zwischen erreichtem Blattaufbau und Lichtreiz besteht. Die mikroskopische Untersuchung macht dieses Steuerungsprinzip strukturell nachvollziehbar.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
@@ -5133,9 +5368,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Direkte Erfassung der Struktur eines realen Ökosystems im Gelände.",
+          "begruendung": "Die direkte Erfassung der Struktur eines realen Ökosystems im Gelände überträgt das Struktur-Funktions-Denken von der Organismus- auf die Ökosystemebene: Bei der Exkursion werden Schichtung, räumliche Verteilung der Arten und weitere strukturelle Merkmale des untersuchten Ökosystems unmittelbar vor Ort erfasst, statt nur aus Lehrbuchbeispielen bekannt zu sein. Diese praktische Felderfahrung vertieft das Verständnis ökosystemarer Struktur deutlich nachhaltiger als reine Theorie.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung von Ökosystemen"
           ]
         },
         {
@@ -5147,8 +5385,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Im Rahmen der Exkursion werden auch Stoffkreislauf-Aspekte des Ökosystems mit erschlossen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Im Rahmen der ökologischen Exkursion werden auch Stoffkreislauf-Aspekte des untersuchten Ökosystems mit erschlossen: Beim Erfassen der Struktur eines realen Ökosystems vor Ort lassen sich etwa Anzeichen von Zersetzung, Nährstoffkreisläufen oder Stoffflüssen zwischen verschiedenen Organismengruppen direkt beobachten. Die Struktur des Ökosystems darzustellen berührt damit auch diese stofflichen Kreislaufprozesse, auch wenn der Schwerpunkt eher strukturell ist.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -5241,9 +5482,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Zellkern ist strukturell der kompartimentierte Ort der Erbinformation – klassisches Struktur-Funktions-Beispiel.",
+          "begruendung": "Der Zellkern ist strukturell der kompartimentierte Ort der Erbinformation bei Eukaryonten – ein klassisches Struktur-Funktions-Beispiel: Die Kernhülle grenzt die empfindliche DNA räumlich vom übrigen Zellplasma ab und schützt sie so vor mechanischen und chemischen Einflüssen des restlichen Zellstoffwechsels. Diese Zuordnung der Erbinformation zu einem eigenen Zellkompartiment ist die strukturelle Grundlage aller nachfolgenden Vererbungslernziele.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -5261,9 +5505,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Zellkern als Träger und Speicherort der genetischen Information ist Kernthema dieses Lernziels.",
+          "begruendung": "Der Zellkern als Träger und Speicherort der genetischen Information bei Eukaryonten ist Kernthema dieses Lernziels: Er schützt und organisiert die DNA in Form von Chromosomen und stellt sicher, dass die gespeicherte Erbinformation bei jeder Zellteilung vollständig weitergegeben werden kann. Damit ist der Zellkern das strukturelle Zentrum, von dem aus die gesamte codierte genetische Information einer eukaryotischen Zelle verwaltet wird.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -5354,9 +5601,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Zustandsformen des Chromatins (Kondensation, Dekondensation) sind strukturelle Zustände mit funktionaler Konsequenz für die Genaktivität.",
+          "begruendung": "Die Zustandsformen des Chromatins, also Kondensation und Dekondensation, sind strukturelle Zustände mit direkter funktionaler Konsequenz für die Genaktivität: Dicht gepacktes, kondensiertes Chromatin ist für die Ablesemaschinerie der Zelle unzugänglich, während locker gepacktes, dekondensiertes Chromatin aktiv transkribiert werden kann. Diese strukturelle Kompartimentierung der Erbinformation innerhalb des Zellkerns fungiert damit selbst als eine Art zusätzlicher Regulationsebene.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung"
           ]
         },
         {
@@ -5374,9 +5624,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Kondensationsgrad des Chromatins beeinflusst, welche genetische Information ausgelesen werden kann.",
+          "begruendung": "Der Kondensationsgrad des Chromatins beeinflusst, welche genetische Information zu einem bestimmten Zeitpunkt tatsächlich abgelesen werden kann: Locker gepacktes Euchromatin ist für die Transkriptionsmaschinerie zugänglich, dicht gepacktes Heterochromatin dagegen nicht. Diese Zustandsformen des Chromatins wirken damit wie ein zusätzlicher Regulationsmechanismus über die reine DNA-Sequenz hinaus.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -5462,9 +5715,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Haploidie und Diploidie sind grundlegend für die Individualentwicklung ab der befruchteten Eizelle.",
+          "begruendung": "Haploidie und Diploidie sind grundlegend für die Individualentwicklung ab der befruchteten Eizelle: Erst die Vereinigung eines haploiden Chromosomensatzes aus Ei- und Samenzelle zum diploiden Chromosomensatz der Zygote setzt die Embryonalentwicklung in Gang. Das Karyogramm macht diesen für die individuelle Entwicklung entscheidenden Chromosomensatz sichtbar und nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelldifferenzierung und Embryonalentwicklung"
           ]
         },
         {
@@ -5488,9 +5744,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Karyogramm stellt die gespeicherte genetische Information einer Zelle in ihrer Gesamtheit dar.",
+          "begruendung": "Das Karyogramm stellt die gespeicherte genetische Information einer Zelle in ihrer Gesamtheit dar, indem es alle Chromosomen nach Größe und Form geordnet abbildet: Die Unterscheidung von Autosomen und Gonosomen sowie von haploidem und diploidem Chromosomensatz macht sichtbar, in welcher Menge und Organisation die Erbinformation in einer Zelle vorliegt. Anhand des Karyogramms lassen sich zudem zahlenmäßige Abweichungen wie zusätzliche oder fehlende Chromosomen unmittelbar erkennen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -5593,9 +5852,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Experimente belegen, dass DNA der Träger der genetischen Information ist – zentrales Informationskonzept.",
+          "begruendung": "Die Experimente von Griffith und Avery belegen, dass DNA und nicht etwa Protein der Träger der genetischen Information ist – ein zentrales Informationskonzept der Genetik: Griffiths Transformationsversuch zeigte zunächst, dass ein 'transformierendes Prinzip' Eigenschaften zwischen Bakterienstämmen übertragen kann, Averys Folgeexperimente identifizierten dieses Prinzip anschließend eindeutig als DNA. Diese historischen Experimente markieren damit den Ausgangspunkt des modernen Verständnisses genetischer Informationsspeicherung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -5688,9 +5950,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der molekulare Aufbau von DNA und RNA ist ein Struktur-Lernziel par excellence.",
+          "begruendung": "Der molekulare Aufbau von DNA und RNA aus Nukleotiden ist ein Struktur-Lernziel par excellence: Die Doppelhelixstruktur der DNA mit ihrem stabilen Zucker-Phosphat-Rückgrat und den komplementär gepaarten Basen im Inneren ermöglicht sowohl den zuverlässigen Schutz als auch das präzise Ablesen und Kopieren der genetischen Information. Der Bau von DNA und RNA unter Verwendung von Symbolen darzustellen macht diese fundamentale Struktur-Funktions-Beziehung der Molekularbiologie erstmals im Detail greifbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -5708,9 +5973,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der strukturelle Aufbau der DNA ist die materielle Grundlage ihrer Funktion als Informationsträger.",
+          "begruendung": "Der strukturelle Aufbau von DNA und RNA aus Nukleotiden ist die materielle Grundlage ihrer Funktion als Informationsträger: Erst die Abfolge der vier Basen entlang des Zucker-Phosphat-Rückgrats codiert die eigentliche genetische Information, ähnlich wie eine Buchstabenfolge einen Text ergibt. Die Verwendung von Symbolen für die Nukleotidbestandteile schafft die begriffliche Grundlage, um diese Codierung später nachvollziehen zu können.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -5796,17 +6064,23 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Replikation sichert die Weitergabe der Erbinformation bei jeder Zellteilung im Zuge der Individualentwicklung.",
+          "begruendung": "Die Replikation sichert die originalgetreue Weitergabe der Erbinformation bei jeder Zellteilung und ist damit eine notwendige molekulare Voraussetzung für Wachstum im Zuge der Individualentwicklung: Ohne exakte Verdopplung der DNA vor jeder Teilung könnten neu entstehende Zellen ihre Funktion nicht zuverlässig erfüllen.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die komplementäre Basenpaarung ist das strukturelle Schlüssel-Schloss-Prinzip, das die Replikation ermöglicht.",
+          "begruendung": "Die komplementäre Basenpaarung ist das strukturelle Schlüssel-Schloss-Prinzip, das die semikonservative Replikation überhaupt erst ermöglicht: Nur weil Adenin ausschließlich zu Thymin und Guanin ausschließlich zu Cytosin räumlich passt, kann an jedem der beiden ursprünglichen Einzelstränge exakt der passende neue Gegenstrang aufgebaut werden. Diese strukturelle Passungsregel garantiert damit die Konstanz der genetischen Erbinformation über beliebig viele Zellteilungen hinweg.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Schlüssel-Schloss-Prinzip"
           ]
         },
         {
@@ -5824,9 +6098,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Replikation sichert die exakte Weitergabe der gespeicherten genetischen Information.",
+          "begruendung": "Die Replikation sichert die exakte Weitergabe der gespeicherten genetischen Information bei jeder Zellteilung: Durch die komplementäre Basenpaarung entsteht aus jedem der beiden ursprünglichen DNA-Stränge ein neuer, identischer Doppelstrang, sodass die codierte Information verlustfrei kopiert wird. Dieses semikonservative Prinzip stellt sicher, dass genetische Information über beliebig viele Zellteilungen hinweg erhalten bleibt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -5922,9 +6199,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Fehlerkontrolle und Reparatur bilden einen Regelkreis, der Abweichungen vom korrekten DNA-Zustand erkennt und korrigiert.",
+          "begruendung": "Fehlerkontrolle und Reparatur bei der Replikation bilden einen molekularen Regelkreis, der Abweichungen vom korrekten DNA-Zustand erkennt und korrigiert: Spezialisierte Reparaturenzyme vergleichen fortlaufend die neu synthetisierten DNA-Stränge mit der Vorlage, erkennen Fehlpaarungen als Abweichung von einem Sollzustand und schneiden die falsche Base heraus, um sie korrekt zu ersetzen. Dieser Prozess funktioniert damit nach demselben Grundprinzip wie physiologische Regelkreise, nur auf molekularer statt auf Organebene.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -5936,9 +6216,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Reparaturmechanismen sichern die Integrität der gespeicherten genetischen Information.",
+          "begruendung": "Reparaturmechanismen sichern die Integrität der gespeicherten genetischen Information, indem sie Fehler, die während der Replikation entstehen, erkennen und korrigieren, bevor sie an Tochterzellen weitergegeben werden. Ohne diese Fehlerkontrolle würde sich die genetische Information von Zellteilung zu Zellteilung zunehmend verändern und ihre codierte Bedeutung könnte verloren gehen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6024,9 +6307,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Zellzyklus mit Mitose ist ein Kernprozess der Individualentwicklung (Wachstum, Zellerneuerung).",
+          "begruendung": "Der Zellzyklus mit Mitose ist ein Kernprozess der Individualentwicklung, da durch ihn Wachstum und fortlaufende Zellerneuerung eines vielzelligen Organismus überhaupt erst möglich werden. Bei der Mitose entstehen aus einer Ausgangszelle zwei genetisch identische Tochterzellen, wodurch sich ein Organismus von der befruchteten Eizelle ausgehend zu Milliarden von Zellen entwickeln und beschädigtes oder verbrauchtes Gewebe im weiteren Leben laufend erneuern kann. Damit liegt der Mitose ein zentraler Mechanismus zugrunde, der die gesamte postembryonale Individualentwicklung eines Organismus trägt.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum"
           ]
         },
         {
@@ -6050,9 +6336,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Mitose gewährleistet die identische Weitergabe der genetischen Information an Tochterzellen.",
+          "begruendung": "Mitose gewährleistet die identische Weitergabe der genetischen Information an Tochterzellen: Durch den geordneten Ablauf des Zellzyklus wird sichergestellt, dass jede Tochterzelle exakt dieselbe codierte Erbinformation erhält wie die Ausgangszelle. Diese verlustfreie Kopie und Verteilung der genetischen Information ist Voraussetzung dafür, dass alle Körperzellen eines Organismus dieselbe Bauanleitung besitzen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6137,9 +6426,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Meiose ist ein zentraler Individualentwicklungsprozess der Keimzellbildung.",
+          "begruendung": "Meiose ist ein zentraler Individualentwicklungsprozess der Keimzellbildung und bildet die notwendige molekulare Grundlage der Reproduktion: Durch die Reduktionsteilung entstehen haploide Keimzellen, deren Verschmelzung bei der Befruchtung den diploiden Chromosomensatz eines neuen Individuums wiederherstellt. Zugleich erzeugt die bei der Meiose stattfindende Rekombination genetisch neuartige Kombinationen, sodass jede Keimzelle und jeder daraus entstehende Nachkomme genetisch einzigartig ist. Damit ist die Meiose der molekulare Ausgangspunkt jeder neuen individuellen Entwicklung.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
           ]
         },
         {
@@ -6163,9 +6455,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Meiose erzeugt durch Rekombination neue Kombinationen der gespeicherten genetischen Information.",
+          "begruendung": "Meiose erzeugt durch Rekombination neue Kombinationen der gespeicherten genetischen Information: Bei der Reduktionsteilung werden mütterliche und väterliche Chromosomenabschnitte neu gemischt, sodass jede entstehende Keimzelle eine einzigartige Zusammenstellung der ursprünglich vorhandenen genetischen Information trägt. Dieser Prozess erhöht die genetische Vielfalt der Nachkommen erheblich.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6245,9 +6540,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Betrifft direkt die Bedeutung der Informationsweitergabe für Zellteilungen im Rahmen der Individualentwicklung.",
+          "begruendung": "Die zuverlässige Weitergabe genetischer Information ist unmittelbar Voraussetzung für jede Zellteilung im Rahmen der Individualentwicklung: Nur wenn jede Tochterzelle eine vollständige und korrekte Kopie der Erbinformation erhält, kann sie ihre spezifische Funktion im wachsenden Organismus zuverlässig erfüllen. Fehler in dieser Weitergabe würden sich mit jeder weiteren Teilung vervielfachen und könnten die gesamte nachfolgende Entwicklung des betroffenen Gewebes beeinträchtigen.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum"
           ]
         },
         {
@@ -6271,9 +6569,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Zellteilungen erfordern die zuverlässige Weitergabe gespeicherter genetischer Information.",
+          "begruendung": "Zellteilungen erfordern die zuverlässige Weitergabe gespeicherter genetischer Information, da jede neu entstehende Zelle auf eine vollständige und korrekte Kopie der Erbinformation angewiesen ist, um ihre Funktion erfüllen zu können. Ohne diese präzise Informationsweitergabe könnten Zellen ihre spezifischen Aufgaben im Organismus nicht mehr zuverlässig wahrnehmen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6353,9 +6654,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Weitergabe genetischer Information an die nächste Generation ist Grundlage der Fortpflanzung – zentrales Thema der Individualentwicklung.",
+          "begruendung": "Die Weitergabe genetischer Information an die nächste Generation ist die grundlegende biologische Funktion der Fortpflanzung und damit zentrales Thema der Individualentwicklung: Erst durch die zuverlässige Übertragung der Erbinformation von Eltern auf Nachkommen kann sich der individuelle Entwicklungszyklus einer Art über Generationen hinweg fortsetzen. Ohne diese Weitergabe bliebe jede Fortpflanzung folgenlos, da die Nachkommen keine funktionsfähige genetische Ausstattung für ihre eigene Entwicklung erhielten.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
           ]
         },
         {
@@ -6379,9 +6683,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Fortpflanzung überträgt gespeicherte genetische Information an die Nachkommen.",
+          "begruendung": "Fortpflanzung überträgt gespeicherte genetische Information von den Eltern an die Nachkommen: Über Ei- und Samenzellen wird jeweils ein haploider Satz codierter Erbinformation weitergegeben, der sich bei der Befruchtung zum vollständigen genetischen Bauplan eines neuen Individuums vereinigt. Diese Weitergabe ist die grundlegende Voraussetzung dafür, dass Nachkommen den Merkmalen ihrer Elterngeneration ähneln.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6492,9 +6799,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Mendelschen Regeln beschreiben, wie codierte genetische Information bei der Vererbung weitergegeben wird.",
+          "begruendung": "Die Mendelschen Regeln beschreiben, wie codierte genetische Information bei der Vererbung von einer Generation an die nächste weitergegeben wird: Die Uniformitäts-, Spaltungs- und Unabhängigkeitsregel formulieren dabei allgemeine Gesetzmäßigkeiten, nach denen sich Allele bei der Bildung von Keimzellen trennen und bei der Befruchtung neu kombinieren. Diese Regeln machen die Weitergabe genetischer Information erstmals quantitativ vorhersagbar, lange bevor ihre molekulare Grundlage bekannt war.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6601,9 +6911,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Erbgangstypen beschreiben, wie codierte Allelinformation im Phänotyp realisiert wird.",
+          "begruendung": "Erbgangstypen wie dominant-rezessive, intermediäre und kodominante Vererbung beschreiben, wie codierte Allelinformation im Phänotyp eines Individuums realisiert wird: Je nachdem, wie zwei Allele eines Gens zueinander in Beziehung stehen, setzt sich entweder ein Allel vollständig durch, entsteht eine Mischform, oder beide Allele werden gleichzeitig sichtbar exprimiert. Diese unterschiedlichen Realisierungsmuster derselben zugrunde liegenden Informationsstruktur erklären die beobachtbare Vielfalt vererbter Merkmale.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6710,9 +7023,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kreuzungsschemata bilden die Weitergabe codierter Allelinformation formal ab.",
+          "begruendung": "Kreuzungsschemata bilden die Weitergabe codierter Allelinformation formal und übersichtlich ab: Indem alle möglichen Kombinationen elterlicher Allele systematisch aufgelistet werden, lässt sich die relative Häufigkeit bestimmter Genotyp- und Phänotypkombinationen bei den Nachkommen vorhersagen. Diese formale Darstellung macht den sonst abstrakten Vorgang der Informationsweitergabe bei der Vererbung greifbar und überprüfbar.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6819,9 +7135,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Grundbegriffe zur Codierung und Ausprägung genetischer Information (Genotyp, Phänotyp, Allel).",
+          "begruendung": "Grundbegriffe wie Genotyp, Phänotyp, Allel, Gen sowie Homo- und Heterozygotie beschreiben präzise, wie genetische Information codiert vorliegt und im Erscheinungsbild eines Organismus ausgeprägt wird: Der Genotyp bezeichnet dabei die gespeicherte Information selbst, der Phänotyp deren sichtbare Realisierung. Diese Begriffe bilden das notwendige Vokabular, um monohybride und dihybride Erbgänge präzise beschreiben und analysieren zu können.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -6929,9 +7248,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Konkrete Anwendung der Erbgangsregeln auf codierte genetische Information beim Menschen.",
+          "begruendung": "Die konkrete Anwendung der Erbgangsregeln auf Blutgruppenvererbung nach dem AB0-System und auf die Vererbung des Geschlechts beim Menschen macht die abstrakte Weitergabe codierter genetischer Information an einem vertrauten, menschlichen Beispiel greifbar. Beide Vererbungsmuster folgen denselben grundlegenden Prinzipien der Allelweitergabe, zeigen aber jeweils eigene Besonderheiten, etwa die Existenz dreier Allele beim AB0-System oder die geschlechtsgebundene Vererbung über die Gonosomen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7035,9 +7357,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der genetische Code selbst ist das zentrale Beispiel für Codierung biologischer Information.",
+          "begruendung": "Der genetische Code selbst ist das zentrale Beispiel für Codierung biologischer Information in diesem Basiskonzept: Er übersetzt die vier Basen der DNA in einem festen Triplett-Schema in die zwanzig proteinogenen Aminosäuren und ist dabei über nahezu alle Lebewesen hinweg universell gültig. Diese Universalität macht den genetischen Code zu einem der eindrücklichsten Belege dafür, dass alle heute lebenden Organismen auf ein gemeinsames Informationssystem zurückgehen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7132,9 +7457,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Komplementäre Basenpaarung ist ein Schlüssel-Schloss-Mechanismus, der Transkription und Translation strukturell ermöglicht.",
+          "begruendung": "Komplementäre Basenpaarung ist ein Schlüssel-Schloss-Mechanismus, der sowohl Transkription als auch Translation strukturell ermöglicht: Bei der Transkription paart sich die mRNA komplementär mit dem codogenen DNA-Strang, bei der Translation erkennt die tRNA über ihr Anticodon komplementär das passende Codon der mRNA. In beiden Prozessen sorgt dasselbe strukturelle Passungsprinzip für die korrekte, fehlerarme Übertragung der genetischen Information.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Schlüssel-Schloss-Prinzip"
           ]
         },
         {
@@ -7152,10 +7480,13 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Transkription und Translation sind der Kernprozess der Weiterleitung codierter genetischer Information zum Protein.",
+          "begruendung": "Transkription und Translation sind der Kernprozess der Weiterleitung codierter genetischer Information von der DNA zum Protein: Bei der Transkription wird die DNA-Information zunächst in mRNA umgeschrieben, bei der Translation anschließend nach dem genetischen Code in eine Aminosäuresequenz übersetzt. Diese zweistufige Übertragung – oft als 'zentrales Dogma der Molekularbiologie' bezeichnet – zeigt exemplarisch, wie Information über mehrere Zwischenschritte hinweg von einer Darstellungsform in eine andere überführt wird.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information",
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7245,9 +7576,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Struktur- und Funktionsproteine sind unmittelbar Träger struktureller und funktionaler Merkmale.",
+          "begruendung": "Struktur- und Funktionsproteine sind unmittelbar Träger struktureller und funktionaler Merkmale eines Organismus: Strukturproteine wie Kollagen verleihen Geweben ihre mechanische Festigkeit, Funktionsproteine wie Enzyme oder Antikörper übernehmen dagegen aktive biochemische Aufgaben. Die Bedeutung von Proteinen für die Ausbildung von Merkmalen zu erläutern zeigt, dass letztlich Proteine die eigentlichen strukturellen und funktionalen Bausteine sichtbarer Merkmale sind.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -7265,9 +7599,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Proteine sind das Endprodukt der Realisierung genetischer Information und bestimmen den Phänotyp.",
+          "begruendung": "Proteine sind das Endprodukt der Realisierung genetischer Information und bestimmen als Struktur- und Funktionsproteine maßgeblich den Phänotyp eines Organismus: Erst durch ihre Übersetzung aus der DNA-codierten Information in konkrete, dreidimensional gefaltete Moleküle entfaltet die genetische Information ihre eigentliche biologische Wirkung. Damit schließt sich der Weg vom Gen zum sichtbaren Merkmal genau an dieser Stelle.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7378,9 +7715,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Rekombination erzeugt neue Kombinationen bereits gespeicherter genetischer Information.",
+          "begruendung": "Rekombination erzeugt neue Kombinationen bereits gespeicherter genetischer Information, ohne dabei die Information selbst inhaltlich zu verändern: Bei der Meiose werden mütterliche und väterliche Chromosomenabschnitte neu zusammengesetzt, sodass Nachkommen eine einzigartige Neukombination bereits vorhandener Allele erben. Diese Quelle genetischer Variabilität unterscheidet sich damit grundlegend von der Mutation, die tatsächlich neue Information erzeugt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7481,9 +7821,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Mutation als Veränderung des inneren (genetischen) Zustands durch äußere oder innere Faktoren – Kern des Steuerungsaspekts hier.",
+          "begruendung": "Mutation ist eine Veränderung des inneren, genetischen Zustands durch äußere Faktoren wie Strahlung oder Chemikalien oder durch innere Fehler bei der Replikation – der Kern des Steuerungsaspekts an dieser Stelle: Der auslösende Faktor wirkt einmalig und gerichtet auf die DNA-Sequenz ein, ohne dass eine Rückkopplung zwischen der entstandenen Veränderung und dem ursprünglichen Auslöser besteht. Anders als bei einem Regelkreis gibt es hier keinen Mechanismus, der die Mutation gezielt wieder auf einen Ausgangszustand zurückführt, sofern sie nicht durch Reparaturmechanismen erkannt wird.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
@@ -7495,9 +7838,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Mutationen verändern die gespeicherte genetische Information direkt.",
+          "begruendung": "Mutationen verändern die gespeicherte genetische Information direkt, sei es auf Ebene einzelner Basen, ganzer Chromosomenabschnitte oder des gesamten Chromosomensatzes. Anders als Rekombination erzeugt Mutation dadurch tatsächlich neue genetische Information, die zuvor in der Population nicht vorhanden war, und ist damit die ursprüngliche Quelle aller genetischen Vielfalt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7594,9 +7940,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Modifikation ist die klassische Reaktion des Phänotyps auf äußere Faktoren ohne Veränderung der genetischen Information.",
+          "begruendung": "Modifikation ist die klassische Reaktion des Phänotyps auf äußere Faktoren ohne Veränderung der genetischen Information selbst: Ein Umweltfaktor wie Licht, Temperatur oder Nährstoffangebot wirkt während der Entwicklung einseitig auf die Ausprägung eines Merkmals ein, ohne dass der Organismus diesen Zustand aktiv über einen Regelkreis mit Rückmeldung steuert. Damit ist Modifikation ebenso wie Mutation ein Beispiel für Steuerung durch einen äußeren Faktor, unterscheidet sich von ihr jedoch dadurch, dass die zugrunde liegende genetische Information selbst unverändert bleibt.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
@@ -7717,9 +8066,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stammbaumanalyse gonosomaler Erbgänge basiert auf der Weitergabe codierter genetischer Information.",
+          "begruendung": "Die Stammbaumanalyse gonosomaler Erbgänge wie Rot-Grün-Sehschwäche oder Hämophilie basiert auf der Weitergabe codierter genetischer Information über die Geschlechtschromosomen: Da diese Erkrankungen auf dem X-Chromosom liegen, folgt ihre Vererbung einem geschlechtsabhängigen Muster, das sich aus einem Familienstammbaum rekonstruieren lässt. Diese Analyse macht sichtbar, wie sich die Weitergabe genetischer Information über mehrere Generationen hinweg nachvollziehen lässt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7828,9 +8180,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stammbaumanalyse autosomaler Erbgänge basiert auf der Weitergabe codierter genetischer Information.",
+          "begruendung": "Die Stammbaumanalyse autosomaler Erbgänge wie Mukoviszidose oder PKU basiert ebenso auf der Weitergabe codierter genetischer Information, hier jedoch über die nicht-geschlechtsgebundenen Chromosomen: Die charakteristischen Vererbungsmuster, etwa rezessive Vererbung mit gesunden Überträgern, lassen sich aus dem Auftreten der Erkrankung innerhalb eines Familienstammbaums erschließen. Diese Analyse verdeutlicht, wie sich genetische Information auch bei nicht sofort sichtbaren Merkmalen über Generationen verfolgen lässt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -7914,9 +8269,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Trisomie 21 entsteht durch einen Meiosefehler und betrifft die gesamte Individualentwicklung des betroffenen Menschen.",
+          "begruendung": "Trisomie 21 entsteht durch einen Verteilungsfehler während der Meiose, bei dem ein zusätzliches Chromosom 21 in die Keimzelle gelangt, und betrifft von der befruchteten Eizelle an die gesamte weitere Individualentwicklung des betroffenen Menschen. Da dieses überzählige Chromosom in jeder einzelnen Körperzelle vorhanden ist, wirkt es sich nicht nur punktuell, sondern durchgehend auf Zelldifferenzierung, Organbildung und spätere körperliche sowie kognitive Entwicklung aus. Damit ist Trisomie 21 ein anschauliches Beispiel dafür, wie eine einzelne frühe genetische Abweichung die gesamte individuelle Entwicklung eines Menschen prägen kann.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelldifferenzierung und Embryonalentwicklung"
           ]
         },
         {
@@ -7940,9 +8298,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Trisomie 21 ist eine spontane Veränderung der Menge gespeicherter genetischer Information (zusätzliches Chromosom).",
+          "begruendung": "Trisomie 21 ist eine spontane Veränderung der Menge gespeicherter genetischer Information: Durch einen Verteilungsfehler bei der Meiose gelangt ein zusätzliches Chromosom 21 in die Keimzelle, sodass die betroffene Zygote insgesamt drei statt zwei Kopien dieses Chromosoms und damit auch der darauf codierten Gene besitzt. Diese quantitative Abweichung der genetischen Information erklärt die charakteristischen Merkmale des Down-Syndroms.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8025,9 +8386,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Pränataldiagnostik untersucht Zustände der vorgeburtlichen Entwicklungsphase des Individuums.",
+          "begruendung": "Pränataldiagnostik untersucht Zustände und mögliche Auffälligkeiten der vorgeburtlichen Entwicklungsphase des Individuums, etwa während der Organogenese. Sie liefert damit Informationen über den Entwicklungsverlauf des ungeborenen Kindes, bevor dieser Verlauf abgeschlossen ist, und berührt entsprechend zentrale Fragen der Embryonal- und Fetalentwicklung.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Embryonalentwicklung (Furchung, Gastrulation, Organogenese)"
           ]
         },
         {
@@ -8051,9 +8415,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Pränataldiagnostik dient der Analyse gespeicherter genetischer Information vor der Geburt.",
+          "begruendung": "Pränataldiagnostik dient der Analyse gespeicherter genetischer Information vor der Geburt: Verfahren wie Fruchtwasseruntersuchung oder nicht-invasive Bluttests ermöglichen es, die codierte Erbinformation des ungeborenen Kindes bereits während der Schwangerschaft zu untersuchen und auf bestimmte genetische Abweichungen zu prüfen. Die Bedeutung dieser Verfahren zu erläutern setzt ein Verständnis dafür voraus, welche Information dabei tatsächlich ausgelesen wird und was diese Information für werdende Eltern bedeuten kann.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8161,9 +8528,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Modellorganismen dienen der Erforschung allgemeingültiger Prinzipien genetischer Information.",
+          "begruendung": "Modellorganismen wie die Taufliege oder das Fadenwürmchen dienen der Erforschung allgemeingültiger Prinzipien genetischer Information, da grundlegende molekulare Mechanismen der Informationsspeicherung, -weitergabe und -umsetzung über sehr unterschiedliche Organismengruppen hinweg auffällig ähnlich funktionieren. An solchen gut erforschten, leicht handhabbaren Organismen lassen sich genetische Zusammenhänge untersuchen, die sich auf viele andere Arten übertragen lassen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8254,9 +8624,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Übertragung des Insulin-Gens in Bakterien nutzt ein strukturelles Schlüssel-Schloss-Prinzip (Restriktionsenzyme, Vektoren).",
+          "begruendung": "Die Übertragung des Insulin-Gens in Bakterien nutzt ein strukturelles Schlüssel-Schloss-Prinzip, das auf spezifisch schneidenden Restriktionsenzymen und passenden Vektoren beruht: Restriktionsenzyme erkennen und schneiden DNA nur an ganz bestimmten Sequenzabschnitten, wodurch sich das Insulin-Gen gezielt herausschneiden und in einen als Vektor dienenden Bakterien-Plasmid einfügen lässt. Das Prinzip dieses gentechnischen Verfahrens zu erläutern setzt ein Verständnis dieser strukturellen Werkzeug-Spezifität voraus.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Enzym-Substrat-Spezifität"
           ]
         },
         {
@@ -8274,9 +8647,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Gentechnische Insulinherstellung basiert auf dem gezielten Transfer codierter genetischer Information zwischen Organismen.",
+          "begruendung": "Die gentechnische Herstellung von Humaninsulin basiert auf dem gezielten Transfer codierter genetischer Information zwischen Organismen: Das menschliche Insulin-Gen wird in das Erbgut von Bakterien eingebracht, die die darin codierte Information anschließend nutzen, um selbst funktionsfähiges menschliches Insulin zu produzieren. Dieses Verfahren zeigt eindrücklich, dass genetische Information grundsätzlich artübergreifend lesbar und nutzbar ist, solange der genetische Code universell bleibt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8385,9 +8761,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Erzeugung von transgenem Mais beruht auf gezieltem Transfer genetischer Information zwischen Arten.",
+          "begruendung": "Die Erzeugung von transgenem Mais beruht ebenfalls auf dem gezielten Transfer genetischer Information zwischen Arten: Ein artfremdes Gen, etwa für Schädlingsresistenz, wird gezielt in das Erbgut der Maispflanze eingebracht und dort exprimiert, sodass die Pflanze eine neue, nicht ursprünglich vorhandene Eigenschaft erhält. Auch hier zeigt sich, dass genetische Information unabhängig von ihrer ursprünglichen Herkunft in einem anderen Organismus abgelesen und genutzt werden kann.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8495,8 +8874,11 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Bewertung setzt Verständnis der zugrundeliegenden Informationstransfer-Verfahren voraus, thematisiert aber vor allem gesellschaftliche Aspekte.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Bewertung gentechnischer Anwendungen setzt ein Verständnis der zugrundeliegenden Informationstransfer-Verfahren voraus, thematisiert aber vor allem gesellschaftliche, ethische und ökologische Aspekte: Ohne zu verstehen, wie genetische Information zwischen Organismen übertragen wird, lassen sich Chancen und Risiken solcher Anwendungen kaum sachgerecht abwägen. Der Bezug zu diesem Basiskonzept bleibt damit eher Voraussetzung als eigentlicher Schwerpunkt des Lernziels.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
+          ]
         }
       ],
       "didaktische_strategien": {
@@ -8584,9 +8966,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Direkte mikroskopische Untersuchung der Chromosomenstruktur.",
+          "begruendung": "Die direkte mikroskopische Untersuchung der Chromosomenstruktur an Riesenchromosomen macht ein sonst nur schematisch dargestelltes Struktur-Merkmal unmittelbar sichtbar: Die charakteristische Bänderung der Riesenchromosomen sowie sichtbare Auflockerungen (Puffs) lassen sich direkt am Präparat beobachten und einzelnen Chromosomenabschnitten zuordnen. Diese praktische Untersuchung vertieft das strukturelle Verständnis der Chromosomenorganisation deutlich über die reine Theorie hinaus.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -8604,9 +8989,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Puffs an Riesenchromosomen zeigen sichtbar, wo genetische Information gerade abgelesen wird.",
+          "begruendung": "Puffs an Riesenchromosomen zeigen unter dem Mikroskop sichtbar, an welchen Stellen genetische Information gerade aktiv abgelesen wird: Aufgelockerte, verdickte Abschnitte des Chromosoms weisen auf besonders starke Transkriptionsaktivität hin, während dicht gepackte Bereiche kaum abgelesen werden. Diese praktische Beobachtung macht den sonst unsichtbaren Vorgang der Informationsentnahme aus der DNA erstmals direkt sichtbar.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8688,17 +9076,23 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Direkte mikroskopische Beobachtung der Mitosephasen als Kernprozess der Individualentwicklung.",
+          "begruendung": "Die direkte mikroskopische Beobachtung der Mitosephasen macht einen Kernprozess der Individualentwicklung unmittelbar sichtbar: Anders als bei rein theoretischer Behandlung lassen sich Prophase, Metaphase, Anaphase und Telophase an gefärbten Präparaten, etwa von Zwiebelwurzelspitzen, tatsächlich unterscheiden und zeitlich ordnen. Dieser praktische Zugang verankert das abstrakte Konzept des Zellzyklus als Grundlage von Wachstum und Zellerneuerung an einem konkreten, selbst erarbeiteten Befund.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die sichtbaren Chromosomenstrukturen in den einzelnen Mitosephasen sind ein Struktur-Lernziel.",
+          "begruendung": "Die sichtbaren Chromosomenstrukturen in den einzelnen Mitosephasen sind ein eigenständiges Struktur-Lernziel: Erst unter dem Mikroskop lässt sich beobachten, wie sich Chromosomen von locker verteiltem Chromatin über sichtbar kondensierte Einzelchromosomen bis zur Trennung an die Zellpole strukturell verändern. Diese direkte Beobachtung macht den sonst abstrakten Ablauf der Mitose an einem realen strukturellen Befund nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -8833,9 +9227,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Mutation, Rekombination und Gendrift verändern die in einer Population gespeicherte genetische Information.",
+          "begruendung": "Mutation, Rekombination und Gendrift verändern die in einer Population gespeicherte genetische Information auf unterschiedliche Weise: Mutation erzeugt neue Information, Rekombination kombiniert vorhandene Information neu, und Gendrift verändert zufällig deren Häufigkeitsverteilung. Zusammen mit Selektion und Isolation erklären diese Mechanismen, wie sich die genetische Information einer Population über Generationen hinweg verändern kann.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -8944,9 +9341,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Genpool ist die Gesamtheit der in einer Population gespeicherten genetischen Information, deren Veränderung hier betrachtet wird.",
+          "begruendung": "Der Genpool ist die Gesamtheit der in einer Population gespeicherten genetischen Information, deren Veränderung in diesem Lernziel im Zentrum steht: Verändert sich der Genpool zweier ursprünglich zusammengehöriger Populationen durch Isolation zunehmend unabhängig voneinander, kann daraus eine neue Art entstehen. Der populationsgenetische Artbegriff definiert Arten damit über den Grad, in dem ihre genetische Information noch untereinander austauschbar ist.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -9042,9 +9442,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Angepasstheit äußert sich konkret in Struktur-Funktions-Beziehungen, die evolutiv entstanden sind.",
+          "begruendung": "Angepasstheit äußert sich konkret in Struktur-Funktions-Beziehungen, die im Laufe der Evolution durch natürliche Selektion entstanden sind: Jedes Merkmal, das heute eine gut erkennbare Funktion erfüllt, war ursprünglich eine zufällige strukturelle Variation, die sich unter bestimmten Selektionsbedingungen als vorteilhaft erwies und sich deshalb in der Population durchsetzte. Diese Erklärung der Artentstehung verbindet damit unmittelbar das Struktur-Funktions-Prinzip mit seiner evolutionären Entstehungsgeschichte.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -9375,9 +9778,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Unterscheidung von Homologie und Konvergenz beruht direkt auf dem Vergleich struktureller Merkmale unterschiedlicher Arten.",
+          "begruendung": "Die Unterscheidung von Homologie und Konvergenz beruht direkt auf dem Vergleich struktureller Merkmale unterschiedlicher Arten: Homologe Strukturen wie der Vordergliedmaßenbau von Fledermaus, Wal und Mensch gehen trotz unterschiedlicher Funktion auf denselben evolutionären Ursprung zurück, während konvergente Strukturen wie Fledermaus- und Insektenflügel unabhängig voneinander ähnliche Funktionen strukturell unterschiedlich gelöst haben. Diese Unterscheidung nutzt strukturellen Vergleich als zentrales Evidenzwerkzeug der Evolutionstheorie.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -9486,9 +9892,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Mosaikformen zeigen strukturelle Merkmalskombinationen verschiedener Verwandtschaftsgruppen in einem Organismus.",
+          "begruendung": "Mosaikformen zeigen strukturelle Merkmalskombinationen verschiedener Verwandtschaftsgruppen in einem einzigen Organismus: Der Urvogel Archaeopteryx etwa vereint reptilientypische Strukturen wie Zähne und einen knöchernen Schwanz mit vogeltypischen Federn, was ihn zu einem anschaulichen Übergangsbeleg macht. Solche Mosaikformen als Belege für die Synthetische Evolutionstheorie zu erläutern nutzt strukturellen Merkmalsvergleich als direktes Evidenzinstrument.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -9618,9 +10027,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Archäogenetik vergleicht gespeicherte genetische Information fossiler und rezenter Organismen.",
+          "begruendung": "Die Archäogenetik vergleicht gespeicherte genetische Information fossiler und rezenter Organismen: Aus gut erhaltenen fossilen Überresten lassen sich Reste von DNA gewinnen und mit der genetischen Information heute lebender verwandter Arten vergleichen, um Verwandtschaftsverhältnisse und evolutionäre Veränderungen direkt auf molekularer Ebene nachzuvollziehen. Diese Methode liefert damit eine zusätzliche, von morphologischen Fossilbelegen unabhängige Evidenzquelle für die Evolutionstheorie.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -9843,9 +10255,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Fossile und genetische Belege liefern gespeicherte Information zur Rekonstruktion der Stammesgeschichte des Menschen.",
+          "begruendung": "Fossile und genetische Belege liefern gespeicherte Information zur Rekonstruktion der Stammesgeschichte des Menschen: Während fossile Funde morphologische Merkmale früherer Menschenformen dokumentieren, liefert der Vergleich genetischer Information heute lebender Menschen und, soweit verfügbar, fossiler DNA zusätzliche, unabhängige Anhaltspunkte für Verwandtschaftsverhältnisse und Abzweigungszeitpunkte. Beide Belegarten ergänzen sich gegenseitig bei der Rekonstruktion der Hominisation.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],
@@ -9953,9 +10368,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Kulturelle Weitergabe von Wissen und Verhalten ist eine Form nicht-genetischer Informationsübertragung zwischen Individuen und Generationen.",
+          "begruendung": "Kulturelle Weitergabe von Wissen und Verhalten ist eine Form nicht-genetischer Informationsübertragung zwischen Individuen und Generationen: Anders als genetische Information wird kulturelles Wissen durch Beobachtung, Nachahmung und gezielte Weitergabe innerhalb einer Lebensspanne erworben und kann sich dadurch sehr viel schneller verändern als die genetische Ausstattung einer Population. Diese Form sozialer Signalübertragung erweitert den Informationsbegriff dieses Basiskonzepts über die Genetik hinaus.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Soziale Signalsysteme"
           ]
         }
       ],
@@ -10062,9 +10480,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Widerlegung stützt sich auf die tatsächliche Verteilung genetischer Variation innerhalb und zwischen menschlichen Populationen.",
+          "begruendung": "Die biologische Widerlegung des Konzepts 'menschlicher Rassen' stützt sich auf die tatsächliche Verteilung genetischer Information innerhalb und zwischen menschlichen Populationen: Genetische Untersuchungen zeigen, dass die Variation innerhalb einer beliebigen menschlichen Population deutlich größer ist als die durchschnittliche Variation zwischen Populationen unterschiedlicher Weltregionen. Diese Verteilung der genetischen Information widerspricht der Vorstellung klar abgrenzbarer biologischer Rassen beim Menschen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Genetischer Code (Transkription/Translation)"
           ]
         }
       ],

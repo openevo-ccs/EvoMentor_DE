@@ -19,7 +19,7 @@
   --shadow-lg: 0 12px 40px -12px rgba(15,23,42,.22);
   --radius: 12px; --radius-sm: 8px;
   --sidebar-w: 250px;
-  --bk-struktur:#2563eb; --bk-stoff:#d97706; --bk-info:#7c3aed; --bk-steuerung:#0d9488;
+  --bk-struktur:#2563eb; --bk-stoff:#d97706; --bk-info:#7c3aed; --bk-steuerung:#64748b;
   --bk-individuell:#e11d48; --bk-evolutiv:#16a34a;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -340,14 +340,28 @@ async function fetchJson(path){
   return res.json();
 }
 
+/* Erweiterte Unterkonzept-Taxonomien der 5 nicht-evolutionären Basiskonzepte
+   (schema/unterkonzept.schema.json) — analog zu evolutionskonzepte.json,
+   aber je Basiskonzept in einer eigenen Datei mit eigenem Label-Namensraum. */
+const UK_FILE_BY_BK = {
+  bk_individuelle_entwicklung: { path: '../data/individuelleentwicklungkonzepte.json', key: 'individuelleentwicklungkonzepte' },
+  bk_struktur_funktion: { path: '../data/strukturfunktionkonzepte.json', key: 'strukturfunktionkonzepte' },
+  bk_stoff_energie_umwandlung: { path: '../data/stoffenergiekonzepte.json', key: 'stoffenergiekonzepte' },
+  bk_information_kommunikation: { path: '../data/informationkommunikationkonzepte.json', key: 'informationkommunikationkonzepte' },
+  bk_steuerung_regelung: { path: '../data/steuerungregelungkonzepte.json', key: 'steuerungregelungkonzepte' },
+};
+EM.UK_FILE_BY_BK = UK_FILE_BY_BK;
+
 async function loadAll(){
-  const [mnt56, gy78, gy910, bkData, ekData, kfData] = await Promise.all([
+  const ukEntries = Object.entries(UK_FILE_BY_BK);
+  const [mnt56, gy78, gy910, bkData, ekData, kfData, ...ukData] = await Promise.all([
     fetchJson('../data/lernziele_MNT56.json'),
     fetchJson('../data/lernziele_gy78.json'),
     fetchJson('../data/lernziele_gy910.json'),
     fetchJson('../data/basiskonzepte.json'),
     fetchJson('../data/evolutionskonzepte.json'),
     fetchJson('../data/kohaerenzfaeden.json'),
+    ...ukEntries.map(([,f]) => fetchJson(f.path)),
   ]);
   EM.data.mnt56=mnt56; EM.data.gy78=gy78; EM.data.gy910=gy910;
   EM.data.basiskonzepte=bkData; EM.data.evolutionskonzepte=ekData; EM.data.kohaerenzfaeden=kfData;
@@ -374,9 +388,73 @@ async function loadAll(){
     EM.ekByLabel[ek.bezeichnung] = ek;
   }
 
+  EM.data.unterkonzepte = {}; EM.ukById = {}; EM.ukByLabel = {};
+  ukEntries.forEach(([bkId, f], i) => {
+    const nodes = ukData[i][f.key] || [];
+    EM.data.unterkonzepte[bkId] = nodes;
+    EM.ukById[bkId] = {}; EM.ukByLabel[bkId] = {};
+    for(const uk of nodes){
+      EM.ukById[bkId][uk.id] = uk;
+      EM.ukByLabel[bkId][uk.bezeichnung] = uk;
+    }
+  });
+
   EM.threads = kfData.kohaerenzfaeden || [];
 }
 EM.loadAll = loadAll;
+
+/* ---------- erweiterte Unterkonzept-Taxonomien (5 nicht-evolutionäre Basiskonzepte) ----------
+   Strukturell analog zur Evolutionskonzepte-Taxonomie-Ansicht weiter unten, aber generisch
+   über EM.data.unterkonzepte[bkId] statt der Evolution-spezifischen evolutionskonzepte.json. */
+function lzForUnterkonzept(bkId, bezeichnung){
+  return EM.lz.filter(e => { const b = bkBezug(e, bkId); return b && (b.relevante_unterkonzepte||[]).includes(bezeichnung); });
+}
+EM.lzForUnterkonzept = lzForUnterkonzept;
+
+function verwandteKonzepteHtml(node){
+  if(!(node.verwandte_konzepte||[]).length) return '';
+  return `<p style="font-size:10.5px; color:var(--txt-3); margin:4px 0"><b>siehe auch:</b> ${node.verwandte_konzepte.map(v=>`${esc(EM.bkById[v.basiskonzept_id]?EM.bkById[v.basiskonzept_id].kurzbezeichnung:v.basiskonzept_id)}: ${esc(v.konzept_bezeichnung)} <span title="${esc(v.beziehung)}" style="cursor:help">ⓘ</span>`).join(' · ')}</p>`;
+}
+
+function unterkonzepteTaxonomyHtml(bkId){
+  const nodes = (EM.data.unterkonzepte && EM.data.unterkonzepte[bkId]) || [];
+  if(!nodes.length) return '<div style="color:var(--txt-3); font-size:12px">Keine erweiterte Taxonomie hinterlegt.</div>';
+  const all = nodes.slice().sort((a,b)=>a.reihenfolge-b.reihenfolge);
+  const top = all.filter(n=>n.ebene===1);
+  const countFor = (n) => {
+    const own = lzForUnterkonzept(bkId, n.bezeichnung).length;
+    if(n.ebene===1){
+      const children = all.filter(c=>c.uebergeordnetes_konzept===n.id);
+      return own + children.reduce((s,c)=>s+lzForUnterkonzept(bkId, c.bezeichnung).length, 0);
+    }
+    return own;
+  };
+  return top.map(t=>{
+    const children = all.filter(c=>c.uebergeordnetes_konzept===t.id).sort((a,b)=>a.reihenfolge-b.reihenfolge);
+    const n = countFor(t);
+    const ownLinked = lzForUnterkonzept(bkId, t.bezeichnung);
+    return `<details style="margin-bottom:6px">
+      <summary style="cursor:pointer; font-size:12.5px; font-weight:650; padding:4px 0">${esc(t.bezeichnung)} <span class="tag" style="background:var(--bg-alt)">${n}</span></summary>
+      <div style="padding:4px 0 6px 14px">
+        <p style="font-size:12px; color:var(--txt-2); margin:4px 0">${esc(t.definition||'')}</p>
+        ${verwandteKonzepteHtml(t)}
+        ${!children.length && ownLinked.length?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:6px">${ownLinked.map(e=>`<span class="tag" style="background:var(--bg-alt);color:var(--txt-2); cursor:pointer" data-goto="${esc(e.id)}">${esc(e.id)}</span>`).join('')}</div>`:''}
+        ${children.map(c=>{
+          const linked = lzForUnterkonzept(bkId, c.bezeichnung);
+          return `<details style="margin:6px 0">
+            <summary style="cursor:pointer; font-size:12px">${esc(c.bezeichnung)} <span class="tag" style="background:var(--bg-alt); font-size:10px">${linked.length}</span></summary>
+            <div style="padding:4px 0 4px 14px">
+              <p style="font-size:11.5px; color:var(--txt-2); margin:4px 0">${esc(c.definition||'')}</p>
+              ${verwandteKonzepteHtml(c)}
+              <div style="display:flex; flex-wrap:wrap; gap:5px">${linked.map(e=>`<span class="tag" style="background:var(--bg-alt);color:var(--txt-2); cursor:pointer" data-goto="${esc(e.id)}">${esc(e.id)}</span>`).join('') || '<span style="color:var(--txt-3); font-size:11px">Keine direkten Treffer</span>'}</div>
+            </div>
+          </details>`;
+        }).join('')}
+      </div>
+    </details>`;
+  }).join('');
+}
+EM.unterkonzepteTaxonomyHtml = unterkonzepteTaxonomyHtml;
 
 /* ---------- view registry & navigation ---------- */
 /* evokonzepte (folded into Basiskonzepte > Detail), sequenz and forschung
@@ -388,7 +466,7 @@ const VIEWS = [
   { id:'lernziele', icon:'📋', label:'Lernziele', sub:'Browser über alle Klassenstufen 5–10' },
   { id:'basiskonzepte', icon:'🕸️', label:'Basiskonzepte', sub:'Dashboard, Konzeptnetz, Details' },
   { section:'Planen' },
-  { id:'prompt', icon:'🤖', label:'KI-Prompt', sub:'Unterrichtsvorbereitung mit KI-Unterstützung' },
+  { id:'prompt', icon:'🤖', label:'KI-Prompt-Generator', sub:'Unterrichtsvorbereitung mit KI-Unterstützung' },
 ];
 EM.VIEWS = VIEWS;
 
@@ -484,14 +562,25 @@ function emptyBkFilters(){
   return o;
 }
 function anyBkFilterActive(bf){ return EM.BK_ORDER.some(id=>bf[id].relevance.size||bf[id].teilkonzepte.size); }
-EM.lernzieleFilters = { bands:new Set(['mnt56','gy78','gy910']), bkFilters:emptyBkFilters(), thema:'', praktischOnly:false, ankerOnly:false, favOnly:false, sort:'id', view:'card' };
+const BAND_ORDER = ['mnt56','gy78','gy910'];
+function defaultFilters(){ return { bands:new Set(BAND_ORDER), bkFilters:emptyBkFilters(), thema:'', unterthema:'', praktischOnly:false, ankerOnly:false, favOnly:false, sort:'id', view:'card', allExpanded:false }; }
+EM.lernzieleFilters = defaultFilters();
 
 const METHOD_ICON = { 'Forschendes Lernen':'🔬','Analogien und Vergleiche':'🔗','Konzeptuelles Lernen':'🧩','Diskussion':'💬','Narrativer Zugang':'📖','Modelle und Simulationen':'🧪','Erfahrungsbasiertes Lernen':'🖐️','Digitale Medien':'💻','Einblick in Wissenschaftsgeschichte':'🏛️','Recherche':'📚','Kooperative Lernformen':'👥','Projektbasiertes Lernen':'🛠️' };
 
-function bkLabel(id){ const bk = EM.bkById[id]; return bk ? bk.kurzbezeichnung : id; }
-function bkChip(id){
-  const bk = EM.bkById[id]; if(!bk) return '';
-  return `<span class="tag" style="background:color-mix(in srgb, ${EM.BK_COLOR[id]} 15%, transparent); color:${EM.BK_COLOR[id]}"><span class="badge-dot" style="background:${EM.BK_COLOR[id]}"></span>${esc(bk.kurzbezeichnung)}</span>`;
+const BK_ABBR = {
+  bk_evolutive_entwicklung:'Evo. Ent.', bk_individuelle_entwicklung:'Ind. Entw.',
+  bk_struktur_funktion:'Str/Fkt', bk_steuerung_regelung:'Steu/Reg',
+  bk_stoff_energie_umwandlung:'Stoff/En', bk_information_kommunikation:'Info/Komm',
+};
+function bkTagRowHtml(e){
+  return `<div style="display:flex; flex-wrap:wrap; gap:9px; margin-bottom:8px; font-size:11px">
+    ${EM.BK_ORDER.map(id=>{
+      const b = EM.bkBezug(e, id); if(!b) return '';
+      const r = b.relevanz_beurteilung;
+      return `<span style="display:inline-flex; align-items:center; gap:3px; color:${EM.BK_COLOR[id]}" title="${esc(EM.bkById[id]?EM.bkById[id].bezeichnung:id)}"><b>${BK_ABBR[id]||id}</b><span style="letter-spacing:1px">${'●'.repeat(r)}${'○'.repeat(3-r)}</span></span>`;
+    }).join('')}
+  </div>`;
 }
 
 function matchesFilters(e){
@@ -510,6 +599,7 @@ function matchesFilters(e){
     if(!ok) return false;
   }
   if(F.thema && e.thema !== F.thema) return false;
+  if(F.unterthema && e.unterthema !== F.unterthema) return false;
   if(F.praktischOnly && !e.ist_praktisch) return false;
   if(F.ankerOnly && !e.ist_konzeptanker) return false;
   if(F.favOnly && !EM.isFav(e.id)) return false;
@@ -525,7 +615,7 @@ function sortEntries(list){
   const F = EM.lernzieleFilters;
   const arr = list.slice();
   if(F.sort==='id') arr.sort((a,b)=>a.id.localeCompare(b.id));
-  else if(F.sort==='band') arr.sort((a,b)=> a.band.localeCompare(b.band) || a.id.localeCompare(b.id));
+  else if(F.sort==='band') arr.sort((a,b)=> (BAND_ORDER.indexOf(a.band)-BAND_ORDER.indexOf(b.band)) || a.id.localeCompare(b.id));
   else if(F.sort==='relevance') arr.sort((a,b)=> ((EM.evoBezug(b)?.relevanz_beurteilung)||0) - ((EM.evoBezug(a)?.relevanz_beurteilung)||0));
   else if(F.sort==='fav') arr.sort((a,b)=> (EM.isFav(b.id)?1:0) - (EM.isFav(a.id)?1:0));
   return arr;
@@ -534,6 +624,8 @@ function sortEntries(list){
 function renderFilterPanel(){
   const F = EM.lernzieleFilters;
   const themen = Array.from(new Set(EM.lz.filter(e=>F.bands.has(e.band)).map(e=>e.thema)));
+  const unterthemenPool = EM.lz.filter(e=>F.bands.has(e.band) && (!F.thema || e.thema===F.thema));
+  const unterthemen = Array.from(new Set(unterthemenPool.map(e=>e.unterthema).filter(Boolean)));
   return `
   <div class="card card-pad" style="position:sticky; top:0">
     <div class="section-h">Klassenstufe</div>
@@ -566,17 +658,15 @@ function renderFilterPanel(){
       <option value="">Alle Themen</option>
       ${themen.map(t=>`<option ${F.thema===t?'selected':''}>${esc(t)}</option>`).join('')}
     </select>
+    <div class="section-h">Unterthema</div>
+    <select id="filUnterthema" style="width:100%">
+      <option value="">Alle Unterthemen</option>
+      ${unterthemen.map(t=>`<option ${F.unterthema===t?'selected':''}>${esc(t)}</option>`).join('')}
+    </select>
     <div class="section-h">Weitere Filter</div>
     <label style="display:flex;gap:7px;align-items:center;margin-bottom:6px;font-size:12.5px"><input type="checkbox" id="filPraktisch" ${F.praktischOnly?'checked':''}> nur praktische Lernziele</label>
     <label style="display:flex;gap:7px;align-items:center;margin-bottom:6px;font-size:12.5px"><input type="checkbox" id="filAnker" ${F.ankerOnly?'checked':''}> nur Konzeptanker <span title="${esc(EM.KONZEPTANKER_DEF)}" style="cursor:help; color:var(--txt-3)">ⓘ</span></label>
     <label style="display:flex;gap:7px;align-items:center;font-size:12.5px"><input type="checkbox" id="filFav" ${F.favOnly?'checked':''}> nur Favoriten ★</label>
-    <div class="section-h">Sortierung</div>
-    <select id="filSort" style="width:100%">
-      <option value="id" ${F.sort==='id'?'selected':''}>ID</option>
-      <option value="band" ${F.sort==='band'?'selected':''}>Klassenstufe</option>
-      <option value="relevance" ${F.sort==='relevance'?'selected':''}>Evolutionsrelevanz</option>
-      <option value="fav" ${F.sort==='fav'?'selected':''}>Favoriten zuerst</option>
-    </select>
     <hr class="sep">
     <button class="pill-btn" id="filReset" style="width:100%">Filter zurücksetzen</button>
   </div>`;
@@ -592,6 +682,7 @@ function bkBezugBlockHtml(e, bkId){
     <div class="acc-b">
       <p style="margin:8px 0">${esc(b.begruendung)}</p>
       ${(bkId==='bk_evolutive_entwicklung' && (b.relevante_evolutionskonzepte||[]).length)?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:6px">${b.relevante_evolutionskonzepte.map(k=>`<span class="chip" style="cursor:default">${esc(k)}</span>`).join('')}</div>`:''}
+      ${(b.relevante_unterkonzepte||[]).length?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:6px">${b.relevante_unterkonzepte.map(k=>`<span class="chip" style="cursor:default">${esc(k)}</span>`).join('')}</div>`:''}
       ${tkNames.length?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:6px">${tkNames.map(n=>`<span class="chip" style="cursor:default; background:var(--bg-alt)">${esc(n)}</span>`).join('')}</div>`:''}
     </div>
   </div>`;
@@ -615,8 +706,6 @@ function didaktikBlockHtml(e){
 
 function cardHtml(e){
   const bandM = EM.BAND_META[e.band];
-  const evoB = EM.evoBezug(e);
-  const rel = evoB ? evoB.relevanz_beurteilung : null;
   const fav = EM.isFav(e.id);
   return `<div class="card lz-card" data-id="${esc(e.id)}" style="border-top:3px solid ${bandM.color}">
     <div class="card-pad">
@@ -628,12 +717,11 @@ function cardHtml(e){
         <button class="icon-btn fav-btn" data-id="${esc(e.id)}" style="${fav?'color:var(--amber); border-color:var(--amber)':''}">${fav?'★':'☆'}</button>
       </div>
       <p style="font-size:12.5px; color:var(--txt-2); margin:8px 0">${esc(e.originaltext)}</p>
-      <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px">
-        ${e.basiskonzepte_primaer.map(bkChip).join('')}
+      ${(e.ist_praktisch||e.ist_konzeptanker)?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:6px">
         ${e.ist_praktisch?'<span class="tag" style="background:var(--blue-pale);color:var(--blue)">🧪 praktisch</span>':''}
         ${e.ist_konzeptanker?`<span class="tag" style="background:var(--purple-pale);color:var(--purple)" title="${esc(EM.KONZEPTANKER_DEF)}">⚓ Konzeptanker</span>`:''}
-        ${rel?`<span class="tag" style="background:var(--green-pale); color:var(--green)">Evolutionsrelevanz ${'●'.repeat(rel)}${'○'.repeat(3-rel)}</span>`:''}
-      </div>
+      </div>`:''}
+      ${bkTagRowHtml(e)}
       <div class="acc-wrap">${EM.BK_ORDER.map(id=>bkBezugBlockHtml(e,id)).join('')}${didaktikBlockHtml(e)}</div>
       <div style="margin-top:10px; display:flex; gap:6px; align-items:center; flex-wrap:wrap">
         ${(EM.ann(e.id).userTags||[]).map(t=>`<span class="chip" style="background:var(--purple-pale);color:var(--purple)">#${esc(t)}</span>`).join('')}
@@ -651,12 +739,21 @@ function render(){
   <div style="display:grid; grid-template-columns:250px 1fr; gap:16px; align-items:start">
     <div id="lzFilterPanel">${renderFilterPanel()}</div>
     <div>
-      <div style="display:flex; align-items:center; margin-bottom:12px; gap:8px">
+      <div style="display:flex; align-items:center; margin-bottom:12px; gap:8px; flex-wrap:wrap">
         <div style="font-size:13px; color:var(--txt-2)"><b>${filtered.length}</b> von ${EM.lz.length} Lernzielen</div>
         <div style="flex:1"></div>
+        <select id="filSort" style="font-size:12.5px">
+          <option value="id" ${F.sort==='id'?'selected':''}>Sortierung: ID</option>
+          <option value="band" ${F.sort==='band'?'selected':''}>Sortierung: Klassenstufe</option>
+          <option value="relevance" ${F.sort==='relevance'?'selected':''}>Sortierung: Evolutionsrelevanz</option>
+          <option value="fav" ${F.sort==='fav'?'selected':''}>Sortierung: Favoriten zuerst</option>
+        </select>
+        <button class="pill-btn" id="btnToggleAll">${F.allExpanded?'⌃ Alle zuklappen':'⌄ Alle aufklappen'}</button>
+        <button class="pill-btn ${F.view==='card'?'primary':''}" id="btnViewCard">▦ Karten</button>
+        <button class="pill-btn ${F.view==='list'?'primary':''}" id="btnViewList">☰ Liste</button>
         <button class="pill-btn" id="btnExportLz">⭳ Export</button>
       </div>
-      <div id="lzResults" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); gap:14px"></div>
+      <div id="lzResults" class="${F.view==='list'?'lz-list':''}" style="display:grid; gap:14px; grid-template-columns:${F.view==='list'?'1fr':'repeat(auto-fill,minmax(380px,1fr))'}"></div>
       ${filtered.length===0 ? '<div class="view-empty">Keine Lernziele entsprechen den aktuellen Filtern.</div>' : ''}
     </div>
   </div>
@@ -666,22 +763,28 @@ function render(){
     .acc.open .acc-arrow{transform:rotate(180deg)}
     .acc-b{display:none; font-size:12.5px; color:var(--txt-2)}
     .acc.open .acc-b{display:block}
+    .lz-list .card-pad{padding:10px 14px}
   </style>`;
 
   const resHost = document.getElementById('lzResults');
   resHost.innerHTML = filtered.map(cardHtml).join('');
+  if(F.allExpanded) resHost.querySelectorAll('.acc').forEach(a=>a.classList.add('open'));
 
   // wire filter panel
   document.querySelectorAll('#lzFilterPanel [data-band]').forEach(c=>c.onclick=()=>{ const b=c.dataset.band; F.bands.has(b)?F.bands.delete(b):F.bands.add(b); render(); });
   document.querySelectorAll('#lzFilterPanel [data-bkgroup]').forEach(d=>d.addEventListener('toggle', ()=>{ F.bkFilters[d.dataset.bkgroup].expanded = d.open; }));
   document.querySelectorAll('#lzFilterPanel [data-bkrel]').forEach(c=>c.onclick=()=>{ const [id,r]=c.dataset.bkrel.split(':'); const s=F.bkFilters[id].relevance; const rn=+r; s.has(rn)?s.delete(rn):s.add(rn); render(); });
   document.querySelectorAll('#lzFilterPanel [data-bktk]').forEach(c=>c.onchange=()=>{ const [id,tk]=c.dataset.bktk.split(':'); const s=F.bkFilters[id].teilkonzepte; s.has(tk)?s.delete(tk):s.add(tk); render(); });
-  const t = document.getElementById('filThema'); if(t) t.onchange = ()=>{ F.thema = t.value; render(); };
+  const t = document.getElementById('filThema'); if(t) t.onchange = ()=>{ F.thema = t.value; F.unterthema=''; render(); };
+  const ut = document.getElementById('filUnterthema'); if(ut) ut.onchange = ()=>{ F.unterthema = ut.value; render(); };
   const fp = document.getElementById('filPraktisch'); if(fp) fp.onchange = ()=>{ F.praktischOnly = fp.checked; render(); };
   const fa = document.getElementById('filAnker'); if(fa) fa.onchange = ()=>{ F.ankerOnly = fa.checked; render(); };
   const ff = document.getElementById('filFav'); if(ff) ff.onchange = ()=>{ F.favOnly = ff.checked; render(); };
+  const fr = document.getElementById('filReset'); if(fr) fr.onclick = ()=>{ EM.lernzieleFilters = defaultFilters(); render(); };
   const fs = document.getElementById('filSort'); if(fs) fs.onchange = ()=>{ F.sort = fs.value; render(); };
-  const fr = document.getElementById('filReset'); if(fr) fr.onclick = ()=>{ EM.lernzieleFilters = { bands:new Set(['mnt56','gy78','gy910']), bkFilters:emptyBkFilters(), thema:'', praktischOnly:false, ankerOnly:false, favOnly:false, sort:'id', view:'card' }; render(); };
+  const bta = document.getElementById('btnToggleAll'); if(bta) bta.onclick = ()=>{ F.allExpanded = !F.allExpanded; render(); };
+  const bvc = document.getElementById('btnViewCard'); if(bvc) bvc.onclick = ()=>{ F.view = 'card'; render(); };
+  const bvl = document.getElementById('btnViewList'); if(bvl) bvl.onclick = ()=>{ F.view = 'list'; render(); };
 
   // wire cards
   resHost.querySelectorAll('.acc-h').forEach(h=>h.onclick=()=>h.parentElement.classList.toggle('open'));
@@ -840,19 +943,28 @@ function hexPositions(n, cx, cy, r){
   return pts;
 }
 
+function netzLinkedLz(id, isTop, c){
+  if(isTop) return EM.lz.filter(e=>EM.bkBezug(e,id)?.relevanz_beurteilung===3);
+  return EM.lz.filter(e=>(EM.bkBezug(e, c.uebergeordnetes_bk)?.relevante_teilkonzepte||[]).includes(id));
+}
+
 function netzInfoPanelHtml(id){
   const isTop = !!EM.bkById[id];
   const c = isTop ? EM.bkById[id] : EM.tkById[id];
-  if(!c) return '<div style="color:var(--txt-3); font-size:12.5px">Konzept anklicken, um seine Verbindungen hervorzuheben.</div>';
+  if(!c) return '<div style="color:var(--txt-3); font-size:12.5px">Konzept anklicken, um seine Verbindungen und verknüpften Lernziele anzuzeigen.</div>';
   const conns = isTop ? (c.bk_verbindungen||[]) : [];
+  const linked = netzLinkedLz(id, isTop, c);
   return `
-    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px">
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap">
       <span class="badge-dot" style="width:12px;height:12px;background:${EM.BK_COLOR[isTop?id:c.uebergeordnetes_bk]}"></span>
       <b style="font-size:13.5px">${esc(c.bezeichnung)}</b>
-      <button class="pill-btn" id="netzOpenDetail" style="margin-left:auto; font-size:11px; padding:4px 9px">📖 im Detail öffnen</button>
+      <span class="tag" style="background:var(--bg-alt); color:var(--txt-2)">${linked.length} Lernziele${isTop?' (hohe Relevanz)':''}</span>
+      <button class="pill-btn" id="netzShowLz" style="margin-left:auto; font-size:11px; padding:4px 9px">🔎 in Lernzielen anzeigen</button>
+      <button class="pill-btn" id="netzOpenDetail" style="font-size:11px; padding:4px 9px">📖 im Detail öffnen</button>
     </div>
     ${isTop ? (conns.length ? conns.map(v=>`<div style="font-size:12px; margin-bottom:5px"><b>${esc(v.beziehungstyp)}</b> → ${esc(EM.bkById[v.ziel_bk]?.bezeichnung||v.ziel_bk)}: ${esc(v.beschreibung)}</div>`).join('') : '<div style="color:var(--txt-3); font-size:12px">Keine ausgehenden Verbindungen erfasst.</div>')
       : `<p style="font-size:12px; color:var(--txt-2); margin:0">${esc(c.beschreibung_didaktisch||c.beschreibung_kmk||'')}</p>`}
+    ${linked.length?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-top:8px">${linked.slice(0,24).map(e=>`<span class="tag" style="background:var(--bg-alt); color:var(--txt-2); cursor:pointer" data-goto="${esc(e.id)}">${esc(e.id)}</span>`).join('')}${linked.length>24?`<span style="font-size:11px; color:var(--txt-3)">+${linked.length-24} weitere</span>`:''}</div>`:''}
   `;
 }
 
@@ -873,23 +985,35 @@ function attachZoomPan(svgEl, W, H){
     netzViewBoxStr = `${vb.x} ${vb.y} ${vb.w} ${vb.h}`;
     apply();
   }, {passive:false});
-  let dragging=false, lastX=0, lastY=0;
-  svgEl.addEventListener('pointerdown', ev=>{ dragging=true; lastX=ev.clientX; lastY=ev.clientY; svgEl.setPointerCapture(ev.pointerId); svgEl.style.cursor='grabbing'; });
+  // Only engage pan/pointer-capture once real movement is detected — capturing
+  // on pointerdown unconditionally used to steal the click event before it could
+  // reach a node's own click handler, so clicking a concept silently did nothing.
+  let dragging=false, captured=false, lastX=0, lastY=0;
+  svgEl.addEventListener('pointerdown', ev=>{ dragging=true; lastX=ev.clientX; lastY=ev.clientY; });
   svgEl.addEventListener('pointermove', ev=>{
     if(!dragging) return;
+    const dx = ev.clientX-lastX, dy = ev.clientY-lastY;
+    if(!captured){
+      if(Math.hypot(dx,dy)<3) return;
+      svgEl.setPointerCapture(ev.pointerId); captured=true; svgEl.style.cursor='grabbing';
+    }
     const rect = svgEl.getBoundingClientRect();
-    vb.x -= (ev.clientX-lastX)/rect.width*vb.w; vb.y -= (ev.clientY-lastY)/rect.height*vb.h;
+    vb.x -= dx/rect.width*vb.w; vb.y -= dy/rect.height*vb.h;
     lastX=ev.clientX; lastY=ev.clientY;
     netzViewBoxStr = `${vb.x} ${vb.y} ${vb.w} ${vb.h}`;
     apply();
   });
-  svgEl.addEventListener('pointerup', ()=>{ dragging=false; svgEl.style.cursor='grab'; });
+  svgEl.addEventListener('pointerup', ev=>{
+    dragging=false;
+    if(captured){ svgEl.releasePointerCapture(ev.pointerId); captured=false; }
+    svgEl.style.cursor='grab';
+  });
   svgEl.style.cursor='grab';
 }
 
 function renderNetz(host){
   const W=980,H=640, cx=W/2, cy=H/2, R=195;
-  const bks = bkList();
+  const bks = EM.sortByBkOrder(bkList().map(b=>b.id)).map(id=>EM.bkById[id]);
   const pos = {};
   hexPositions(bks.length, cx, cy, R).forEach((p,i)=>pos[bks[i].id]=p);
   // teilkonzepte around each parent
@@ -906,7 +1030,7 @@ function renderNetz(host){
 
   const markerColors = Array.from(new Set(Object.values(REL_STYLE).map(s=>s.color).concat([REL_DEFAULT_STYLE.color])));
   let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%; height:640px">`;
-  svg += `<defs>${markerColors.map(c=>`<marker id="arrow-${c.slice(1)}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="${c}"/></marker>`).join('')}</defs>`;
+  svg += `<defs>${markerColors.map(c=>`<marker id="arrow-${c.slice(1)}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="${c}"/></marker>`).join('')}</defs>`;
   // edges
   bks.forEach(bk=>{
     (bk.bk_verbindungen||[]).forEach(v=>{
@@ -918,7 +1042,7 @@ function renderNetz(host){
       const width = involved ? 2.4 : 1.6;
       const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2;
       svg += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${style.color}" stroke-width="${width}" stroke-dasharray="${style.dash}" opacity="${opacity}" marker-end="url(#arrow-${style.color.slice(1)})"><title>${esc(bk.kurzbezeichnung)} ${esc(v.beziehungstyp)} ${esc(EM.bkById[v.ziel_bk]?.kurzbezeichnung||v.ziel_bk)}: ${esc(v.beschreibung)}</title></line>`;
-      if(!dim) svg += `<text x="${mx}" y="${my}" text-anchor="middle" font-size="8.5" fill="${style.color}" style="paint-order:stroke fill; stroke:var(--panel); stroke-width:3px">${esc(v.beziehungstyp)}</text>`;
+      if(!dim) svg += `<text x="${mx}" y="${my}" text-anchor="middle" font-size="8.5" fill="${style.color}" pointer-events="none" style="paint-order:stroke fill; stroke:var(--panel); stroke-width:3px">${esc(v.beziehungstyp)}</text>`;
     });
   });
   // hierarchy edges + TK nodes
@@ -934,7 +1058,7 @@ function renderNetz(host){
       const on = selectedConcept===tk.id || netzSelected===tk.id;
       const dim = netzSelected && netzSelected!==tk.id && netzSelected!==bk.id;
       svg += `<circle cx="${x}" cy="${y}" r="15" stroke-width="2" class="tk-node" data-id="${tk.id}" opacity="${dim?0.3:1}" style="cursor:pointer; fill:${on?EM.BK_COLOR[bk.id]:'var(--panel)'}; stroke:${EM.BK_COLOR[bk.id]}"/>`;
-      svg += `<text x="${x}" y="${y+28}" text-anchor="middle" font-size="9" fill="var(--txt-3)" opacity="${dim?0.3:1}">${esc((tk.kurzbezeichnung.split('–')[1]||tk.bezeichnung).trim().slice(0,16))}</text>`;
+      svg += `<text x="${x}" y="${y+28}" text-anchor="middle" font-size="9" fill="var(--txt-3)" opacity="${dim?0.3:1}" pointer-events="none">${esc((tk.kurzbezeichnung.split('–')[1]||tk.bezeichnung).trim().slice(0,16))}</text>`;
     });
   });
   // BK nodes
@@ -942,16 +1066,28 @@ function renderNetz(host){
     const [x,y] = pos[bk.id];
     const dim = netzSelected && netzSelected!==bk.id && !(bk.bk_verbindungen||[]).some(v=>v.ziel_bk===netzSelected) && !bks.some(b2=>b2.id===netzSelected && (b2.bk_verbindungen||[]).some(v=>v.ziel_bk===bk.id));
     svg += `<circle cx="${x}" cy="${y}" r="38" opacity="${dim?0.3:0.9}" class="bk-node" data-id="${bk.id}" style="cursor:pointer; fill:${EM.BK_COLOR[bk.id]}${netzSelected===bk.id?'; stroke:var(--txt); stroke-width:3':''}"/>`;
-    svg += `<text x="${x}" y="${y-4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" opacity="${dim?0.5:1}">${esc(bk.kurzbezeichnung)}</text>`;
-    svg += `<text x="${x}" y="${y+11}" text-anchor="middle" font-size="8" fill="#fff" opacity="${dim?0.3:.85}">Kl. ${bk.id.includes('evolut')||bk.id.includes('individuelle')?'5–10':'7–8'}</text>`;
+    svg += `<text x="${x}" y="${y-4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" opacity="${dim?0.5:1}" pointer-events="none">${esc(bk.kurzbezeichnung)}</text>`;
+    svg += `<text x="${x}" y="${y+11}" text-anchor="middle" font-size="8" fill="#fff" opacity="${dim?0.3:.85}" pointer-events="none">Kl. ${bk.id.includes('evolut')||bk.id.includes('individuelle')?'5–10':'7–8'}</text>`;
   });
   svg += `</svg>`;
 
+  const legendItems = [
+    ['#2563eb','ermöglicht','benötigt'], ['#7c3aed','implementiert','wird implementiert durch'],
+    ['#0d9488','steuert / reguliert / regelt','wird gesteuert/reguliert/geregelt durch'],
+    ['#16a34a','erklärt Entstehung von', null], ['#e11d48', null, 'wird erklärt durch'],
+  ];
+  const legendHtml = legendItems.map(([c,solid,dashed])=>`
+    <span style="display:inline-flex; align-items:center; gap:5px; font-size:11px; color:var(--txt-2)">
+      ${solid?`<svg width="26" height="8"><line x1="1" y1="4" x2="25" y2="4" stroke="${c}" stroke-width="2"/></svg> ${esc(solid)}`:''}
+      ${dashed?`<svg width="26" height="8"><line x1="1" y1="4" x2="25" y2="4" stroke="${c}" stroke-width="2" stroke-dasharray="4,3"/></svg> ${esc(dashed)}`:''}
+    </span>`).join('');
+
   host.innerHTML = `
     <div style="display:flex; gap:8px; align-items:center; margin-bottom:10px; flex-wrap:wrap">
-      <span style="color:var(--txt-3); font-size:11.5px">Kreise = Basiskonzepte (groß) und Unterkonzepte (klein) · Pfeile = bk_verbindungen · Mausrad = Zoom, Ziehen = Verschieben · Klick auf ein Konzept hebt seine Verbindungen hervor</span>
+      <span style="color:var(--txt-3); font-size:11.5px">Kreise = Basiskonzepte (groß) und Unterkonzepte (klein) · Pfeile = gerichtete bk_verbindungen (durchgezogen = Grundrelation, gestrichelt = deren Kehrseite) · Mausrad = Zoom, Ziehen = Verschieben · Klick auf ein Konzept hebt seine Verbindungen hervor und zeigt verknüpfte Lernziele</span>
     </div>
     <div class="card" style="padding:8px; overflow:hidden">${svg}</div>
+    <div class="card card-pad" style="margin-top:10px; display:flex; gap:14px; flex-wrap:wrap">${legendHtml}</div>
     <div class="card card-pad" style="margin-top:10px" id="netzInfoPanel">${netzInfoPanelHtml(netzSelected)}</div>
   `;
   const svgEl = host.querySelector('svg');
@@ -961,18 +1097,48 @@ function renderNetz(host){
     netzSelected = (netzSelected===n.dataset.id) ? null : n.dataset.id;
     renderNetz(host);
   }));
+  const infoPanel = document.getElementById('netzInfoPanel');
+  wireGotoLinks(infoPanel);
   const openBtn = document.getElementById('netzOpenDetail');
   if(openBtn) openBtn.onclick = ()=>{ selectedConcept = netzSelected; sub='detail'; renderSub(); };
+  const showLzBtn = document.getElementById('netzShowLz');
+  if(showLzBtn) showLzBtn.onclick = ()=>{
+    const isTop = !!EM.bkById[netzSelected];
+    const tk = isTop ? null : EM.tkById[netzSelected];
+    const bkId = isTop ? netzSelected : (tk && tk.uebergeordnetes_bk);
+    if(!bkId) return;
+    EM.lernzieleFilters.bkFilters[bkId].expanded = true;
+    if(isTop) EM.lernzieleFilters.bkFilters[bkId].relevance = new Set([3]);
+    else EM.lernzieleFilters.bkFilters[bkId].teilkonzepte = new Set([netzSelected]);
+    EM.setView('lernziele');
+  };
+}
+
+const GRADES = ['5','6','7','8','9','10'];
+
+function computeMatrix(lz){
+  const m = {};
+  for(const id of EM.BK_ORDER){
+    m[id] = {};
+    for(const g of GRADES){
+      const cell = lz.filter(e=>e.empfohlene_klassenstufe===g);
+      const n1 = cell.filter(e=>EM.bkBezug(e,id)?.relevanz_beurteilung===1).length;
+      const n2 = cell.filter(e=>EM.bkBezug(e,id)?.relevanz_beurteilung===2).length;
+      const n3 = cell.filter(e=>EM.bkBezug(e,id)?.relevanz_beurteilung===3).length;
+      const anker = cell.filter(e=>e.ist_konzeptanker && EM.bkBezug(e,id)?.relevanz_beurteilung===3).length;
+      m[id][g] = { n1, n2, n3, anker, total: cell.length };
+    }
+  }
+  return m;
 }
 
 function renderDashboard(host){
   const lz = EM.lz;
-  const byBand = {}; for(const b in EM.BAND_META) byBand[b] = lz.filter(e=>e.band===b).length;
-  const relByBk = {};
-  for(const id of EM.BK_ORDER) relByBk[id] = [1,2,3].map(r=>lz.filter(e=>{ const b=EM.bkBezug(e,id); return b&&b.relevanz_beurteilung===r; }).length);
   const konzeptanker = lz.filter(e=>e.ist_konzeptanker).length;
   const praktisch = lz.filter(e=>e.ist_praktisch).length;
-  const avgHours = (lz.reduce((s,e)=>s+(e.geschaetzte_unterrichtsstunden||0),0)).toFixed(0);
+  const totalHours = lz.reduce((s,e)=>s+(e.geschaetzte_unterrichtsstunden||0),0);
+  const matrix = computeMatrix(lz);
+  const hoursNote = 'Summe der geschätzten Unterrichtsstunden je Lernziel (' + lz.length + ' Lernziele) — Schätzwerte der Datenbasis, keine amtliche Stundentafel.';
 
   host.innerHTML = `
   <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); margin-bottom:16px">
@@ -980,35 +1146,41 @@ function renderDashboard(host){
     <div class="kpi"><div class="n">6</div><div class="l">Basiskonzepte</div></div>
     <div class="kpi"><div class="n">${konzeptanker}</div><div class="l">Konzeptanker <span title="${esc(EM.KONZEPTANKER_DEF)}" style="cursor:help">ⓘ</span></div></div>
     <div class="kpi"><div class="n">${praktisch}</div><div class="l">praktische Lernziele</div></div>
-    <div class="kpi"><div class="n">${avgHours}</div><div class="l">Unterrichtsstunden gesamt</div></div>
+    <div class="kpi" title="${esc(hoursNote)}"><div class="n">${totalHours} <span style="font-size:12px; color:var(--txt-3); cursor:help">ⓘ</span></div><div class="l">Unterrichtsstunden gesamt (Summe der Schätzwerte)</div></div>
   </div>
-  <div class="grid" style="grid-template-columns:1fr 1fr">
-    <div class="card card-pad">
-      <div class="section-h">Relevanzverteilung je Basiskonzept</div>
+  <div class="card card-pad">
+    <div class="section-h">Relevanzverteilung &amp; Konzeptanker je Basiskonzept × Klassenstufe</div>
+    <p style="font-size:11.5px; color:var(--txt-3); margin:0 0 10px">Je Zelle: Anteil gering/mittel/hoch bewerteter Lernziele dieser Klassenstufe für das jeweilige Basiskonzept (Zahlen = absolute Lernzielanzahl). ⚓ = davon Konzeptanker mit hoher Relevanz.</p>
+    <div style="overflow-x:auto">
+    <table style="border-collapse:collapse; width:100%; min-width:760px">
+      <tr>
+        <th style="text-align:left; padding:4px 8px; font-size:11px; color:var(--txt-3)"></th>
+        ${GRADES.map(g=>`<th style="padding:4px 6px; font-size:11px; color:var(--txt-3); font-weight:650">Kl. ${g}</th>`).join('')}
+      </tr>
       ${EM.BK_ORDER.map(id=>{
-        const [n1,n2,n3] = relByBk[id];
-        return `
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px">
-          <div style="width:120px; font-size:11.5px; color:var(--txt-2)">${esc(EM.bkById[id]?.kurzbezeichnung||id)}</div>
-          <div style="flex:1; display:flex; background:var(--bg-alt); border-radius:6px; overflow:hidden; height:14px" title="gering ${n1} · mittel ${n2} · hoch ${n3}">
-            <div style="width:${(n1/lz.length*100)}%; height:100%; background:${EM.BK_COLOR[id]}; opacity:.35"></div>
-            <div style="width:${(n2/lz.length*100)}%; height:100%; background:${EM.BK_COLOR[id]}; opacity:.65"></div>
-            <div style="width:${(n3/lz.length*100)}%; height:100%; background:${EM.BK_COLOR[id]}"></div>
-          </div>
-          <div style="width:60px; text-align:right; font-size:10.5px; color:var(--txt-3)">${n3} hoch</div>
-        </div>`;
+        const color = EM.BK_COLOR[id];
+        const rowAnker = GRADES.reduce((s,g)=>s+matrix[id][g].anker, 0);
+        return `<tr style="border-top:1px solid var(--border)">
+          <td style="padding:6px 8px; font-size:11.5px; color:var(--txt-2); white-space:nowrap">
+            <span class="badge-dot" style="background:${color}"></span> ${esc(EM.bkById[id]?.kurzbezeichnung||id)}
+            ${rowAnker?`<span class="tag" style="background:var(--purple-pale); color:var(--purple); margin-left:4px" title="Konzeptanker mit hoher Relevanz, alle Klassenstufen">⚓ ${rowAnker}</span>`:''}
+          </td>
+          ${GRADES.map(g=>{
+            const c = matrix[id][g];
+            const total = c.total || 1;
+            const seg = (n)=> n ? `<div style="width:${(n/total*100)}%; height:100%; background:${color}; display:flex; align-items:center; justify-content:center; overflow:hidden"><span style="font-size:8.5px; color:#000; font-weight:650">${n}</span></div>` : '';
+            return `<td style="padding:4px 6px; min-width:90px">
+              <div style="display:flex; height:16px; border-radius:4px; overflow:hidden; background:var(--bg-alt)" title="Kl. ${g} · ${esc(EM.bkById[id]?.kurzbezeichnung||id)}: gering ${c.n1} · mittel ${c.n2} · hoch ${c.n3}">
+                <div style="width:${(c.n1/total*100)}%; height:100%; background:${color}; opacity:.35; display:flex; align-items:center; justify-content:center; overflow:hidden">${c.n1?`<span style="font-size:8.5px; color:#000; font-weight:650">${c.n1}</span>`:''}</div>
+                <div style="width:${(c.n2/total*100)}%; height:100%; background:${color}; opacity:.65; display:flex; align-items:center; justify-content:center; overflow:hidden">${c.n2?`<span style="font-size:8.5px; color:#000; font-weight:650">${c.n2}</span>`:''}</div>
+                ${seg(c.n3)}
+              </div>
+              ${c.anker?`<div style="font-size:8.5px; color:var(--txt-3); margin-top:2px; text-align:right">⚓ ${c.anker}</div>`:''}
+            </td>`;
+          }).join('')}
+        </tr>`;
       }).join('')}
-    </div>
-    <div class="card card-pad">
-      <div class="section-h">Lernziele je Klassenstufe</div>
-      ${Object.entries(byBand).map(([b,n])=>`
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:7px">
-          <div style="width:70px; font-size:11.5px; color:var(--txt-2)">${EM.BAND_META[b].label}</div>
-          <div style="flex:1; background:var(--bg-alt); border-radius:6px; overflow:hidden; height:14px">
-            <div style="width:${(n/lz.length*100)}%; height:100%; background:${EM.BAND_META[b].color}"></div>
-          </div>
-          <div style="width:28px; text-align:right; font-size:11.5px">${n}</div>
-        </div>`).join('')}
+    </table>
     </div>
   </div>`;
 }
@@ -1047,13 +1219,17 @@ function conceptDetailHtml(id){
   if(!c) return '<div class="view-empty">Konzept auswählen…</div>';
   const linkedLz = EM.lz.filter(e=> (c.lernziel_ids_thuringia||[]).includes(e.id));
   const misconceptions = c.haeufige_schuelervorstellungen||[];
+  const note = EM.ann(id).notizen;
+  const homeBkId = isTop ? id : c.uebergeordnetes_bk;
   return `
   <div class="card card-pad">
-    <div style="display:flex; align-items:center; gap:10px">
+    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
       <span class="badge-dot" style="width:14px;height:14px;background:${EM.BK_COLOR[isTop?id:c.uebergeordnetes_bk]}"></span>
       <h2 style="margin:0; font-size:18px">${esc(c.bezeichnung)}</h2>
       <span class="tag" style="background:var(--bg-alt);color:var(--txt-2)">${isTop?'Basiskonzept':'Teilkonzept'}</span>
+      <button class="pill-btn" id="conceptNoteBtn" data-noteid="${esc(id)}" data-label="${esc(c.bezeichnung)}" style="margin-left:auto; font-size:11px; padding:4px 9px">📝 ${note?'Notiz bearbeiten':'Notiz hinzufügen'}</button>
     </div>
+    ${note?`<div style="background:var(--amber-pale); border-radius:8px; padding:8px 10px; margin:10px 0; font-size:12.5px; color:var(--txt)"><b>Meine Notiz:</b> ${esc(note)}</div>`:''}
     <p style="margin:10px 0; font-size:13px">${esc(c.definition_kmk||c.beschreibung_kmk||'')}</p>
     <p style="margin:0 0 10px; font-size:12.5px; color:var(--txt-2)">${esc(c.definition_didaktisch||c.beschreibung_didaktisch||'')}</p>
     <div class="section-h">weiteren Prinzipien und Unterkonzepte</div>
@@ -1066,12 +1242,34 @@ function conceptDetailHtml(id){
       <div style="font-size:12.5px; margin-bottom:6px"><b>${esc(v.beziehungstyp)}</b> → ${esc(EM.bkById[v.ziel_bk]?.bezeichnung||v.ziel_bk)}: ${esc(v.beschreibung)}</div>`).join('')}`:''}
     <div class="section-h">Verknüpfte Lernziele (${linkedLz.length})</div>
     <div style="display:flex; gap:6px; flex-wrap:wrap">${linkedLz.map(e=>`<span class="tag" style="background:var(--bg-alt);color:var(--txt-2); cursor:pointer" data-goto="${esc(e.id)}">${esc(e.id)}</span>`).join('')}</div>
-    ${isTop && id==='bk_evolutive_entwicklung' && EM.evoTaxonomyHtml?`<div class="section-h">Evolutionskonzepte-Taxonomie</div>${EM.evoTaxonomyHtml()}`:''}
+    ${homeBkId==='bk_evolutive_entwicklung' && EM.evoTaxonomyHtml?`<div class="section-h">Evolutionskonzepte-Taxonomie</div>${EM.evoTaxonomyHtml()}`:''}
+    ${EM.UK_FILE_BY_BK[homeBkId]?`<div class="section-h">Erweiterte Unterkonzepte-Taxonomie</div>${EM.unterkonzepteTaxonomyHtml(homeBkId)}`:''}
   </div>`;
 }
 
 function wireGotoLinks(root){
   root.querySelectorAll('[data-goto]').forEach(s=>s.onclick=()=>{ EM.setView('lernziele'); document.getElementById('globalSearch').value=s.dataset.goto; EM.globalQuery=s.dataset.goto.toLowerCase(); EM.renderers.lernziele(); });
+}
+
+function openConceptNoteModal(id, label, onSaved){
+  const a = EM.ann(id);
+  const body = `<div class="section-h">Notiz / Feedback zu „${esc(label)}"</div><textarea id="conceptNoteInput" style="width:100%; min-height:110px">${esc(a.notizen||'')}</textarea>`;
+  const foot = `<button class="pill-btn" onclick="EM.closeModal()">Abbrechen</button><button class="pill-btn primary" id="conceptNoteSave">Speichern</button>`;
+  EM.openModal(`Notiz — ${esc(label)}`, body, foot);
+  document.getElementById('conceptNoteSave').onclick = () => {
+    a.notizen = document.getElementById('conceptNoteInput').value;
+    EM.saveState(); EM.closeModal(); EM.toast('Notiz gespeichert');
+    if(onSaved) onSaved();
+  };
+}
+
+function wireConceptDetail(root){
+  wireGotoLinks(root);
+  const btn = root.querySelector('#conceptNoteBtn');
+  if(btn) btn.onclick = () => openConceptNoteModal(btn.dataset.noteid, btn.dataset.label, () => {
+    root.innerHTML = conceptDetailHtml(selectedConcept);
+    wireConceptDetail(root);
+  });
 }
 
 function renderDetail(host){
@@ -1080,13 +1278,13 @@ function renderDetail(host){
     <div class="card card-pad" id="detailNavHost" style="max-height:70vh; overflow:auto">
       ${bks.map(bk=>`
         <div class="nav-item" data-sel="${bk.id}" style="${selectedConcept===bk.id?'background:var(--teal-pale);color:var(--teal)':''}"><span class="badge-dot" style="background:${EM.BK_COLOR[bk.id]}"></span><span class="lbl">${esc(bk.bezeichnung)}</span></div>
-        ${(bk.teilkonzepte||[]).map(tk=>`<div class="nav-item" data-sel="${tk.id}" style="padding-left:26px; font-size:12px; ${selectedConcept===tk.id?'background:var(--teal-pale);color:var(--teal)':''}">${esc(tk.bezeichnung)}</div>`).join('')}
+        ${(bk.teilkonzepte||[]).map(tk=>`<div class="nav-item" data-sel="${tk.id}" style="padding-left:26px; font-size:12px; ${selectedConcept===tk.id?'background:var(--teal-pale);color:var(--teal)':''}"><span class="badge-dot" style="background:${EM.BK_COLOR[bk.id]}"></span>${esc(tk.bezeichnung)}</div>`).join('')}
       `).join('')}
     </div>
     <div id="conceptDetailHost">${conceptDetailHtml(selectedConcept || bks[0].id)}</div>
   </div>`;
   if(!selectedConcept) selectedConcept = bks[0].id;
-  wireGotoLinks(document.getElementById('conceptDetailHost'));
+  wireConceptDetail(document.getElementById('conceptDetailHost'));
   host.querySelectorAll('#detailNavHost [data-sel]').forEach(n=>n.onclick=()=>{
     selectedConcept = n.dataset.sel;
     host.querySelectorAll('#detailNavHost [data-sel]').forEach(x=>{
@@ -1095,7 +1293,7 @@ function renderDetail(host){
     });
     const cdh = document.getElementById('conceptDetailHost');
     cdh.innerHTML = conceptDetailHtml(selectedConcept);
-    wireGotoLinks(cdh);
+    wireConceptDetail(cdh);
   });
 }
 
@@ -1136,10 +1334,12 @@ function evoTaxonomyHtml(){
     top.map(t=>{
       const children = all.filter(c=>c.uebergeordnetes_konzept===t.id).sort((a,b)=>a.reihenfolge-b.reihenfolge);
       const n = countForConcept(t);
+      const ownLinked = lzForConcept(t.bezeichnung);
       return `<details style="margin-bottom:6px">
         <summary style="cursor:pointer; font-size:12.5px; font-weight:650; padding:4px 0">${esc(t.bezeichnung)} <span class="tag" style="background:var(--bg-alt)">${n}</span></summary>
         <div style="padding:4px 0 6px 14px">
           <p style="font-size:12px; color:var(--txt-2); margin:4px 0">${esc(t.definition||'')}</p>
+          ${!children.length && ownLinked.length?`<div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:6px">${ownLinked.map(e=>`<span class="tag" style="background:var(--bg-alt);color:var(--txt-2); cursor:pointer" data-goto="${esc(e.id)}">${esc(e.id)}</span>`).join('')}</div>`:''}
           ${children.map(c=>{
             const linked = lzForConcept(c.bezeichnung);
             return `<details style="margin:6px 0">
@@ -1387,7 +1587,9 @@ const AUSGABE_OPTS = ['Vollständige Unterrichtssequenz mit Verlaufsplänen','Op
 const VORWISSEN_OPTS = [['keins','Kein Vorwissen'],['grundlagen','Grundbegriffe bekannt'],['solide','Solides Grundwissen']];
 
 const cfg = {
-  scope:'favorites', band:'gy78', thema:'',
+  scope:'favorites', thema:'', unterthema:'',
+  customSelection: new Set(),
+  picker:{ bands:new Set(['mnt56','gy78','gy910']), thema:'', unterthema:'', bk:'', q:'' },
   klassenstufe:'', stunden:4, stundenformat:'45', stundenformatAndere:'',
   selectedBks: new Set(EM.BK_ORDER), vorwissen:{},
   fachNotizen:'',
@@ -1401,8 +1603,21 @@ for(const id of EM.BK_ORDER) cfg.vorwissen[id]='grundlagen';
 
 function scopeEntries(){
   if(cfg.scope==='thema') return EM.lz.filter(e=>e.thema===cfg.thema);
-  if(cfg.scope==='band') return EM.lz.filter(e=>e.band===cfg.band);
+  if(cfg.scope==='unterthema') return EM.lz.filter(e=>e.unterthema===cfg.unterthema);
+  if(cfg.scope==='auswahl') return EM.lz.filter(e=>cfg.customSelection.has(e.id));
   return EM.lz.filter(e=>EM.isFav(e.id));
+}
+
+function pickerCandidates(){
+  const p = cfg.picker;
+  return EM.lz.filter(e=>{
+    if(!p.bands.has(e.band)) return false;
+    if(p.thema && e.thema!==p.thema) return false;
+    if(p.unterthema && e.unterthema!==p.unterthema) return false;
+    if(p.bk && (EM.bkBezug(e,p.bk)?.relevanz_beurteilung||0)<2) return false;
+    if(p.q && !(e.id+' '+e.kurzbezeichnung+' '+e.originaltext).toLowerCase().includes(p.q.toLowerCase())) return false;
+    return true;
+  });
 }
 
 function buildPrompt(){
@@ -1441,6 +1656,7 @@ function buildPrompt(){
       lines.push(`  ${EM.bkById[bkId]?EM.bkById[bkId].kurzbezeichnung:bkId} (Relevanz ${b.relevanz_beurteilung}/3): ${b.begruendung}`);
       if(tkNames.length) lines.push(`    Unterkonzepte: ${tkNames.join(', ')}`);
       if(bkId==='bk_evolutive_entwicklung' && (b.relevante_evolutionskonzepte||[]).length) lines.push(`    Evolutionskonzepte: ${b.relevante_evolutionskonzepte.join(', ')}`);
+      if((b.relevante_unterkonzepte||[]).length) lines.push(`    Unterkonzepte (erweitert): ${b.relevante_unterkonzepte.join(', ')}`);
     }
     if(e.didaktische_strategien){
       const ds = e.didaktische_strategien;
@@ -1503,8 +1719,9 @@ function render(){
         <label>Umfang</label>
         <select id="cScope">
           <option value="favorites" ${cfg.scope==='favorites'?'selected':''}>Meine Favoriten (★)</option>
-          <option value="band" ${cfg.scope==='band'?'selected':''}>Ganze Klassenstufe</option>
           <option value="thema" ${cfg.scope==='thema'?'selected':''}>Ein Thema</option>
+          <option value="unterthema" ${cfg.scope==='unterthema'?'selected':''}>Ein Unterthema</option>
+          <option value="auswahl" ${cfg.scope==='auswahl'?'selected':''}>Eigene Auswahl (über Themen hinweg)</option>
         </select>
       </div>
       <div id="scopeSub"></div>
@@ -1522,7 +1739,7 @@ function render(){
     <div class="card card-pad">
       <div class="pg-section-title"><span class="pg-num">3</span> Basiskonzeptbezug &amp; Vorwissen</div>
       <div class="pg-field"><label>Einbezogene Basiskonzepte</label>
-        <div style="display:flex; flex-wrap:wrap; gap:6px" id="bkChips">${EM.BK_ORDER.map(id=>`<span class="radio-chip bk-chip ${cfg.selectedBks.has(id)?'selected':''}" data-bk="${id}">${esc(EM.bkById[id]?EM.bkById[id].kurzbezeichnung:id)}</span>`).join('')}</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px" id="bkChips">${EM.BK_ORDER.map(id=>`<span class="radio-chip bk-chip ${cfg.selectedBks.has(id)?'selected':''}" data-bk="${id}"><span class="badge-dot" style="background:${EM.BK_COLOR[id]}"></span> ${esc(EM.bkById[id]?EM.bkById[id].kurzbezeichnung:id)}</span>`).join('')}</div>
       </div>
       <div id="vorwissenList"></div>
     </div>
@@ -1568,14 +1785,55 @@ function render(){
     <textarea id="promptOut" readonly style="width:100%; height:50vh; font-family:ui-monospace,monospace; font-size:11.5px"></textarea>
   </div>`;
 
+  function renderPicker(){
+    const sub = document.getElementById('scopeSub');
+    const p = cfg.picker;
+    const candidates = pickerCandidates();
+    const selected = EM.lz.filter(e=>cfg.customSelection.has(e.id));
+    sub.innerHTML = `
+      <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px">
+        ${Object.entries(EM.BAND_META).map(([b,m])=>`<span class="chip ${p.bands.has(b)?'on':''}" data-pband="${b}" style="font-size:11px">${m.label}</span>`).join('')}
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:6px">
+        <select id="pThema" style="font-size:12px"><option value="">Alle Themen</option>${themen.map(t=>`<option ${p.thema===t?'selected':''}>${esc(t)}</option>`).join('')}</select>
+        <select id="pUnterthema" style="font-size:12px"><option value="">Alle Unterthemen</option>${Array.from(new Set(EM.lz.filter(e=>!p.thema||e.thema===p.thema).map(e=>e.unterthema).filter(Boolean))).map(t=>`<option ${p.unterthema===t?'selected':''}>${esc(t)}</option>`).join('')}</select>
+      </div>
+      <select id="pBk" style="width:100%; font-size:12px; margin-bottom:6px">
+        <option value="">Konzeptueller Fokus: alle</option>
+        ${EM.BK_ORDER.map(id=>`<option value="${id}" ${p.bk===id?'selected':''}>${esc(EM.bkById[id]?EM.bkById[id].bezeichnung:id)} (≥ mittlere Relevanz)</option>`).join('')}
+      </select>
+      <input type="text" id="pSearch" placeholder="Suchen…" value="${esc(p.q)}" style="width:100%; margin-bottom:8px">
+      <div style="max-height:220px; overflow:auto; border:1px solid var(--border); border-radius:8px; padding:6px" id="pickerList">
+        ${candidates.slice(0,150).map(e=>`<label style="display:flex; align-items:flex-start; gap:6px; font-size:11.5px; padding:3px 0; cursor:pointer">
+          <input type="checkbox" data-pick="${esc(e.id)}" ${cfg.customSelection.has(e.id)?'checked':''}>
+          <span><b>${esc(e.id)}</b> · ${esc(e.kurzbezeichnung)} <span style="color:var(--txt-3)">(${EM.BAND_META[e.band].label})</span></span>
+        </label>`).join('') || '<div style="color:var(--txt-3); font-size:12px">Keine Treffer.</div>'}
+        ${candidates.length>150?`<div style="color:var(--txt-3); font-size:11px; margin-top:4px">+${candidates.length-150} weitere Treffer — Suche/Filter eingrenzen.</div>`:''}
+      </div>
+      <div class="section-h">Ausgewählt (${selected.length})</div>
+      <div style="display:flex; flex-wrap:wrap; gap:5px">
+        ${selected.map(e=>`<span class="chip" data-unpick="${esc(e.id)}" style="cursor:pointer">${esc(e.id)} ✕</span>`).join('') || '<span style="color:var(--txt-3); font-size:12px">Noch keine Lernziele ausgewählt.</span>'}
+      </div>`;
+    sub.querySelectorAll('[data-pband]').forEach(c=>c.onclick=()=>{ const b=c.dataset.pband; p.bands.has(b)?p.bands.delete(b):p.bands.add(b); refresh(); });
+    document.getElementById('pThema').onchange = e => { p.thema = e.target.value; p.unterthema=''; refresh(); };
+    document.getElementById('pUnterthema').onchange = e => { p.unterthema = e.target.value; refresh(); };
+    document.getElementById('pBk').onchange = e => { p.bk = e.target.value; refresh(); };
+    document.getElementById('pSearch').oninput = e => { p.q = e.target.value; refresh(); };
+    sub.querySelectorAll('[data-pick]').forEach(cb=>cb.onchange=()=>{ cb.checked?cfg.customSelection.add(cb.dataset.pick):cfg.customSelection.delete(cb.dataset.pick); refresh(); });
+    sub.querySelectorAll('[data-unpick]').forEach(c=>c.onclick=()=>{ cfg.customSelection.delete(c.dataset.unpick); refresh(); });
+  }
+
   function renderScopeSub(){
     const sub = document.getElementById('scopeSub');
-    if(cfg.scope==='band'){
-      sub.innerHTML = `<div class="pg-field"><select id="cBand">${Object.entries(EM.BAND_META).map(([b,m])=>`<option value="${b}" ${cfg.band===b?'selected':''}>${m.label}</option>`).join('')}</select></div>`;
-      document.getElementById('cBand').onchange = e => { cfg.band = e.target.value; refresh(); };
-    } else if(cfg.scope==='thema'){
+    if(cfg.scope==='thema'){
       sub.innerHTML = `<div class="pg-field"><select id="cThema"><option value="">– wählen –</option>${themen.map(t=>`<option ${cfg.thema===t?'selected':''}>${esc(t)}</option>`).join('')}</select></div>`;
       document.getElementById('cThema').onchange = e => { cfg.thema = e.target.value; refresh(); };
+    } else if(cfg.scope==='unterthema'){
+      const unterthemen = Array.from(new Set(EM.lz.map(e=>e.unterthema).filter(Boolean)));
+      sub.innerHTML = `<div class="pg-field"><select id="cUnterthema"><option value="">– wählen –</option>${unterthemen.map(t=>`<option ${cfg.unterthema===t?'selected':''}>${esc(t)}</option>`).join('')}</select></div>`;
+      document.getElementById('cUnterthema').onchange = e => { cfg.unterthema = e.target.value; refresh(); };
+    } else if(cfg.scope==='auswahl'){
+      renderPicker();
     } else { sub.innerHTML = `<div style="font-size:12px; color:var(--txt-3)">${scopeEntries().length} Favoriten aktuell markiert.</div>`; }
   }
 

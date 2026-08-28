@@ -1,0 +1,191 @@
+{
+  "metadaten": {
+    "titel": "Individuelle Entwicklung – erweiterte Unterkonzept-Taxonomie",
+    "beschreibung": "Hierarchisch strukturierte, ausführliche Ergänzung zu den 2 schema-begrenzten Teilkonzepten von bk_individuelle_entwicklung in data/basiskonzepte.json, analog zu data/evolutionskonzepte.json für bk_evolutive_entwicklung.",
+    "version": "1.0",
+    "quellen": [
+      "EvoMentor_DE v1.2 Feedback-Runde 2 (2026-08-25): Basiskonzepte-Detail-Feedback, Unterkonzepte-Vereinheitlichung",
+      "data/basiskonzepte.json wesentliche_prinzipien_kmk je Basiskonzept als Ausgangspunkt der Ebene-1-Gliederung"
+    ],
+    "struktur_hinweis": "Ebene 1 sind eigenständige Hauptkonzepte, gleichrangig nebeneinander. Ebene 2 sind Unterkonzepte, jeweils genau einem Ebene-1-Konzept zugeordnet über uebergeordnetes_konzept. 'Reproduktion' hat bewusst keine Unterkonzepte (Abschlusskonzept des Lebenszyklus).",
+    "verwendung": "lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] speichert exakte 'bezeichnung'-Strings (Ebene 1 oder Ebene 2) aus dieser Datei, analog zu relevante_evolutionskonzepte bei bk_evolutive_entwicklung."
+  },
+  "individuelleentwicklungkonzepte": [
+    {
+      "id": "ie_zelldifferenzierung_embryonalentwicklung",
+      "ebene": 1,
+      "bezeichnung": "Zelldifferenzierung und Embryonalentwicklung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 1,
+      "definition": "Aus einer befruchteten Eizelle entstehen durch wiederholte Zellteilung und zunehmende Spezialisierung (Differenzierung) die unterschiedlichen Zelltypen, Gewebe und Organe eines vielzelligen Organismus.",
+      "beispiel": "Aus einer befruchteten Eizelle entwickeln sich über Furchung, Gastrulation und Organogenese Nerven-, Muskel- und Hautzellen, obwohl alle dasselbe Genom besitzen."
+    },
+    {
+      "id": "ie_zelldifferenzierung_embryonalentwicklung__zelldifferenzierung",
+      "ebene": 2,
+      "bezeichnung": "Zelldifferenzierung",
+      "uebergeordnetes_konzept": "ie_zelldifferenzierung_embryonalentwicklung",
+      "reihenfolge": 1,
+      "definition": "Der Prozess, durch den zunächst gleichartige, unspezialisierte Zellen unterschiedliche Genexpressionsmuster ausbilden und sich dadurch strukturell und funktionell spezialisieren.",
+      "beispiel": "Aus omnipotenten Stammzellen des frühen Embryos entstehen spezialisierte Muskel-, Nerven- und Blutzellen mit jeweils eigenem Aufgabenprofil."
+    },
+    {
+      "id": "ie_zelldifferenzierung_embryonalentwicklung__embryonalentwicklung",
+      "ebene": 2,
+      "bezeichnung": "Embryonalentwicklung (Furchung, Gastrulation, Organogenese)",
+      "uebergeordnetes_konzept": "ie_zelldifferenzierung_embryonalentwicklung",
+      "reihenfolge": 2,
+      "definition": "Die frühe Individualentwicklung von der befruchteten Eizelle bis zur Anlage der Organe, gegliedert in aufeinanderfolgende Phasen: Furchung (Zellteilungen ohne Wachstum), Gastrulation (Bildung der Keimblätter) und Organogenese (Entstehung der Organanlagen).",
+      "beispiel": "Beim Hühnerembryo lassen sich Furchungsstadien, die Bildung der drei Keimblätter und die anschließende Anlage von Herz und Neuralrohr im Zeitverlauf beobachten."
+    },
+    {
+      "id": "ie_lebenszyklus",
+      "ebene": 1,
+      "bezeichnung": "Lebenszyklus",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 2,
+      "definition": "Die charakteristische Abfolge von Entwicklungsstadien, die ein Organismus von der Befruchtung bis zur eigenen Fortpflanzungsfähigkeit durchläuft — bei manchen Arten kontinuierlich, bei anderen über qualitativ unterschiedliche Stadien mit tiefgreifender Umgestaltung.",
+      "beispiel": "Der Lebenszyklus des Grasfroschs umfasst Ei, wasserlebende Kaulquappe mit Kiemen und Schwanz sowie das landlebende Adulttier mit Lunge und Beinen."
+    },
+    {
+      "id": "ie_lebenszyklus__metamorphose",
+      "ebene": 2,
+      "bezeichnung": "Metamorphose (vollständige/unvollständige Verwandlung)",
+      "uebergeordnetes_konzept": "ie_lebenszyklus",
+      "reihenfolge": 1,
+      "definition": "Eine tiefgreifende, meist hormonell gesteuerte Umgestaltung der Körperform während der individuellen Entwicklung, bei der sich Larven- und Adultstadium in Gestalt und Lebensweise deutlich unterscheiden. Bei Insekten wird zwischen vollständiger Metamorphose (mit Puppenstadium) und unvollständiger Metamorphose (ohne Puppenstadium) unterschieden.",
+      "beispiel": "Der Schmetterling durchläuft mit Ei, Raupe, Puppe und Falter eine vollständige Metamorphose; die Heuschrecke mit Ei, Larve und Adulttier eine unvollständige."
+    },
+    {
+      "id": "ie_lebenszyklus__direkte_indirekte_entwicklung",
+      "ebene": 2,
+      "bezeichnung": "Direkte und indirekte Entwicklung",
+      "uebergeordnetes_konzept": "ie_lebenszyklus",
+      "reihenfolge": 2,
+      "definition": "Bei direkter Entwicklung ähnelt das Jungtier von Beginn an dem erwachsenen Tier und wächst im Wesentlichen nur heran; bei indirekter Entwicklung durchläuft der Organismus ein oder mehrere Larvenstadien, die sich morphologisch und ökologisch deutlich vom Adulttier unterscheiden.",
+      "beispiel": "Ein Wolfsjunges entwickelt sich direkt zum erwachsenen Wolf; ein Frosch entwickelt sich indirekt über das Kaulquappenstadium."
+    },
+    {
+      "id": "ie_wachstum_alterung",
+      "ebene": 1,
+      "bezeichnung": "Wachstum und Alterung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 3,
+      "definition": "Die kontinuierliche quantitative Zunahme von Körpergröße und -masse während der Entwicklung sowie die im späteren Lebensverlauf einsetzende, fortschreitende Abnahme der Funktionsfähigkeit von Zellen, Geweben und Organen.",
+      "beispiel": "Die Wachstumskurve eines Menschen zeigt Phasen beschleunigten Wachstums (Säuglingsalter, Pubertät), gefolgt von einer im Erwachsenenalter einsetzenden allmählichen Abnahme der Organleistungsfähigkeit."
+    },
+    {
+      "id": "ie_wachstum_alterung__wachstum",
+      "ebene": 2,
+      "bezeichnung": "Wachstum",
+      "uebergeordnetes_konzept": "ie_wachstum_alterung",
+      "reihenfolge": 1,
+      "definition": "Die Zunahme von Zellzahl (Zellteilung) und/oder Zellgröße eines Organismus über die Zeit, häufig ungleichmäßig auf verschiedene Körperregionen und Lebensphasen verteilt.",
+      "beispiel": "Der menschliche Kopf wächst pränatal und postnatal deutlich langsamer als die Extremitäten — ein Neugeborenes hat proportional einen viel größeren Kopf als ein Erwachsener."
+    },
+    {
+      "id": "ie_wachstum_alterung__seneszenz",
+      "ebene": 2,
+      "bezeichnung": "Seneszenz/Alterung",
+      "uebergeordnetes_konzept": "ie_wachstum_alterung",
+      "reihenfolge": 2,
+      "definition": "Die im Laufe des Lebens fortschreitende Abnahme der Zell- und Organfunktion, die die Wahrscheinlichkeit von Erkrankung und Tod erhöht.",
+      "beispiel": "Mit zunehmendem Alter nimmt die Elastizität der Blutgefäße ab, was das Risiko für Bluthochdruck erhöht."
+    },
+    {
+      "id": "ie_hormonelle_reifung",
+      "ebene": 1,
+      "bezeichnung": "Hormonelle Reifung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 4,
+      "definition": "Die durch hormonelle Signale gesteuerte Ausreifung von Organsystemen bis zur vollen Funktions- bzw. Fortpflanzungsfähigkeit, insbesondere während der Pubertät.",
+      "beispiel": "Die Ausschüttung von Sexualhormonen in der Pubertät löst beim Menschen das Wachstum der Geschlechtsorgane und die Ausbildung sekundärer Geschlechtsmerkmale aus."
+    },
+    {
+      "id": "ie_hormonelle_reifung__pubertaet_geschlechtsreife",
+      "ebene": 2,
+      "bezeichnung": "Pubertät und Geschlechtsreife",
+      "uebergeordnetes_konzept": "ie_hormonelle_reifung",
+      "reihenfolge": 1,
+      "definition": "Der durch das Zusammenspiel von Hypothalamus, Hypophyse und Keimdrüsen gesteuerte Entwicklungsabschnitt, an dessen Ende die Fortpflanzungsfähigkeit steht.",
+      "beispiel": "Beim Menschen setzt die Pubertät mit dem Einsetzen der Gonadotropin-Ausschüttung der Hypophyse ein und führt u. a. zur ersten Menstruation bzw. Spermienproduktion."
+    },
+    {
+      "id": "ie_hormonelle_reifung__hormonelle_regelkreise",
+      "ebene": 2,
+      "bezeichnung": "Hormonelle Regelkreise der Reifung",
+      "uebergeordnetes_konzept": "ie_hormonelle_reifung",
+      "reihenfolge": 2,
+      "definition": "Rückkopplungsmechanismen zwischen Hypothalamus, Hypophyse und den peripheren Zieldrüsen, die den zeitlichen Ablauf und die Intensität von Reifungsprozessen steuern und regulieren.",
+      "beispiel": "Ein Anstieg des Sexualhormonspiegels hemmt über negative Rückkopplung die weitere Ausschüttung von Gonadotropinen und hält den Hormonspiegel so in einem charakteristischen Bereich.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_steuerung_regelung",
+          "konzept_bezeichnung": "Negative Rückkopplung (inkl. Homöostase-Prinzip)",
+          "beziehung": "Ein konkretes Beispiel für negative Rückkopplung im Kontext individueller Entwicklung — dort mit Fokus auf den zeitlichen Ablauf von Reifungsprozessen statt auf das allgemeine Regelungsprinzip."
+        }
+      ]
+    },
+    {
+      "id": "ie_erworbene_anpassungsfaehigkeit",
+      "ebene": 1,
+      "bezeichnung": "Erworbene Anpassungsfähigkeit",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 5,
+      "definition": "Die Fähigkeit eines Individuums, seine Struktur, Physiologie oder sein Verhalten im Laufe seiner eigenen Entwicklung an Umweltbedingungen und Erfahrungen anzupassen — anders als evolutionäre Anpassung nicht vererbt, sondern innerhalb einer Lebensspanne erworben.",
+      "beispiel": "Ein Bergsteiger bildet in großer Höhe innerhalb weniger Wochen mehr rote Blutkörperchen, ohne dass sich sein Genom verändert."
+    },
+    {
+      "id": "ie_erworbene_anpassungsfaehigkeit__erfahrungsabhaengige_plastizitaet",
+      "ebene": 2,
+      "bezeichnung": "Erfahrungsabhängige Plastizität",
+      "uebergeordnetes_konzept": "ie_erworbene_anpassungsfaehigkeit",
+      "reihenfolge": 1,
+      "definition": "Die Fähigkeit des Nervensystems und des Verhaltens, sich strukturell und funktionell durch individuelle Erfahrung und Übung zu verändern, besonders ausgeprägt in sensiblen Entwicklungsphasen.",
+      "beispiel": "Bei Kindern, die früh ein Instrument erlernen, ist der für die Feinmotorik der Finger zuständige Hirnrindenbereich stärker ausgebildet als bei Gleichaltrigen ohne diese Erfahrung."
+    },
+    {
+      "id": "ie_erworbene_anpassungsfaehigkeit__modifikation",
+      "ebene": 2,
+      "bezeichnung": "Modifikation",
+      "uebergeordnetes_konzept": "ie_erworbene_anpassungsfaehigkeit",
+      "reihenfolge": 2,
+      "definition": "Eine nicht erbliche, umweltbedingte Veränderung des Phänotyps innerhalb der durch das Genom vorgegebenen Reaktionsnorm — im Unterschied zur erfahrungsabhängigen Plastizität nicht auf Lernen/Erfahrung beschränkt, sondern jede Form umweltbedingter Phänotypänderung während der Entwicklung.",
+      "beispiel": "Dieselbe Pflanzenart bildet in praller Sonne kleinere, dickere Blätter aus als im Schatten, obwohl beide Pflanzen genetisch identisch sind.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_evolutive_entwicklung",
+          "konzept_bezeichnung": "Modifikation",
+          "beziehung": "Dasselbe Konzept: hier aus der Perspektive der individuellen Entwicklung (wie ein Individuum während seiner Entwicklung auf Umwelteinflüsse reagiert), bei Evolutive Entwicklung als eine von mehreren Quellen phänotypischer Variation innerhalb einer Population."
+        }
+      ]
+    },
+    {
+      "id": "ie_erworbene_anpassungsfaehigkeit__lernen_praegung",
+      "ebene": 2,
+      "bezeichnung": "Lernen und Prägung im Entwicklungsverlauf",
+      "uebergeordnetes_konzept": "ie_erworbene_anpassungsfaehigkeit",
+      "reihenfolge": 3,
+      "definition": "Verhaltensänderungen durch individuelle Erfahrung, die teils zeitlebens möglich sind (assoziatives Lernen), teils nur in eng begrenzten, sensiblen Phasen der frühen Entwicklung stattfinden können (Prägung).",
+      "beispiel": "Konrad Lorenz' Graugänse folgten als Küken demjenigen Objekt, das sie kurz nach dem Schlüpfen zuerst bewegt sahen, und ließen sich später nicht mehr umprägen."
+    },
+    {
+      "id": "ie_erworbene_anpassungsfaehigkeit__kompensation_regeneration",
+      "ebene": 2,
+      "bezeichnung": "Kompensationsfähigkeit/Regeneration",
+      "uebergeordnetes_konzept": "ie_erworbene_anpassungsfaehigkeit",
+      "reihenfolge": 4,
+      "definition": "Die Fähigkeit eines Organismus, den Verlust oder die Schädigung von Geweben oder Organen während der individuellen Entwicklung ganz oder teilweise durch Ersatzbildung oder funktionelle Umverteilung auszugleichen.",
+      "beispiel": "Ein Salamander kann einen verlorenen Schwanz oder ein Bein vollständig neu ausbilden; beim Menschen kann die Leber nach teilweisem Gewebeverlust ihre ursprüngliche Größe weitgehend regenerieren."
+    },
+    {
+      "id": "ie_reproduktion",
+      "ebene": 1,
+      "bezeichnung": "Reproduktion",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 6,
+      "definition": "Der Abschluss der Individualentwicklung in der Fähigkeit, eigene Nachkommen zu erzeugen — aus Sicht der individuellen Entwicklung der Punkt, an dem sich der Lebenszyklus eines Individuums mit dem der nächsten Generation verknüpft.",
+      "beispiel": "Mit Erreichen der Geschlechtsreife endet bei vielen Tierarten die Phase des reinen Wachstums, und Energie und Verhalten werden zunehmend auf Paarung und Aufzucht von Nachkommen ausgerichtet."
+    }
+  ]
+}

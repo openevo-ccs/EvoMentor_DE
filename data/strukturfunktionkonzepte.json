@@ -1,0 +1,175 @@
+{
+  "metadaten": {
+    "titel": "Struktur und Funktion – erweiterte Unterkonzept-Taxonomie",
+    "beschreibung": "Hierarchisch strukturierte, ausführliche Ergänzung zu den 2 schema-begrenzten Teilkonzepten von bk_struktur_funktion in data/basiskonzepte.json, analog zu data/evolutionskonzepte.json für bk_evolutive_entwicklung.",
+    "version": "1.0",
+    "quellen": [
+      "EvoMentor_DE v1.2 Feedback-Runde 2 (2026-08-25): Basiskonzepte-Detail-Feedback, Unterkonzepte-Vereinheitlichung",
+      "data/basiskonzepte.json wesentliche_prinzipien_kmk je Basiskonzept als Ausgangspunkt der Ebene-1-Gliederung"
+    ],
+    "struktur_hinweis": "Ebene 1 entspricht direkt den 6 wesentliche_prinzipien_kmk-Einträgen von bk_struktur_funktion in data/basiskonzepte.json (nicht den 2 teilkonzepte — diese bleiben als eigenes, separates Feld bestehen). Ebene 2 sind Unterkonzepte, jeweils genau einem Ebene-1-Konzept zugeordnet.",
+    "verwendung": "lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] speichert exakte 'bezeichnung'-Strings (Ebene 1 oder Ebene 2) aus dieser Datei, analog zu relevante_evolutionskonzepte bei bk_evolutive_entwicklung."
+  },
+  "strukturfunktionkonzepte": [
+    {
+      "id": "sf_kompartimentierung",
+      "ebene": 1,
+      "bezeichnung": "Kompartimentierung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 1,
+      "definition": "Die Unterteilung eines biologischen Systems in räumlich und funktionell abgegrenzte Teilbereiche, wodurch unterschiedliche, teils gegensätzliche Stoffwechselprozesse gleichzeitig und ungestört nebeneinander ablaufen können.",
+      "beispiel": "Innerhalb einer Zelle trennt die Kompartimentierung in Organellen den sauren Innenraum des Lysosoms vom neutralen Zytoplasma, sodass dessen Verdauungsenzyme nicht die übrige Zelle angreifen."
+    },
+    {
+      "id": "sf_kompartimentierung__zellulaer",
+      "ebene": 2,
+      "bezeichnung": "Zelluläre Kompartimentierung (Organellen)",
+      "uebergeordnetes_konzept": "sf_kompartimentierung",
+      "reihenfolge": 1,
+      "definition": "Die Unterteilung des Zellinneren durch Membranen in funktionell spezialisierte Zellorganellen.",
+      "beispiel": "Mitochondrien kompartimentieren die Zellatmung in einem eigenen Innenraum mit einem für die ATP-Synthese notwendigen Protonengradienten."
+    },
+    {
+      "id": "sf_kompartimentierung__gewebe_organ",
+      "ebene": 2,
+      "bezeichnung": "Gewebe- und Organebene der Kompartimentierung",
+      "uebergeordnetes_konzept": "sf_kompartimentierung",
+      "reihenfolge": 2,
+      "definition": "Die Gliederung eines vielzelligen Organismus in räumlich abgegrenzte Gewebe und Organe mit jeweils spezialisierter Funktion.",
+      "beispiel": "Der Magen ist durch seine Wand als eigenes Kompartiment abgegrenzt, sodass die stark saure Verdauung dort abläuft, ohne benachbarte Organe zu schädigen."
+    },
+    {
+      "id": "sf_kompartimentierung__oekosystem",
+      "ebene": 2,
+      "bezeichnung": "Kompartimentierung von Ökosystemen",
+      "uebergeordnetes_konzept": "sf_kompartimentierung",
+      "reihenfolge": 3,
+      "definition": "Die räumliche Gliederung von Lebensräumen in unterschiedliche Zonen oder Schichten mit jeweils charakteristischen Umweltbedingungen und Lebensgemeinschaften.",
+      "beispiel": "Ein See gliedert sich in beleuchtete Freiwasserzone, lichtarme Tiefenzone und Bodenzone, die jeweils von unterschiedlich angepassten Arten besiedelt werden."
+    },
+    {
+      "id": "sf_morphologische_anatomische_angepasstheit",
+      "ebene": 1,
+      "bezeichnung": "Morphologische und anatomische Angepasstheit",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 2,
+      "definition": "Der Zusammenhang zwischen der Gestalt bzw. dem inneren Bau einer Struktur und der Funktion, die sie in ihrer jeweiligen Umwelt erfüllt.",
+      "beispiel": "Die Stromlinienform des Delfinkörpers verringert den Strömungswiderstand im Wasser und ermöglicht so eine energieeffiziente Fortbewegung.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_evolutive_entwicklung",
+          "konzept_bezeichnung": "Anpassung und Angepasstheit",
+          "beziehung": "Gleiches Phänomen aus zwei fachlichen Linsen: hier die aktuelle Form-Funktions-Beziehung, bei Evolutive Entwicklung deren Entstehung durch natürliche Selektion."
+        }
+      ]
+    },
+    {
+      "id": "sf_morphologische_anatomische_angepasstheit__form_funktion",
+      "ebene": 2,
+      "bezeichnung": "Form-Funktions-Beziehung",
+      "uebergeordnetes_konzept": "sf_morphologische_anatomische_angepasstheit",
+      "reihenfolge": 1,
+      "definition": "Das didaktische Grundprinzip, wonach sich aus der Struktur eines biologischen Merkmals Rückschlüsse auf seine Funktion ziehen lassen (und umgekehrt).",
+      "beispiel": "Die dünne, stark gefaltete Oberfläche eines Blattes lässt bereits auf seine Funktion beim Gasaustausch und der Lichtabsorption schließen."
+    },
+    {
+      "id": "sf_schluessel_schloss_prinzip",
+      "ebene": 1,
+      "bezeichnung": "Schlüssel-Schloss-Prinzip",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 3,
+      "definition": "Das Prinzip der räumlich-strukturellen Passgenauigkeit zwischen zwei Molekülen, durch die eine spezifische, hochselektive Bindung zwischen ihnen ermöglicht wird.",
+      "beispiel": "Ein Enzym setzt nur ein Substrat um, dessen räumliche Struktur zu seinem aktiven Zentrum passt — wie ein Schlüssel, der nur in ein bestimmtes Schloss passt."
+    },
+    {
+      "id": "sf_schluessel_schloss_prinzip__enzym_substrat",
+      "ebene": 2,
+      "bezeichnung": "Enzym-Substrat-Spezifität",
+      "uebergeordnetes_konzept": "sf_schluessel_schloss_prinzip",
+      "reihenfolge": 1,
+      "definition": "Die auf der räumlichen Passung von aktivem Zentrum und Substrat beruhende Fähigkeit eines Enzyms, gezielt nur eine oder wenige chemisch verwandte Reaktionen zu katalysieren.",
+      "beispiel": "Das Enzym Amylase spaltet Stärke, jedoch nicht die strukturell ähnliche Zellulose, da deren Bindungswinkel nicht in das aktive Zentrum passen."
+    },
+    {
+      "id": "sf_schluessel_schloss_prinzip__rezeptor_ligand",
+      "ebene": 2,
+      "bezeichnung": "Rezeptor-Ligand-Spezifität",
+      "uebergeordnetes_konzept": "sf_schluessel_schloss_prinzip",
+      "reihenfolge": 2,
+      "definition": "Die auf räumlicher Passung beruhende spezifische Bindung eines Signalmoleküls (Liganden) an seinen Rezeptor, wodurch nur ein passender Ligand eine zelluläre Antwort auslöst.",
+      "beispiel": "Insulin bindet spezifisch an den Insulinrezeptor auf der Zelloberfläche und löst dort die Aufnahme von Glukose aus — andere Hormone passen nicht in diesen Rezeptor."
+    },
+    {
+      "id": "sf_oberflaechenvergroesserung",
+      "ebene": 1,
+      "bezeichnung": "Oberflächenvergrößerung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 4,
+      "definition": "Das strukturelle Prinzip, durch Faltung, Ausstülpung oder Verzweigung einer Grenzfläche deren Oberfläche im Verhältnis zum umschlossenen Volumen zu vergrößern und dadurch Austauschprozesse zu beschleunigen.",
+      "beispiel": "Die Dünndarmschleimhaut vergrößert ihre resorbierende Oberfläche durch Falten, Zotten und Mikrovilli um ein Vielfaches gegenüber einer glatten Röhre gleicher Länge."
+    },
+    {
+      "id": "sf_oberflaechenvergroesserung__stoffaustausch",
+      "ebene": 2,
+      "bezeichnung": "Oberflächenvergrößerung bei Stoffaustausch (Alveolen, Villi)",
+      "uebergeordnetes_konzept": "sf_oberflaechenvergroesserung",
+      "reihenfolge": 1,
+      "definition": "Die Nutzung stark vergrößerter, dünner Austauschflächen zur Beschleunigung von Diffusionsprozessen zwischen zwei Kompartimenten.",
+      "beispiel": "Die vielen kleinen Lungenbläschen (Alveolen) vergrößern die für den Gasaustausch verfügbare Oberfläche der Lunge auf etwa 100 Quadratmeter."
+    },
+    {
+      "id": "sf_gegenspielerprinzip",
+      "ebene": 1,
+      "bezeichnung": "Gegenspielerprinzip",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 5,
+      "definition": "Das Prinzip, einen physiologischen Zustand durch zwei gegensätzlich wirkende Strukturen oder Signale präzise regulierbar zu machen, statt ihn durch eine einzelne, nur in eine Richtung wirkende Komponente zu steuern.",
+      "beispiel": "Beuge- und Streckmuskeln eines Gelenks wirken als Gegenspieler (Antagonisten) und ermöglichen dadurch eine präzise, in beide Richtungen steuerbare Bewegung."
+    },
+    {
+      "id": "sf_gegenspielerprinzip__muskulaere_antagonisten",
+      "ebene": 2,
+      "bezeichnung": "Muskuläre Antagonisten",
+      "uebergeordnetes_konzept": "sf_gegenspielerprinzip",
+      "reihenfolge": 1,
+      "definition": "Muskelpaare, die entgegengesetzte Bewegungen an einem Gelenk bewirken und dadurch eine präzise Steuerung der Gelenkstellung ermöglichen.",
+      "beispiel": "Bizeps und Trizeps am Oberarm beugen bzw. strecken das Ellenbogengelenk gegenläufig."
+    },
+    {
+      "id": "sf_gegenspielerprinzip__hormonelle_antagonisten",
+      "ebene": 2,
+      "bezeichnung": "Hormonelle Antagonisten",
+      "uebergeordnetes_konzept": "sf_gegenspielerprinzip",
+      "reihenfolge": 2,
+      "definition": "Hormonpaare mit entgegengesetzter Wirkung auf denselben physiologischen Parameter, durch deren Zusammenspiel dieser Parameter präzise in einem Sollbereich gehalten werden kann.",
+      "beispiel": "Insulin senkt den Blutzuckerspiegel, Glucagon erhöht ihn — gemeinsam halten sie den Blutzucker in einem engen Bereich."
+    },
+    {
+      "id": "sf_gegenstromprinzip",
+      "ebene": 1,
+      "bezeichnung": "Gegenstromprinzip",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 6,
+      "definition": "Ein strukturelles Prinzip, bei dem zwei Flüssigkeitsströme in entgegengesetzter Richtung nah aneinander vorbeigeführt werden, wodurch ein Konzentrations- oder Temperaturgefälle über die gesamte Austauschstrecke aufrechterhalten und der Austausch von Stoffen oder Wärme maximiert wird.",
+      "beispiel": "Bei Fischkiemen strömt das Blut dem einströmenden Wasser entgegen, wodurch entlang der gesamten Kiemenlamelle ein Sauerstoffgefälle besteht und die Sauerstoffaufnahme maximiert wird."
+    },
+    {
+      "id": "sf_gegenstromprinzip__waermeaustausch",
+      "ebene": 2,
+      "bezeichnung": "Gegenstromprinzip beim Wärmeaustausch",
+      "uebergeordnetes_konzept": "sf_gegenstromprinzip",
+      "reihenfolge": 1,
+      "definition": "Die Nutzung gegenläufig angeordneter Blutgefäße, um Wärme vom warmen zum kalten Blutstrom zu übertragen und dadurch Wärmeverluste an Körperextremitäten zu verringern.",
+      "beispiel": "In den Beinen von Watvögeln liegen zu- und abführende Blutgefäße eng beieinander, sodass warmes, herzwärts strömendes Blut das kalte, abwärts strömende Blut vorwärmt und Wärmeverluste über die Beine minimiert werden."
+    },
+    {
+      "id": "sf_gegenstromprinzip__stoffaustausch",
+      "ebene": 2,
+      "bezeichnung": "Gegenstromprinzip beim Stoffaustausch (Kiemenatmung)",
+      "uebergeordnetes_konzept": "sf_gegenstromprinzip",
+      "reihenfolge": 2,
+      "definition": "Die gegenläufige Führung von Blut- und Wasserstrom an der Kiemenoberfläche, durch die ein für die Diffusion günstiges Konzentrationsgefälle über die gesamte Austauschstrecke erhalten bleibt.",
+      "beispiel": "Fische können durch das Gegenstromprinzip an ihren Kiemen einen deutlich höheren Anteil des im Wasser gelösten Sauerstoffs aufnehmen, als es bei gleichgerichteter Strömung möglich wäre."
+    }
+  ]
+}

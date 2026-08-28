@@ -1,0 +1,166 @@
+{
+  "metadaten": {
+    "titel": "Information und Kommunikation – erweiterte Unterkonzept-Taxonomie",
+    "beschreibung": "Hierarchisch strukturierte, ausführliche Ergänzung zu den 2 schema-begrenzten Teilkonzepten von bk_information_kommunikation in data/basiskonzepte.json, analog zu data/evolutionskonzepte.json für bk_evolutive_entwicklung.",
+    "version": "1.0",
+    "quellen": [
+      "EvoMentor_DE v1.2 Feedback-Runde 2 (2026-08-25): Basiskonzepte-Detail-Feedback, Unterkonzepte-Vereinheitlichung",
+      "data/basiskonzepte.json wesentliche_prinzipien_kmk je Basiskonzept als Ausgangspunkt der Ebene-1-Gliederung"
+    ],
+    "struktur_hinweis": "Ebene 1 entspricht den 4 wesentliche_prinzipien_kmk-Einträgen von bk_information_kommunikation in data/basiskonzepte.json, ergänzt um Reizaufnahme und Reizverarbeitung als 5. Ebene-1-Konzept (Sinnesphysiologie als eigenständiger Themenschwerpunkt dieses Basiskonzepts). Ebene 2 sind Unterkonzepte, jeweils genau einem Ebene-1-Konzept zugeordnet.",
+    "verwendung": "lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] speichert exakte 'bezeichnung'-Strings (Ebene 1 oder Ebene 2) aus dieser Datei, analog zu relevante_evolutionskonzepte bei bk_evolutive_entwicklung."
+  },
+  "informationkommunikationkonzepte": [
+    {
+      "id": "ik_signaltransduktion",
+      "ebene": 1,
+      "bezeichnung": "Signaltransduktion",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 1,
+      "definition": "Die Umwandlung eines extrazellulären Signals in eine intrazelluläre Antwort durch eine Kette molekularer Ereignisse, ausgelöst durch die Bindung eines Signalmoleküls an einen spezifischen Rezeptor.",
+      "beispiel": "Bindet Adrenalin an seinen Rezeptor auf einer Leberzelle, löst dies über eine Signalkaskade den Abbau von Glykogen zu Glukose aus."
+    },
+    {
+      "id": "ik_signaltransduktion__rezeptorvermittelte_signaluebertragung",
+      "ebene": 2,
+      "bezeichnung": "Rezeptor-vermittelte Signalübertragung",
+      "uebergeordnetes_konzept": "ik_signaltransduktion",
+      "reihenfolge": 1,
+      "definition": "Die spezifische Erkennung eines Signalmoleküls durch einen passenden Rezeptor als erster Schritt jeder Signaltransduktion.",
+      "beispiel": "Membranständige Rezeptoren erkennen wasserlösliche Hormone wie Insulin, die die Zellmembran selbst nicht durchqueren können."
+    },
+    {
+      "id": "ik_signaltransduktion__second_messenger",
+      "ebene": 2,
+      "bezeichnung": "Second-Messenger-Systeme",
+      "uebergeordnetes_konzept": "ik_signaltransduktion",
+      "reihenfolge": 2,
+      "definition": "Intrazelluläre Botenstoffe, die ein an der Zelloberfläche empfangenes Signal ins Zellinnere weiterleiten und dabei häufig verstärken.",
+      "beispiel": "Nach der Bindung von Adrenalin an seinen Rezeptor steigt die Konzentration des second messenger cAMP im Zellinneren stark an und aktiviert dort weitere Enzyme."
+    },
+    {
+      "id": "ik_codierung_decodierung",
+      "ebene": 1,
+      "bezeichnung": "Codierung und Decodierung von Information",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 2,
+      "definition": "Die Übersetzung von Information von einer Darstellungsform in eine andere nach festen Regeln — etwa von einer Nukleotidsequenz in eine Aminosäuresequenz oder von einem physikalischen Reiz in ein neuronales Signalmuster.",
+      "beispiel": "Der genetische Code übersetzt die Basensequenz der mRNA nach einem festen Codewörter-Schema in die Aminosäuresequenz eines Proteins."
+    },
+    {
+      "id": "ik_codierung_decodierung__genetischer_code",
+      "ebene": 2,
+      "bezeichnung": "Genetischer Code (Transkription/Translation)",
+      "uebergeordnetes_konzept": "ik_codierung_decodierung",
+      "reihenfolge": 1,
+      "definition": "Die Umschrift der genetischen Information von der DNA in mRNA (Transkription) und deren anschließende Übersetzung in eine Aminosäuresequenz (Translation) nach dem universellen Basentriplett-Code.",
+      "beispiel": "Das Basentriplett GUU wird stets in die Aminosäure Valin übersetzt — unabhängig davon, ob es sich um eine Bakterien- oder eine menschliche Zelle handelt."
+    },
+    {
+      "id": "ik_codierung_decodierung__neuronale_codierung",
+      "ebene": 2,
+      "bezeichnung": "Neuronale Codierung von Reizen",
+      "uebergeordnetes_konzept": "ik_codierung_decodierung",
+      "reihenfolge": 2,
+      "definition": "Die Umwandlung physikalischer oder chemischer Reizeigenschaften (z. B. Reizstärke) in ein Muster elektrischer Nervenimpulse, das im Nervensystem weiterverarbeitet werden kann.",
+      "beispiel": "Ein stärkerer Druckreiz auf der Haut wird nicht durch größere, sondern durch häufigere Aktionspotenziale in der zuführenden Nervenfaser codiert."
+    },
+    {
+      "id": "ik_kommunikation_zwischen_organismen",
+      "ebene": 1,
+      "bezeichnung": "Kommunikation zwischen Organismen",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 3,
+      "definition": "Der Austausch von Signalen zwischen Individuen derselben oder verschiedener Arten, durch den das Verhalten des Empfängers zugunsten (meist) des Senders beeinflusst wird.",
+      "beispiel": "Bienen teilen sich durch den Schwänzeltanz die Richtung und Entfernung einer Futterquelle mit."
+    },
+    {
+      "id": "ik_kommunikation_zwischen_organismen__chemisch",
+      "ebene": 2,
+      "bezeichnung": "Chemische Kommunikation (Pheromone)",
+      "uebergeordnetes_konzept": "ik_kommunikation_zwischen_organismen",
+      "reihenfolge": 1,
+      "definition": "Die Verständigung zwischen Individuen mittels artspezifischer chemischer Botenstoffe (Pheromone), die über die Luft oder das Wasser wahrgenommen werden.",
+      "beispiel": "Weibliche Nachtfalter locken paarungsbereite Männchen durch die Abgabe von Sexualpheromonen über mehrere hundert Meter an."
+    },
+    {
+      "id": "ik_kommunikation_zwischen_organismen__akustisch_visuell",
+      "ebene": 2,
+      "bezeichnung": "Akustische und visuelle Kommunikation",
+      "uebergeordnetes_konzept": "ik_kommunikation_zwischen_organismen",
+      "reihenfolge": 2,
+      "definition": "Die Verständigung zwischen Individuen mittels Lauten oder optischer Signale wie Körperhaltung, Farbe oder Bewegung.",
+      "beispiel": "Vogelgesang markiert Reviergrenzen und signalisiert Paarungsbereitschaft; das Balzverhalten des Pfaus wirkt über sein auffälliges Rad visuell."
+    },
+    {
+      "id": "ik_kommunikation_zwischen_organismen__soziale_signalsysteme",
+      "ebene": 2,
+      "bezeichnung": "Soziale Signalsysteme",
+      "uebergeordnetes_konzept": "ik_kommunikation_zwischen_organismen",
+      "reihenfolge": 3,
+      "definition": "Komplexe, oft aus mehreren Signalkanälen zusammengesetzte Kommunikationssysteme, die soziale Beziehungen innerhalb einer Gruppe regeln, etwa Rangordnung, Zusammenhalt oder Warnung vor Gefahr.",
+      "beispiel": "Erdmännchen geben unterschiedliche Warnrufe für Gefahr aus der Luft und vom Boden ab, auf die Artgenossen jeweils mit einem passenden Fluchtverhalten reagieren."
+    },
+    {
+      "id": "ik_kommunikation_innerhalb_organismus",
+      "ebene": 1,
+      "bezeichnung": "Kommunikation innerhalb eines Organismus",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 4,
+      "definition": "Der Austausch von Signalen zwischen Zellen, Geweben und Organen innerhalb eines vielzelligen Organismus, durch den dessen Aktivitäten koordiniert werden.",
+      "beispiel": "Nervensystem und Hormonsystem sorgen gemeinsam dafür, dass Herzschlag, Atmung und Verdauung eines Organismus aufeinander abgestimmt ablaufen."
+    },
+    {
+      "id": "ik_kommunikation_innerhalb_organismus__nervale",
+      "ebene": 2,
+      "bezeichnung": "Nervale Kommunikation (Synapsen, Aktionspotenzial)",
+      "uebergeordnetes_konzept": "ik_kommunikation_innerhalb_organismus",
+      "reihenfolge": 1,
+      "definition": "Die schnelle, elektrisch-chemische Signalübertragung zwischen Nervenzellen über Aktionspotenziale und Synapsen.",
+      "beispiel": "Ein Aktionspotenzial wandert entlang eines Axons zur Synapse, löst dort die Ausschüttung von Neurotransmittern aus und überträgt das Signal auf die nächste Zelle."
+    },
+    {
+      "id": "ik_kommunikation_innerhalb_organismus__hormonell",
+      "ebene": 2,
+      "bezeichnung": "Hormonelle Kommunikation (endokrines System)",
+      "uebergeordnetes_konzept": "ik_kommunikation_innerhalb_organismus",
+      "reihenfolge": 2,
+      "definition": "Die langsamere, über die Blutbahn vermittelte Signalübertragung durch Hormone, die an entfernten Zielzellen mit passenden Rezeptoren wirken.",
+      "beispiel": "Die Bauchspeicheldrüse gibt Insulin ins Blut ab, das über den gesamten Körper verteilt wird und an Muskel-, Leber- und Fettzellen die Glukoseaufnahme auslöst."
+    },
+    {
+      "id": "ik_reizaufnahme_reizverarbeitung",
+      "ebene": 1,
+      "bezeichnung": "Reizaufnahme und Reizverarbeitung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 5,
+      "definition": "Die Aufnahme physikalischer oder chemischer Umweltreize durch spezialisierte Sinneszellen und ihre anschließende Weiterleitung und Verarbeitung im Nervensystem bis zur bewussten Wahrnehmung oder unwillkürlichen Reaktion.",
+      "beispiel": "Lichtreize werden von den Sinneszellen der Netzhaut aufgenommen, als Nervenimpulse über den Sehnerv weitergeleitet und im Gehirn zu einem Bild verarbeitet.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_steuerung_regelung",
+          "konzept_bezeichnung": "Reizaufnahme und Reizverarbeitung",
+          "beziehung": "Gleiches Konzept, hier als eigenständiges Thema der Sinnesphysiologie behandelt; bei Steuerung und Regelung als der Auslöser, der einen Steuerungsprozess in Gang setzt."
+        }
+      ]
+    },
+    {
+      "id": "ik_reizaufnahme_reizverarbeitung__sinnesorgane_rezeptortypen",
+      "ebene": 2,
+      "bezeichnung": "Sinnesorgane und Rezeptortypen",
+      "uebergeordnetes_konzept": "ik_reizaufnahme_reizverarbeitung",
+      "reihenfolge": 1,
+      "definition": "Spezialisierte Organe und Zellen, die auf bestimmte Reizarten (Licht, Schall, Druck, Chemikalien u. a.) besonders empfindlich reagieren und diese in Nervenerregung umsetzen.",
+      "beispiel": "Das Auge enthält Fotorezeptoren für Licht, das Ohr Mechanorezeptoren für Schallwellen, die Zunge Chemorezeptoren für gelöste Stoffe."
+    },
+    {
+      "id": "ik_reizaufnahme_reizverarbeitung__reizweiterleitung_verarbeitung",
+      "ebene": 2,
+      "bezeichnung": "Reizweiterleitung und zentrale Verarbeitung",
+      "uebergeordnetes_konzept": "ik_reizaufnahme_reizverarbeitung",
+      "reihenfolge": 2,
+      "definition": "Die Weiterleitung der in Sinneszellen entstandenen Erregung über afferente Nervenbahnen zum zentralen Nervensystem und deren dortige Verrechnung mit anderen Signalen.",
+      "beispiel": "Signale mehrerer Geschmacksknospen der Zunge werden im Gehirn zu einem einzigen zusammengesetzten Geschmackseindruck verarbeitet."
+    }
+  ]
+}

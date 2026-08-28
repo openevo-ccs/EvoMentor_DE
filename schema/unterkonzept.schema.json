@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openevo-ccs.github.io/EvoMentor_DE/schema/unterkonzept.schema.json",
+  "title": "EvoMentor_DE Basiskonzept-Unterkonzept",
+  "description": "Validiert einen Eintrag in den erweiterten Unterkonzept-Taxonomie-Dateien der 5 nicht-evolutionären Basiskonzepte (data/individuelleentwicklungkonzepte.json, data/strukturfunktionkonzepte.json, data/stoffenergiekonzepte.json, data/informationkommunikationkonzepte.json, data/steuerungregelungkonzepte.json) — eine ausführlichere, hierarchische Ergänzung zu den knappen, schema-begrenzten basiskonzepte.json-teilkonzepte (genau 2 je Basiskonzept), strukturell analog zu evolutionskonzept.schema.json für bk_evolutive_entwicklung. lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] muss gegen die 'bezeichnung'-Werte der jeweils zuständigen Datei auflösen.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "ebene", "bezeichnung", "uebergeordnetes_konzept", "reihenfolge", "definition", "beispiel"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]+_[a-z0-9_]+$",
+      "description": "Eindeutige id, Präfix je Basiskonzept-Datei (ie_ = Individuelle Entwicklung, sf_ = Struktur und Funktion, se_ = Stoff- und Energieumwandlung, ik_ = Information und Kommunikation, sr_ = Steuerung und Regelung). Ebene-2-Konzepte verwenden die Konvention <präfix>_<eltern-slug>__<eigener-slug>."
+    },
+    "ebene": {
+      "type": "integer",
+      "enum": [1, 2],
+      "description": "1 = eigenständiges Hauptkonzept (keine Elternbeziehung), 2 = Unterkonzept mit genau einem Elternkonzept."
+    },
+    "bezeichnung": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Anzeigename und zugleich der kontrollierte Vokabular-Wert, den lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] referenziert. Kann bewusst über zwei Basiskonzept-Dateien hinweg identisch lauten, wenn dasselbe Konzept in beiden fachlich verortet ist (siehe verwandte_konzepte) — es gibt dabei kein Kollisionsrisiko, da relevante_unterkonzepte je basiskonzept_id nur gegen die diesem Basiskonzept zugeordnete Datei aufgelöst wird."
+    },
+    "uebergeordnetes_konzept": {
+      "type": ["string", "null"],
+      "pattern": "^[a-z]+_[a-z0-9_]+$",
+      "description": "id des Ebene-1-Elternkonzepts bei ebene=2, sonst null. Muss bei ebene=1 null sein und bei ebene=2 auf ein existierendes ebene=1-Konzept derselben Datei verweisen."
+    },
+    "reihenfolge": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Stabile Sortierposition unter Geschwister-Konzepten (gleiche uebergeordnetes_konzept bzw. gleiche Ebene bei ebene=1)."
+    },
+    "definition": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Kurze, fachlich präzise Definition (1-2 Sätze) für den Einsatz als Referenztext in der App und in KI-Prompts."
+    },
+    "beispiel": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Ein konkretes, für Lehrkräfte anschauliches Beispiel zur Illustration des Konzepts."
+    },
+    "verwandte_konzepte": {
+      "type": "array",
+      "description": "Optionale, bewusst nicht erschöpfende Querverweise zu thematisch verwandten Konzepten in einem anderen Basiskonzept — etwa wenn dasselbe Phänomen dort aus einer anderen fachlichen Linse heraus ebenfalls als eigenes Konzept geführt wird (z. B. 'Angepasstheit' strukturell bei Struktur und Funktion vs. entstehungsbezogen bei Evolutive Entwicklung). Kein Ersatz für basiskonzepte.json.bk_verbindungen (das die Basiskonzept-Ebene selbst verbindet), sondern eine feingranulare Ergänzung auf Unterkonzept-Ebene.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["basiskonzept_id", "konzept_bezeichnung", "beziehung"],
+        "properties": {
+          "basiskonzept_id": {
+            "type": "string",
+            "enum": ["bk_struktur_funktion", "bk_stoff_energie_umwandlung", "bk_information_kommunikation", "bk_steuerung_regelung", "bk_individuelle_entwicklung", "bk_evolutive_entwicklung"],
+            "description": "Das Basiskonzept, dessen Taxonomie-Datei das verwandte Konzept enthält (bei bk_evolutive_entwicklung: data/evolutionskonzepte.json)."
+          },
+          "konzept_bezeichnung": { "type": "string", "minLength": 1, "description": "Die exakte 'bezeichnung' des verwandten Konzepts in dessen Datei." },
+          "beziehung": { "type": "string", "minLength": 1, "description": "Kurze Erläuterung, wie/warum die beiden Konzepte zusammenhängen bzw. sich in ihrer fachlichen Linse unterscheiden." }
+        }
+      }
+    }
+  }
+}

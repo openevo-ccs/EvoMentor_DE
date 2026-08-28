@@ -301,6 +301,7 @@
       "transfer_potential": 0.92,
       "complexity_level_gy78": 0.58,
       "centrality_estimate": 0.95,
+      "unterkonzepte_referenz": "data/strukturfunktionkonzepte.json",
       "teilkonzepte": [
         {
           "id": "bk_struktur_funktion__struktur",
@@ -910,6 +911,7 @@
       "transfer_potential": 0.9,
       "complexity_level_gy78": 0.68,
       "centrality_estimate": 0.91,
+      "unterkonzepte_referenz": "data/stoffenergiekonzepte.json",
       "teilkonzepte": [
         {
           "id": "bk_stoff_energie_umwandlung__stoff",
@@ -1351,6 +1353,7 @@
       "transfer_potential": 0.88,
       "complexity_level_gy78": 0.74,
       "centrality_estimate": 0.89,
+      "unterkonzepte_referenz": "data/informationkommunikationkonzepte.json",
       "teilkonzepte": [
         {
           "id": "bk_information_kommunikation__information",
@@ -1755,6 +1758,7 @@
       "transfer_potential": 0.91,
       "complexity_level_gy78": 0.72,
       "centrality_estimate": 0.9,
+      "unterkonzepte_referenz": "data/steuerungregelungkonzepte.json",
       "teilkonzepte": [
         {
           "id": "bk_steuerung_regelung__steuerung",
@@ -2152,6 +2156,7 @@
       "transfer_potential": 0.84,
       "complexity_level_gy78": 0.68,
       "centrality_estimate": 0.82,
+      "unterkonzepte_referenz": "data/individuelleentwicklungkonzepte.json",
       "teilkonzepte": [
         {
           "id": "bk_individuelle_entwicklung__zelldifferenzierung",
@@ -2552,7 +2557,7 @@
       "transfer_potential": 0.86,
       "complexity_level_gy78": 0.78,
       "centrality_estimate": 0.86,
-      "evolutionskonzepte_referenz": "data/evolutionskonzepte.json",
+      "unterkonzepte_referenz": "data/evolutionskonzepte.json",
       "teilkonzepte": [
         {
           "id": "bk_evolutive_entwicklung__variation_selektion",

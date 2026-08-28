@@ -1,0 +1,112 @@
+{
+  "metadaten": {
+    "titel": "Stoff- und Energieumwandlung – erweiterte Unterkonzept-Taxonomie",
+    "beschreibung": "Hierarchisch strukturierte, ausführliche Ergänzung zu den 2 schema-begrenzten Teilkonzepten von bk_stoff_energie_umwandlung in data/basiskonzepte.json, analog zu data/evolutionskonzepte.json für bk_evolutive_entwicklung.",
+    "version": "1.0",
+    "quellen": [
+      "EvoMentor_DE v1.2 Feedback-Runde 2 (2026-08-25): Basiskonzepte-Detail-Feedback, Unterkonzepte-Vereinheitlichung",
+      "data/basiskonzepte.json wesentliche_prinzipien_kmk je Basiskonzept als Ausgangspunkt der Ebene-1-Gliederung"
+    ],
+    "struktur_hinweis": "Ebene 1 folgt bewusst den 2 bestehenden teilkonzepte (Stoffumwandlung/Energieumwandlung) statt der vollen wesentliche_prinzipien_kmk-Liste, plus Fließgleichgewicht als 3. Ebene-1-Konzept, da dieses gleichermaßen für Stoff- und Energieumwandlung gilt und nicht künstlich einem der beiden zugeordnet werden sollte. Ebene 2 sind Unterkonzepte, jeweils genau einem Ebene-1-Konzept zugeordnet.",
+    "verwendung": "lernziel.basiskonzeptbezug[].relevante_unterkonzepte[] speichert exakte 'bezeichnung'-Strings (Ebene 1 oder Ebene 2) aus dieser Datei, analog zu relevante_evolutionskonzepte bei bk_evolutive_entwicklung."
+  },
+  "stoffenergiekonzepte": [
+    {
+      "id": "se_stoffumwandlung",
+      "ebene": 1,
+      "bezeichnung": "Stoffumwandlung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 1,
+      "definition": "Die Aufnahme, chemische Umwandlung, Weiterleitung und Abgabe von Materie durch ein biologisches System im Austausch mit seiner Umwelt.",
+      "beispiel": "Pflanzen nehmen Kohlenstoffdioxid und Wasser auf und wandeln sie durch Fotosynthese in energiereiche organische Stoffe um."
+    },
+    {
+      "id": "se_stoffumwandlung__stoffaustausch_umwelt",
+      "ebene": 2,
+      "bezeichnung": "Stoffaustausch mit der Umwelt",
+      "uebergeordnetes_konzept": "se_stoffumwandlung",
+      "reihenfolge": 1,
+      "definition": "Die für offene biologische Systeme charakteristische fortlaufende Aufnahme von Stoffen aus der Umwelt und Abgabe von Stoffwechselprodukten an sie.",
+      "beispiel": "Ein Einzeller nimmt über seine Zellmembran ständig Nährstoffe auf und gibt Stoffwechselendprodukte wie Kohlenstoffdioxid ab."
+    },
+    {
+      "id": "se_stoffumwandlung__stoffkreislauf",
+      "ebene": 2,
+      "bezeichnung": "Stoffkreislauf",
+      "uebergeordnetes_konzept": "se_stoffumwandlung",
+      "reihenfolge": 2,
+      "definition": "Der fortlaufende Umlauf chemischer Elemente zwischen Organismen und ihrer unbelebten Umwelt, bei dem Stoffe wiederholt aufgenommen, umgewandelt und wieder freigesetzt werden.",
+      "beispiel": "Im Kohlenstoffkreislauf wird Kohlenstoffdioxid von Pflanzen fotosynthetisch gebunden, über Nahrungsketten weitergegeben und durch Zellatmung und Verwesung wieder freigesetzt."
+    },
+    {
+      "id": "se_energieumwandlung",
+      "ebene": 1,
+      "bezeichnung": "Energieumwandlung",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 2,
+      "definition": "Die Aufnahme, Umwandlung, Speicherung und Nutzung von Energie durch ein biologisches System, bei der Energie stets von einer Form in eine andere überführt, aber nie neu erzeugt wird.",
+      "beispiel": "Bei der Zellatmung wird die in Glukose gespeicherte chemische Energie in die für Zellprozesse nutzbare Energieform ATP umgewandelt."
+    },
+    {
+      "id": "se_energieumwandlung__energieaustausch_umwelt",
+      "ebene": 2,
+      "bezeichnung": "Energieaustausch mit der Umwelt",
+      "uebergeordnetes_konzept": "se_energieumwandlung",
+      "reihenfolge": 1,
+      "definition": "Die fortlaufende Aufnahme von Energie (z. B. Lichtenergie oder in Nahrung gebundene chemische Energie) aus der Umwelt und die Abgabe von Energie (v. a. als Wärme) an sie.",
+      "beispiel": "Pflanzen nehmen Lichtenergie der Sonne auf, Tiere nehmen chemisch gebundene Energie über die Nahrung auf; beide geben einen Teil der Energie als Wärme wieder ab."
+    },
+    {
+      "id": "se_energieumwandlung__energiefluss_nahrungsketten",
+      "ebene": 2,
+      "bezeichnung": "Energiefluss durch Nahrungsketten",
+      "uebergeordnetes_konzept": "se_energieumwandlung",
+      "reihenfolge": 2,
+      "definition": "Die gerichtete Weitergabe von Energie entlang aufeinanderfolgender Nahrungsbeziehungen, beginnend bei den Produzenten.",
+      "beispiel": "Im Energiefluss einer Wiese wird die von Gräsern gebundene Sonnenenergie über Heuschrecken an Frösche und schließlich an Reiher weitergegeben."
+    },
+    {
+      "id": "se_energieumwandlung__trophieebenen_energieverlust",
+      "ebene": 2,
+      "bezeichnung": "Trophieebenen und Energieverlust",
+      "uebergeordnetes_konzept": "se_energieumwandlung",
+      "reihenfolge": 3,
+      "definition": "Die Gliederung eines Ökosystems in aufeinanderfolgende Ernährungsstufen (Trophieebenen), zwischen denen bei jedem Übergang ein Großteil der Energie als Wärme verloren geht, sodass nur ein kleiner Bruchteil der Energie die nächsthöhere Ebene erreicht.",
+      "beispiel": "Von der Energie, die Pflanzen binden, steht Pflanzenfressern nur etwa 10 % zur Verfügung, den nachfolgenden Fleischfressern davon wiederum nur etwa 10 %."
+    },
+    {
+      "id": "se_energieumwandlung__energieentwertung",
+      "ebene": 2,
+      "bezeichnung": "Energieentwertung",
+      "uebergeordnetes_konzept": "se_energieumwandlung",
+      "reihenfolge": 4,
+      "definition": "Bei jeder Energieumwandlung geht ein Teil der Energie als für biologische Arbeit nicht mehr nutzbare Wärme verloren (2. Hauptsatz der Thermodynamik), wodurch Lebewesen auf einen kontinuierlichen Energienachschub angewiesen sind.",
+      "beispiel": "Nur ein Teil der in der Nahrung enthaltenen chemischen Energie wird von einem Tier in Wachstum umgesetzt, ein erheblicher Anteil geht als Stoffwechselwärme verloren."
+    },
+    {
+      "id": "se_energieumwandlung__energetische_kopplung",
+      "ebene": 2,
+      "bezeichnung": "Energetische Kopplung",
+      "uebergeordnetes_konzept": "se_energieumwandlung",
+      "reihenfolge": 5,
+      "definition": "Die Verknüpfung einer energieliefernden mit einer energieverbrauchenden Reaktion, sodass die insgesamt frei werdende Energie einen sonst nicht ablaufenden Prozess antreiben kann.",
+      "beispiel": "Die energieliefernde Spaltung von ATP zu ADP ist an die energieverbrauchende Kontraktion von Muskelfilamenten gekoppelt; ebenso sind bei der Zellatmung Redoxreaktionen an die ATP-Synthese gekoppelt."
+    },
+    {
+      "id": "se_fliessgleichgewicht",
+      "ebene": 1,
+      "bezeichnung": "Fließgleichgewicht",
+      "uebergeordnetes_konzept": null,
+      "reihenfolge": 3,
+      "definition": "Ein für offene, lebende Systeme charakteristischer Zustand, in dem sich Zu- und Abfluss von Stoffen und Energie die Waage halten, sodass innere Zustandsgrößen konstant bleiben, obwohl fortlaufend Materie und Energie durch das System hindurchfließen — im Unterschied zu einem geschlossenen System, das einem statischen Gleichgewicht zustrebt.",
+      "beispiel": "Der Wassergehalt des menschlichen Körpers bleibt trotz ständiger Wasseraufnahme und -abgabe nahezu konstant, weil Zufuhr und Ausscheidung fortlaufend aneinander angeglichen werden.",
+      "verwandte_konzepte": [
+        {
+          "basiskonzept_id": "bk_steuerung_regelung",
+          "konzept_bezeichnung": "Fließgleichgewicht",
+          "beziehung": "Gleiches Konzept, hier als grundlegende thermodynamische Eigenschaft offener Systeme behandelt; bei Steuerung und Regelung mit Fokus darauf, wie Regelungsprozesse es aktiv aufrechterhalten."
+        }
+      ]
+    }
+  ]
+}

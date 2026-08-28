@@ -62,9 +62,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Fragen nach dem Warum einer Struktur ('wieso ist das so gebaut?') sind der Ausgangspunkt des Struktur-Funktions-Denkens, das dieses Lernziel einübt.",
+          "begruendung": "Fragen nach dem Warum einer Struktur, etwa 'wieso ist das so gebaut?', sind der Ausgangspunkt jedes Struktur-Funktions-Denkens, das dieses Lernziel früh einübt. Indem Kinder lernen, gezielt nach dem Zusammenhang zwischen Bau und Funktion eines Lebewesens zu fragen, entwickeln sie die Grundhaltung, die später nötig ist, um morphologische und anatomische Angepasstheit systematisch zu erkennen und zu erklären. Diese Fragehaltung bleibt über alle Klassenstufen hinweg die methodische Grundlage des gesamten Basiskonzepts.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -165,8 +168,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Vermutungen über Ursache und Wirkung vorzubereiten, ist eine methodische Vorstufe zum späteren Erklären von Struktur-Funktions-Zusammenhängen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Vermutungen über Ursache und Wirkung vorzubereiten, ist eine methodische Vorstufe zum späteren Erklären von Struktur-Funktions-Zusammenhängen: Wer vermutet, eine bestimmte Form diene einem bestimmten Zweck, formuliert damit implizit bereits eine Struktur-Funktions-Hypothese. Diese methodische Kompetenz bereitet vor, ohne selbst schon konkrete biologische Struktur-Funktions-Beziehungen zu behandeln.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -269,8 +275,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Prüfen von Vermutungen durch Beobachtung ist die methodische Grundlage, mit der später Struktur-Funktions-Hypothesen getestet werden.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Prüfen von Vermutungen durch Beobachtung und Experiment ist die methodische Grundlage, mit der später konkrete Struktur-Funktions-Hypothesen getestet werden: Erst wenn eine Vermutung über den Zweck einer Struktur überprüft werden kann, wird aus einer bloßen Idee ein naturwissenschaftlich abgesichertes Erklärungsmuster. Dieses Lernziel schult damit das methodische Werkzeug, nicht bereits den fachlichen Inhalt des Basiskonzepts selbst.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -373,8 +382,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Sinnesorgane sind selbst ein Struktur-Funktions-Beispiel; ihr bewusster Einsatz bereitet spätere Betrachtungen ihres Baus vor.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Sinnesorgane sind selbst ein Struktur-Funktions-Beispiel: Ihr Bau, etwa die Linse des Auges oder das Trommelfell des Ohrs, ist unmittelbar auf die jeweilige Wahrnehmungsfunktion zugeschnitten. Der bewusste Einsatz der eigenen Sinne bereitet spätere, vertiefte Betrachtungen ihres Baus vor und macht schon früh erfahrbar, dass Wahrnehmung an spezifische körperliche Strukturen gebunden ist.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -391,9 +403,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die bewusste Nutzung der Sinne zur Beobachtung ist die Grundform biologischer Informationsaufnahme aus der Umwelt.",
+          "begruendung": "Die bewusste Nutzung der Sinne zur Beobachtung ist die Grundform biologischer Informationsaufnahme aus der Umwelt: Jedes Sinnesorgan ist auf eine bestimmte Reizart spezialisiert und wandelt diese in ein für das Nervensystem verwertbares Signal um. Indem Schülerinnen und Schüler die Möglichkeiten und Grenzen ihrer eigenen Sinne bewusst erkunden, erfahren sie unmittelbar am eigenen Körper, wie begrenzt und zugleich spezifisch die menschliche Reizaufnahme ist – eine Grundlage für das spätere Verständnis von Sinnesorganen und Rezeptortypen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Sinnesorgane und Rezeptortypen"
           ]
         }
       ],
@@ -496,9 +511,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Hilfsmittel wie Lupe und Fernglas erweitern die Reichweite und Genauigkeit der eigenen Sinnesaufnahme und damit die Informationsgewinnung.",
+          "begruendung": "Hilfsmittel wie Lupe, Fernglas oder Thermometer erweitern die Reichweite und Genauigkeit der eigenen Sinnesaufnahme und damit die Informationsgewinnung über die natürlichen Grenzen der menschlichen Rezeptoren hinaus. Ein Thermometer etwa erfasst Temperaturunterschiede präziser, als es das menschliche Wärmeempfinden könnte, und eine Lupe macht Strukturen sichtbar, die das bloße Auge nicht auflösen kann. Der sachgerechte Umgang mit solchen Hilfsmitteln erweitert damit gezielt die biologisch begrenzte Reizaufnahme.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Sinnesorgane und Rezeptortypen"
           ]
         }
       ],
@@ -594,8 +612,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Viele der zuzuordnenden Alltagssachverhalte betreffen Stoff- und Energieprozesse in Natur und Technik, auch wenn die Übung selbst noch sehr allgemein bleibt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Viele der zuzuordnenden Alltagssachverhalte betreffen Stoff- und Energieprozesse in Natur und Technik, auch wenn diese frühe Zuordnungsübung selbst noch sehr allgemein bleibt: Ob Kochen, Wachstum einer Pflanze oder der Betrieb eines Motors – hinter fast jedem Alltagsphänomen aus Mensch, Natur oder Technik steht letztlich eine Form von Stoff- oder Energieumwandlung. Diese erste Zuordnung schafft ein Bewusstsein dafür, wie allgegenwärtig solche Umwandlungsprozesse sind.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -696,8 +717,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Viele Beispielbereiche naturwissenschaftlicher Erkenntnis (Medizin, Landwirtschaft) betreffen Stoff- und Energieprozesse, auch wenn dieses Lernziel selbst allgemein bleibt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Viele Beispielbereiche naturwissenschaftlicher Erkenntnis wie Medizin oder Landwirtschaft betreffen Stoff- und Energieprozesse, auch wenn dieses Lernziel selbst noch allgemein bleibt: Medizinischer Fortschritt beruht häufig auf dem Verständnis körpereigener Stoffwechselprozesse, landwirtschaftlicher Fortschritt auf der gezielten Steuerung von Stoff- und Energieflüssen in Nutzpflanzen und -tieren. Die Bedeutung naturwissenschaftlicher Erkenntnisse zu erläutern berührt damit indirekt dieses Basiskonzept.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -799,8 +823,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Beispiele wie Landwirtschaft oder Zucht sind konkrete Stoff- und Energieflüsse zwischen Mensch, Natur und Technik.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Beispiele wie Landwirtschaft oder Tierzucht sind konkrete Stoff- und Energieflüsse zwischen Mensch, Natur und Technik: Nutzpflanzen entziehen dem Boden Nährstoffe, die durch Düngung wieder zugeführt werden müssen, Nutztiere wandeln aufgenommenes Futter in Fleisch, Milch oder Eier um. Die Vernetzung dieser drei Bereiche an Beispielen zu erläutern macht solche Stoff- und Energieflüsse zwischen Mensch und Natur konkret sichtbar.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -892,9 +919,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Bau der Samenpflanze mit ihren kompartimentierten Organen ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Der Bau der Samenpflanze mit ihren klar gegliederten Organen Wurzel, Sprossachse, Laubblätter und Blüten ist unmittelbarer Gegenstand dieses Lernziels: Jedes dieser Organe übernimmt eine eigene, räumlich abgegrenzte Aufgabe im Gesamtorganismus, von der Wasseraufnahme über die Fotosynthese bis zur Fortpflanzung. Das Betrachten und Beschreiben dieses Grundbauplans legt damit die strukturelle Grundlage, auf der alle weiteren pflanzenbiologischen Lernziele aufbauen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -1000,9 +1030,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die vier Grundorgane zu benennen ist die begriffliche Grundlage der Struktur-Betrachtung von Pflanzen.",
+          "begruendung": "Die vier Grundorgane Wurzel, Sprossachse, Laubblätter und Blüten korrekt zu benennen ist die begriffliche Grundlage jeder weiteren Struktur-Betrachtung von Pflanzen: Ohne ein gemeinsames Vokabular für die einzelnen, funktional abgegrenzten Organe lässt sich später weder ihr Bau im Detail noch ihr Zusammenspiel sinnvoll besprechen. Dieses Lernziel liefert damit das notwendige begriffliche Fundament für alle nachfolgenden Struktur-Funktions-Betrachtungen an der Pflanze.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -1111,9 +1144,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Vielfalt bei gleichem Grundaufbau ist die zentrale Struktur-Aussage dieses Lernziels.",
+          "begruendung": "Vielfalt bei gleichem Grundaufbau ist die zentrale Struktur-Aussage dieses Lernziels: Obwohl sich Samenpflanzen in Größe, Form und Lebensraum stark unterscheiden, folgen sie alle demselben grundlegenden Bauplan aus Wurzel, Sprossachse, Blättern und Blüten. Der Vergleich verschiedener Arten unter diesem Gesichtspunkt macht sichtbar, wie ein gemeinsames Strukturprinzip an unterschiedliche Funktionen und Umweltbedingungen angepasst werden kann.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -1217,8 +1253,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das definierende Merkmal 'Fortpflanzung über Samen statt Sporen' ist zugleich ein struktureller Unterschied im Fortpflanzungsorgan.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das definierende Merkmal 'Fortpflanzung über Samen statt Sporen' ist zugleich ein struktureller Unterschied im Fortpflanzungsorgan: Samenpflanzen bilden spezialisierte, gegen Austrocknung geschützte Samenanlagen aus, während sporenbildende Pflanzen keine vergleichbare Schutzstruktur besitzen. Die Definition des Begriffs Samenpflanze knüpft damit unmittelbar an ein reales Struktur-Merkmal an.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -1320,9 +1359,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das angeleitete Zergliedern und Zeichnen macht den strukturellen Aufbau der Pflanze unmittelbar sichtbar und erfahrbar.",
+          "begruendung": "Das angeleitete Zergliedern und zeichnerische Darstellen des Baus von Samenpflanzen macht den strukturellen Aufbau der Pflanze unmittelbar sichtbar und erfahrbar: Beim Zerlegen einer Blüte oder eines Sprosses in ihre Einzelteile wird die räumliche Organisation der Pflanzenorgane greifbar, die im bloßen Betrachten oft verborgen bleibt. Das anschließende Zeichnen zwingt zusätzlich zur genauen Beobachtung struktureller Details.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -1425,9 +1467,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Herbarisieren dient dazu, strukturelle Merkmale von Pflanzen dauerhaft für den Vergleich verfügbar zu machen.",
+          "begruendung": "Das Herbarisieren ausgewählter Samenpflanzen bzw. Pflanzenteile dient dazu, strukturelle Merkmale von Pflanzen dauerhaft für den Vergleich verfügbar zu machen: Getrocknete und gepresste Belege bewahren Blattform, Blütenbau und Wuchsform über die eigentliche Vegetationsperiode hinaus. Diese methodische Fertigkeit unterstützt damit direkt den systematischen Vergleich struktureller Merkmale verschiedener Pflanzenarten.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -1527,9 +1572,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Fortpflanzung ist der zentrale Mechanismus der Individualentwicklung, mit dem eine neue Generation von Individuen entsteht.",
+          "begruendung": "Fortpflanzung ist der zentrale Mechanismus, mit dem sich die Individualentwicklung eines Organismus über eine einzelne Lebensspanne hinaus fortsetzt: Aus der begrenzten Existenz eines Individuums entsteht eine neue Generation, die den Lebenszyklus der Art fortführt. Für Samenpflanzen bedeutet dies, dass Blüten-, Frucht- und Samenbildung nicht beiläufige, sondern entwicklungsbiologisch zentrale Prozesse sind, in die die Pflanze erhebliche Ressourcen investiert. Das Lernziel führt damit unmittelbar in den Kernbereich des Basiskonzepts Individuelle Entwicklung ein, indem es Fortpflanzung als notwendigen Abschlusspunkt jedes individuellen Entwicklungsverlaufs etabliert.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
           ]
         },
         {
@@ -1547,8 +1595,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Pflanzen investieren erhebliche Stoff- und Energiereserven in Blüten, Früchte und Samen, was die Bedeutung der Fortpflanzung stofflich unterlegt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Pflanzen investieren erhebliche Stoff- und Energiereserven in Blüten, Früchte und Samen, was die Bedeutung der Fortpflanzung stofflich und energetisch unterlegt: Die Bildung von Nektar, Fruchtfleisch und Speicherstoffen im Samen kostet die Mutterpflanze beträchtliche Ressourcen, die an anderer Stelle, etwa für Wachstum, fehlen. Diese Investition macht deutlich, dass Fortpflanzung aus stofflich-energetischer Sicht eine kostspielige, aber notwendige Investition in die nächste Generation darstellt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung",
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1644,9 +1696,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Vergleich der Blütenbestandteile bei gleichem Grundaufbau ist der strukturelle Kern dieses Lernziels.",
+          "begruendung": "Der Vergleich der Blütenbestandteile bei gleichem Grundaufbau ist der strukturelle Kern dieses Lernziels: Obwohl Blüten in Form, Farbe und Größe stark variieren, lassen sich bei den meisten Samenpflanzen dieselben Grundbestandteile wie Kelch-, Kron-, Staub- und Fruchtblätter identifizieren. Das Beschreiben und Vergleichen von Blüten unter diesem Gesichtspunkt schult das Erkennen von Struktur-Funktions-Mustern trotz äußerer Vielfalt.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -1744,9 +1799,13 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Abfolge von Bestäubung, Befruchtung und Samenbildung ist der zentrale Individualentwicklungsprozess dieses Lernziels.",
+          "begruendung": "Die Abfolge von Bestäubung, Befruchtung und Samenbildung bei Samenpflanzen ist ein durchgängiges Beispiel individueller Entwicklung: Aus der befruchteten Eizelle entsteht über Zellteilung und Differenzierung der pflanzliche Embryo im Samen, während die Mutterpflanze parallel Nähr- und Speichergewebe für dessen spätere Keimung bereitstellt. Damit verbindet dieses Lernziel den reproduktiven Abschluss eines Entwicklungszyklus mit dem Beginn eines neuen und macht diesen Übergang an einem konkreten, im Unterricht gut beobachtbaren Organismus greifbar.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion",
+            "Zelldifferenzierung und Embryonalentwicklung"
           ]
         },
         {
@@ -1764,8 +1823,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Samen- und Fruchtbildung sind mit erheblichen Stoffinvestitionen der Mutterpflanze verbunden.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Samen- und Fruchtbildung sind mit erheblichen Stoffinvestitionen der Mutterpflanze verbunden: Für jeden Samen müssen Nähr- und Speicherstoffe bereitgestellt werden, die der Keimpflanze später den Start in die eigenständige Entwicklung ermöglichen. Fortpflanzung und Entwicklung von Samenpflanzen zu beschreiben schließt damit unmittelbar diesen stofflichen Investitionsaspekt mit ein.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1853,8 +1915,11 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Keimung markiert den Beginn der individuellen Entwicklung einer neuen Pflanze und ist damit eng mit diesem Basiskonzept verknüpft.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Keimung markiert den sichtbaren Beginn der individuellen Entwicklung einer neuen Pflanze aus dem ruhenden Samen. Die hier genannten Bedingungen wie Wasser, Wärme und Sauerstoff sind die äußeren Voraussetzungen, unter denen dieses Wachstum überhaupt anläuft, weshalb das Lernziel für das Basiskonzept relevant, aber nicht dessen unmittelbarer Kern ist.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Wachstum"
+          ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
@@ -1865,16 +1930,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Dass Keimung erst durch äußere Faktoren wie Wasser und Wärme ausgelöst wird, ist ein Beispiel für gerichtete Steuerung eines inneren Zustands.",
+          "begruendung": "Dass die Keimung erst durch äußere Faktoren wie Wasser, Wärme und Sauerstoff ausgelöst wird, ist ein Beispiel für einen offenen Wirkungskreis: Der Reiz startet den Prozess, ohne dass eine Rückmeldung über den erreichten Entwicklungsstand an die auslösenden Faktoren zurückwirkt. Sobald die Bedingungen erfüllt sind, läuft das Keimungsprogramm einem festen Ablauf folgend ab, unabhängig davon, wie die Keimung im Einzelnen verläuft. Damit ist die Keimung ein anschauliches, früh im Unterricht einsetzbares Beispiel für gerichtete Steuerung eines inneren Zustands durch äußere Auslöser.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wasseraufnahme und Aktivierung des Stoffwechsels sind notwendige stoffliche Voraussetzungen der Keimung.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wasseraufnahme und die damit verbundene Aktivierung des Stoffwechsels sind notwendige stoffliche Voraussetzungen der Keimung: Ohne ausreichende Wasseraufnahme können die im Samen gespeicherten Reservestoffe nicht mobilisiert und für das beginnende Wachstum nutzbar gemacht werden. Die genannten Keimungsbedingungen sind damit zugleich die Voraussetzungen für den einsetzenden Stoffaustausch mit der Umwelt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -1961,9 +2032,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Vergleich zweier Fortpflanzungswege ist unmittelbarer Kern des Basiskonzepts Individuelle Entwicklung.",
+          "begruendung": "Der Vergleich geschlechtlicher und ungeschlechtlicher Fortpflanzung ist unmittelbarer Kern des Basiskonzepts Individuelle Entwicklung, da beide Wege zeigen, wie ein neues Individuum entsteht und der Lebenszyklus einer Art fortgesetzt wird. Während geschlechtliche Fortpflanzung durch die Verschmelzung zweier Keimzellen genetisch neu kombinierte Nachkommen hervorbringt, entstehen bei ungeschlechtlicher Fortpflanzung genetisch identische Kopien des Elternorganismus. Dieser grundlegende Unterschied in den Reproduktionsstrategien prägt maßgeblich, wie variabel bzw. einheitlich die individuelle Entwicklung der jeweiligen Nachkommen verläuft.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
           ]
         },
         {
@@ -2071,9 +2145,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Zergliedern legt die einzelnen strukturellen Bestandteile der Blüte für die Betrachtung frei.",
+          "begruendung": "Das Zergliedern von Blüten legt deren einzelne strukturelle Bestandteile für die genaue Betrachtung frei: Erst wenn Kelch-, Kron-, Staub- und Fruchtblätter voneinander getrennt und einzeln untersucht werden, lassen sich ihre jeweilige Anordnung, Anzahl und Form präzise erfassen. Diese praktische Zergliederung macht den sonst nur äußerlich sichtbaren Blütenbau strukturell vollständig erschließbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -2170,8 +2247,11 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Experiment untersucht die Auslösebedingungen des Beginns individueller Entwicklung einer Pflanze.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Experiment untersucht, unter welchen äußeren Bedingungen die individuelle Entwicklung einer Pflanze aus dem Samen überhaupt beginnt. Indem Wasser, Wärme und Licht gezielt variiert werden, wird der Beginn des Wachstumsprozesses experimentell nachvollzogen, statt nur beschrieben zu werden, was den unterrichtlichen Bezug zum Basiskonzept vertieft.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Wachstum"
+          ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
@@ -2182,16 +2262,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die gezielte Variation einzelner Faktoren prüft experimentell, wie äußere Reize den inneren Zustand 'Keimung auslösen' steuern.",
+          "begruendung": "Die gezielte Variation einzelner Faktoren wie Wasser, Wärme und Licht prüft experimentell, wie äußere Reize den inneren Zustand 'Keimung ausgelöst' steuern, ohne dass eine Rückkopplung zwischen dem Entwicklungsfortschritt und den auslösenden Bedingungen besteht. Das Experiment macht dadurch den offenen Wirkungskreis der Steuerung unmittelbar erfahrbar: Jede Variable wirkt einseitig auf den Keimungsstart, wird aber selbst nicht durch den Erfolg oder Misserfolg der Keimung beeinflusst.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wasser, Wärme und Licht als variierte Faktoren sind zugleich stoffliche und energetische Rahmenbedingungen der Keimung.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wasser, Wärme und Licht als hier variierte Faktoren sind zugleich stoffliche und energetische Rahmenbedingungen der Keimung: Wasser wird für den Stoffwechsel benötigt, Wärme liefert die für Stoffwechselreaktionen nötige Aktivierungsenergie, Licht ist für viele Arten ein zusätzliches Keimungssignal. Das experimentelle Ermitteln dieser Bedingungen verbindet damit stoffliche und energetische Aspekte des Keimungsprozesses miteinander.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung",
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -2282,9 +2369,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Exkurs überträgt das Struktur-Prinzip 'Vielfalt bei gleichem Grundaufbau' bewusst auf technische Objekte.",
+          "begruendung": "Dieser Exkurs überträgt das biologische Struktur-Prinzip 'Vielfalt bei gleichem Grundaufbau' bewusst auf technische Objekte wie Fahrzeuge, Sportgeräte oder Werkzeuge: Auch technische Produkte derselben Kategorie folgen häufig einem gemeinsamen konstruktiven Grundmuster, das je nach Einsatzzweck variiert wird. Dieser Transfer verdeutlicht, dass das Struktur-Funktions-Prinzip kein rein biologisches, sondern ein allgemeineres Gestaltungsprinzip ist.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -2401,9 +2491,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stärke und Fett sind die zentralen Speicherstoffe, deren Nachweis unmittelbarer Gegenstand dieses Lernziels ist.",
+          "begruendung": "Stärke und Fett sind die zentralen Speicherstoffe in Samen und Speicherorganen, deren experimenteller Nachweis unmittelbarer Gegenstand dieses Lernziels ist: Beide Stoffe stellen die Energie- und Baustoffreserve bereit, aus der die Keimpflanze in der ersten Wachstumsphase, bevor sie selbst Fotosynthese betreiben kann, versorgt wird. Der Nachweis dieser Speicherstoffe macht diesen stofflichen Vorratsmechanismus experimentell konkret erfahrbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -2499,9 +2592,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Flügel, Klettvorrichtungen oder Fruchtfleisch sind Strukturen, deren Funktion für die Verbreitung unmittelbarer Gegenstand dieses Lernziels ist.",
+          "begruendung": "Flügel, Klettvorrichtungen oder Fruchtfleisch sind Strukturen, deren jeweilige Funktion für die Verbreitung von Samen unmittelbarer Gegenstand dieses Lernziels ist: Der geflügelte Ahornsamen nutzt seine Struktur für die Windverbreitung, der Klettenfrüchte-Haken für die Tierverbreitung, das Fruchtfleisch der Kirsche für die Verbreitung durch Fressen und Ausscheiden. Diese Vielfalt an Verbreitungsstrukturen zeigt exemplarisch, wie eng Bauform und ökologische Funktion zusammenhängen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -2605,9 +2701,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Flugsamen und technische Flugkörper lösen dasselbe Funktionsproblem der Fallverlangsamung auf strukturell ähnliche Weise.",
+          "begruendung": "Flugsamen und technische Flugkörper wie Segelflugzeug oder Fallschirm lösen dasselbe Funktionsproblem der Fallverlangsamung auf strukturell ähnliche Weise: Beide nutzen vergrößerte, luftwiderstandserzeugende Flächen, um die Sinkgeschwindigkeit zu verringern und dadurch eine größere Verbreitungsdistanz zu erreichen. Dieser Vergleich zwischen biologischer und technischer Lösung desselben Problems macht das Struktur-Funktions-Prinzip besonders anschaulich.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -2724,9 +2823,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Bedeutung der Ernährung für Wachstum und Energiehaushalt ist der unmittelbare Kern dieses Lernziels.",
+          "begruendung": "Die Bedeutung der Ernährung für Wachstum und Energiehaushalt ist der unmittelbare Kern dieses Lernziels: Ohne ausreichende Versorgung mit den durch Fotosynthese hergestellten energiereichen Stoffen könnte eine Pflanze weder wachsen noch ihre grundlegenden Lebensprozesse aufrechterhalten. Die Bedeutung der Ernährung zu erläutern führt damit direkt in die zentrale Rolle der Energieumwandlung für pflanzliches Leben ein.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -2822,8 +2924,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Blattgrün als Ort der Fotosynthese verknüpft diesen Stoffwechselprozess mit der strukturellen Kompartimentierung des Blattes.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Blattgrün als Ort der Fotosynthese verknüpft diesen Stoffwechselprozess mit der strukturellen Kompartimentierung des Blattes: Die Fotosynthese findet nicht irgendwo in der Pflanzenzelle statt, sondern spezifisch in den Chloroplasten, die als eigenständiges Kompartiment die dafür nötigen Membranstrukturen und Pigmente bereitstellen. Diese räumliche Zuordnung des Stoffwechselprozesses zu einer bestimmten Zellstruktur ist der strukturelle Anknüpfungspunkt dieses primär stofflich orientierten Lernziels.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -2834,9 +2939,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Umwandlung von Kohlenstoffdioxid und Wasser zu Traubenzucker ist unmittelbarer Gegenstand dieses Stoff- und Energieumwandlungs-Lernziels.",
+          "begruendung": "Die Umwandlung von Kohlenstoffdioxid und Wasser mithilfe von Sonnenlicht zu Traubenzucker ist unmittelbarer Gegenstand dieses Stoff- und Energieumwandlungs-Lernziels: Bei der Fotosynthese wird Lichtenergie in die chemische Energie energiereicher organischer Verbindungen umgewandelt, wobei Kohlenstoffdioxid und Wasser als Ausgangsstoffe zu Traubenzucker als Grundlage weiterer Stoffe wie Fette gekoppelt umgesetzt werden. Diese gekoppelte Stoff- und Energieumwandlung ist der zentrale Prozess, auf dem nahezu alles pflanzliche und in der Folge auch tierische Leben beruht.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -2931,9 +3039,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Oberflächenvergrößerung der Wurzel durch Wurzelhaare ist ein Paradebeispiel für die Funktion einer Struktur und zentral für dieses Lernziel.",
+          "begruendung": "Die Oberflächenvergrößerung der Wurzel durch zahlreiche feine Wurzelhaare ist ein Paradebeispiel für die Funktion einer Struktur und damit zentral für dieses Lernziel: Die stark vergrößerte Kontaktfläche zum umgebenden Boden ermöglicht eine deutlich effizientere Aufnahme von Wasser und darin gelösten Stoffen, als es eine glatte Wurzeloberfläche könnte. Das Prinzip der Oberflächenvergrößerung, hier an einem alltäglich zugänglichen Beispiel eingeführt, wird in späteren Klassenstufen an weiteren Organen wie Lunge oder Darm wiederkehren.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Oberflächenvergrößerung bei Stoffaustausch (Alveolen, Villi)"
           ]
         },
         {
@@ -2945,8 +3056,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wasser und Kohlenstoffdioxid sind die aufgenommenen Stoffe, deren Transport hier beschrieben wird.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wasser und Kohlenstoffdioxid sind die von der Pflanze aus der Umwelt aufgenommenen Stoffe, deren Aufnahme und Transport hier beschrieben werden: Beide Stoffe gelangen über unterschiedliche Wege, Wasser über die Wurzel, Kohlenstoffdioxid über die Blätter, in die Pflanze und werden anschließend zu den Orten ihrer stofflichen Verwertung transportiert. Diese Beschreibung schafft die stoffliche Grundlage für das spätere Verständnis der Fotosynthese.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -3037,8 +3151,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die feinen Gefäßdurchmesser des Leitgewebes sind eine Struktur, die das physikalische Kapillaritätsprinzip gezielt nutzt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die feinen Gefäßdurchmesser des pflanzlichen Leitgewebes sind eine Struktur, die das physikalische Prinzip der Kapillarität gezielt nutzt: Je enger ein Gefäß, desto stärker wirken die Kapillarkräfte, die Wasser entgegen der Schwerkraft nach oben steigen lassen. Die Untersuchung der Kapillarität macht damit exemplarisch nachvollziehbar, wie eine bestimmte Gewebestruktur einen physikalischen Effekt biologisch nutzbar macht.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -3049,9 +3166,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kapillarität ist unmittelbar der physikalische Mechanismus, der den passiven Wassertransport in der Pflanze ermöglicht.",
+          "begruendung": "Kapillarität ist unmittelbar der physikalische Mechanismus, der den passiven, energiesparenden Wassertransport in der Pflanze ermöglicht: In den engen Leitgefäßen steigt Wasser allein aufgrund von Adhäsions- und Kohäsionskräften nach oben, ohne dass die Pflanze dafür aktiv Energie aufwenden müsste. Die Untersuchung der Kapillarität macht diesen rein physikalisch getriebenen Stofftransportmechanismus experimentell nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -3143,8 +3263,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die sichtbar gemachten Leitbündel sind zugleich die strukturelle Grundlage des beobachteten Transportvorgangs.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die im Experiment sichtbar gemachten Leitbündel sind zugleich die strukturelle Grundlage des beobachteten Wassertransports in der Sprossachse: Ihre röhrenförmige, durchgehende Anordnung vom Wurzelansatz bis in die Blätter ermöglicht den ungehinderten Transport aufgenommenen Wassers durch die gesamte Pflanze. Die Untersuchung verknüpft damit unmittelbar eine sichtbare Gewebestruktur mit der von ihr getragenen Transportfunktion.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -3155,9 +3278,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Leitung von Wasser durch die Sprossachse ist unmittelbarer Gegenstand dieses Stofftransport-Lernziels.",
+          "begruendung": "Die Leitung von Wasser durch die Sprossachse ist unmittelbarer Gegenstand dieses Stofftransport-Lernziels: Über die Leitbündel wird das von der Wurzel aufgenommene Wasser samt darin gelöster Mineralstoffe bis in die Blätter transportiert, wo es für Fotosynthese und Verdunstung benötigt wird. Die Untersuchung dieses Transportwegs macht sichtbar, wie Stoffe innerhalb der Pflanze über teils erhebliche Distanzen bewegt werden.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -3262,9 +3388,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Teilchenmodell und die Aggregatzustände sind das physikalische Grundgerüst, mit dem Stoffe und ihre Umwandlungen erklärt werden.",
+          "begruendung": "Das Teilchenmodell und die Aggregatzustände sind das physikalische Grundgerüst, mit dem Stoffe und ihre Umwandlungen später erklärt werden: Erst das Verständnis, dass Stoffe aus bewegten Teilchen bestehen, die je nach Energiezustand fest, flüssig oder gasförmig angeordnet sind, ermöglicht es, Zustandsänderungen und chemische Umwandlungen von Stoffen nachzuvollziehen. Dieses Lernziel legt damit die konzeptuelle Grundlage für alle weiteren Stoffumwandlungs-Lernziele.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -3369,9 +3498,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Zusammenhang zwischen Temperatur und Teilchenbewegung ist eine physikalische Grundlage der Energieumwandlung in Stoffen.",
+          "begruendung": "Der Zusammenhang zwischen Temperatur und Teilchenbewegung ist eine physikalische Grundlage der Energieumwandlung in Stoffen: Je höher die Temperatur eines Stoffes, desto schneller bewegen sich seine Teilchen, was letztlich bedeutet, dass in ihnen mehr Bewegungsenergie steckt. Dieser Zusammenhang erklärt auf Teilchenebene, wie zugeführte Wärmeenergie in erhöhte Teilchenbewegung eines Stoffes umgesetzt wird.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -3471,9 +3603,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Reinstoffe und Stoffgemische zu unterscheiden ist unmittelbarer Gegenstand der stofflichen Grundbildung dieses Lernziels.",
+          "begruendung": "Reinstoffe und Stoffgemische zu unterscheiden ist unmittelbarer Gegenstand der stofflichen Grundbildung dieses Lernziels: Nur wer weiß, ob ein vorliegender Stoff ein einheitlicher Reinstoff oder ein Gemisch mehrerer Stoffe ist, kann sinnvoll über dessen mögliche Trennung oder Umwandlung nachdenken. Dieser Vergleich schafft eine notwendige begriffliche Grundlage für alle weiteren stofflichen Betrachtungen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -3573,9 +3708,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stoffeigenschaften wie Löslichkeit oder Dichte gezielt für Trennverfahren zu nutzen, ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Stoffeigenschaften wie Löslichkeit oder Dichte gezielt für Trennverfahren zu nutzen, ist unmittelbarer Gegenstand dieses Lernziels: Da sich einzelne Stoffe eines Gemisches in ihren physikalischen Eigenschaften unterscheiden, lassen sie sich anhand genau dieser Unterschiede gezielt wieder voneinander trennen. Diesen Zusammenhang zu erläutern verknüpft stoffliches Grundwissen unmittelbar mit seiner praktischen Anwendung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -3675,9 +3813,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das praktische Durchführen von Trennverfahren ist unmittelbarer Gegenstand dieses stofflichen Lernziels.",
+          "begruendung": "Das praktische Durchführen von Trennverfahren wie Dekantieren, magnetischer Trennung oder Eindampfen ist unmittelbarer Gegenstand dieses stofflichen Lernziels: Jedes dieser Verfahren nutzt gezielt eine bestimmte physikalische Eigenschaft der beteiligten Stoffe, etwa unterschiedliche Dichte oder Magnetisierbarkeit, um ein Gemisch wieder in seine Bestandteile zu zerlegen. Die selbstständige Durchführung solcher Trennverfahren macht diese stofflichen Prinzipien praktisch erfahrbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -3778,9 +3919,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Temperatur ist eine zentrale Zustandsgröße im Energiehaushalt, deren Messung hier geübt wird.",
+          "begruendung": "Temperatur ist eine zentrale Zustandsgröße im Energiehaushalt eines Systems, deren zuverlässige Messung hier geübt wird: Nur mit einer präzisen Temperaturmessung lassen sich später Energieumwandlungsprozesse quantitativ erfassen und miteinander vergleichen. Diese methodische Fertigkeit ist damit Voraussetzung für alle nachfolgenden, quantitativeren Betrachtungen von Energieumwandlungen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -3883,9 +4027,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Umwandlung von Stoffen an einfachen Beispielen zu beschreiben ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Die Umwandlung von Stoffen an einfachen Beispielen zu beschreiben ist unmittelbarer Gegenstand dieses Lernziels: Ob Rosten von Eisen oder Backen von Teig, an alltäglichen Beispielen wird sichtbar, dass sich Ausgangsstoffe durch eine Umwandlung in neue Stoffe mit veränderten Eigenschaften verwandeln können. Diese ersten Beispiele bereiten den Begriff der Stoffumwandlung anschaulich vor, bevor er später chemisch vertieft wird.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -3992,9 +4139,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stoffe als Energieträger zu kennzeichnen ist unmittelbarer Gegenstand dieses Energieumwandlungs-Lernziels.",
+          "begruendung": "Stoffe als Energieträger zu kennzeichnen und zwischen energiearmen und energiereichen Stoffen zu unterscheiden ist unmittelbarer Gegenstand dieses Energieumwandlungs-Lernziels: Energiereiche Stoffe wie Fette oder Kohlenhydrate speichern chemische Energie, die bei Bedarf, etwa durch Verbrennung oder Zellatmung, wieder freigesetzt werden kann. Diese Unterscheidung ist eine wichtige begriffliche Grundlage, um Stoffe später gezielt nach ihrem Energiegehalt einzuordnen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -4100,9 +4250,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Weitere Energieumwandlungsformen wie Strahlung zu nennen ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Weitere Energieumwandlungsformen wie die Energieübertragung durch Strahlung zu nennen ist unmittelbarer Gegenstand dieses Lernziels: Neben der in Stoffen gespeicherten chemischen Energie kann Energie auch als Strahlung, etwa Licht- oder Wärmestrahlung, übertragen werden, ohne dass dabei Materie selbst den Ort wechselt. Diese Erweiterung des Energiebegriffs über rein stoffgebundene Energieformen hinaus rundet das Verständnis von Energieumwandlung ab.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -4202,9 +4355,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Verbrennung als exemplarische chemische Stoffumwandlung ist unmittelbarer Gegenstand dieses Experiments.",
+          "begruendung": "Verbrennung als exemplarische chemische Stoffumwandlung, etwa von Kerzenwachs oder Eisenwolle, ist unmittelbarer Gegenstand dieses Experiments: Bei beiden Vorgängen entstehen aus den Ausgangsstoffen unter Beteiligung von Sauerstoff neue Stoffe mit veränderten Eigenschaften, was sich unmittelbar beobachten lässt. Diese experimentelle Untersuchung macht den abstrakten Begriff der Stoffumwandlung an einem konkreten, gut beobachtbaren Beispiel greifbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -4300,8 +4456,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wuchsformen wie Kraut, Strauch und Baum sind strukturelle Erscheinungsformen, auch wenn das Ordnungskriterium hier funktional statt verwandtschaftlich ist.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wuchsformen wie Kraut, Strauch und Baum sind strukturelle Erscheinungsformen von Samenpflanzen, auch wenn das Ordnungskriterium hier funktional statt verwandtschaftlich gewählt ist: Die jeweilige Wuchsform spiegelt wider, wie eine Pflanze ihre begrenzten Ressourcen auf Wachstum in die Höhe, Verholzung oder Lebensdauer verteilt. Diese Einteilung nach struktureller Erscheinung ergänzt die spätere Ordnung nach verwandtschaftlichen Merkmalen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -4516,8 +4675,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Merkmale wie Blütenbau oder Fruchtform, anhand derer Familien unterschieden werden, sind zugleich strukturelle Merkmale.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Merkmale wie Blütenbau oder Fruchtform, anhand derer Pflanzenfamilien voneinander unterschieden werden, sind zugleich strukturelle Merkmale im Sinne dieses Basiskonzepts: Die Einteilung in Familien stützt sich direkt auf beobachtbare, oft funktional bedeutsame Bauunterschiede zwischen den Pflanzen. Das Ordnen nach Verwandtschaft verknüpft damit systematisches und strukturelles Denken miteinander.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -4618,8 +4780,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die charakteristischen Merkmalskombinationen einer Pflanzenfamilie, etwa der Blütenbau, sind strukturelle Merkmale.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die charakteristischen Merkmalskombinationen einer Pflanzenfamilie, etwa ein typischer Blütenbau, sind strukturelle Merkmale, anhand derer sich diese Familie eindeutig definieren lässt: Jede Familie zeichnet sich durch ein wiederkehrendes Muster struktureller Eigenschaften aus, das über einzelne Arten hinweg stabil bleibt. Das Definieren zweier Pflanzenfamilien übt damit das Erkennen solcher stabilen Strukturmuster ein.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -4830,9 +4995,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Vergleich des Skelettbaus verschiedener Wirbeltierklassen bei gleichem Grundmuster ist unmittelbarer Gegenstand dieses Struktur-Lernziels.",
+          "begruendung": "Der Vergleich des Skelettbaus verschiedener Wirbeltierklassen bei gleichem Grundmuster ist unmittelbarer Gegenstand dieses Struktur-Lernziels: Trotz sehr unterschiedlicher Lebensweisen – etwa Fisch, Vogel und Säugetier – folgt das Skelett aller Wirbeltiere demselben grundlegenden Bauplan mit Wirbelsäule und paarigen Gliedmaßen, der jeweils an spezifische Funktionen angepasst ist. Dieser Vergleich macht das Prinzip 'Vielfalt bei gleichem Grundaufbau' an einem zentralen Beispiel der Wirbeltierbiologie greifbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -4937,8 +5105,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Wirbelsäule als definierendes Merkmal ist zugleich eine zentrale strukturelle Eigenschaft dieser Tiergruppe.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Wirbelsäule als definierendes Merkmal ist zugleich eine zentrale strukturelle Eigenschaft der Wirbeltiere: Sie schützt das Rückenmark, trägt den Körper und ermöglicht durch ihre gegliederte Bauweise flexible Bewegungen. Die Definition des Begriffs Wirbeltier knüpft damit unmittelbar an ein reales, funktional bedeutsames Struktur-Merkmal an.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -5040,8 +5211,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die fünf Wirbeltierklassen unterscheiden sich auch durch charakteristische strukturelle Merkmale wie Haut- oder Skelettbau.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die fünf Wirbeltierklassen unterscheiden sich auch durch charakteristische strukturelle Merkmale wie Haut- oder Skelettbau, etwa Schuppen bei Fischen, Federn bei Vögeln oder Haare bei Säugetieren. Das Nennen der Klassen und ihrer Vertreter legt damit die begriffliche Grundlage, auf der die spätere strukturelle und funktionale Charakterisierung der einzelnen Klassen aufbaut.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -5156,9 +5330,13 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Bedeutung der Ernährung für Bau- und Betriebsstoffe sowie Energie ist unmittelbarer Kern dieses Lernziels.",
+          "begruendung": "Die Bedeutung der Ernährung für Bau- und Betriebsstoffe sowie für die Energieversorgung ist unmittelbarer Kern dieses Lernziels: Nahrung liefert einem Wirbeltier sowohl die Bausteine für Wachstum und Zellerneuerung als auch die energiereichen Stoffe, aus denen der Körper durch Zellatmung nutzbare Energie gewinnt. Die Bedeutung der Ernährung zu erläutern verknüpft damit stoffliche und energetische Aspekte der Nahrungsaufnahme zu einem Gesamtbild.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung",
+            "Energieumwandlung"
           ]
         },
         {
@@ -5252,8 +5430,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Schlüssel-Schloss-Prinzip der Verdauungsenzyme ist ein struktureller Mechanismus, der hier modellhaft angedeutet wird.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Schlüssel-Schloss-Prinzip der Verdauungsenzyme ist ein struktureller Mechanismus, der hier modellhaft angedeutet wird: Jedes Verdauungsenzym passt in seiner räumlichen Struktur nur zu einem bestimmten Nährstoffbaustein und kann deshalb nur diesen gezielt zerlegen. Auch wenn das Teilchenmodell diese enzymatische Spezifität noch nicht explizit thematisiert, liegt sie der beschriebenen Zerlegung und dem Wiederaufbau körpereigener Stoffe bereits strukturell zugrunde.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Enzym-Substrat-Spezifität"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -5264,9 +5445,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Zerlegung der Nahrung in Bausteine und der Aufbau körpereigener Stoffe ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Die Zerlegung der aufgenommenen Nahrung durch Verdauungssäfte in ihre Bausteine und der anschließende Aufbau körpereigener Stoffe ist unmittelbarer Gegenstand dieses Lernziels: Große, energiereiche Nahrungsmoleküle werden zunächst in kleinere, resorbierbare Bausteine zerlegt, aus denen der Körper anschließend eigene, körpertypische Stoffe neu aufbaut. Das Teilchenmodell veranschaulicht diesen zweistufigen Prozess aus Abbau und Wiederaufbau modellhaft.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -5358,8 +5542,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Blutgefäßsystem ist eine Struktur, deren Transportfunktion hier im Vordergrund steht.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Blutgefäßsystem ist eine Struktur, deren Transportfunktion hier im Vordergrund steht: Ein verzweigtes Netz von Gefäßen unterschiedlichen Durchmessers ermöglicht es, Stoffe vom Ort der Aufnahme zu jeder Körperzelle zu transportieren. Die Bedeutung des Blutes für den Stofftransport zu erläutern setzt damit implizit bereits ein Verständnis für den Zusammenhang zwischen Gefäßstruktur und Transportfunktion voraus.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -5370,9 +5557,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Transport von Nährstoffen, Sauerstoff und Stoffwechselprodukten durch das Blut ist unmittelbarer Gegenstand dieses Stofflernziels.",
+          "begruendung": "Der Transport von Nährstoffen, Sauerstoff und Stoffwechselprodukten durch das Blut ist unmittelbarer Gegenstand dieses Stofflernziels: Ohne ein funktionierendes Transportmedium könnten aufgenommene Stoffe nicht zu den Zellen gelangen, an denen sie tatsächlich benötigt werden, und Abfallstoffe nicht zu den Ausscheidungsorganen abtransportiert werden. Die Bedeutung des Blutes für den Stofftransport zu erläutern schließt damit eine wichtige Lücke zwischen Stoffaufnahme und Stoffverwertung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -5466,9 +5656,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Zusammenhang zwischen Zahnform, Darmlänge und Ernährungsweise ist ein Kernbeispiel des Struktur-Funktions-Prinzips.",
+          "begruendung": "Der Zusammenhang zwischen Zahnform, Darmlänge und Ernährungsweise ist ein Kernbeispiel des Struktur-Funktions-Prinzips: Fleischfresser besitzen scharfe Reißzähne und einen kurzen Darm für leicht verdauliche Nahrung, Pflanzenfresser dagegen breite Mahlzähne und einen deutlich längeren Darm zur Verdauung schwer aufschließbarer Pflanzenfasern. Diese Ableitung von Struktur-Funktions-Beziehungen am Beispiel Körperbau und Ernährung ist explizit als Kernlernziel dieses Basiskonzepts ausgewiesen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -5480,8 +5673,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Ernährungsweise, auf die Gebiss und Darm angepasst sind, betrifft unmittelbar den Stoffhaushalt des Tieres.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Ernährungsweise, auf die Gebiss und Darm eines Tieres jeweils angepasst sind, betrifft unmittelbar dessen Stoffhaushalt: Ein auf Fleisch spezialisiertes Verdauungssystem verarbeitet andere Nährstoffverhältnisse als ein auf Pflanzenkost spezialisiertes, was sich direkt auf die aufgenommenen und umgesetzten Stoffmengen auswirkt. Die Ableitung dieser Beziehung berührt damit auch stoffliche Aspekte, auch wenn der eigentliche Fokus auf Struktur und Funktion liegt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -5567,9 +5763,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Klassifizieren nach Merkmalen ist eine strukturelle Ordnungsleistung, die hier bewusst auf nicht-biologische Objekte übertragen wird.",
+          "begruendung": "Klassifizieren nach bestimmten Kriterien ist eine strukturelle Ordnungsleistung, die hier bewusst auf nicht-biologische Objekte in Alltag und Technik übertragen wird: So wie biologische Arten anhand struktureller Merkmale klassifiziert werden, lassen sich auch Werkzeuge, Fahrzeuge oder Materialien nach vergleichbaren Kriterien ordnen. Dieser Transfer macht Klassifizieren als allgemeines Ordnungsprinzip erfahrbar, das über die Biologie hinausreicht.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -5668,9 +5867,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Exkurs überträgt das Struktur-Prinzip 'Vielfalt bei gleichem Grundaufbau' erneut, diesmal im Kontext der Wirbeltiere, auf technische Objekte.",
+          "begruendung": "Dieser Exkurs überträgt das Struktur-Prinzip 'Vielfalt bei gleichem Grundaufbau' erneut auf technische Objekte, diesmal im Kontext der zuvor behandelten Wirbeltiere: Ebenso wie unterschiedliche Wirbeltierklassen demselben Skelett-Grundmuster folgen, teilen sich viele Fahrzeuge, Sportgeräte oder Werkzeuge einen gemeinsamen konstruktiven Grundaufbau bei unterschiedlicher äußerer Gestaltung. Die wiederholte Anwendung dieses Prinzips festigt das Struktur-Funktions-Denken über verschiedene Themenfelder hinweg.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -5784,9 +5986,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stärke und Fett als energiereiche Nährstoffe nachzuweisen ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Stärke und Fett als energiereiche Nährstoffe experimentell in verschiedenen Nahrungsmitteln nachzuweisen ist unmittelbarer Gegenstand dieses Lernziels: Beide Stoffgruppen liefern dem Körper wichtige Energie- und Baustofflieferanten, deren Vorhandensein sich mit einfachen chemischen Nachweisreaktionen sichtbar machen lässt. Dieser experimentelle Nachweis macht die stoffliche Zusammensetzung von Nahrungsmitteln konkret erfahrbar statt nur theoretisch behandelt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -5882,9 +6087,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kiemen, Haut und Lunge sind Strukturen, deren Funktion in Abhängigkeit vom Lebensraum unmittelbarer Kern dieses Lernziels ist.",
+          "begruendung": "Kiemen, Haut und Lunge sind Strukturen, deren jeweilige Funktion in Abhängigkeit vom Lebensraum unmittelbarer Kern dieses Lernziels ist: Wasserlebende Tiere nutzen meist Kiemen zur Sauerstoffaufnahme aus dem Wasser, während landlebende Tiere auf Lunge oder Haut zur Aufnahme von Luftsauerstoff angewiesen sind. Die Ableitung dieser Beziehungen zwischen Bau der Atmungsorgane, ihrer Funktion und dem jeweiligen Lebensraum ist ein zentrales Struktur-Funktions-Beispiel dieses Themenfelds.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -5896,8 +6104,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Atmungsorgane dienen dem Gasaustausch, einem stofflichen Grundprozess des Organismus.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Atmungsorgane dienen dem Gasaustausch, einem stofflichen Grundprozess des Organismus mit seiner Umwelt: Über Kiemen, Haut oder Lunge wird je nach Lebensraum Sauerstoff aufgenommen und Kohlenstoffdioxid abgegeben. Die Ableitung von Beziehungen zwischen Bau der Atmungsorgane, Funktion und Lebensraum berührt damit auch diesen grundlegenden Stoffaustausch mit der Umwelt, auch wenn der Schwerpunkt eher auf Struktur und Funktion liegt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -5987,8 +6198,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Atmungsorgane sind die strukturelle Grundlage, an der der hier beschriebene Gasaustausch stattfindet.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Atmungsorgane sind die strukturelle Grundlage, an der der hier beschriebene Gasaustausch stattfindet: Ihre stark vergrößerte, dünne Oberfläche ermöglicht den effizienten Übertritt von Sauerstoff ins Blut und von Kohlenstoffdioxid aus dem Blut. Die Bedeutung des Sauerstoffs für Lebensprozesse zu erläutern setzt damit implizit ein Verständnis der zugrunde liegenden strukturellen Austauschfläche voraus.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Oberflächenvergrößerung bei Stoffaustausch (Alveolen, Villi)"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -5999,9 +6213,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Sauerstoffnutzung zur Energiegewinnung ist unmittelbarer Gegenstand dieses Energieumwandlungs-Lernziels.",
+          "begruendung": "Die Nutzung des aufgenommenen Sauerstoffs zur Energiegewinnung ist unmittelbarer Gegenstand dieses Energieumwandlungs-Lernziels: Sauerstoff wird bei der Zellatmung benötigt, um die in der Nahrung enthaltene chemische Energie effizient in nutzbare Energie für Lebensprozesse und die Aufrechterhaltung der Körpertemperatur umzuwandeln. Die Bedeutung des Sauerstoffs zu erläutern führt damit direkt zum zentralen energetischen Prozess der Zellatmung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -6097,9 +6314,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Flossen, Beine und Flügel sind Strukturen, deren Funktion in Abhängigkeit von Lebensraum und Fortbewegungsart unmittelbarer Kern dieses Lernziels ist.",
+          "begruendung": "Flossen, Beine und Flügel sind Strukturen, deren jeweilige Funktion in Abhängigkeit von Lebensraum und Fortbewegungsart unmittelbarer Kern dieses Lernziels ist: Die stromlinienförmige Flosse ermöglicht effizientes Schwimmen im Wasser, das Bein trägt und bewegt den Körper an Land, der Flügel erzeugt den für den Flug nötigen Auftrieb in der Luft. Diese Ableitung von Beziehungen zwischen Körperbau, Fortbewegung und Lebensraum veranschaulicht das Struktur-Funktions-Prinzip an besonders anschaulichen Beispielen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -6196,9 +6416,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Fortpflanzung ist der zentrale Mechanismus, über den eine neue Generation entsteht, und damit unmittelbarer Kern dieses Basiskonzepts.",
+          "begruendung": "Fortpflanzung ist der zentrale Mechanismus, über den bei Wirbeltieren eine neue Generation entsteht und die Individualentwicklung der Art über die Lebensspanne einzelner Tiere hinaus fortgesetzt wird. Das Lernziel überträgt damit die bei Pflanzen bereits eingeführte Bedeutung der Fortpflanzung auf Wirbeltiere und macht deutlich, dass unabhängig von der jeweiligen Organismengruppe Fortpflanzung stets den notwendigen Abschluss und zugleich Neubeginn eines individuellen Entwicklungszyklus darstellt.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
           ]
         },
         {
@@ -6302,9 +6525,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Vergleich verschiedener Befruchtungs- und Fortpflanzungsformen ist unmittelbarer Kern des Basiskonzepts Individuelle Entwicklung.",
+          "begruendung": "Der Vergleich verschiedener Befruchtungs- und Fortpflanzungsformen ist unmittelbarer Kern des Basiskonzepts Individuelle Entwicklung, da diese Formen bestimmen, wie und unter welchen Bedingungen ein neues Individuum entsteht. Innere Befruchtung erhöht typischerweise die Erfolgswahrscheinlichkeit der Befruchtung selbst, äußere Befruchtung erfordert dagegen meist eine sehr viel höhere Nachkommenzahl als Ausgleich, was unmittelbare Konsequenzen für die nachfolgende Individualentwicklung der Nachkommen hat.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
           ]
         },
         {
@@ -6412,16 +6638,23 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Zusammenhang von Befruchtungsart, Eibau und Entwicklungsort ist ein zentrales Beispiel individueller Entwicklung im Kontext des Lebensraums.",
+          "begruendung": "Der Zusammenhang von Befruchtungsart, Eibau und Entwicklungsort ist ein zentrales Beispiel individueller Entwicklung im Kontext des jeweiligen Lebensraums. Arten mit äußerer Befruchtung und wasserlebenden Larvenstadien zeigen eine indirekte Entwicklung mit deutlichem Gestaltwandel, während Arten mit innerer Befruchtung und dotterreichen, schalenumhüllten Eiern häufig eine direkte Entwicklung durchlaufen, bei der das Jungtier dem erwachsenen Tier bereits ähnelt. Das Lernziel verknüpft damit reproduktive und entwicklungsbiologische Aspekte zu einem stimmigen Gesamtbild.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion",
+            "Direkte und indirekte Entwicklung"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Bau des Eies mit Schale, Dotter und Membranen ist eine Struktur, deren Funktion hier eng mitbehandelt wird.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Der Bau des Eies mit Schale, Dotter und schützenden Membranen ist eine Struktur, deren Funktion hier eng mit Befruchtungsart, Entwicklungsort und Lebensraum mitbehandelt wird: Eine feste Kalkschale schützt das Ei an Land vor Austrocknung, während im Wasser gelegte Eier meist auf eine solche Schale verzichten können. Diese Ableitung verknüpft strukturelle Merkmale des Eibaus mit ihrer jeweiligen ökologischen Funktion.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -6535,9 +6768,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Verbrennung als Stoffumwandlung mit Energiefreisetzung ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Verbrennung als Stoffumwandlung unter Beteiligung von Sauerstoff, bei der Energie freigesetzt wird, ist unmittelbarer Gegenstand dieses Lernziels: Die Ausgangsstoffe werden dabei chemisch in neue Stoffe umgewandelt, während gleichzeitig die in ihnen gespeicherte chemische Energie als Wärme und Licht freigesetzt wird. Verbrennung verknüpft damit exemplarisch eine Stoffumwandlung unmittelbar mit einer begleitenden Energiefreisetzung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -6636,8 +6872,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Bewegung erfordert Energieumsatz, weshalb dieser physikalische Grundbegriff mit dem Energiehaushalt von Lebewesen verknüpft ist.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Bewegung erfordert stets einen Energieumsatz, weshalb dieser physikalische Grundbegriff eng mit dem Energiehaushalt von Lebewesen verknüpft ist: Jede Muskelbewegung setzt zuvor gespeicherte chemische Energie in Bewegungsenergie um. Das Erläutern des Begriffs Bewegung an Beispielen bereitet damit vor, später den Zusammenhang zwischen Energieumsatz und tatsächlicher körperlicher Aktivität zu verstehen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -6735,8 +6974,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Geschwindigkeit hängt vom Energieeinsatz eines bewegten Körpers ab, was diese physikalische Größe mit dem Energiehaushalt verknüpft.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Geschwindigkeit hängt vom Energieeinsatz eines bewegten Körpers ab, was diese physikalische Größe mit dem Energiehaushalt von Lebewesen verknüpft: Um sich schneller fortzubewegen, muss ein Organismus in derselben Zeit mehr Energie umsetzen als bei langsamerer Bewegung. Die qualitative Kennzeichnung der Geschwindigkeit über den Zusammenhang von Weg und Zeit bereitet damit spätere energetische Betrachtungen der Fortbewegung vor.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -6826,8 +7068,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Muskelkraft, eine der genannten Kraftarten, wird von Muskeln als Struktur erzeugt, was einen losen Bezug zur Funktion dieser Struktur herstellt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Muskelkraft als eine der hier genannten Kraftarten wird von Muskeln als körperlicher Struktur erzeugt, was einen losen, aber realen Bezug zur Funktion dieser Struktur herstellt: Die Einführung der Kraft als physikalische Wechselwirkungsgröße bildet die Grundlage, um später zu verstehen, wie Muskeln durch Kontraktion Bewegung erzeugen. Der Bezug zum Basiskonzept bleibt an dieser Stelle jedoch vor allem vorbereitend.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -6838,9 +7083,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kraft als Wechselwirkungsgröße einzuführen ist ein physikalisches Grundkonzept innerhalb des Energie-Teilkonzepts dieses Moduls.",
+          "begruendung": "Kraft als Wechselwirkungsgröße einzuführen ist ein physikalisches Grundkonzept innerhalb des Energie-Teilkonzepts dieses Moduls: Jede Krafteinwirkung, etwa beim Anheben eines Gegenstands, ist mit der Verrichtung von Arbeit und damit einem Energieumsatz verbunden. Das Kennzeichnen der Kraft als Wechselwirkungsgröße und das Nennen verschiedener Kraftarten legt damit die physikalische Grundlage für spätere energetische Betrachtungen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -6930,8 +7178,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Schwimmblase als Struktur nutzt gezielt den Auftrieb, was einen losen Bezug zur Funktion dieser Struktur herstellt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Schwimmblase mancher Fische ist eine Struktur, die gezielt den physikalischen Auftrieb nutzt, was einen losen Bezug zur Funktion dieser Struktur herstellt: Durch Anpassung ihres Gasvolumens kann die Schwimmblase den Fisch nahezu schwerelos im Wasser schweben lassen, ohne dass er dafür ständig aktiv schwimmen müsste. Alltagsbeispiele für Auftriebskräfte bereiten damit implizit das spätere Verständnis solcher struktureller Anpassungen vor.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -6942,9 +7193,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Auftriebskräfte an Alltagsbeispielen zu benennen ist ein physikalisches Grundkonzept innerhalb des Energie-Teilkonzepts dieses Moduls.",
+          "begruendung": "Auftriebskräfte an Alltagsbeispielen zu benennen ist ein physikalisches Grundkonzept innerhalb des Energie-Teilkonzepts dieses Moduls: Auftrieb wirkt als Kraft, die einem Körper in einer Flüssigkeit oder einem Gas entgegen der Schwerkraft entgegenwirkt und damit den nötigen Kraft- und Energieaufwand für Bewegung in diesem Medium beeinflusst. Dieses Lernziel bereitet damit spätere, tiefergehende energetische Betrachtungen der Fortbewegung im Wasser vor.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -7037,9 +7291,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stromlinienform und Flügelprofil sind Strukturen, deren Funktion, den Strömungswiderstand zu minimieren, unmittelbarer Kern dieses Lernziels ist.",
+          "begruendung": "Stromlinienform und Flügelprofil sind Strukturen, deren Funktion, den Strömungswiderstand zu minimieren, unmittelbarer Kern dieses Lernziels ist: Ein stromlinienförmiger Körper lenkt die umströmende Luft oder das Wasser mit möglichst wenig Verwirbelung um sich herum, wodurch der Bewegungsaufwand deutlich sinkt. Die Beschreibung solcher Strömungsverläufe macht sichtbar, wie eng Körperform und Bewegungseffizienz zusammenhängen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -7051,8 +7308,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Verringerung des Strömungswiderstands hat direkte energetische Konsequenzen für den Bewegungsaufwand eines Organismus.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Verringerung des Strömungswiderstands hat direkte energetische Konsequenzen für den Bewegungsaufwand eines Organismus: Ein stromlinienförmiger Körper muss weniger Energie aufwenden, um sich durch Wasser oder Luft zu bewegen, als ein Körper mit hohem Strömungswiderstand. Die Beschreibung solcher Strömungsverläufe macht damit einen wichtigen energetischen Zusammenhang der Fortbewegung sichtbar.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -7149,9 +7409,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Ermitteln von Auftriebskräften ist unmittelbarer Gegenstand dieses physikalischen Experiments im Energie-Teilkonzept.",
+          "begruendung": "Das experimentelle Ermitteln von Auftriebskräften in Wasser ist unmittelbarer Gegenstand dieses physikalischen Experiments im Energie-Teilkonzept: Durch das Messen der Auftriebskraft an unterschiedlichen Körpern wird der zuvor nur beschriebene physikalische Effekt quantitativ erfassbar. Dieses Experiment legt damit die messtechnische Grundlage für spätere energetische Betrachtungen der Fortbewegung im Wasser.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -7249,9 +7512,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Volumenbestimmung ist eine physikalische Messmethode, die später zur Berechnung von Körperdichte und Auftrieb dient.",
+          "begruendung": "Die experimentelle Bestimmung des Volumens von Körpern ist eine physikalische Messmethode, die später zur Berechnung von Körperdichte und Auftrieb benötigt wird: Erst wenn Volumen und Masse eines Körpers bekannt sind, lässt sich seine Dichte bestimmen und daraus ableiten, ob und wie stark er in einem Medium Auftrieb erfährt. Diese Messmethode ist damit ein notwendiger Zwischenschritt auf dem Weg zu tieferen energetischen Betrachtungen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -7345,8 +7611,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Merkmale wie Wirbelsäulentyp oder Hautbau, anhand derer die Klassen unterschieden werden, sind zugleich strukturelle Merkmale.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Merkmale wie Wirbelsäulentyp oder Hautbau, anhand derer die Wirbeltierklassen unterschieden werden, sind zugleich strukturelle Merkmale im Sinne dieses Basiskonzepts: Die Einteilung in Klassen stützt sich direkt auf beobachtbare, oft funktional bedeutsame Bauunterschiede zwischen den Tiergruppen. Das Ordnen nach Verwandtschaft verknüpft damit systematisches und strukturelles Denken miteinander.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -7556,8 +7825,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Gebiss- und Krallenform, die diese Einteilung stützen, sind strukturelle Merkmale mit funktionalem Bezug zur Ernährungsweise.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Gebiss- und Krallenform, die diese Einteilung nach Ernährungsweise stützen, sind strukturelle Merkmale mit unmittelbarem funktionalem Bezug: Scharfe Reißzähne und kräftige Krallen kennzeichnen Fleischfresser, breite Mahlzähne dagegen Pflanzenfresser. Das Ordnen der Wirbeltiere nach Fleisch-, Pflanzen- und Allesfressern nutzt damit gezielt strukturelle Merkmale als Ordnungskriterium.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -7568,8 +7840,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Ernährungsweise selbst betrifft unmittelbar den Stoff- und Energiehaushalt der Tiere.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Ernährungsweise selbst betrifft unmittelbar den Stoff- und Energiehaushalt der Tiere: Fleisch-, Pflanzen- und Allesfresser nehmen jeweils unterschiedliche Nährstoffzusammensetzungen auf und wandeln diese auf unterschiedliche Weise stofflich um. Das Ordnen der Wirbeltiere nach ihrer Ernährungsweise nutzt damit letztlich ein stoffliches Kriterium als Ordnungsprinzip.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -7657,9 +7932,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Merkmale wie Schuppen, Federn oder Haare zu kennen und für die Zuordnung zu nutzen ist unmittelbarer Kern dieses Struktur-Lernziels.",
+          "begruendung": "Merkmale wie Schuppen, Federn oder Haare zu kennen und für die begründete Zuordnung zu Fischen, Lurchen, Kriechtieren, Vögeln oder Säugetieren zu nutzen ist unmittelbarer Kern dieses Struktur-Lernziels: Jede dieser Körperbedeckungen erfüllt eine charakteristische Funktion, sei es Wasserdurchlässigkeit, Isolation oder Flugfähigkeit, und dient zugleich als verlässliches Bestimmungsmerkmal. Das Erkennen und Zuordnen dieser Merkmale verbindet damit systematische und funktionale Betrachtung der Wirbeltierklassen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -7763,9 +8041,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der aufrechte Bewegungsapparat und seine Belastungsgrenzen sind unmittelbarer Gegenstand dieses Struktur-Funktions-Lernziels.",
+          "begruendung": "Der aufrechte Bewegungsapparat und seine Belastungsgrenzen sind unmittelbarer Gegenstand dieses Struktur-Funktions-Lernziels: Wirbelsäule, Bandscheiben und Muskulatur sind strukturell auf bestimmte Belastungsmuster ausgelegt, werden bei dauerhaft falscher Haltung jedoch über diese Grenzen hinaus beansprucht. Maßnahmen zur Vorbeugung von Haltungsschäden abzuleiten setzt damit ein Verständnis der strukturellen Belastbarkeit des Bewegungsapparats voraus.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -7777,8 +8058,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Muskel- und Skelettbelastung hängen mit dem Energieaufwand von Bewegung und Haltung zusammen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Muskel- und Skelettbelastung hängen eng mit dem Energieaufwand von Bewegung und Haltung zusammen: Eine dauerhaft falsche Körperhaltung erfordert oft einen erhöhten und ungleichmäßig verteilten Energieaufwand der Muskulatur, um den Körper trotzdem im Gleichgewicht zu halten. Maßnahmen zur Vorbeugung von Haltungsschäden abzuleiten berührt damit indirekt auch energetische Aspekte der Körperhaltung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -7876,15 +8160,21 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Sättigungsgefühl als Steuerungssignal, das übermäßigen Konsum begrenzen soll, ist ein Regelungsaspekt der Ernährung, der hier mitschwingt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Sättigungsgefühl wirkt als Steuerungssignal, das übermäßigen Konsum begrenzen soll, und ist damit ein Regelungsaspekt der Ernährung, der in diesem Lernziel mitschwingt. Steigt der Füllungszustand des Magens oder der Blutzuckerspiegel nach der Nahrungsaufnahme, wird über hormonelle Signale ein Sättigungsgefühl ausgelöst, das die weitere Nahrungsaufnahme hemmt – ein klassisches Beispiel negativer Rückkopplung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die bewusste Auswahl von Nährstoffen und Energiegehalt ist unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Die bewusste Auswahl von Nährstoffen und deren Energiegehalt ist unmittelbarer Gegenstand dieses Lernziels: Eine gesundheitsfördernde Ernährung berücksichtigt sowohl die Menge der aufgenommenen Energie im Verhältnis zum tatsächlichen Bedarf als auch die Zusammensetzung der Nährstoffe, aus denen diese Energie stammt. Gesundheitsfördernde Ernährung zu begründen setzt damit ein Verständnis dieser energetischen Bilanz voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -7982,17 +8272,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Belohnungssystem des Gehirns, das durch Suchtmittel überaktiviert wird, ist ein neuronales Steuerungssystem.",
+          "begruendung": "Das Belohnungssystem des Gehirns ist ein angeborenes, weitgehend vorprogrammiertes neuronales Steuerungssystem, das eigentlich überlebenswichtige Verhaltensweisen wie Essen oder soziales Verhalten mit Wohlgefühl verstärkt. Suchtmittel greifen gezielt in dieses genetisch angelegte System ein und aktivieren es überproportional stark, wodurch das natürliche Steuerungsprogramm fehlgeleitet wird.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Vorprogrammierte/genetisch determinierte Steuerungsprozesse"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Nikotin, Alkohol und andere Drogen sind Stoffe, deren Aufnahme und Wirkung im Körper unmittelbarer Gegenstand dieses Lernziels sind.",
+          "begruendung": "Nikotin, Alkohol und andere Drogen sind Stoffe, deren Aufnahme und Wirkung im Körper unmittelbarer Gegenstand dieses Lernziels sind: Jede dieser Substanzen wird nach der Aufnahme im Körper stoffwechselt und entfaltet dabei charakteristische, meist schädliche Wirkungen auf verschiedene Organsysteme. Den Verzicht auf Suchtmittel zu begründen setzt ein Verständnis dieser stofflichen Wirkungswege voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -8092,9 +8388,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Zahn- und Hautpflege betreffen unmittelbar stoffliche Prozesse wie Säureproduktion durch Mundbakterien und den Hautschutz.",
+          "begruendung": "Zahn- und Hautpflege betreffen unmittelbar stoffliche Prozesse wie die Säureproduktion durch Mundbakterien oder den natürlichen Schutzfilm der Haut: Bakterien im Mundraum wandeln Nahrungsreste in Säuren um, die den Zahnschmelz angreifen, während die Haut über ihren eigenen Fettfilm vor dem Eindringen schädlicher Stoffe schützt. Körperhygiene zu begründen setzt damit ein Verständnis dieser zugrunde liegenden stofflichen Prozesse voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -8184,8 +8483,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Kleidung ersetzt funktional den evolutionär verlorenen Fellschutz und übernimmt damit eine Struktur-Funktions-Rolle, die der Körper selbst nicht mehr leistet.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Kleidung ersetzt funktional den im Laufe der Evolution weitgehend verlorenen Fellschutz des Menschen und übernimmt damit eine Struktur-Funktions-Rolle, die der Körper selbst nicht mehr leistet: Anders als viele Tiere kann der Mensch seine Körperbedeckung nicht mehr an wechselnde Witterung anpassen und muss diese Funktion durch geeignete Kleidung künstlich ersetzen. Witterungsgerechte Kleidung zu begründen setzt damit ein Bewusstsein für diese kulturell kompensierte biologische Lücke voraus.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -8196,9 +8498,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Witterungsgerechte Kleidung dient dem Erhalt des Wärme- und Energiehaushalts des Körpers.",
+          "begruendung": "Witterungsgerechte Kleidung dient dem Erhalt des Wärme- und Energiehaushalts des Körpers: Bei Kälte verhindert isolierende Kleidung übermäßigen Wärmeverlust, bei Hitze ermöglicht luftdurchlässige Kleidung eine ausreichende Wärmeabgabe, sodass der Körper in beiden Fällen weniger eigene Energie für die Temperaturregulation aufwenden muss. Witterungsgerechte Kleidung zu begründen setzt damit ein Verständnis dieses energetischen Zusammenhangs voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -8290,8 +8595,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Knochen, Gelenke und Muskeln bilden natürliche Hebelsysteme, deren Anordnung eine Struktur-Funktions-Beziehung darstellt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Knochen, Gelenke und Muskeln bilden natürliche Hebelsysteme, deren Anordnung eine reale Struktur-Funktions-Beziehung darstellt: Ein Gelenk fungiert dabei als Drehpunkt, der Knochen als starrer Hebelarm und der ansetzende Muskel als Kraftgeber. Das Anwenden des Hebelgesetzes an einfachen Beispielen bereitet vor, später zu verstehen, wie diese Struktur konkrete Bewegungen des Körpers ermöglicht.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -8302,9 +8610,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Hebelgesetz ist ein physikalisches Grundprinzip innerhalb des Energie-Teilkonzepts, das hier an Beispielen angewendet wird.",
+          "begruendung": "Das Hebelgesetz ist ein physikalisches Grundprinzip innerhalb des Energie-Teilkonzepts, das hier an einfachen Beispielen angewendet wird: Es beschreibt, wie sich Kraft und Kraftarm zueinander verhalten müssen, damit ein Hebel im Gleichgewicht bleibt, und damit letztlich, wie effizient eine eingesetzte Kraft in eine gewünschte Wirkung umgesetzt werden kann. Die Anwendung des Hebelgesetzes an Beispielen vertieft dieses physikalische Prinzip praktisch.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -8394,8 +8705,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Verhältnis von Muskelansatzpunkt und Hebelarmlänge ist ein struktureller Faktor, der Kraft und Geschwindigkeit von Bewegungen bestimmt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Verhältnis von Muskelansatzpunkt und Hebelarmlänge ist ein struktureller Faktor, der Kraft und Geschwindigkeit von Bewegungen maßgeblich bestimmt: Ein weiter vom Gelenk entfernter Ansatzpunkt erlaubt schnellere, aber kraftärmere Bewegungen, ein gelenknaher Ansatzpunkt dagegen kraftvollere, aber langsamere. Das Experiment zum Hebel im Gleichgewicht macht diesen strukturellen Zusammenhang unmittelbar erfahrbar.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -8406,9 +8720,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Experiment zum Hebel im Gleichgewicht ist unmittelbarer Gegenstand dieses physikalischen Lernziels im Energie-Teilkonzept.",
+          "begruendung": "Das Experiment zum Hebel im Gleichgewicht ist unmittelbarer Gegenstand dieses physikalischen Lernziels im Energie-Teilkonzept: Durch systematisches Verändern von Kraft und Hebelarmlänge lässt sich am eigenen Aufbau überprüfen, unter welchen Bedingungen ein Hebel tatsächlich im Gleichgewicht bleibt. Dieses Experiment macht das zuvor nur theoretisch behandelte Hebelgesetz unmittelbar praktisch erfahrbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -8505,15 +8822,21 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Aufrechterhaltung einer konstanten Körpertemperatur bei gleichwarmen Tieren ist ein Beispiel für Regelung, das hier als Hintergrund mitschwingt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Aufrechterhaltung einer konstanten Körpertemperatur bei gleichwarmen Tieren ist ein Beispiel für Regelung durch negative Rückkopplung, das hier als fachlicher Hintergrund mitschwingt, auch wenn das Lernziel selbst zunächst nur den physikalischen Wärmebegriff einführt. Erst dieser Wärmebegriff macht später verständlich, wie ein Organismus zugeführte und abgegebene Wärme bilanziert, um seine Körpertemperatur konstant zu regeln.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Wärme als Maß für zugeführte oder abgegebene Energie ist unmittelbarer Gegenstand dieses Energie-Lernziels.",
+          "begruendung": "Wärme als Maß für zugeführte oder abgegebene Energie zu kennzeichnen und vom Alltagsbegriff der Wärme abzugrenzen ist unmittelbarer Gegenstand dieses Energie-Lernziels: Im physikalischen Sinne bezeichnet Wärme eine übertragene Energiemenge, nicht einen subjektiv empfundenen Zustand wie im Alltagsgebrauch. Diese begriffliche Klärung ist eine notwendige Voraussetzung für alle weiteren, präziseren Betrachtungen von Energieumwandlungen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -8603,8 +8926,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Große Ohren oder dichtes Fell sind Strukturen, deren Funktion die Regulation von Wärmeübertragung ist.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Große Ohren oder dichtes Fell sind Strukturen, deren jeweilige Funktion die Regulation von Wärmeübertragung ist: Große, gut durchblutete Ohren vergrößern die Oberfläche zur Wärmeabgabe, dichtes Fell dagegen dämmt und verringert den Wärmeverlust. Möglichkeiten der Wärmeübertragung in Alltag und Technik zu beschreiben bereitet vor, solche gegensätzlich wirkenden biologischen Struktur-Funktions-Beispiele später einzuordnen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -8615,9 +8941,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Leitung, Strömung und Strahlung als Wärmeübertragungsarten sind unmittelbarer Gegenstand dieses Energie-Lernziels.",
+          "begruendung": "Leitung, Strömung und Strahlung als die drei grundlegenden Arten der Wärmeübertragung sind unmittelbarer Gegenstand dieses Energie-Lernziels: Jede dieser drei Übertragungsformen beschreibt einen anderen physikalischen Mechanismus, über den Energie zwischen einem System und seiner Umgebung ausgetauscht werden kann, sei es durch direkten Kontakt, bewegte Materie oder elektromagnetische Wellen. Möglichkeiten der Wärmeübertragung in Alltag und Technik zu beschreiben liefert damit die physikalische Grundlage für spätere biologische Anwendungen wie die Wärmeregulation von Lebewesen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieaustausch mit der Umwelt"
           ]
         },
         {
@@ -8712,8 +9041,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Fell, Federn und Fettschichten sind Strukturen, deren isolierende Funktion hier im Zentrum steht.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Fell, Federn und Fettschichten sind Strukturen, deren isolierende Funktion hier im Zentrum steht: Alle drei schaffen eine schlecht wärmeleitende Schicht zwischen Körper und Umgebung und verringern dadurch den Wärmeverlust an kalte Umgebungen. Bedeutung und Möglichkeiten der Wärmedämmung zu erläutern überträgt dieses biologische Struktur-Funktions-Prinzip auch auf technische Anwendungen wie Gebäudedämmung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -8724,9 +9056,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Wärmedämmung als Verringerung des Wärmeverlusts ist unmittelbarer Gegenstand dieses Energie-Lernziels.",
+          "begruendung": "Wärmedämmung als Verringerung des Wärmeverlusts ist unmittelbarer Gegenstand dieses Energie-Lernziels: Jede ungewollte Wärmeabgabe an die Umgebung stellt letztlich einen Verlust an nutzbarer Energie dar, dem durch geeignete Dämmung entgegengewirkt werden kann. Die Erläuterung von Bedeutung und Möglichkeiten der Wärmedämmung bei Gebäuden und Technik überträgt dieses Prinzip der Vermeidung von Energieentwertung auf konkrete Anwendungsfälle.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieentwertung"
           ]
         },
         {
@@ -8832,9 +9167,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Nahrungsmittel nach Nährstoffen und Energiegehalt zu ordnen ist unmittelbarer Gegenstand dieses Energie-Lernziels.",
+          "begruendung": "Nahrungsmittel hinsichtlich ihrer Nährstoffe und ihres Energiegehalts zu ordnen ist unmittelbarer Gegenstand dieses Energie-Lernziels: Verschiedene Nahrungsmittel liefern dem Körper sehr unterschiedliche Mengen an nutzbarer Energie, abhängig von ihrem Gehalt an Kohlenhydraten, Fetten und Proteinen. Diese Einordnung ist eine wichtige Grundlage, um später bewusste Entscheidungen über die eigene Ernährung treffen zu können.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -8921,9 +9259,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Pubertät mit ihren körperlichen und Verhaltensveränderungen ist der zentrale Reifungsprozess, den dieses Lernziel behandelt.",
+          "begruendung": "Die Pubertät mit ihren körperlichen und Verhaltensveränderungen ist der zentrale Reifungsprozess, den dieses Lernziel behandelt, und markiert den Übergang von der Kindheit zur Fortpflanzungsfähigkeit. Die genannten Veränderungen bei Mädchen und Jungen wie Wachstumsschub, Ausbildung sekundärer Geschlechtsmerkmale sowie einsetzende Menstruation bzw. Pollution sind unmittelbare, beobachtbare Ausdrucksformen der hormonell gesteuerten Geschlechtsreifung und damit ein Kernbeispiel für dieses Basiskonzept.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Pubertät und Geschlechtsreife"
           ]
         },
         {
@@ -8935,9 +9276,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Hormonelle Kaskaden steuern Zeitpunkt und Ablauf der Pubertät, was einen Bezug zu Steuerungsprozessen herstellt.",
+          "begruendung": "Hormonelle Kaskaden steuern Zeitpunkt und Ablauf der Pubertät nach einem weitgehend genetisch festgelegten Programm, das unabhängig vom individuellen Entwicklungsfortschritt zu einem bestimmten Zeitpunkt anläuft. Dieses vorprogrammierte Steuerungsmuster erklärt, warum die genannten körperlichen und Verhaltensänderungen bei den meisten Jugendlichen in ähnlicher Reihenfolge auftreten.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Vorprogrammierte/genetisch determinierte Steuerungsprozesse"
           ]
         },
         {
@@ -9030,17 +9374,23 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Menstruation und Pollution markieren den Beginn der Fortpflanzungsfähigkeit und sind damit Teil des Reifungsprozesses.",
+          "begruendung": "Menstruation und Pollution markieren den Beginn der Fortpflanzungsfähigkeit und sind damit sichtbare Meilensteine des Reifungsprozesses. Der zugehörige Bau der Geschlechtsorgane liefert die strukturelle Grundlage für diese reifungsbedingten Vorgänge und wird hier in direktem Zusammenhang mit ihnen behandelt.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Pubertät und Geschlechtsreife"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Bau und Funktion der Geschlechtsorgane sind unmittelbarer Gegenstand dieses Struktur-Funktions-Lernziels.",
+          "begruendung": "Bau und Funktion der weiblichen und männlichen Geschlechtsorgane sind unmittelbarer Gegenstand dieses Struktur-Funktions-Lernziels: Jedes Organ, von den Eierstöcken über die Eileiter bis zu Hoden und Nebenhoden, ist strukturell auf seine jeweilige Rolle bei Keimzellbildung, Befruchtung oder Schwangerschaft zugeschnitten. Die Ursachen von Menstruation bzw. Pollution zu nennen setzt ein Verständnis dieses funktionalen Zusammenspiels der beteiligten Organe voraus.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -9136,9 +9486,13 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Fortpflanzung und Entwicklung des Menschen, einschließlich der langen Kindheitsphase, sind unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Fortpflanzung und Entwicklung des Menschen sind unmittelbarer Gegenstand dieses Lernziels und verbinden zwei zentrale Aspekte des Basiskonzepts: die reproduktive Weitergabe an eine neue Generation und die ungewöhnlich lange, mit intensiver elterlicher Fürsorge verbundene Kindheitsphase des Menschen. Diese ausgedehnte Entwicklungsphase vom Säugling bis zur Geschlechtsreife in der Pubertät unterscheidet die menschliche Individualentwicklung deutlich von der vieler anderer Wirbeltierarten und macht das Lernziel zu einem umfassenden Beispiel für dieses Basiskonzept.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Reproduktion",
+            "Pubertät und Geschlechtsreife"
           ]
         },
         {
@@ -9254,9 +9608,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Mikrobiom und das saure Milieu der Geschlechtsorgane betreffen unmittelbar stoffliche Prozesse, die dieses Lernziel begründet.",
+          "begruendung": "Das Mikrobiom und das saure Milieu der Geschlechtsorgane betreffen unmittelbar stoffliche Prozesse, die dieses Lernziel begründet: Ein natürliches Gleichgewicht der dort ansässigen Bakterien und ein saures Scheidenmilieu schützen vor dem Eindringen krankheitserregender Stoffe und Organismen. Die Begründung von Hygienemaßnahmen setzt ein Verständnis dieser empfindlichen stofflichen Balance voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -9469,9 +9826,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Licht, Feuchtigkeit und Bodenbeschaffenheit sind abiotische Stoff- und Energiefaktoren, deren Erhebung unmittelbarer Gegenstand dieses Lernziels ist.",
+          "begruendung": "Licht, Feuchtigkeit und Bodenbeschaffenheit sind abiotische Stoff- und Energiefaktoren, deren Erhebung unmittelbarer Gegenstand dieses Lernziels ist: Licht liefert die Energiegrundlage für die Fotosynthese, Feuchtigkeit und Bodenbeschaffenheit bestimmen die Verfügbarkeit von Wasser und Nährstoffen im jeweiligen Lebensraum. Diese eigene Erhebung macht die stofflichen und energetischen Rahmenbedingungen eines Lebensraums unmittelbar messbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -9567,9 +9927,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Körpertemperatur/Aktivität, Wärmedämmung und Tarnung sind Struktur-Funktions-Beispiele, die unmittelbarer Kern dieses Lernziels sind.",
+          "begruendung": "Körpertemperatur und Aktivität, Wärmedämmung sowie Tarnung sind Struktur-Funktions-Beispiele, die unmittelbarer Kern dieses Lernziels sind: Das Fell eines Winterschläfers, die Färbung eines getarnten Insekts oder das Verhalten wechselwarmer Tiere bei unterschiedlichen Temperaturen zeigen jeweils, wie körperliche Struktur und Lebensweise eng an den jeweiligen Lebensraum angepasst sind. Diese Zusammenhänge an Beispielen abzuleiten veranschaulicht das Struktur-Funktions-Prinzip an vertrauten, beobachtbaren Tieren.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -9688,9 +10051,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Nahrungsketten beschreiben unmittelbar Energie- und Stoffflüsse zwischen Organismen und sind damit Kern dieses Lernziels.",
+          "begruendung": "Nahrungsketten beschreiben unmittelbar Energie- und Stoffflüsse zwischen Organismen und sind damit Kern dieses Lernziels: Vom Produzenten über mehrere Konsumentenstufen hinweg werden sowohl Stoffe als auch die darin gespeicherte Energie schrittweise weitergegeben, wobei bei jedem Übergang ein erheblicher Teil der Energie verloren geht. Nahrungsketten zu beschreiben macht diesen gerichteten Fluss von Stoffen und Energie durch ein Ökosystem konkret nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energiefluss durch Nahrungsketten"
           ]
         },
         {
@@ -9799,8 +10165,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Ein Lebensraum stellt die Ressourcen bereit, von denen die Stoff- und Energieversorgung der Lebensgemeinschaft abhängt.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Ein Lebensraum stellt die Ressourcen bereit, von denen die Stoff- und Energieversorgung der gesamten Lebensgemeinschaft abhängt: Wasser, Nährstoffe und Sonnenlicht als grundlegende Ressourcen eines Lebensraums bestimmen letztlich, wie viele Organismen dort leben können. Die Bedeutung des Lebensraums für die Lebensgemeinschaft zu erläutern führt damit direkt zu dieser stofflich-energetischen Grundlage jedes Ökosystems.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -10010,16 +10379,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die begrenzte Fähigkeit eines Ökosystems, Störungen auszugleichen, ist ein Aspekt von Regelung/Homöostase auf Ökosystemebene.",
+          "begruendung": "Die begrenzte Fähigkeit eines Ökosystems, Störungen durch Lebensraumveränderungen auszugleichen, ist ein Aspekt von Regelung bzw. Homöostase auf Ökosystemebene: Innerhalb gewisser Grenzen können negative Rückkopplungen zwischen Populationen Störungen abpuffern, werden diese Grenzen jedoch überschritten, versagt diese Regelfähigkeit und die Lebensgemeinschaft verändert sich dauerhaft.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Lebensraumveränderungen wirken sich unmittelbar auf die Stoff- und Energieflüsse innerhalb der Lebensgemeinschaft aus.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Lebensraumveränderungen wirken sich unmittelbar auf die Stoff- und Energieflüsse innerhalb der Lebensgemeinschaft aus: Wird etwa die Bodenbeschaffenheit oder der Wasserhaushalt eines Lebensraums verändert, verschieben sich damit auch die verfügbaren Nährstoffkreisläufe, auf die die dortigen Organismen angewiesen sind. Die Erläuterung solcher Auswirkungen macht sichtbar, wie eng Lebensraum und Stoffkreislauf miteinander verknüpft sind.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -10107,9 +10482,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Lupe und Mikroskop sachgerecht zu handhaben ist die Voraussetzung, um später feine strukturelle Merkmale zu erkennen.",
+          "begruendung": "Lupe und Mikroskop sachgerecht zu handhaben ist die notwendige methodische Voraussetzung, um später feine strukturelle Merkmale von Lebewesen überhaupt erkennen zu können: Viele für Struktur-Funktions-Zusammenhänge entscheidende Details, etwa Zellstrukturen oder feine Oberflächenstrukturen, sind mit bloßem Auge nicht sichtbar. Der sichere Umgang mit diesen optischen Hilfsmitteln ist damit Grundvoraussetzung für vertiefte strukturelle Beobachtungen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -10212,9 +10590,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Wasserfloh, Daunenfeder und Haar zeigen im Mikroskop feinstrukturelle Merkmale, die unmittelbarer Gegenstand dieses Struktur-Lernziels sind.",
+          "begruendung": "Wasserfloh, Daunenfeder und Haar zeigen im Mikroskop feinstrukturelle Merkmale, die unmittelbarer Gegenstand dieses Struktur-Lernziels sind: Die verzweigte Struktur einer Feder etwa erklärt sich erst im Mikroskop durch ihre isolierenden Federäste und -strahlen, ebenso wie die Schuppenstruktur eines Haares. Das Anfertigen und Untersuchen solcher Präparate macht Struktur-Details sichtbar, die dem bloßen Auge verborgen bleiben.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -10326,9 +10707,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Temperatur und Niederschlag sind zentrale energetische bzw. stoffliche Umweltfaktoren, deren Messung unmittelbarer Gegenstand dieses Lernziels ist.",
+          "begruendung": "Temperatur und Niederschlag sind zentrale energetische bzw. stoffliche Umweltfaktoren, deren Messung unmittelbarer Gegenstand dieses Lernziels ist: Die Temperatur eines Lebensraums bestimmt maßgeblich das dort verfügbare Energieniveau für Stoffwechselprozesse, der Niederschlag die stoffliche Wasserversorgung. Das Messen, Erfassen und grafische Darstellen dieser Werte schafft die quantitative Grundlage für spätere ökologische Betrachtungen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -10427,9 +10811,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Klimadiagramme fassen die energetischen und stofflichen Rahmenbedingungen eines Lebensraums zusammen und sind unmittelbarer Gegenstand dieses Lernziels.",
+          "begruendung": "Klimadiagramme fassen die energetischen und stofflichen Rahmenbedingungen eines Lebensraums über das gesamte Jahr zusammen und sind unmittelbarer Gegenstand dieses Lernziels: Der Verlauf von Temperatur als energetischer und Niederschlag als stofflicher Größe zeigt, in welchen Monaten ein Lebensraum besonders günstige oder ungünstige Bedingungen für Organismen bietet. Das Auswerten von Klimadiagrammen übersetzt diese Rahmenbedingungen in eine übersichtliche, vergleichbare Darstellung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -10525,8 +10912,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Bestimmungsschlüssel arbeiten anhand struktureller Merkmale wie Blattform oder Körperbau, die hier gezielt genutzt werden.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Bestimmungsschlüssel arbeiten anhand struktureller Merkmale wie Blattform oder Körperbau, die hier gezielt zur Artbestimmung genutzt werden: Durch schrittweises Abfragen eindeutiger struktureller Eigenschaften lässt sich eine Pflanze oder ein Tier systematisch der richtigen Art zuordnen. Die Nutzung einfacher Bestimmungsschlüssel übt damit das gezielte Erkennen und Anwenden struktureller Unterscheidungsmerkmale ein.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -10644,9 +11034,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Nutzung von Pflanzen und Tieren betrifft unmittelbar Stoff- und Energieflüsse wie Nahrung und Rohstoffe.",
+          "begruendung": "Die Nutzung von Pflanzen und Tieren durch den Menschen betrifft unmittelbar Stoff- und Energieflüsse wie Nahrung und Rohstoffe, die dem natürlichen Stoffkreislauf entnommen werden: Jede Ernte oder Nutztierhaltung entzieht einem Ökosystem Stoffe und Energie, die andernfalls im natürlichen Kreislauf verblieben wären. Diese Nutzung zu begründen setzt ein Verständnis dafür voraus, dass menschliche Nutzung stets in bestehende Stoffkreisläufe eingreift.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
           ]
         },
         {
@@ -10742,8 +11135,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Verhaltensweisen wie das Scharren beim Huhn sind eng mit dem strukturellen und funktionalen Bauplan der Art verknüpft.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Verhaltensweisen wie das Scharren beim Huhn sind eng mit dem strukturellen und funktionalen Bauplan der Art verknüpft: Der kräftige, zum Scharren geeignete Fuß des Huhns spiegelt eine an die ursprüngliche Nahrungssuche im Boden angepasste Struktur wider. Maßnahmen artgerechter Haltung abzuleiten setzt damit ein Verständnis dafür voraus, welche strukturell verankerten Verhaltensbedürfnisse eine Art besitzt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -10864,8 +11260,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Eingriffe wie Bejagung oder chemischer Pflanzenschutz betreffen unmittelbar Stoffflüsse und Ressourcennutzung im Ökosystem.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Eingriffe wie Bejagung oder chemischer Pflanzenschutz betreffen unmittelbar Stoffflüsse und Ressourcennutzung im Ökosystem: Wird ein Bestand durch Bejagung reduziert oder eine Schädlingspopulation chemisch bekämpft, verändert sich dadurch, welche Stoffe in welcher Menge im Kreislauf des Ökosystems verbleiben. Die Bewertung des Einflusses solcher Eingriffe auf einzelne Lebewesen berührt damit auch diese stofflichen Konsequenzen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -10975,8 +11374,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Flächenversiegelung und Monokulturen verändern unmittelbar Stoff- und Energieflüsse im betroffenen Ökosystem.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Flächenversiegelung und Monokulturen verändern unmittelbar die Stoff- und Energieflüsse im betroffenen Ökosystem: Versiegelte Flächen unterbrechen natürliche Stoffkreisläufe wie die Versickerung von Wasser, Monokulturen entziehen dem Boden einseitig bestimmte Nährstoffe, statt sie im natürlichen Wechsel zu erhalten. Die Bewertung des Einflusses solcher Eingriffe auf den Lebensraum stützt sich unmittelbar auf diese stofflichen Veränderungen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -11082,8 +11484,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Erhalt der Lebensgrundlagen betrifft unmittelbar die Stoffkreisläufe und Energieflüsse, auf denen Ökosysteme beruhen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Der Erhalt der Lebensgrundlagen betrifft unmittelbar die Stoffkreisläufe und Energieflüsse, auf denen alle Ökosysteme beruhen: Umweltschutzmaßnahmen zielen letztlich darauf, diese natürlichen Kreisläufe intakt zu halten, statt sie durch übermäßige menschliche Eingriffe dauerhaft zu stören. Umweltschutz unter Einbeziehung verschiedener Argumente zu begründen stützt sich damit wesentlich auf dieses stoffliche Grundverständnis.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -11186,9 +11591,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Verarbeitungskette vom Rohstoff zum Endprodukt, etwa vom Korn zum Brot, ist unmittelbarer Gegenstand dieses Stoff-Lernziels.",
+          "begruendung": "Die Verarbeitungskette vom Rohstoff zum Endprodukt, etwa vom Korn zum Brot oder vom Baum zum Papier, ist unmittelbarer Gegenstand dieses Stoff-Lernziels: Auf jeder Verarbeitungsstufe wird der Ausgangsstoff durch physikalische oder chemische Prozesse in eine neue Form mit veränderten Eigenschaften überführt. Diese Kette an einem konkreten Beispiel zu erläutern macht Stoffumwandlung als mehrstufigen, praktisch bedeutsamen Prozess greifbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -11286,16 +11694,22 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Funktionsweise technischer Regelkreise wie Thermostate ist unmittelbarer Gegenstand dieses Regelungs-Lernziels.",
+          "begruendung": "Die Funktionsweise technischer Regelkreise wie eines Thermostats in Aquarium, Stall oder Gewächshaus ist unmittelbarer Gegenstand dieses Lernziels und macht die grundlegende Struktur jeder Regelung exemplarisch sichtbar: Ein Fühler misst fortlaufend die tatsächliche Temperatur, vergleicht sie mit der eingestellten Solltemperatur und schaltet Heizung oder Kühlung ein oder aus, sobald eine Abweichung auftritt. Da dieselbe Regelkreis-Struktur auch biologischen Regelungsvorgängen wie der Körpertemperaturregelung zugrunde liegt, bietet dieses technische Beispiel einen anschaulichen Einstieg in das Basiskonzept.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Regelkreis-Struktur (Sollwert, Regler, Regelgröße, Istwert)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die geregelte Größe, meist Temperatur, betrifft direkt den Wärme- und Energiehaushalt des jeweiligen Systems.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die geregelte Größe in einem technischen Regelkreis, meist die Temperatur, betrifft direkt den Wärme- und Energiehaushalt des jeweiligen Systems: Ob Aquarium, Stall oder Gewächshaus, in allen Beispielen wird letztlich eine energetische Zustandsgröße konstant gehalten. Die Erläuterung solcher technischer Regelkreise berührt damit indirekt auch dieses Basiskonzept, auch wenn der eigentliche fachliche Schwerpunkt bei der Steuerung und Regelung liegt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -11399,9 +11813,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Informationen aus Medien kritisch zu erschließen und zu dokumentieren ist unmittelbarer Gegenstand dieses Informationskompetenz-Lernziels.",
+          "begruendung": "Informationen aus verschiedenen Medien kritisch zu erschließen und zu dokumentieren ist unmittelbarer Gegenstand dieses Informationskompetenz-Lernziels: Bevor eine Information für ein Argument genutzt werden kann, muss sie zunächst aus ihrer jeweiligen Darstellungsform decodiert und auf Verlässlichkeit geprüft werden. Diese Fähigkeit, Information kritisch zu erschließen statt sie unreflektiert zu übernehmen, überträgt einen Kerngedanken der biologischen Informationsverarbeitung auf den Umgang mit Medien.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Codierung und Decodierung von Information"
           ]
         }
       ],
@@ -11500,9 +11917,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Einschätzung, welche Informationen relevant sind, ist eine Kernkompetenz der Informationsverarbeitung, die dieses Lernziel schult.",
+          "begruendung": "Die Einschätzung, welche Informationen für eine Aufgabe relevant sind, ist eine Kernkompetenz der Informationsverarbeitung, die dieses Lernziel schult: Aus einer Fülle verfügbarer Information muss gezielt diejenige herausgefiltert werden, die tatsächlich zur Lösung beiträgt. Dieses Selektieren relevanter von irrelevanter Information ist ein allgemeines Prinzip, das ebenso für biologische Informationsverarbeitung wie für schulisches Arbeiten gilt.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Codierung und Decodierung von Information"
           ]
         }
       ],
@@ -11595,9 +12015,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Übertragung evolutionär optimierter Strukturen auf technische Funktionen ist unmittelbarer Kern dieses Struktur-Funktions-Lernziels.",
+          "begruendung": "Die Übertragung evolutionär optimierter biologischer Strukturen auf technische Funktionen ist unmittelbarer Kern dieses Struktur-Funktions-Lernziels: Naturvorbilder haben über lange Zeiträume hinweg Lösungen für wiederkehrende funktionale Probleme wie Stabilität, Energieeffizienz oder Selbstreinigung entwickelt, die sich technisch nachahmen lassen. Die Bedeutung solcher Naturvorbilder für technische Problemlösungen zu erläutern macht das biologische Struktur-Funktions-Prinzip praktisch nutzbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -11705,9 +12128,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Denken in Funktionskategorien vor der Vorbildsuche ist unmittelbarer Kern dieses Struktur-Funktions-Schritts.",
+          "begruendung": "Das Denken in Funktionskategorien vor der eigentlichen Vorbildsuche ist unmittelbarer Kern dieses ersten Struktur-Funktions-Schritts der Bionik: Erst wenn klar formuliert ist, welche Funktion technisch realisiert werden soll, etwa Wasserabweisung oder Stoßdämpfung, lässt sich gezielt nach einem passenden biologischen Vorbild suchen. Dieses systematische Vorgehen kehrt die übliche Reihenfolge um und beginnt bewusst bei der Funktion, nicht bei der Struktur.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -11719,8 +12145,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Viele bionische Funktionen, etwa Wärmedämmung, betreffen unmittelbar Stoff- oder Energieprozesse.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Viele bionische Funktionen, etwa Wärmedämmung, betreffen unmittelbar Stoff- oder Energieprozesse: Wenn eine technisch zu realisierende Funktion beispielsweise Energieeffizienz oder Wärmeisolation zum Ziel hat, ist damit von vornherein ein stofflich-energetischer Bezug gegeben. Das Festlegen der technisch zu realisierenden Funktion berührt damit häufig bereits an dieser frühen Stelle Aspekte der Energieumwandlung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -11817,9 +12246,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Ermitteln biologischer Vorbilder und Erkennen des zugrunde liegenden Prinzips ist unmittelbarer Kern dieses Struktur-Funktions-Schritts.",
+          "begruendung": "Das Ermitteln biologischer Vorbilder und Erkennen des zugrunde liegenden Prinzips ist unmittelbarer Kern dieses zweiten Struktur-Funktions-Schritts: Nachdem die gewünschte Funktion feststeht, wird gezielt nach Organismen gesucht, die eine vergleichbare Funktion strukturell bereits gelöst haben, und deren zugrunde liegendes Bauprinzip herausgearbeitet. Dieser Schritt verbindet die zuvor festgelegte Funktion erstmals mit einer konkreten biologischen Struktur.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -11831,8 +12263,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Manche biologischen Vorbilder, etwa die Wabenstruktur zur Materialeinsparung, betreffen stoffliche Aspekte.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Manche biologischen Vorbilder, etwa die Wabenstruktur zur Materialeinsparung, betreffen stoffliche Aspekte: Die sechseckige Struktur der Honigwabe erzielt maximale Stabilität bei minimalem Materialeinsatz, ein Prinzip, das sich auf technische Leichtbauweisen übertragen lässt. Das Ermitteln solcher biologischer Vorbilder berührt damit gelegentlich auch stoffliche Fragestellungen des Materialeinsatzes.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -11927,9 +12362,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Ein Funktionsmodell auf die tatsächlich verantwortlichen strukturellen Elemente zu reduzieren ist unmittelbarer Kern dieses Schritts.",
+          "begruendung": "Ein Funktionsmodell auf die tatsächlich verantwortlichen strukturellen Elemente zu reduzieren ist unmittelbarer Kern dieses dritten Struktur-Funktions-Schritts: Nicht jedes Detail eines biologischen Vorbilds ist für die gesuchte Funktion tatsächlich entscheidend, weshalb ein Modell gezielt auf die funktional wesentlichen Strukturmerkmale vereinfacht werden muss. Diese Abstraktionsleistung ist entscheidend, um das biologische Prinzip technisch übertragbar zu machen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -12038,9 +12476,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Übertragung des abstrahierten Funktionsprinzips auf ein technisches Objekt ist unmittelbarer Kern dieses abschließenden Schritts.",
+          "begruendung": "Die Übertragung des abstrahierten Funktionsprinzips auf ein konkretes technisches Objekt ist unmittelbarer Kern dieses abschließenden Struktur-Funktions-Schritts: Das zuvor reduzierte Funktionsmodell wird nun in eine tatsächlich herstellbare technische Lösung überführt. Damit schließt sich der Bogen von der biologischen Struktur über das abstrahierte Prinzip bis zur konkreten technischen Anwendung.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -12147,9 +12588,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die eigenständige Anwendung der Struktur-Funktions-Analyse auf ein selbst gewähltes Beispiel ist unmittelbarer Kern dieses Lernziels.",
+          "begruendung": "Die eigenständige Anwendung der zuvor eingeübten Struktur-Funktions-Analyse auf ein selbst gewähltes Beispiel ist unmittelbarer Kern dieses Lernziels: Statt vorgegebene Beispiele nachzuvollziehen, wenden Schülerinnen und Schüler nun den gesamten bionischen Vorgehensweg selbstständig auf ein eigenes biologisches Vorbild an. Diese eigenständige Übertragung festigt das Struktur-Funktions-Denken deutlich nachhaltiger als das bloße Nachvollziehen fremder Beispiele.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -12255,9 +12699,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Ein Anschauungsmodell auf die funktionstragenden strukturellen Elemente zu reduzieren ist unmittelbarer Kern dieses Lernziels.",
+          "begruendung": "Ein Anschauungsmodell auf die funktionstragenden strukturellen Elemente zu reduzieren ist unmittelbarer Kern dieses Lernziels: Beim Herstellen eines eigenen Modells muss entschieden werden, welche strukturellen Details für die Demonstration des Bau- bzw. Funktionsprinzips tatsächlich notwendig sind und welche vernachlässigt werden können. Die Bedeutung dieses Modells zu erläutern verlangt zusätzlich, die getroffene Reduktion selbst zu reflektieren und zu begründen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -12372,9 +12819,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Organisieren des Arbeitsprozesses einer Gruppe erfordert Absprache und Koordination, also Kommunikation zwischen den Gruppenmitgliedern.",
+          "begruendung": "Das Organisieren des Arbeitsprozesses einer Gruppe erfordert Absprache und Koordination und damit Kommunikation zwischen den Gruppenmitgliedern: Aufgaben müssen verteilt, Zwischenstände ausgetauscht und Entscheidungen gemeinsam getroffen werden, was ohne einen funktionierenden Informationsaustausch nicht gelingt. Damit überträgt das Lernziel das allgemeine Prinzip zwischenindividueller Kommunikation auf die konkrete Situation gemeinsamen schulischen Arbeitens.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
           ]
         }
       ],
@@ -12471,8 +12921,11 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Wahl einer Arbeitstechnik hängt oft davon ab, wie Informationen innerhalb der Gruppe ausgetauscht werden sollen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Wahl einer Arbeitstechnik hängt oft davon ab, wie Informationen innerhalb der Gruppe ausgetauscht werden sollen, etwa ob Ergebnisse mündlich vorgestellt, schriftlich festgehalten oder visuell dargestellt werden. Damit berührt auch diese eher methodische Entscheidung indirekt Fragen der Kommunikation zwischen den beteiligten Personen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
+          ]
         }
       ],
       "didaktische_strategien": {
@@ -12568,9 +13021,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Selbst- und Fremdeinschätzung im Sozialverhalten beruht auf dem Wahrnehmen und Bewerten von Kommunikationssignalen der Gruppenmitglieder.",
+          "begruendung": "Die Selbst- und Fremdeinschätzung im Sozialverhalten beruht auf dem Wahrnehmen und Bewerten von Kommunikationssignalen der Gruppenmitglieder, etwa Tonfall, Mimik oder Verhalten bei Meinungsverschiedenheiten. Solche sozialen Signale zu deuten und einzuordnen ist eine Grundfertigkeit sozialer Kommunikation, die weit über das schulische Arbeiten hinaus bedeutsam ist und hier gezielt reflektiert wird.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Soziale Signalsysteme"
           ]
         }
       ],
@@ -12667,8 +13123,11 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Analyse der Arbeitswege betrifft auch, wie Informationen innerhalb der Gruppe geflossen sind und genutzt wurden.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Die Analyse der Arbeitswege einer Gruppe betrifft auch, wie Informationen innerhalb der Gruppe geflossen sind und genutzt wurden: Wo lief die Kommunikation reibungslos, wo gingen Absprachen verloren? Diese rückblickende Betrachtung schärft das Bewusstsein dafür, wie entscheidend funktionierender Informationsaustausch für den Erfolg gemeinsamer Arbeit ist.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
+          ]
         }
       ],
       "didaktische_strategien": {
@@ -12764,9 +13223,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Arbeitsergebnisse in geeigneter Form zu präsentieren ist eine unmittelbare Kommunikationsleistung, die Kern dieses Lernziels ist.",
+          "begruendung": "Arbeitsergebnisse in geeigneter Form zu präsentieren ist eine unmittelbare Kommunikationsleistung und damit Kern dieses Lernziels: Ob ein Ergebnis mündlich vorgetragen, als Plakat visualisiert oder digital aufbereitet wird, entscheidet maßgeblich darüber, ob es die Zuhörenden tatsächlich erreicht und verständlich wird. Damit übt dieses Lernziel gezielt akustische und visuelle Kommunikationsformen ein, die auch in der Biologie zur Wissensvermittlung genutzt werden.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Akustische und visuelle Kommunikation"
           ]
         }
       ],

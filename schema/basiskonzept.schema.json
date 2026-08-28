@@ -153,7 +153,7 @@
     "complexity_level_gy78": { "type": "number", "minimum": 0, "maximum": 1 },
     "centrality_estimate": { "type": "number", "minimum": 0, "maximum": 1 },
     "hinweis_zur_einordnung": { "type": "string" },
-    "evolutionskonzepte_referenz": { "type": "string", "description": "Nur beim Evolutions-Basiskonzept: Pfad zu data/evolutionskonzepte.json." },
+    "unterkonzepte_referenz": { "type": "string", "description": "Nur bei ebene=1: Pfad zur erweiterten, hierarchischen Unterkonzept-Taxonomie-Datei dieses Basiskonzepts (data/evolutionskonzepte.json beim Evolutions-Basiskonzept, sonst eine der 5 Dateien nach schema/unterkonzept.schema.json)." },
     "teilkonzepte": {
       "type": "array",
       "minItems": 2,

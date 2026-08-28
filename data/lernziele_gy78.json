@@ -93,9 +93,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kernlernziel: Exo- vs. Endoskelett ist das zentrale Struktur-Merkmal, mit dem beide Tiergruppen unterschieden werden.",
+          "begruendung": "Exo- und Endoskelett sind das zentrale Struktur-Merkmal, mit dem Wirbeltiere und Wirbellose hier unterschieden werden, und stellen zugleich zwei grundlegend verschiedene strukturelle Lösungen für dieselbe Funktion der Stützung und des Schutzes dar: Ein Außenskelett umhüllt den Körper von außen, ein Innenskelett stützt ihn von innen und erlaubt dadurch unbegrenzteres Wachstum. Die Abgrenzung anhand des Stützsystems macht dieses grundlegende Struktur-Funktions-Prinzip zum Ausgangspunkt der gesamten Wirbellosen-Betrachtung.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -203,9 +206,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Körpergliederung, Atmungsorgane und Körperoberfläche der Weichtiere sind unmittelbar Struktur-Merkmale im Sinne dieses Basiskonzepts.",
+          "begruendung": "Körpergliederung, Atmungsorgane und Körperoberfläche der Weichtiere sind unmittelbar Struktur-Merkmale im Sinne dieses Basiskonzepts: Der weiche, meist von einer Schale geschützte Körper, spezialisierte Atmungsorgane wie Kiemen und eine oft schleimbedeckte Körperoberfläche sind jeweils funktional auf die Lebensweise dieser Tiergruppe zugeschnitten. Das Nennen dieser Merkmale liefert die strukturelle Grundlage für das Verständnis der Weichtierbiologie.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -217,9 +223,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Atmungsorgane sind Teil des Gasaustauschs und damit an die Stoffumwandlung der Weichtiere gekoppelt.",
+          "begruendung": "Die Atmungsorgane sind Teil des Gasaustauschs und damit an die Stoffumwandlung der Weichtiere gekoppelt: Über spezialisierte Atmungsorgane nehmen Weichtiere Sauerstoff aus Wasser oder Luft auf und geben Kohlenstoffdioxid ab, ein grundlegender Stoffaustausch mit der Umwelt. Das Nennen dieser Merkmale berührt damit indirekt auch diesen stofflichen Grundprozess, auch wenn der Schwerpunkt eher strukturell ist.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -316,9 +325,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Segmentierung, Atmungsorgane und Körperoberfläche der Ringelwürmer sind klassische Struktur-Merkmale dieses Basiskonzepts.",
+          "begruendung": "Segmentierung, Atmungsorgane und Körperoberfläche der Ringelwürmer sind klassische Struktur-Merkmale dieses Basiskonzepts: Die wiederholte Gliederung des Körpers in gleichartige Segmente ist eine besonders anschauliche Form struktureller Kompartimentierung, bei der sich viele innere Organe in jedem Segment wiederholen. Diese segmentale Bauweise unterscheidet Ringelwürmer strukturell deutlich von den ungegliederten Weichtieren.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -330,9 +342,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Haut- und Kiemenatmung der Ringelwürmer sind unmittelbar Teil des Gasaustauschs als Stoffumwandlung.",
+          "begruendung": "Haut- und Kiemenatmung der Ringelwürmer sind unmittelbar Teil des Gasaustauschs als Form des Stoffaustauschs mit der Umwelt: Je nach Lebensraum nehmen Ringelwürmer Sauerstoff entweder direkt über die feuchte Körperoberfläche oder über spezialisierte Kiemen auf. Das Nennen dieser Atmungsmerkmale berührt damit auch diesen grundlegenden stofflichen Austauschprozess.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -430,9 +445,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Tagmosis, Exoskelett und die gruppenspezifischen Atmungsorgane sind zentrale Struktur-Merkmale der Gliederfüßer.",
+          "begruendung": "Tagmosis, Exoskelett und die gruppenspezifischen Atmungsorgane sind zentrale Struktur-Merkmale der Gliederfüßer: Tagmosis bezeichnet dabei die Zusammenfassung mehrerer Körpersegmente zu funktionalen Abschnitten wie Kopf, Brust und Hinterleib, eine Form struktureller Kompartimentierung, die je nach Gruppe (Krebstiere, Spinnentiere, Insekten) unterschiedlich ausfällt. Das Nennen dieser Merkmale zeigt, wie stark sich strukturelle Organisation zwischen den einzelnen Gliederfüßer-Gruppen unterscheidet.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -444,9 +462,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Kiemen, Buchlungen und Tracheen sind funktional an die Stoffaufnahme (Gasaustausch) der jeweiligen Gruppe gekoppelt.",
+          "begruendung": "Kiemen, Buchlungen und Tracheen sind funktional an die Stoffaufnahme, konkret den Gasaustausch, der jeweiligen Gliederfüßer-Gruppe gekoppelt: Krebstiere nutzen meist Kiemen, Spinnentiere Buchlungen, Insekten Tracheen, jeweils angepasst an ihren typischen Lebensraum. Das Nennen dieser gruppenspezifischen Atmungsorgane berührt damit auch den stofflichen Austausch mit der Umwelt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -540,9 +561,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die begründete Zuordnung stützt sich direkt auf die zuvor erarbeiteten Struktur-Merkmale der jeweiligen Tiergruppen.",
+          "begruendung": "Die begründete Zuordnung von Vertretern zu den jeweiligen Tiergruppen stützt sich direkt auf die zuvor erarbeiteten Struktur-Merkmale dieser Gruppen: Erst das Wissen um charakteristische Baumerkmale wie Segmentierung, Skeletttyp oder Körpergliederung ermöglicht eine fachlich begründete statt bloß auswendig gelernte Zuordnung. Diese Anwendung festigt damit unmittelbar das zuvor erworbene strukturelle Wissen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -651,9 +675,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Mundwerkzeuge und Sinnesorgane als funktionale Anpassung an Bestäubung sind hier indirekt mitgedacht.",
+          "begruendung": "Mundwerkzeuge und Sinnesorgane als funktionale Anpassung an die Bestäubungsleistung von Insekten sind hier indirekt mitgedacht: Dass Wirbellose als Bestäuber wichtig sind, hängt strukturell davon ab, dass ihre Mundwerkzeuge zum Blütenbau der jeweiligen Pflanze passen. Die Bedeutung Wirbelloser in der Natur zu erläutern berührt damit am Rande auch strukturelle Passungen zwischen Tier und Pflanze.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -665,17 +692,23 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Als Glieder von Nahrungsketten sind Wirbellose zentral in den Stoff- und Energiefluss von Ökosystemen eingebunden.",
+          "begruendung": "Als Glieder von Nahrungsketten sind Wirbellose zentral in den Stoff- und Energiefluss von Ökosystemen eingebunden: Ob als Beute für größere Tiere, als Bestäuber, die den Fortbestand von Pflanzen sichern, oder als Zersetzer, die organisches Material in den Stoffkreislauf zurückführen, Wirbellose übernehmen an vielen Stellen der Nahrungskette unverzichtbare Funktionen. Die Bedeutung Wirbelloser an Beispielen zu erläutern macht diese vielfältige Einbindung in Stoff- und Energieflüsse konkret sichtbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energiefluss durch Nahrungsketten"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Bestäubung beruht auf chemischer und optischer Signalübertragung zwischen Blüte und Insekt.",
+          "begruendung": "Bestäubung beruht auf chemischer und optischer Signalübertragung zwischen Blüte und Insekt: Blüten locken Bestäuber gezielt mit Duftstoffen und auffälligen Farben an, während das Insekt im Gegenzug Pollen zwischen den Blüten überträgt. Diese wechselseitige Signalkommunikation ist eine Voraussetzung dafür, dass Wirbellose als Bestäuber überhaupt ihre ökologische Bedeutung entfalten können.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Chemische Kommunikation (Pheromone)"
           ]
         }
       ]
@@ -777,9 +810,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Verlust von Wirbellosen als Glieder von Nahrungsketten wirkt sich unmittelbar auf Stoffkreisläufe und Ökosysteme aus.",
+          "begruendung": "Der Verlust von Wirbellosen als Glieder von Nahrungsketten wirkt sich unmittelbar auf Stoffkreisläufe und das gesamte Ökosystem aus: Fehlen etwa Bestäuber oder Zersetzer, werden wichtige Stoffkreisläufe unterbrochen, was sich auf viele weitere Arten auswirken kann. Die Bewertung menschlicher Eingriffe in Lebensräume von Wirbellosen und die Begründung von Schutzmaßnahmen stützen sich unmittelbar auf diese stofflichen Zusammenhänge.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
           ]
         },
         {
@@ -874,9 +910,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kopf, Thorax und Abdomen sind das zentrale Struktur-Merkmal, mit dem Insekten hier charakterisiert werden.",
+          "begruendung": "Kopf, Thorax und Abdomen sind das zentrale Struktur-Merkmal, mit dem Insekten hier charakterisiert werden, und zugleich ein Beispiel struktureller Kompartimentierung auf Organebene: Jeder dieser drei Körperabschnitte übernimmt spezialisierte Aufgaben, vom Kopf mit Sinnesorganen über den Thorax mit Beinen und Flügeln bis zum Abdomen mit den inneren Organen. Diese klare Dreiteilung ist eines der zuverlässigsten Erkennungsmerkmale von Insekten überhaupt.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -979,17 +1018,23 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Größenwachstum der Insekten erfordert Häutungen, wodurch das Exoskelett unmittelbar mit individuellen Entwicklungsschritten verknüpft ist.",
+          "begruendung": "Das Größenwachstum der Insekten erfordert wiederholte Häutungen, da das starre Chitin-Außenskelett nicht mitwächst. Diese Kopplung von Wachstum und Häutungszyklus macht das Exoskelett zu einem unmittelbaren, wenn auch nicht im Zentrum stehenden Beispiel individueller Entwicklungsschritte bei Insekten.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Chitin-Exoskelett ist das zentrale Struktur-Merkmal, das Schutz und Formgebung des Insektenkörpers erklärt.",
+          "begruendung": "Das Chitin-Außenskelett ist das zentrale Struktur-Merkmal, das sowohl Schutz als auch Formgebung des Insektenkörpers erklärt: Als feste, aber leichte Hülle schützt es die inneren Organe vor mechanischer Beschädigung und Wasserverlust und dient zugleich als Ansatzstelle für die Muskulatur. Diese doppelte Funktion aus Schutz und Bewegungsapparat macht das Exoskelett zu einem besonders anschaulichen Struktur-Funktions-Beispiel.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -1098,9 +1143,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das verzweigte Tracheensystem ist ein Paradebeispiel für eine Struktur, die direkt der Gasaustauschfunktion dient.",
+          "begruendung": "Das verzweigte Tracheensystem ist ein Paradebeispiel für eine Struktur, die direkt der Gasaustauschfunktion dient: Durch die feine Verzweigung bis in einzelne Gewebe hinein entsteht eine enorm vergrößerte innere Austauschfläche, über die Sauerstoff nahezu ohne Umweg über das Blut direkt zu den Zellen gelangt. Dieses Prinzip der inneren Oberflächenvergrößerung unterscheidet die Insektenatmung grundlegend von der Lungenatmung der Wirbeltiere.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Oberflächenvergrößerung bei Stoffaustausch (Alveolen, Villi)"
           ]
         },
         {
@@ -1112,9 +1160,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Tracheensystem versorgt das Gewebe direkt mit Sauerstoff und ist damit zentral für die Stoffaufnahme der Insekten.",
+          "begruendung": "Das verzweigte Tracheensystem versorgt das Gewebe der Insekten direkt mit Sauerstoff und ist damit zentral für deren Stoffaufnahme aus der Umwelt: Anders als bei Wirbeltieren gelangt der Sauerstoff nicht über das Blut, sondern über ein feines Röhrensystem unmittelbar bis zu den einzelnen Zellen. Das Beschreiben dieses Merkmals macht einen besonders direkten Weg des Stoffaustauschs mit der Umwelt sichtbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -1210,9 +1261,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die ganglionäre Bauweise des Strickleiternervensystems ist ein charakteristisches Struktur-Merkmal der Insekten.",
+          "begruendung": "Die ganglionäre Bauweise des Strickleiternervensystems ist ein charakteristisches Struktur-Merkmal der Insekten: Statt eines zentralen Gehirns wie bei Wirbeltieren besitzen Insekten mehrere, über Nervenstränge verbundene Ganglien, die jeweils lokal begrenzte Körperabschnitte steuern. Diese dezentrale, segmentweise Organisation des Nervensystems ist strukturell eng mit der segmentierten Körpergliederung der Insekten verknüpft.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -1230,9 +1284,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Strickleiternervensystem ist die strukturelle Grundlage der Reizweiterleitung und -verarbeitung bei Insekten - Kern dieses Basiskonzepts.",
+          "begruendung": "Das Strickleiternervensystem ist die strukturelle Grundlage der Reizweiterleitung und zentralen Verarbeitung bei Insekten: Mehrere hintereinander angeordnete Ganglien übernehmen jeweils lokal begrenzte Verarbeitungsaufgaben, während Verbindungsstränge Informationen zwischen ihnen austauschen. Diese dezentrale Organisation unterscheidet sich deutlich vom zentralisierten Gehirn der Wirbeltiere, erfüllt aber dieselbe grundlegende Funktion der Reizverarbeitung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Reizweiterleitung und zentrale Verarbeitung"
           ]
         }
       ]
@@ -1328,9 +1385,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die spezialisierten Mundwerkzeuge (saugend, stechend, kauend) sind ein direktes Beispiel für Struktur-Funktions-Zusammenhänge.",
+          "begruendung": "Die spezialisierten Mundwerkzeuge der Insekten, ob saugend, stechend oder kauend, sind ein direktes Beispiel für Struktur-Funktions-Zusammenhänge: Jeder Mundwerkzeugtyp ist strukturell exakt auf die jeweilige Nahrungsquelle abgestimmt, vom Saugrüssel des Schmetterlings über den Stechapparat der Stechmücke bis zu den kräftigen Kauwerkzeugen der Heuschrecke. Diese Vielfalt an Mundwerkzeugformen bei gleichem Grundbauplan veranschaulicht die enge Kopplung von Struktur und Ernährungsfunktion besonders eindrücklich.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -1342,9 +1402,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Mundwerkzeuge dienen unmittelbar der Nahrungsaufnahme und damit dem Stoffgewinn der Tiere.",
+          "begruendung": "Die spezialisierten Mundwerkzeuge der Insekten dienen unmittelbar der Nahrungsaufnahme und damit dem Stoffgewinn der Tiere: Ob saugend, stechend oder kauend, jeder Mundwerkzeugtyp ermöglicht die Aufnahme einer bestimmten Nahrungsquelle und damit bestimmter Stoffe aus der Umwelt. Die Erläuterung dieser Angepasstheit an die Nahrungsaufnahme berührt damit auch den stofflichen Aspekt der Ernährung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -1442,9 +1505,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Beine und Flügel als Fortbewegungsorgane sind ein klassisches Beispiel für die Angepasstheit von Struktur an Funktion.",
+          "begruendung": "Beine und Flügel als Fortbewegungsorgane sind ein klassisches Beispiel für die Angepasstheit von Struktur an Funktion: Laufbeine sind für schnelle Bodenfortbewegung optimiert, Sprungbeine für weite Sprünge, Flügel für den Luftraum. Diese funktionale Vielfalt bei gemeinsamem Grundbauplan der Gliedmaßen macht die Angepasstheit der Insekten an ihre jeweilige Lebensweise strukturell besonders anschaulich.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -1549,25 +1615,35 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Metamorphose ist das Paradebeispiel für individuelle Entwicklung durch tiefgreifende Zelldifferenzierung und Körperumbau.",
+          "begruendung": "Die Metamorphose ist das Paradebeispiel für individuelle Entwicklung durch tiefgreifende Zelldifferenzierung und Körperumbau: Larve und erwachsenes Insekt unterscheiden sich trotz identischen Genoms fundamental in Gestalt, Lebensraum und Ernährungsweise. Bei der vollständigen Metamorphose wird dieser Umbau im Puppenstadium durch weitgehende Auflösung und Neubildung von Gewebe realisiert, bei der unvollständigen Metamorphose erfolgt er schrittweise über mehrere Häutungen hinweg. Damit verbindet dieses Lernziel exemplarisch, wie ein und dasselbe Genom über die Zeit hinweg sehr unterschiedliche Körperformen hervorbringen kann.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Metamorphose (vollständige/unvollständige Verwandlung)",
+            "Zelldifferenzierung"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Larve und Imago zeigen völlig unterschiedliche Struktur-Funktions-Ausprägungen desselben Genoms.",
+          "begruendung": "Larve und Imago zeigen völlig unterschiedliche Struktur-Funktions-Ausprägungen desselben Genoms: Während die Larve meist auf Wachstum und Nahrungsaufnahme spezialisiert ist, dient der Körperbau des erwachsenen Insekts vor allem der Fortpflanzung und Verbreitung. Diese radikale strukturelle Umgestaltung während der Metamorphose zeigt, wie flexibel ein einziger genetischer Bauplan unterschiedliche Funktionsstrukturen hervorbringen kann.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der hormonell gesteuerte Ablauf der Metamorphose (Häutungs- und Juvenilhormon) ist ein Beispiel für biologische Steuerung von Entwicklungsschritten.",
+          "begruendung": "Der hormonell gesteuerte Ablauf der Metamorphose, etwa durch Häutungs- und Juvenilhormon, ist ein Beispiel für biologische Steuerung von Entwicklungsschritten nach einem genetisch festgelegten Programm. Sinkt der Juvenilhormonspiegel unter einen bestimmten Wert, setzt die Verpuppung ein, ohne dass eine Rückmeldung über den tatsächlichen Entwicklungserfolg diesen Ablauf noch verändern könnte.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Vorprogrammierte/genetisch determinierte Steuerungsprozesse"
           ]
         },
         {
@@ -1663,9 +1739,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die unterschiedliche Flügelausbildung ist das zentrale Struktur-Merkmal zur Unterscheidung der vier Insektenordnungen.",
+          "begruendung": "Die unterschiedliche Flügelausbildung ist das zentrale Struktur-Merkmal zur Unterscheidung der vier großen Insektenordnungen: Käfer besitzen zu harten Flügeldecken umgebildete Vorderflügel, Hautflügler durchsichtige Häutchenflügel, Zweiflügler nur ein funktionsfähiges Flügelpaar, Schmetterlinge beschuppte Flügel. Diese strukturellen Unterschiede an den Flügeln ermöglichen eine begründete, funktional nachvollziehbare Zuordnung von Vertretern zu ihrer jeweiligen Ordnung.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -1779,9 +1858,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Kastensystem funktioniert wie ein Regelsystem, das über Pheromone die Aufgabenverteilung im Staat konstant hält.",
+          "begruendung": "Das Kastensystem eines Insektenstaats funktioniert wie ein Regelsystem, das über Pheromonsignale der Königin die Aufgabenverteilung im Staat konstant hält: Sinkt etwa die Konzentration bestimmter Pheromone, reagieren Arbeiterinnen mit einer veränderten Aufzucht neuer Königinnen. Diese Rückkopplung zwischen chemischem Signal und Verhaltensantwort stabilisiert die Sozialstruktur des gesamten Staates.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -1793,9 +1875,13 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Chemische Kommunikation (Pheromone) und Tanzsprache sind der Kern des koordinierten Zusammenlebens im Insektenstaat.",
+          "begruendung": "Chemische Kommunikation über Pheromone und die Tanzsprache der Bienen sind der Kern des koordinierten Zusammenlebens im Insektenstaat: Pheromone der Königin unterdrücken etwa die Eierstockentwicklung der Arbeiterinnen und halten so die soziale Ordnung aufrecht, während die Tanzsprache Informationen über Richtung und Entfernung einer Futterquelle codiert und an andere Sammlerinnen weitergibt. Beide Kommunikationsformen zeigen, wie komplex koordiniertes Sozialverhalten ganz ohne Sprache im menschlichen Sinne organisiert sein kann.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Chemische Kommunikation (Pheromone)",
+            "Akustische und visuelle Kommunikation"
           ]
         }
       ]
@@ -1876,9 +1962,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die direkte Beobachtung des äußeren Baus mit optischen Hilfsmitteln ist eine Kernmethode dieses Basiskonzepts.",
+          "begruendung": "Die direkte Beobachtung des äußeren Baus und der Fortbewegung von Wirbellosen mithilfe von Lupe oder Auflichtmikroskop ist eine Kernmethode dieses Basiskonzepts: Erst die vergrößerte Betrachtung macht feine strukturelle Anpassungen sichtbar, die dem bloßen Auge verborgen bleiben. Diese methodische Fertigkeit ist Voraussetzung dafür, morphologische und anatomische Angepasstheit an konkreten Beispielen selbst zu entdecken statt nur beschrieben zu bekommen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Morphologische und anatomische Angepasstheit"
           ]
         },
         {
@@ -1984,9 +2073,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die mikroskopische Analyse von Beinen und Mundwerkzeugen zeigt exemplarisch, wie Struktur an spezifische Funktionen angepasst ist.",
+          "begruendung": "Die mikroskopische Analyse von Beinen und Mundwerkzeugen von Insekten zeigt exemplarisch, wie Struktur an spezifische Funktionen angepasst ist: Erst unter dem Mikroskop werden feine strukturelle Details wie Borsten, Krallen oder Saugrüsselwindungen sichtbar, die sich unmittelbar aus ihrer jeweiligen Funktion erklären lassen. Das Anfertigen eines Dauerpräparats macht diese Struktur-Funktions-Beziehung dauerhaft für die genaue Untersuchung verfügbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -2088,8 +2180,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wachstum, Entwicklung und Fortpflanzung als Lebensmerkmale sind unmittelbar Bestandteile individueller Entwicklung.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wachstum und Fortpflanzung gehören zu den grundlegenden Merkmalen des Lebens, die hier neben anderen genannt werden, und sind damit unmittelbar Bestandteile individueller Entwicklung. Da das Lernziel alle Lebensmerkmale gleichrangig auflistet, bleibt der Bezug zu diesem Basiskonzept jedoch auf zwei von mehreren Aspekten begrenzt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Wachstum",
+            "Reproduktion"
+          ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
@@ -2100,25 +2196,34 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Reizbarkeit und Homöostase als Lebensmerkmale setzen Steuerungs- und Regelungsprozesse voraus.",
+          "begruendung": "Reizbarkeit und Homöostase gehören zu den grundlegenden Merkmalen des Lebens und setzen Steuerungs- und Regelungsprozesse voraus: Ein Lebewesen muss auf Veränderungen seiner Umwelt reagieren und innere Zustandsgrößen trotz schwankender äußerer Bedingungen in einem für sein Überleben notwendigen Bereich halten können.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stoffwechsel als eines der zentralen Lebensmerkmale ist direkt Gegenstand dieses Basiskonzepts.",
+          "begruendung": "Stoffwechsel als eines der zentralen Merkmale des Lebens ist direkt Gegenstand dieses Basiskonzepts: Jedes Lebewesen nimmt Stoffe auf, wandelt sie um und gibt Abfallstoffe wieder ab, ein Kreislauf, ohne den keine Lebensfunktion aufrechterhalten werden könnte. Das Nennen der Merkmale des Lebens rückt den Stoffwechsel damit als eines der grundlegendsten Kennzeichen von Leben überhaupt in den Mittelpunkt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Reizbarkeit als Lebensmerkmal setzt die Aufnahme und Verarbeitung von Information voraus.",
+          "begruendung": "Reizbarkeit als eines der grundlegenden Merkmale des Lebens setzt die Aufnahme und Verarbeitung von Information voraus: Ein Lebewesen muss Veränderungen seiner Umwelt registrieren können, um überhaupt angemessen darauf reagieren zu können. Damit ist dieses Lebensmerkmal, auch wenn es hier nur neben anderen genannt wird, unmittelbar mit dem Basiskonzept Information und Kommunikation verknüpft.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Reizaufnahme und Reizverarbeitung"
           ]
         }
       ]
@@ -2212,9 +2317,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Zuordnung von Zellbestandteilen zu Funktionen ist das Kernlernziel dieses Basiskonzepts.",
+          "begruendung": "Die Zuordnung von Zellbestandteilen wie Zellkern, Zellmembran, Chloroplast, Mitochondrium, Zellwand und Vakuole zu ihren jeweiligen Funktionen ist das Kernlernziel dieses Basiskonzepts: Jedes dieser Kompartimente übernimmt eine klar abgegrenzte Aufgabe, von der Speicherung der Erbinformation über den Stoffaustausch bis zur Energiebereitstellung. Diese Zuordnung von Struktur zu Funktion auf zellulärer Ebene ist die Grundlage für das gesamte weitere Verständnis der Zellbiologie.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -2226,9 +2334,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Chloroplasten und Mitochondrien sind die zentralen Orte der Stoff- und Energieumwandlung der Zelle.",
+          "begruendung": "Chloroplasten und Mitochondrien sind die zentralen Orte der Stoff- und Energieumwandlung der Zelle: In Chloroplasten wird Lichtenergie in chemische Energie umgewandelt, in Mitochondrien wird diese chemische Energie wiederum in die für die Zelle direkt nutzbare Form ATP überführt. Die Zuordnung von Zellbestandteilen zu ihren Funktionen berührt damit auch diese beiden energetisch besonders bedeutsamen Organellen.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -2320,9 +2431,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der direkte Vergleich der Zellbestandteile ist die klassische Anwendung des Basiskonzepts Struktur und Funktion.",
+          "begruendung": "Der direkte Vergleich der Zellbestandteile pflanzlicher und tierischer Zellen ist die klassische Anwendung des Basiskonzepts Struktur und Funktion auf Zellebene: Zellwand, Chloroplasten und eine große Vakuole kennzeichnen pflanzliche Zellen strukturell, während tierische Zellen diese Kompartimente nicht besitzen. Der Vergleich macht deutlich, dass strukturelle Unterschiede zwischen Zelltypen unmittelbar auf funktionale Unterschiede, etwa Autotrophie versus Heterotrophie, zurückgehen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -2334,9 +2448,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Chloroplasten und Vakuole als pflanzliche Besonderheiten hängen eng mit unterschiedlichen Stoffwechselwegen zusammen.",
+          "begruendung": "Chloroplasten und Vakuole als pflanzliche Besonderheiten hängen eng mit unterschiedlichen Stoffwechselwegen von Pflanzen- und Tierzellen zusammen: Nur Pflanzenzellen können mithilfe der Chloroplasten selbst energiereiche Stoffe herstellen, während tierische Zellen auf die Aufnahme bereits fertiger Stoffe angewiesen sind. Der Vergleich pflanzlicher und tierischer Zellen macht diese grundlegend unterschiedlichen stofflichen Strategien sichtbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -2434,9 +2551,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Besitz von Chloroplasten als strukturelle Voraussetzung für Autotrophie ist der Kern dieses Lernziels.",
+          "begruendung": "Der Besitz von Chloroplasten als strukturelle Voraussetzung für Autotrophie ist der Kern dieses Lernziels: Nur Zellen mit diesem spezialisierten Kompartiment können mithilfe von Lichtenergie eigene organische Stoffe herstellen, während heterotrophe Zellen ohne Chloroplasten auf die Aufnahme bereits fertiger organischer Stoffe angewiesen sind. Diese Verknüpfung eines Zellorganells mit einer grundlegenden Ernährungsstrategie zeigt exemplarisch, wie strukturelle Ausstattung die möglichen Funktionen einer Zelle bestimmt.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -2448,9 +2568,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Autotrophie und Heterotrophie sind grundlegend verschiedene Strategien der Stoff- und Energieaufnahme.",
+          "begruendung": "Autotrophie und Heterotrophie sind grundlegend verschiedene Strategien der Stoff- und Energieaufnahme: Autotrophe Zellen stellen ihre energiereichen Stoffe selbst aus anorganischen Ausgangsstoffen her, heterotrophe Zellen müssen diese Stoffe bereits fertig aus der Umwelt aufnehmen. Den Zusammenhang zwischen Zellbau und Ernährungsweise zu erläutern macht diesen fundamentalen Unterschied stofflicher Versorgungsstrategien nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -2539,9 +2662,13 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Dass eine einzelne Zelle Wachstum, Fortpflanzung und alle weiteren Lebensmerkmale realisiert, ist der Kern dieses Lernziels zur individuellen Entwicklung.",
+          "begruendung": "Dass eine einzelne Zelle Wachstum, Fortpflanzung und alle weiteren Lebensmerkmale eigenständig realisiert, ist der Kern dieses Lernziels zur individuellen Entwicklung. Am Beispiel eines Einzellers wird besonders deutlich, dass Individualentwicklung nicht zwingend Vielzelligkeit voraussetzt: Eine einzige Zelle wächst, reagiert auf Reize, betreibt Stoffwechsel und pflanzt sich durch Zellteilung fort, und durchläuft damit im Kleinen denselben grundlegenden Entwicklungszyklus wie ein komplexer vielzelliger Organismus, nur ohne die dafür sonst nötige Arbeitsteilung zwischen spezialisierten Zellen.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum",
+            "Reproduktion"
           ]
         },
         {
@@ -2559,9 +2686,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Stoffwechsel als eines der von der Zelle erfüllten Lebensmerkmale ist hier mitgedacht.",
+          "begruendung": "Der Stoffwechsel als eines der von einer einzelnen Zelle erfüllten Lebensmerkmale ist hier mitgedacht: Dass bereits ein Einzeller Stoffe aufnimmt, umwandelt und wieder abgibt, zeigt, dass Stoffwechsel keine Eigenschaft ist, die erst komplexe, vielzellige Organismen benötigen. Das Erläutern der Lebensmerkmale am Beispiel eines Einzellers schließt diesen stofflichen Aspekt mit ein.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -2655,9 +2785,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Fehlen einer Zellstruktur bei Viren ist das zentrale Abgrenzungskriterium dieses Lernziels.",
+          "begruendung": "Das Fehlen einer Zellstruktur bei Viren ist das zentrale Abgrenzungskriterium dieses Lernziels: Viren besitzen weder eine eigene Zellmembran noch Zellorganellen oder einen eigenständigen Stoffwechsel und sind daher strukturell fundamental von lebenden Zellen verschieden. Diese fehlende zelluläre Kompartimentierung ist der Hauptgrund, warum Viren auf eine Wirtszelle zur Vermehrung angewiesen sind und im engeren biologischen Sinne nicht als lebendig gelten.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -2669,8 +2802,11 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Fehlen eines eigenen Stoffwechsels ist neben der fehlenden Zellstruktur ein zentrales Abgrenzungsmerkmal von Viren.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Fehlen eines eigenen Stoffwechsels ist neben der fehlenden Zellstruktur ein zentrales Abgrenzungsmerkmal von Viren gegenüber lebenden Zellen: Viren können selbst keine Stoffe umwandeln oder Energie gewinnen, sondern sind vollständig auf den Stoffwechselapparat einer Wirtszelle angewiesen, um sich zu vermehren. Diese fehlende eigenständige Stoffumwandlung ist ein wichtiges Kriterium der Abgrenzung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
+          ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
@@ -2764,9 +2900,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Reihe Chlamydomonas-Gonium-Volvox zeigt strukturell, wie sich zelluläre Organisation zu Vielzelligkeit entwickelt.",
+          "begruendung": "Die Reihe Chlamydomonas–Gonium–Volvox zeigt strukturell, wie sich zelluläre Organisation schrittweise zu echter Vielzelligkeit entwickelt: Vom eigenständigen Einzeller über lose Zellkolonien bis zur arbeitsteiligen Kugelkolonie mit spezialisierten Zelltypen wird eine zunehmende strukturelle Kompartimentierung auf Organisationsebene sichtbar. Dieser Vergleich veranschaulicht anschaulich, wie sich aus einfacher zellulärer Struktur höhere Organisationsformen entwickeln können.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -2784,9 +2923,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Arbeitsteilung zwischen somatischen Zellen und Keimzellen bei Volvox setzt Zell-Zell-Kommunikation voraus.",
+          "begruendung": "Die Arbeitsteilung zwischen somatischen Zellen und Keimzellen beim kolonialen Grünalgen Volvox setzt Zell-Zell-Kommunikation voraus: Nur wenn benachbarte Zellen Signale austauschen können, lässt sich koordinieren, welche Zellen sich auf vegetative Funktionen und welche sich auf die Fortpflanzung spezialisieren. Dieser frühe Schritt zellulärer Arbeitsteilung zeigt, dass innerorganismische Kommunikation bereits bei einfachen Übergangsformen zur Vielzelligkeit notwendig wird.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Kommunikation innerhalb eines Organismus"
           ]
         }
       ]
@@ -2874,9 +3016,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Fehlen von Zellkern und Organellen ist das zentrale Struktur-Merkmal, mit dem Bakterien abgegrenzt werden.",
+          "begruendung": "Das Fehlen von Zellkern und membranumhüllten Organellen ist das zentrale Struktur-Merkmal, mit dem Bakterienzellen von pflanzlichen und tierischen Zellen abgegrenzt werden: Ihre Erbinformation liegt frei im Zellplasma vor, statt in einem eigenen Kompartiment verpackt zu sein. Diese grundlegend einfachere strukturelle Organisation prokaryotischer Zellen ist ein zentrales Unterscheidungsmerkmal zu den komplexer kompartimentierten eukaryotischen Zellen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -2994,17 +3139,23 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Als Zersetzer sind Bakterien zentrale Akteure im Stoffkreislauf von Ökosystemen.",
+          "begruendung": "Als Zersetzer sind Bakterien zentrale Akteure im Stoffkreislauf von Ökosystemen: Sie bauen abgestorbenes organisches Material in anorganische Bestandteile ab und führen diese damit wieder dem Nährstoffkreislauf zu, aus dem sie von Pflanzen erneut aufgenommen werden können. Die Bedeutung von Bakterien zu erläutern, etwa auch in Lebensmittelherstellung oder als Krankheitserreger, macht ihre zentrale Rolle für stoffliche Kreisläufe in unterschiedlichen Kontexten sichtbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffkreislauf"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Krankheitserreger interagieren über molekulare Signale mit dem Immunsystem des Wirts.",
+          "begruendung": "Krankheitserregende Bakterien interagieren über molekulare Signale mit dem Immunsystem des Wirts: Bestimmte Oberflächenstrukturen der Bakterien werden von Immunzellen erkannt und lösen darüber eine Abwehrreaktion aus, während manche Erreger diese Signalwege gezielt manipulieren, um der Immunantwort zu entgehen. Diese molekulare Signalinteraktion ist damit ein zentraler, wenn auch hier nur mitgedachter Aspekt der vielfältigen Bedeutung von Bakterien.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Signaltransduktion"
           ]
         }
       ]
@@ -3085,8 +3236,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Mikroskop ist das methodische Werkzeug, um Strukturen sichtbar zu machen, auf denen dieses Basiskonzept beruht.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Mikroskop ist das methodische Werkzeug, um die kompartimentierte Struktur von Zellen überhaupt sichtbar zu machen, auf der dieses Basiskonzept beruht: Ohne ausreichende Vergrößerung bleiben Zellorganellen wie Zellkern oder Chloroplasten unsichtbar. Der sachgerechte Umgang mit dem Mikroskop ist damit die methodische Grundvoraussetzung für alle weiteren Struktur-Beobachtungen auf Zellebene.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Kompartimentierung"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -3188,8 +3342,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Frisch- und Dauerpräparate ermöglichen die direkte Beobachtung von Zellstrukturen, dem Kern dieses Basiskonzepts.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Frisch- und Dauerpräparate ermöglichen die direkte Beobachtung von Zellstrukturen wie Zellwand, Zellkern oder Chloroplasten und damit den Kern dieses Basiskonzepts: Das selbst hergestellte Präparat macht die zuvor nur abstrakt beschriebenen Zellkompartimente unmittelbar am eigenen Objekt sichtbar. Dieser praktische Zugang vertieft das strukturelle Verständnis deutlich stärker als reine Bildbetrachtung.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -3287,8 +3444,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Erkennen und Benennen von Strukturen in mikroskopischen Bildern ist eine Kernkompetenz dieses Basiskonzepts.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Das Erkennen und Benennen von Strukturen in mikroskopischen Bildern ist eine Kernkompetenz dieses Basiskonzepts: Ohne die Fähigkeit, beobachtete Formen und Muster den korrekten Zellbestandteilen zuzuordnen, bleibt jede mikroskopische Beobachtung fachlich wertlos. Das Auswerten solcher Bilder übt damit gezielt die Verbindung zwischen sichtbarer Struktur und ihrer biologischen Bedeutung ein.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -3387,8 +3547,11 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wissenschaftliches Zeichnen schult die genaue Beobachtung und Dokumentation von Zellstrukturen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wissenschaftliches Zeichnen schult die genaue Beobachtung und Dokumentation von Zellstrukturen: Um eine Zelle korrekt zu zeichnen, müssen ihre einzelnen Bestandteile bewusst identifiziert, in ihrer räumlichen Anordnung erfasst und maßstabsgetreu wiedergegeben werden. Diese methodische Fertigkeit vertieft das strukturelle Verständnis oft nachhaltiger als das bloße Betrachten eines fertigen Bildes.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
+          ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
@@ -3488,9 +3651,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Zellmodell bildet die strukturellen Bestandteile der Zelle nach und vertieft damit dieses Basiskonzept unmittelbar.",
+          "begruendung": "Das Zellmodell bildet die strukturellen Bestandteile der Zelle nach und vertieft damit dieses Basiskonzept unmittelbar: Beim Bau eines eigenen Modells muss entschieden werden, wie Zellkern, Organellen und Zellmembran räumlich zueinander angeordnet sind und welche Materialien sich zu ihrer Darstellung eignen. Das anschließende Aufzeigen von Möglichkeiten und Grenzen des Modells schärft zusätzlich das Bewusstsein dafür, dass jedes Modell die reale Struktur nur vereinfacht abbildet.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Zelluläre Kompartimentierung (Organellen)"
           ]
         },
         {
@@ -3608,9 +3774,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Als Informationssystem greift das Hormonsystem direkt in Steuerungsprozesse des Körpers ein.",
+          "begruendung": "Als Informationssystem greift das Hormonsystem direkt in Steuerungsprozesse des Körpers ein, indem es über die Blutbahn verteilte chemische Signale an entfernte Zielorgane sendet und dort gezielt Reaktionen auslöst. Die Charakterisierung des Hormonsystems als Informationssystem legt damit den begrifflichen Grundstein für das Verständnis konkreter hormoneller Steuerungs- und Regelungsvorgänge.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Vorprogrammierte/genetisch determinierte Steuerungsprozesse"
           ]
         },
         {
@@ -3622,9 +3791,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Hormonsystem als chemisches Signalsystem zwischen Organen ist ein Kernbeispiel für dieses Basiskonzept.",
+          "begruendung": "Das Hormonsystem als chemisches Signalsystem zwischen Organen ist ein Kernbeispiel für dieses Basiskonzept: Hormondrüsen geben Botenstoffe in die Blutbahn ab, die im gesamten Körper verteilt werden, aber nur an Zellen mit dem passenden Rezeptor eine Wirkung entfalten. Diese Charakterisierung als Informationssystem macht deutlich, dass es beim Hormonsystem nicht primär um Stoffumwandlung, sondern um gezielte Signalübertragung zwischen entfernten Körperregionen geht.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Hormonelle Kommunikation (endokrines System)"
           ]
         }
       ]
@@ -3709,9 +3881,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Pubertät als hormonell ausgelöste Reifungsphase ist ein Kernbeispiel für dieses Basiskonzept.",
+          "begruendung": "Die Pubertät als hormonell ausgelöste Reifungsphase ist ein Kernbeispiel für dieses Basiskonzept: Durch die Aktivitätsänderung von Hypophyse, Hoden und Eierstöcken werden gezielt körperliche Veränderungen wie Wachstumsschub, Stimmbruch oder Brustentwicklung sowie psychische und Verhaltensveränderungen ausgelöst. Die Charakterisierung dieser Entwicklungsphase macht damit exemplarisch sichtbar, wie hormonelle Steuerung und individuelle Reifung im menschlichen Körper konkret zusammenwirken, und bildet die Grundlage für das Verständnis späterer, spezifischerer Reifungsvorgänge wie Menstruationszyklus oder Spermienbildung.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Pubertät und Geschlechtsreife"
           ]
         },
         {
@@ -3723,9 +3898,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Aktivitätsänderung der Hormondrüsen steuert gerichtet die körperlichen Veränderungen der Pubertät.",
+          "begruendung": "Die Aktivitätsänderung der Hormondrüsen Hypophyse, Hoden und Eierstöcke steuert gerichtet die körperlichen Veränderungen der Pubertät nach einem weitgehend fest angelegten zeitlichen Muster. Da dieser Ablauf primär durch ein internes hormonelles Programm ausgelöst und nicht durch eine fortlaufende Rückmeldung aus dem Körper reguliert wird, ist er eher der Steuerung als der Regelung zuzuordnen.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Vorprogrammierte/genetisch determinierte Steuerungsprozesse"
           ]
         },
         {
@@ -3737,9 +3915,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Hypophyse, Hoden und Eierstöcke kommunizieren über Hormone, um die Pubertätsveränderungen auszulösen.",
+          "begruendung": "Hypophyse, Hoden und Eierstöcke kommunizieren über Hormone miteinander, um die körperlichen Veränderungen der Pubertät koordiniert auszulösen: Die Hypophyse sendet zunächst Signalhormone an die Keimdrüsen, die daraufhin selbst Sexualhormone produzieren und damit die eigentlichen Pubertätsveränderungen bewirken. Diese gestufte hormonelle Signalkette verdeutlicht, wie mehrere Organe über chemische Botenstoffe abgestimmt zusammenwirken.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Hormonelle Kommunikation (endokrines System)"
           ]
         }
       ]
@@ -3825,9 +4006,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Menstruationszyklus ist Teil der hormonellen Reifung und der reproduktiven Entwicklung.",
+          "begruendung": "Der Menstruationszyklus ist ein Teilaspekt der hormonellen Reifung und der reproduktiven Entwicklung, dessen monatlicher Ablauf durch das Zusammenspiel mehrerer Hormondrüsen gesteuert wird. Als wiederkehrender, regelhaft ablaufender Vorgang veranschaulicht er, wie Reifungsprozesse über die eigentliche Pubertät hinaus fortlaufend hormonell reguliert bleiben.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Hormonelle Regelkreise der Reifung"
           ]
         },
         {
@@ -3839,9 +4023,13 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Menstruationszyklus ist ein Paradebeispiel für einen hormonellen Regelkreis mit negativer und positiver Rückkopplung.",
+          "begruendung": "Der Menstruationszyklus ist ein Paradebeispiel für einen komplexen hormonellen Regelkreis, in dem sowohl negative als auch positive Rückkopplung wirken: In der ersten Zyklushälfte hemmt der steigende Östrogenspiegel zunächst über negative Rückkopplung die Ausschüttung der Hypophysenhormone, kurz vor dem Eisprung kehrt sich dieser Effekt jedoch um, und Östrogen löst über positive Rückkopplung einen kurzen, starken Anstieg des luteinisierenden Hormons aus, der den Eisprung selbst auslöst. Dieser Wechsel zwischen stabilisierender und selbstverstärkender Rückkopplung macht den Zyklus zu einem besonders lehrreichen Beispiel für dieses Basiskonzept.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)",
+            "Positive Rückkopplung"
           ]
         },
         {
@@ -3853,9 +4041,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Zyklus wird durch ein komplexes Zusammenspiel hormoneller Signale zwischen Hypophyse und Eierstöcken gesteuert.",
+          "begruendung": "Der Menstruationszyklus wird durch ein komplexes Zusammenspiel hormoneller Signale zwischen Hypophyse und Eierstöcken gesteuert: Beide Organe kommunizieren fortlaufend über wechselnde Hormonkonzentrationen im Blut, wodurch sich die charakteristischen Phasen des Zyklus ergeben. Die Beschreibung des Zyklusablaufs macht damit exemplarisch nachvollziehbar, wie Organe über chemische Signale im Dialog miteinander stehen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Hormonelle Kommunikation (endokrines System)"
           ]
         }
       ]
@@ -3938,17 +4129,23 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Zygote, Embryo und Fetus sind die klassischen Stadien individueller Entwicklung, dem Kernthema dieses Basiskonzepts.",
+          "begruendung": "Zygote, Embryo und Fetus sind die klassischen Stadien der vorgeburtlichen Individualentwicklung und damit ein Kernthema dieses Basiskonzepts. In diesen aufeinanderfolgenden Phasen entstehen durch fortschreitende Zellteilung und Differenzierung aus der befruchteten Eizelle zunächst die Grundbauplan-Anlagen und schließlich die ausdifferenzierten Organe des heranwachsenden Menschen. Da diese frühe Entwicklungsphase besonders empfindlich gegenüber äußeren Einflüssen ist, verknüpft das Lernziel die biologische Beschreibung dieser Stadien direkt mit praktisch bedeutsamen Maßnahmen zur Gesunderhaltung von Schwangeren und ungeborenem Kind.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__zelldifferenzierung"
+          ],
+          "relevante_unterkonzepte": [
+            "Embryonalentwicklung (Furchung, Gastrulation, Organogenese)"
           ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Organbildung während Embryo- und Fetalentwicklung ist ein zentrales Struktur-Merkmal dieses Zeitraums.",
+          "begruendung": "Die Organbildung während Embryo- und Fetalentwicklung ist ein zentrales Struktur-Merkmal dieses Zeitraums: In den Grundzügen der vorgeburtlichen Entwicklung von der Zygote über den Embryo bis zum Fetus entstehen schrittweise die räumlich abgegrenzten Organsysteme, aus denen der spätere Körper besteht. Dieser strukturelle Aufbauprozess bildet den fachlichen Rahmen, in dem Maßnahmen zur Gesunderhaltung von Schwangeren und ungeborenem Kind eingeordnet werden.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -4042,9 +4239,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Sexualität, Geschlechtsidentität und sexuelle Orientierung sind zentrale Aspekte der individuellen Entwicklung des Menschen.",
+          "begruendung": "Sexualität, Geschlechtsidentität und sexuelle Orientierung sind zentrale Aspekte der individuellen Entwicklung des Menschen, die über die rein körperliche Reifung hinausgehen. Während die Pubertät vor allem körperliche Veränderungen umfasst, macht dieses Lernziel deutlich, dass individuelle Entwicklung im Menschen auch psychische, soziale und identitätsbezogene Dimensionen einschließt, die sich in enger Wechselwirkung mit der biologischen Geschlechtsreifung, aber nicht auf diese reduzierbar, entfalten.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Pubertät und Geschlechtsreife"
           ]
         },
         {
@@ -4159,9 +4359,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Hormonelle Verhütung nutzt gezielt die negative Rückkopplung im Regelkreis der Ovulation, um diese zu unterdrücken.",
+          "begruendung": "Hormonelle Verhütung nutzt gezielt die negative Rückkopplung im Regelkreis der Ovulation, um diese zu unterdrücken: Die kontinuierliche Zufuhr von Östrogen und Gestagen durch die Antibabypille hält den Hormonspiegel künstlich konstant hoch, wodurch die Hypophyse keinen Anstiegsreiz mehr registriert und den für den Eisprung nötigen Hormonschub nicht auslöst. Die Beurteilung von Verhütungsmethoden setzt damit ein Verständnis dieses natürlichen Regelkreises und seiner gezielten Beeinflussung voraus.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -4173,9 +4376,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Hormonelle Verhütungsmittel greifen in die hormonelle Signalkommunikation zwischen Hypophyse und Eierstöcken ein.",
+          "begruendung": "Hormonelle Verhütungsmittel greifen gezielt in die hormonelle Signalkommunikation zwischen Hypophyse und Eierstöcken ein: Durch die künstliche Zufuhr von Hormonen wird der natürliche Signalaustausch zwischen beiden Organen so verändert, dass kein Eisprung ausgelöst wird. Die Beurteilung von Verhütungsmethoden setzt damit ein Verständnis dieses hormonellen Kommunikationswegs voraus.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Hormonelle Kommunikation (endokrines System)"
           ]
         }
       ]
@@ -4255,8 +4461,11 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Sexuell übertragbare Krankheiten wie HPV betreffen Vorgänge der reproduktiven Entwicklung und Gesundheit.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Sexuell übertragbare Krankheiten wie HPV oder Hepatitis-B betreffen unmittelbar reproduktive Vorgänge und die Gesundheit der Fortpflanzungsorgane. Präventionsmaßnahmen zu begründen setzt daher ein Verständnis der reproduktiven Funktionen und ihrer Verwundbarkeit voraus, weshalb dieses Lernziel an das Basiskonzept anknüpft, auch wenn sein Schwerpunkt eher gesundheitlicher als entwicklungsbiologischer Natur ist.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Reproduktion"
+          ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
@@ -4279,9 +4488,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Immungedächtnis, das Impfungen präventiv nutzen, ist ein zentrales Beispiel für Informationsspeicherung im Immunsystem.",
+          "begruendung": "Das Immungedächtnis, das Impfungen präventiv nutzen, ist ein zentrales Beispiel für Informationsspeicherung im Immunsystem: Nach dem ersten Kontakt mit einem Erreger oder Impfstoff codiert das Immunsystem dessen charakteristische Oberflächenmerkmale in Gedächtniszellen, die bei einem erneuten Kontakt eine deutlich schnellere Abwehrreaktion ermöglichen. Die Begründung von STI-Präventionsmaßnahmen wie der HPV-Impfung stützt sich unmittelbar auf dieses Prinzip gespeicherter immunologischer Information.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Codierung und Decodierung von Information"
           ]
         }
       ]
@@ -4368,9 +4580,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die spezifische Reizempfindlichkeit jeder Sinneszelle ist ein direktes Beispiel für Struktur-Funktions-Zuordnung.",
+          "begruendung": "Die spezifische Reizempfindlichkeit jeder Sinneszelle ist ein direktes Beispiel für Struktur-Funktions-Zuordnung: Die räumliche Struktur der Rezeptormoleküle einer Sinneszelle bestimmt, auf welche Reizart, etwa Temperatur oder Druck, sie überhaupt reagieren kann, ähnlich einem Schlüssel-Schloss-Prinzip auf Rezeptorebene. Die Zuordnung adäquater Reize zu Sinneszellen macht diese strukturell begründete Spezifität unmittelbar nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Rezeptor-Ligand-Spezifität"
           ]
         },
         {
@@ -4388,9 +4603,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Zuordnung von Reizen zu Rezeptortypen ist die Grundlage der Informationsaufnahme, dem Kern dieses Basiskonzepts.",
+          "begruendung": "Die Zuordnung von Reizen zu passenden Rezeptortypen ist die Grundlage der Informationsaufnahme und damit Kern dieses Basiskonzepts: Jede Sinneszelle ist auf eine bestimmte Reizart wie Temperatur, Druck oder Licht spezialisiert und reagiert nur auf diesen adäquaten Reiz, nicht aber auf andere Reizarten. Dieses Prinzip der Reizspezifität erklärt, warum unterschiedliche Sinneseindrücke überhaupt als solche unterscheidbar sind.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Sinnesorgane und Rezeptortypen"
           ]
         }
       ]
@@ -4482,9 +4700,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Zusammenhang zwischen Bau (z. B. Linse, Trommelfell) und Funktion des Sinnesorgans ist Kern dieses Lernziels.",
+          "begruendung": "Der Zusammenhang zwischen Bau, etwa der Linse des Auges oder dem Trommelfell des Ohrs, und der jeweiligen Funktion des Sinnesorgans ist Kern dieses Lernziels: Jede Struktur des Sinnesorgans lässt sich direkt auf ihre Rolle bei der Aufnahme und ersten Verarbeitung des jeweiligen Reizes zurückführen. Bau und Funktion eines Sinnesorgans zu erläutern ist damit ein besonders vollständiges Beispiel für das Struktur-Funktions-Prinzip dieses Basiskonzepts.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -4502,9 +4723,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Auge und Ohr sind die ersten Stationen der Informationsaufnahme in der Reiz-Reaktions-Kette.",
+          "begruendung": "Auge und Ohr sind die ersten Stationen der Informationsaufnahme in der Reiz-Reaktions-Kette: Beide Organe wandeln physikalische Reize wie Licht oder Schallwellen mithilfe spezialisierter Sinneszellen in elektrische Signale um, die anschließend an das Nervensystem weitergeleitet werden können. Bau und Funktion dieser Organe zu verstehen ist damit die Voraussetzung für das Verständnis der gesamten nachfolgenden Reizverarbeitung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Sinnesorgane und Rezeptortypen"
           ]
         }
       ]
@@ -4610,9 +4834,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Aufnahme von Reizen durch Sinneszellen ist der erste Schritt der Informationsverarbeitung - Kern dieses Basiskonzepts.",
+          "begruendung": "Die Aufnahme von Reizen durch Sinneszellen ist der erste Schritt der Informationsverarbeitung und damit Kern dieses Basiskonzepts: Sinneszellen wandeln einen physikalischen oder chemischen Reiz in ein elektrisches Signal um, das erst dadurch für das Nervensystem verwertbar wird. Ohne diesen ersten Umwandlungsschritt könnte keine der nachfolgenden Stationen der Reiz-Reaktions-Kette überhaupt in Gang kommen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Sinnesorgane und Rezeptortypen"
           ]
         }
       ]
@@ -4700,9 +4927,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Bau der Nervenfaser (Axon, Markscheide) ermöglicht funktional die schnelle Erregungsweiterleitung.",
+          "begruendung": "Der Bau der Nervenfaser mit Axon und isolierender Markscheide ermöglicht funktional die besonders schnelle Erregungsweiterleitung über sensorische Nerven: Die Markscheide unterbricht die kontinuierliche Erregungsleitung und lässt das Signal stattdessen sprunghaft von Einschnürung zu Einschnürung springen, was die Leitungsgeschwindigkeit erheblich erhöht. Diese strukturelle Besonderheit der Nervenfaser erklärt unmittelbar ihre spezifische Leitungsfunktion.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -4720,9 +4950,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Weiterleitung über sensorische Nerven ist ein klassisches Beispiel für Signalübertragung zwischen Zellen.",
+          "begruendung": "Die Weiterleitung von Sinnesinformation über sensorische Nerven ist ein klassisches Beispiel für Signalübertragung zwischen Zellen: Das an der Sinneszelle entstandene elektrische Signal wandert als Folge von Aktionspotenzialen entlang der Nervenfaser zum Zentralnervensystem, ohne dabei an Informationsgehalt zu verlieren. Diese Weiterleitung bildet das Bindeglied zwischen Reizaufnahme und zentraler Verarbeitung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Reizweiterleitung und zentrale Verarbeitung"
           ]
         }
       ]
@@ -4816,9 +5049,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Reflexbögen als Teil der ZNS-Verarbeitung sind ein klassisches Beispiel für Steuerung ohne Rückmeldung.",
+          "begruendung": "Reflexbögen als Teil der Informationsverarbeitung im Zentralnervensystem sind ein klassisches Beispiel für Steuerung ohne Rückmeldung: Ein Reiz löst über eine feste Verschaltung im Rückenmark oder Gehirn eine Reaktion aus, ohne dass das Ergebnis dieser Reaktion die weitere Verarbeitung des ursprünglichen Reizes beeinflusst. Diese Struktur des offenen Wirkungskreises erklärt, warum Reflexe besonders schnell, aber auch unveränderlich ablaufen.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
@@ -4830,9 +5066,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Verarbeitung von Reizinformation im Rückenmark und Gehirn ist ein Kernbeispiel für Informationsverarbeitung.",
+          "begruendung": "Die Verarbeitung von Reizinformation im Rückenmark und Gehirn ist ein Kernbeispiel für zentrale Informationsverarbeitung: Hier werden die über sensorische Nerven eintreffenden Signale mit anderen Informationen verrechnet, bewertet und in eine angemessene Reaktion übersetzt. Erst diese zentrale Verarbeitungsstufe macht aus einer bloßen Reizmeldung eine sinnvolle, situationsangepasste Antwort des Organismus.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Reizweiterleitung und zentrale Verarbeitung"
           ]
         }
       ]
@@ -4936,9 +5175,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Weiterleitung über motorische Nerven zum Effektor ist ein direktes Beispiel für Signalübertragung.",
+          "begruendung": "Die Weiterleitung über motorische Nerven zum Effektor ist ein direktes Beispiel für nervale Signalübertragung: Nachdem das Zentralnervensystem eine Reaktion festgelegt hat, überträgt eine motorische Nervenzelle diesen Befehl in Form von Aktionspotenzialen zum ausführenden Organ, etwa einem Muskel. Diese efferente Weiterleitung ist das Gegenstück zur afferenten Reizaufnahme und schließt den Informationsweg von der Verarbeitung zur Handlung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Nervale Kommunikation (Synapsen, Aktionspotenzial)"
           ]
         }
       ]
@@ -5032,9 +5274,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Muskelreaktion als Endglied der Reiz-Reaktions-Kette ist ein Beispiel für gerichtete Steuerung ohne Rückmeldung.",
+          "begruendung": "Die Muskelreaktion als Endglied der Reiz-Reaktions-Kette ist ein Beispiel für gerichtete Steuerung ohne Rückmeldung: Der Effektor führt die vom Nervensystem übermittelte Reaktion aus, ohne selbst wieder rückwirkend auf den ursprünglichen Reiz einzuwirken. Damit schließt der Effektor die Steuerkette ab, statt sie zu einem geschlossenen Regelkreis zu ergänzen.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Offener Wirkungskreis (Steuerkette)"
           ]
         },
         {
@@ -5046,9 +5291,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Reaktion am Effektor schließt die Informationskette von Reiz zu Reaktion ab.",
+          "begruendung": "Die Reaktion am Effektor schließt die Informationskette von Reiz zu Reaktion ab: An der Synapse zwischen motorischer Nervenzelle und Muskel wird das elektrische Signal in einen chemischen Botenstoff übersetzt, der die Muskelkontraktion auslöst. Damit endet die Reiz-Reaktions-Kette an genau der Stelle, an der aus verarbeiteter Information eine sichtbare körperliche Reaktion wird.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Nervale Kommunikation (Synapsen, Aktionspotenzial)"
           ]
         }
       ]
@@ -5136,9 +5384,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Einteilung in zentrales und peripheres Nervensystem ist ein direktes Struktur-Merkmal dieses Basiskonzepts.",
+          "begruendung": "Die Einteilung in zentrales und peripheres Nervensystem ist ein direktes Struktur-Merkmal dieses Basiskonzepts: Das zentrale Nervensystem aus Gehirn und Rückenmark ist räumlich klar vom peripheren Nervensystem der Nervenbahnen im übrigen Körper abgegrenzt, wobei beide Teile funktional eng zusammenwirken. Diese strukturelle Zweiteilung des Nervensystems ist die Grundlage, um seine Aufgabenverteilung nachvollziehen zu können.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -5156,9 +5407,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "ZNS und PNS bilden gemeinsam das Netzwerk, über das Information im Körper übertragen wird.",
+          "begruendung": "ZNS und PNS bilden gemeinsam das Netzwerk, über das Information im gesamten Körper übertragen wird: Während das zentrale Nervensystem eintreffende Signale verarbeitet und Reaktionen festlegt, übernimmt das periphere Nervensystem die Weiterleitung von und zu den Körperregionen. Diese Kennzeichnung beider Systeme legt die strukturelle Grundlage für das Verständnis nervaler Kommunikation im Körper.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Nervale Kommunikation (Synapsen, Aktionspotenzial)"
           ]
         }
       ]
@@ -5249,9 +5503,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Zellkörper, Dendriten und Axon sind Struktur-Merkmale, deren Funktion (Informationsaufnahme, -weiterleitung) direkt daraus folgt.",
+          "begruendung": "Zellkörper, Dendriten und Axon sind Struktur-Merkmale einer Nervenzelle, deren jeweilige Funktion bei Informationsaufnahme und -weiterleitung sich direkt aus ihrem Bau ableiten lässt: Dendriten nehmen als verzweigte Fortsätze eingehende Signale auf, der Zellkörper verarbeitet sie, und das lange Axon leitet das Ergebnis an oft weit entfernte Zielzellen weiter. Bau und Funktion der Nervenzelle zu beschreiben ist damit ein Kernbeispiel struktureller Spezialisierung.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -5269,9 +5526,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Nervenzelle ist strukturell auf Informationsaufnahme und -weiterleitung spezialisiert.",
+          "begruendung": "Die Nervenzelle ist strukturell auf Informationsaufnahme und -weiterleitung spezialisiert: Dendriten nehmen ankommende Signale anderer Zellen auf, der Zellkörper verrechnet sie, und das Axon leitet das resultierende Signal über teils weite Strecken zum Endknöpfchen weiter, wo es an die nächste Zelle übergeben wird. Diese Bauweise macht die Nervenzelle zur strukturellen Grundeinheit nervaler Kommunikation.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Nervale Kommunikation (Synapsen, Aktionspotenzial)"
           ]
         }
       ]
@@ -5376,9 +5636,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Verstärkung und Deaktivierung von Nervenzellverbindungen sind die zelluläre Grundlage von Informationsspeicherung (Lernen, Gedächtnis).",
+          "begruendung": "Verstärkung und Deaktivierung von Nervenzellverbindungen sind die zelluläre Grundlage von Informationsspeicherung beim Lernen und im Gedächtnis: Wird eine Synapse wiederholt aktiviert, verstärkt sich die Übertragung an genau dieser Verbindung, während selten genutzte Verbindungen geschwächt werden. Dieses Prinzip synaptischer Plastizität zeigt, dass Lernen im Kern eine gezielte Umgestaltung nervaler Kommunikationswege ist, nicht die Neubildung völlig neuer Nervenzellen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Nervale Kommunikation (Synapsen, Aktionspotenzial)"
           ]
         }
       ]
@@ -5477,9 +5740,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Zu hohe Reizdichte durch Lärm oder Licht überfordert die Informationsverarbeitungskapazität des Nervensystems - der Kern dieses Lernziels.",
+          "begruendung": "Zu hohe Reizdichte durch Lärm oder Licht überfordert die Informationsverarbeitungskapazität des Nervensystems und ist damit der Kern dieses Lernziels: Wenn mehr Reize eintreffen, als das Gehirn sinnvoll verrechnen kann, sinkt die Qualität der Verarbeitung und Stresssymptome können auftreten. Maßnahmen zur Vermeidung von Reizüberflutung schützen damit gezielt die begrenzte Verarbeitungskapazität des zentralen Nervensystems.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Reizweiterleitung und zentrale Verarbeitung"
           ]
         }
       ]
@@ -5571,9 +5837,12 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Suchtmittel stören das Regelsystem des Belohnungssystems und verschieben dessen normalen Sollwert.",
+          "begruendung": "Suchtmittel wie Alkohol oder THC stören das natürliche Regelsystem des Belohnungssystems und verschieben dessen normalen Sollwert: Wiederholter Konsum gewöhnt das System an ein künstlich erhöhtes Erregungsniveau, sodass ohne die Substanz ein Mangelzustand empfunden wird. Diese Verschiebung des Sollwerts erschwert die Rückkehr zur ursprünglichen, unbeeinflussten Regulation erheblich.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -5585,9 +5854,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Alkohol und THC wirken direkt auf die chemische Signalübertragung (Dopamin, Endocannabinoide) im Nervensystem.",
+          "begruendung": "Alkohol und THC wirken direkt auf die chemische Signalübertragung an Synapsen, etwa über Dopamin oder Endocannabinoide, und verändern dadurch die nervale Kommunikation im Gehirn: Beide Substanzen beeinflussen, wie stark und wie lange bestimmte Botenstoffe an ihren Rezeptoren wirken, was die normale Signalverarbeitung verzerrt. Diese direkte Störung synaptischer Kommunikation erklärt sowohl die kurzfristige Wirkung als auch das Suchtpotenzial solcher Substanzen.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Nervale Kommunikation (Synapsen, Aktionspotenzial)"
           ]
         }
       ]
@@ -5685,9 +5957,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Kohlenhydrate, Fette, Proteine und Ergänzungsstoffe sind unmittelbar Gegenstand der Stoffaufnahme, dem Kern dieses Basiskonzepts.",
+          "begruendung": "Kohlenhydrate, Fette, Proteine und Ergänzungsstoffe wie Vitamine, Mineralsalze oder Ballaststoffe sind unmittelbar Gegenstand der Stoffaufnahme, dem Kern dieses Basiskonzepts: Jede dieser Stoffgruppen erfüllt eine eigene Funktion im Körper, von der Energiebereitstellung über den Aufbau körpereigener Strukturen bis zur Unterstützung der Verdauung. Die Erläuterung der Nahrungszusammensetzung liefert damit die stoffliche Grundlage für alle weiteren Ernährungslernziele.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -5789,9 +6064,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Das Schlüssel-Schloss-Prinzip der Enzym-Substrat-Bindung ist ein klassisches Beispiel für Struktur-Funktions-Zusammenhänge.",
+          "begruendung": "Das Schlüssel-Schloss-Prinzip der Enzym-Substrat-Bindung ist ein klassisches Beispiel für Struktur-Funktions-Zusammenhänge, das der stufenweisen enzymatischen Verdauung zugrunde liegt: Jedes Verdauungsenzym besitzt eine räumliche Struktur, die nur zu einem bestimmten Nährstoffbaustein passt, wodurch komplexe, unlösliche Nährstoffe gezielt in lösliche Grundbausteine zerlegt werden können. Diese strukturelle Passung erklärt, warum verschiedene Enzyme jeweils für unterschiedliche Nährstoffgruppen zuständig sind.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Enzym-Substrat-Spezifität"
           ]
         },
         {
@@ -5803,9 +6081,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die stufenweise Zerlegung der Nährstoffe in lösliche Grundbausteine ist der Kern der Stoffaufnahme.",
+          "begruendung": "Die stufenweise enzymatische Zerlegung unlöslicher Nährstoffe in ihre löslichen Grundbausteine ist der Kern der Stoffaufnahme: Große Nahrungsmoleküle wie Stärke, Fette oder Proteine müssen erst in kleinere, wasserlösliche Bausteine zerlegt werden, bevor sie überhaupt vom Körper aufgenommen werden können. Verdauung als stufenweise Umwandlung zu erläutern beschreibt damit den notwendigen ersten Schritt jeder Stoffaufnahme.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -5902,9 +6183,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Zotten und Mikrozotten als oberflächenvergrößernde Strukturen sind direkt auf die Resorptionsfunktion ausgelegt.",
+          "begruendung": "Zotten und Mikrozotten als oberflächenvergrößernde Strukturen der Dünndarmschleimhaut sind direkt auf die Resorptionsfunktion ausgelegt: Durch ihre stark gefaltete, fingerförmige Oberfläche vergrößert sich die für die Aufnahme von Nährstoffen verfügbare Fläche um ein Vielfaches gegenüber einer glatten Darmwand. Die Beschreibung der Resorption in Blut und Lymphe knüpft damit unmittelbar an dieses strukturelle Oberflächenvergrößerungsprinzip an.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Oberflächenvergrößerung bei Stoffaustausch (Alveolen, Villi)"
           ]
         },
         {
@@ -5916,9 +6200,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Aufnahme der Nährstoffe in Blut und Lymphe ist der zentrale Schritt der Stoffaufnahme in den Körper.",
+          "begruendung": "Die Aufnahme der verdauten Nährstoffe in Blut und Lymphe ist der zentrale Schritt der Stoffaufnahme in den Körper: Erst durch die Resorption gelangen die zuvor zerlegten Nährstoffbausteine tatsächlich aus dem Darm in den Blutkreislauf und damit zu den Zellen, die sie benötigen. Die Beschreibung der Resorption schließt damit den Weg von der Nahrung zur tatsächlichen Stoffaufnahme des Körpers ab.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -6026,25 +6313,34 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Insulin und Glukagon als Gegenspieler in einem negativen Rückkopplungskreis sind das Paradebeispiel für Homöostase-Regelung.",
+          "begruendung": "Insulin und Glukagon wirken als hormonelle Gegenspieler in einem negativen Rückkopplungskreis und bilden damit das Paradebeispiel für Homöostase-Regelung in diesem Basiskonzept: Steigt der Blutzuckerspiegel nach einer Mahlzeit über den Sollwert, schüttet die Bauchspeicheldrüse Insulin aus, das die Zellen zur Glukoseaufnahme anregt und den Spiegel senkt; sinkt er dagegen unter den Sollwert, wird stattdessen Glukagon ausgeschüttet, das gespeicherte Glukose freisetzt. Durch dieses Wechselspiel zweier gegensätzlich wirkender Hormone wird der Blutzuckerspiegel in einem engen Bereich konstant gehalten.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Blutzuckerspiegel selbst ist eine Stoffgröße, die durch die hormonelle Regelung konstant gehalten wird.",
+          "begruendung": "Der Blutzuckerspiegel selbst ist eine Stoffgröße, die durch die hormonelle Regelung mithilfe von Insulin und Glukagon konstant gehalten wird: Glukose als zentraler Energieträger im Blut muss in einem engen Bereich gehalten werden, weder zu hoch noch zu niedrig, um die Versorgung der Körperzellen sicherzustellen. Die Erläuterung dieser Regelung berührt damit auch diesen stofflichen Aspekt, auch wenn der Schwerpunkt eher bei Steuerung und Regelung liegt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Insulin und Glukagon übermitteln als chemische Botenstoffe Information zwischen Bauchspeicheldrüse und Zielorganen.",
+          "begruendung": "Insulin und Glukagon übermitteln als chemische Botenstoffe Information zwischen Bauchspeicheldrüse und Zielorganen: Beide Hormone signalisieren den Zellen von Leber, Muskel und Fettgewebe, ob Glukose aufgenommen und gespeichert oder freigesetzt werden soll. Diese hormonelle Informationsübertragung macht die Regulierung des Blutzuckerspiegels zu einem anschaulichen Beispiel chemischer Kommunikation im Körper.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Hormonelle Kommunikation (endokrines System)"
           ]
         }
       ]
@@ -6122,9 +6418,13 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der veränderte Nährstoffbedarf in Pubertät und Alter ist unmittelbar mit Phasen individueller Entwicklung verknüpft.",
+          "begruendung": "Der veränderte Nährstoffbedarf in Pubertät und im höheren Lebensalter ist unmittelbar mit unterschiedlichen Phasen individueller Entwicklung verknüpft: Während der Wachstumsphase ist der Bedarf an Baustoffen wie Proteinen besonders hoch, im Alter verändert er sich durch nachlassende Stoffwechselaktivität erneut. Bedarfsangepasste Ernährung berücksichtigt damit den jeweiligen Entwicklungsstand des Körpers.",
           "relevante_teilkonzepte": [
             "bk_individuelle_entwicklung__reifung"
+          ],
+          "relevante_unterkonzepte": [
+            "Wachstum",
+            "Seneszenz/Alterung"
           ]
         },
         {
@@ -6136,17 +6436,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Hunger- und Sättigungsgefühl regeln die Nahrungsaufnahme in Abhängigkeit vom aktuellen Bedarf.",
+          "begruendung": "Hunger- und Sättigungsgefühl regeln die Nahrungsaufnahme in Abhängigkeit vom aktuellen Energiebedarf des Körpers: Sinkt der Blutzuckerspiegel, entsteht Hungergefühl, das zur Nahrungsaufnahme anregt; steigt er nach der Mahlzeit wieder an, setzt Sättigung ein und beendet sie. Bedarfsangepasste Ernährung berücksichtigt damit bewusst diese natürliche Regelung.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Anpassung der Nährstoffzufuhr an Lebensphase und Aktivität ist der Kern dieses Lernziels zur Energieumwandlung.",
+          "begruendung": "Die Anpassung der Nährstoffzufuhr an Lebensphase und Aktivität ist der Kern dieses Lernziels zur Energieumwandlung: Der Energiebedarf eines Menschen variiert je nach Alter, Wachstumsphase und körperlicher Aktivität erheblich, weshalb eine bedarfsangepasste Ernährung genau diese schwankende Energiebilanz berücksichtigen muss. Maßnahmen zur bedarfsangepassten Ernährung zu erläutern setzt damit ein Verständnis individuell unterschiedlicher Energieumsätze voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -6246,9 +6552,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Ballaststoffe beeinflussen unmittelbar die Verdauung und den Stoffwechsel des Darmmikrobioms.",
+          "begruendung": "Ballaststoffe beeinflussen unmittelbar die Verdauung und den Stoffwechsel des Darmmikrobioms: Obwohl sie vom menschlichen Körper selbst nicht verdaut werden können, dienen sie den im Darm lebenden Bakterien als Nahrung und beeinflussen dadurch deren Zusammensetzung und Stoffwechselaktivität. Maßnahmen zur ballaststoffreichen Ernährung zu erläutern setzt ein Verständnis dieser indirekten, aber bedeutsamen stofflichen Wirkung voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -6344,17 +6653,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Essgestörtes Verhalten stört die körpereigene Regelung von Hunger- und Sättigungsgefühl.",
+          "begruendung": "Essgestörtes Verhalten stört die körpereigene Regelung von Hunger- und Sättigungsgefühl empfindlich: Bei Anorexie oder Bulimie wird das natürliche Rückkopplungssignal zwischen Nahrungsaufnahme und Sättigung bewusst oder unbewusst überschrieben, sodass die Regelung ihre stabilisierende Funktion verliert. Präventionsmaßnahmen setzen an dieser gestörten Regelung an.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Essstörungen betreffen unmittelbar die Energiebilanz und -aufnahme des Körpers.",
+          "begruendung": "Essstörungen betreffen unmittelbar die Energiebilanz und -aufnahme des Körpers: Bei Erkrankungen wie Anorexie oder Bulimie gerät das Gleichgewicht zwischen aufgenommener und benötigter Energie schwer aus dem Takt, mit teils gravierenden gesundheitlichen Folgen. Maßnahmen zur Prävention essgestörten Verhaltens zu erläutern setzt ein Verständnis dieser gestörten Energiebilanz voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -6453,9 +6768,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Lebensmittelampel bewertet den Gehalt an Nährstoffen wie Fett, Zucker und Salz - zentralen Stoffgrößen.",
+          "begruendung": "Die Lebensmittelampel bewertet den Gehalt an Nährstoffen wie Fett, Zucker und Salz – zentralen Stoffgrößen, die über die gesundheitliche Qualität eines Lebensmittels mitentscheiden: Die farbliche Kennzeichnung macht diese sonst oft schwer einschätzbaren stofflichen Zusammensetzungen auf einen Blick vergleichbar. Die Bewertung der Lebensmittelkennzeichnung zu erläutern setzt damit ein Verständnis dieser stofflichen Bewertungskriterien voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -6550,9 +6868,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Beschreibung der Atmungsorgane ist ein direktes Beispiel für Struktur-Merkmale dieses Basiskonzepts.",
+          "begruendung": "Die Beschreibung der Bestandteile des Atmungssystems ist ein direktes Beispiel für Struktur-Merkmale dieses Basiskonzepts: Von der Nasenhöhle über Luftröhre und Bronchien bis zu den Lungenbläschen ist jeder Abschnitt strukturell auf eine bestimmte Teilfunktion des Atmungsprozesses zugeschnitten, sei es Anfeuchtung, Erwärmung, Leitung oder Gasaustausch. Bau und Funktion der Atmungsorgane zu beschreiben liefert damit die strukturelle Grundlage für das Verständnis der gesamten Atmung.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -6564,9 +6885,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Atmungsorgane dienen der Sauerstoffaufnahme, einem zentralen Schritt der Stoffaufnahme.",
+          "begruendung": "Die Atmungsorgane dienen der Sauerstoffaufnahme, einem zentralen Schritt der Stoffaufnahme des Körpers aus der Umwelt: Von der Nasenhöhle bis zu den Lungenbläschen ist jeder Abschnitt des Atmungssystems Teil des Weges, über den Sauerstoff schließlich ins Blut gelangt. Die Beschreibung der Bestandteile des Atmungssystems liefert damit die strukturelle Grundlage für diesen lebenswichtigen Stoffaustausch.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -6659,17 +6983,23 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Zwerchfell und Zwischenrippenmuskulatur zeigen als Gegenspieler ein klassisches Struktur-Funktions-Prinzip.",
+          "begruendung": "Zwerchfell und Zwischenrippenmuskulatur zeigen als muskuläre Gegenspieler ein klassisches Struktur-Funktions-Prinzip: Durch ihr koordiniertes, gegenläufiges Zusammenspiel wird der Brustraum bei der Einatmung erweitert und bei der Ausatmung wieder verkleinert. Die Beschreibung der Atembewegungen macht damit exemplarisch nachvollziehbar, wie zwei gegensätzlich wirkende Muskelstrukturen gemeinsam eine rhythmische Funktion erzeugen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Muskuläre Antagonisten"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Atemzentrum steuert über das Gegenspielerprinzip von Zwerchfell und Zwischenrippenmuskulatur die rhythmischen Atembewegungen.",
+          "begruendung": "Das im verlängerten Rückenmark liegende Atemzentrum steuert über das Gegenspielerprinzip von Zwerchfell und Zwischenrippenmuskulatur die rhythmischen Atembewegungen und regelt sie fortlaufend anhand des im Blut gemessenen Kohlenstoffdioxidgehalts: Steigt dieser über einen Sollwert, erhöht das Atemzentrum Atemfrequenz und -tiefe, bis der Wert wieder sinkt. Damit ist die Atmung nicht nur ein rein mechanischer Bewegungsvorgang, sondern ein fortlaufend geregelter physiologischer Prozess.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__steuerung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -6772,9 +7102,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Alveolen als oberflächenvergrößerte Struktur sind direkt auf die Gasaustauschfunktion ausgelegt.",
+          "begruendung": "Die Alveolen als stark oberflächenvergrößerte Struktur sind direkt auf die Gasaustauschfunktion der Lunge ausgelegt: Durch ihre enorme Anzahl kleiner, dünnwandiger Lungenbläschen entsteht eine Austauschfläche von etwa 100 Quadratmetern, über die Sauerstoff und Kohlenstoffdioxid effizient zwischen Luft und Blut ausgetauscht werden können. Der Gasaustausch in der Lunge ist damit ein weiteres anschauliches Beispiel des Oberflächenvergrößerungsprinzips.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Oberflächenvergrößerung bei Stoffaustausch (Alveolen, Villi)"
           ]
         },
         {
@@ -6786,9 +7119,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Gasaustausch zwischen Alveolen und Blut ist der zentrale Schritt der Sauerstoffaufnahme in den Körper.",
+          "begruendung": "Der Gasaustausch zwischen Alveolen und Blut ist der zentrale Schritt der Sauerstoffaufnahme in den Körper: An der stark vergrößerten Oberfläche der Lungenbläschen tritt Sauerstoff aus der Atemluft ins Blut über, während gleichzeitig Kohlenstoffdioxid aus dem Blut in die Atemluft abgegeben wird. Die Beschreibung dieses Gasaustauschs beschreibt damit unmittelbar den entscheidenden Schritt des Stoffaustauschs mit der Umwelt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -6899,9 +7235,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Zellatmung als Freisetzung von Energie aus Nährstoffen mithilfe von Sauerstoff ist der Kern dieses Basiskonzepts.",
+          "begruendung": "Die Zellatmung als Freisetzung von Energie aus Nährstoffen mithilfe von Sauerstoff ist der Kern dieses Basiskonzepts: In der Wort- und Summengleichung wird formal zusammengefasst, wie energiereiche Nährstoffe unter Sauerstoffverbrauch zu Kohlenstoffdioxid und Wasser abgebaut werden, wobei die zuvor in den Nährstoffen gespeicherte chemische Energie freigesetzt und für die ATP-Synthese genutzt wird. Diese Gleichung formulieren zu können verdichtet die gekoppelte Stoff- und Energieumwandlung der Zellatmung auf eine kompakte, formale Darstellung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -7000,9 +7339,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die CO2-Konzentration in der Raumluft ist eine unmittelbare Stoffgröße, die die Begründung für Lüftung liefert.",
+          "begruendung": "Die CO2-Konzentration in der Raumluft ist eine unmittelbare Stoffgröße, die die Begründung für ausreichende Lüftung liefert: Mit zunehmender Verweildauer von Menschen in einem geschlossenen Raum steigt der Kohlenstoffdioxidgehalt der Luft an, was die Konzentrationsfähigkeit beeinträchtigen kann. Maßnahmen zur Gesunderhaltung wie regelmäßiges Lüften zu begründen stützt sich unmittelbar auf diese messbare stoffliche Veränderung der Raumluft.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -7101,9 +7443,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Feinstaub und Stickoxide sind Stoffe, deren Aufnahme über die Atemwege hier begründet vermieden werden soll.",
+          "begruendung": "Feinstaub und Stickoxide sind Stoffe, deren Aufnahme über die Atemwege hier begründet vermieden werden soll: Beide Schadstoffgruppen gelangen beim Einatmen tief in die Lunge und können dort gesundheitsschädliche Wirkungen entfalten. Maßnahmen zur Reduzierung von Luftschadstoffen zu begründen setzt ein Verständnis dieses unerwünschten stofflichen Eintrags in den Körper voraus.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -7202,9 +7547,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Tabakrauch enthält Schadstoffe, die als Fremdstoffe in die Atemwege gelangen - zentral für diese Begründung.",
+          "begruendung": "Tabakrauch enthält zahlreiche Schadstoffe, die als Fremdstoffe in die Atemwege gelangen und dort dem natürlichen Stoffaustausch mit der Umwelt schaden – zentral für die Begründung dieses Lernziels: Neben Nikotin enthält Tabakrauch auch krebserregende Teerstoffe und Kohlenmonoxid, die die Sauerstoffaufnahme im Blut zusätzlich beeinträchtigen können. Ein Rauchverbot zu begründen stützt sich unmittelbar auf diese stofflichen Belastungen der Atemwege.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -7300,9 +7648,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Niere, Haut und Lunge sind funktional auf die Ausscheidung unterschiedlicher Stoffe spezialisiert.",
+          "begruendung": "Niere, Haut und Lunge sind strukturell und funktional auf die Ausscheidung unterschiedlicher Stoffe spezialisiert: Die Niere filtert wasserlösliche Stoffwechselendprodukte aus dem Blut, die Haut scheidet über Schweiß Wasser und Salze aus, die Lunge gibt gasförmiges Kohlenstoffdioxid ab. Diese Charakterisierung dreier unterschiedlicher Organe unter demselben Gesichtspunkt zeigt, wie verschiedene Strukturen jeweils für eine spezifische Ausscheidungsfunktion optimiert sind.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -7314,9 +7665,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Ausscheidung von Stoffwechselendprodukten ist der Kern dieses Basiskonzepts.",
+          "begruendung": "Die Ausscheidung von Stoffwechselendprodukten ist der Kern dieses Basiskonzepts: Niere, Haut und Lunge übernehmen jeweils die Ausscheidung unterschiedlicher Abfallstoffe, die bei den Stoffwechselprozessen des Körpers zwangsläufig anfallen und aus dem Körper entfernt werden müssen. Die Charakterisierung dieser drei Organe als Ausscheidungsorgane rundet damit den Blick auf die Stoffumwandlung im Körper vom Anfang bis zum notwendigen Ende ab.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -7416,25 +7770,34 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Nephron, Gegenstromprinzip und Filtration sind das Kernbeispiel für Struktur-Funktions-Zusammenhänge in diesem Themenfeld.",
+          "begruendung": "Nephron, Gegenstromprinzip und Filtration sind das Kernbeispiel für Struktur-Funktions-Zusammenhänge in diesem Themenfeld: Die millionenfache Wiederholung des Nephrons als funktionale Grundeinheit der Niere und die gegenläufige Anordnung von Gefäßen und Kanälchen im Nierenmark ermöglichen eine hochwirksame Harnkonzentrierung. Bau und Funktion der Niere als Filter- und Ausscheidungsorgan zu erläutern verknüpft damit mehrere strukturelle Prinzipien zu einem komplexen, aber gut nachvollziehbaren Gesamtsystem.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Gegenstromprinzip"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Niere reguliert über die Harnkonzentrierung den Wasser- und Salzhaushalt des Körpers.",
+          "begruendung": "Die Niere reguliert über die je nach Bedarf angepasste Harnkonzentrierung den Wasser- und Salzhaushalt des Körpers: Bei Wassermangel wird mehr Wasser aus dem Vorharn rückresorbiert und ein konzentrierterer Harn ausgeschieden, bei Wasserüberschuss entsprechend weniger. Bau und Funktion der Niere lassen sich damit als Regelorgan verstehen, das innere Zustandsgrößen konstant hält.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Filtration und Rückresorption in der Niere sind zentrale Prozesse der Stoffumwandlung und -ausscheidung.",
+          "begruendung": "Filtration und Rückresorption in der Niere sind zentrale Prozesse der Stoffumwandlung und -ausscheidung: Beim Filtern des Blutes werden zunächst nahezu alle gelösten Stoffe abgefiltert, bevor in einem zweiten Schritt lebenswichtige Stoffe wie Glukose gezielt wieder ins Blut zurückgeholt werden, während Abfallstoffe im Harn verbleiben. Bau und Funktion der Niere zu erläutern beschreibt damit einen mehrstufigen stofflichen Sortier- und Ausscheidungsprozess.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -7521,9 +7884,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Harnleiter, Harnblase und Harnröhre sind die strukturellen Stationen des Ableitungswegs, dem Kern dieses Lernziels.",
+          "begruendung": "Harnleiter, Harnblase und Harnröhre sind die strukturellen Stationen des Ableitungswegs und damit der Kern dieses Lernziels: Jedes dieser Organe übernimmt eine eigene, räumlich abgegrenzte Teilfunktion, vom Transport des Harns aus der Niere über seine zeitweilige Speicherung bis zu seiner endgültigen Ausleitung. Diese organisierte Abfolge strukturell getrennter Stationen zeigt exemplarisch, wie ein komplexer Vorgang auf mehrere spezialisierte Organe verteilt werden kann.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -7633,9 +7999,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Arterien, Venen und Kapillaren sind strukturell auf ihre jeweilige Transportfunktion im Kreislauf ausgelegt.",
+          "begruendung": "Arterien, Venen und Kapillaren sind strukturell auf ihre jeweilige Transportfunktion im Blutkreislauf ausgelegt: Arterien besitzen dickere, elastische Wände zum Transport des unter hohem Druck stehenden Blutes vom Herzen weg, Venen dünnere Wände mit Venenklappen für den Rücktransport, Kapillaren extrem dünne Wände für den eigentlichen Stoffaustausch. Bau und Funktion des Herz-Kreislauf-Systems zu beschreiben nutzt diese strukturelle Vielfalt der Blutgefäße als zentrales Beispiel.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -7647,9 +8016,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Lungen- und Körperkreislauf transportieren Sauerstoff und Nährstoffe - zentrale Stoffumwandlungsprozesse.",
+          "begruendung": "Lungen- und Körperkreislauf transportieren gemeinsam Sauerstoff und Nährstoffe zu jeder Körperzelle – zentrale Stoffumwandlungsprozesse dieses Basiskonzepts: Im Lungenkreislauf wird das Blut mit Sauerstoff angereichert, im Körperkreislauf verteilt es diesen Sauerstoff samt Nährstoffen an alle Gewebe und nimmt im Gegenzug Abfallstoffe auf. Bau und Funktion des Herz-Kreislauf-Systems zu beschreiben verdeutlicht damit, wie Stoffe im gesamten Körper zirkulieren und umgesetzt werden.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -7741,17 +8113,23 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das vierkammerige Herz mit Klappen als Gegenspielersystem ist das Kernbeispiel für Struktur-Funktions-Zusammenhänge.",
+          "begruendung": "Das vierkammerige Herz mit seinen Klappen als funktionales Gegenspielersystem ist das Kernbeispiel für Struktur-Funktions-Zusammenhänge in diesem Themenfeld: Die Herzklappen öffnen und schließen sich koordiniert, um den Blutfluss stets in eine Richtung zu lenken und einen Rückfluss zu verhindern, während die Trennung in vier Kammern den Lungen- und Körperkreislauf sauber voneinander trennt. Bau und Funktion des Herzens zu beschreiben verknüpft damit mehrere strukturelle Teilprinzipien zu einer effizient arbeitenden Pumpe.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Gegenspielerprinzip"
           ]
         },
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Herzfrequenz wird durch den Sinusknoten und das vegetative Nervensystem geregelt.",
+          "begruendung": "Die Herzfrequenz wird durch den im Herzen selbst liegenden Sinusknoten als körpereigenen Taktgeber sowie durch das vegetative Nervensystem geregelt, das die Grundfrequenz je nach Bedarf erhöht oder senkt. Bau und Funktion des Herzens lassen sich damit nicht nur als mechanische Pumpe, sondern auch als Teil eines geregelten physiologischen Systems verstehen.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
@@ -7854,9 +8232,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die kernlosen Erythrozyten sind ein direktes Beispiel dafür, wie Struktur (fehlender Kern) die Sauerstofftransportfunktion optimiert.",
+          "begruendung": "Die kernlosen roten Blutkörperchen sind ein direktes Beispiel dafür, wie Struktur, hier der fehlende Zellkern, die Sauerstofftransportfunktion optimiert: Ohne Zellkern bleibt im Inneren der Zelle mehr Platz für sauerstoffbindendes Hämoglobin, was die Transportkapazität pro Zelle deutlich erhöht. Bau und Funktion des Blutes zu beschreiben nutzt diese besondere Zellstruktur als anschauliches Struktur-Funktions-Beispiel.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -7868,17 +8249,23 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Transport von Sauerstoff, Nährstoffen und Abfallstoffen durch das Blut ist zentral für die Stoffumwandlung.",
+          "begruendung": "Der Transport von Sauerstoff, Nährstoffen und Abfallstoffen durch das Blut ist zentral für die Stoffumwandlung im gesamten Körper: Rote Blutkörperchen transportieren Sauerstoff, Plasma löst Nährstoffe und Abfallprodukte, sodass jede Körperzelle versorgt und gleichzeitig entsorgt wird. Bau und Funktion des Blutes zu beschreiben liefert damit die Grundlage für das Verständnis, wie Stoffe im Körper zirkulieren.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Leukozyten als Teil des Blutes sind zentrale Akteure der immunologischen Informationsverarbeitung.",
+          "begruendung": "Leukozyten als Teil des Blutes sind zentrale Akteure der immunologischen Informationsverarbeitung: Sie erkennen über Oberflächenrezeptoren körperfremde Strukturen und leiten daraufhin über molekulare Signalketten eine gezielte Abwehrreaktion ein. Diese Signalerkennung ist damit ein wesentlicher, wenn auch hier nur mitbehandelter Aspekt der Funktionen des Blutes.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Signaltransduktion"
           ]
         }
       ]
@@ -7966,9 +8353,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Antigene auf der Erythrozytenoberfläche und passende Antikörper folgen dem Schlüssel-Schloss-Prinzip.",
+          "begruendung": "Antigene auf der Oberfläche roter Blutkörperchen und die zu ihnen passenden Antikörper folgen dem Schlüssel-Schloss-Prinzip: Nur wenn die räumliche Struktur eines Antikörpers exakt zu einem bestimmten Antigen passt, kommt es zur Erkennungsreaktion, die bei unpassenden Blutgruppen eine gefährliche Verklumpung auslösen kann. Die Klassifikation der Blutgruppen nach AB0- und Rhesus-System und ihre Bedeutung für Bluttransfusionen abzuleiten setzt ein Verständnis dieser strukturellen Passung voraus.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Rezeptor-Ligand-Spezifität"
           ]
         },
         {
@@ -7986,9 +8376,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Antigen-Antikörper-Erkennung nach dem Schlüssel-Schloss-Prinzip ist ein direktes Beispiel für Informationscodierung auf Zelloberflächen.",
+          "begruendung": "Antigen-Antikörper-Erkennung nach dem Schlüssel-Schloss-Prinzip ist ein direktes Beispiel für Informationscodierung auf Zelloberflächen: Die Antigene der roten Blutkörperchen fungieren dabei als eine Art molekulares Erkennungsmerkmal, das vom Immunsystem gelesen und bei Unverträglichkeit mit passenden Antikörpern beantwortet wird. Die Klassifikation der Blutgruppen nach AB0- und Rhesus-System macht dieses Prinzip der rezeptorvermittelten Erkennung an einem für Bluttransfusionen praktisch bedeutsamen Beispiel greifbar.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Rezeptor-vermittelte Signalübertragung"
           ]
         }
       ]
@@ -8080,17 +8473,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Training verbessert die Regelfähigkeit des Herz-Kreislauf-Systems, etwa durch effizientere Homöostase unter Belastung.",
+          "begruendung": "Regelmäßiges Training verbessert die Regelfähigkeit des Herz-Kreislauf-Systems, indem es dessen Kapazität erhöht, unter körperlicher Belastung schnell und effizient auf einen veränderten Sauerstoffbedarf zu reagieren. Ein trainiertes Herz-Kreislauf-System erreicht eine gegebene Belastung mit geringerem Frequenzanstieg und kehrt nach Belastungsende schneller zum Ruhewert zurück – ein messbarer Ausdruck effizienterer Homöostase unter Belastung, der die Begründung sportlicher Betätigung stützt.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Sportliche Betätigung erhöht den Energieumsatz und verbessert die Effizienz der Energiebereitstellung im Körper.",
+          "begruendung": "Sportliche Betätigung erhöht den Energieumsatz und verbessert langfristig die Effizienz der Energiebereitstellung im Körper: Regelmäßiges Training steigert nicht nur den kurzfristigen Kalorienverbrauch, sondern verbessert auch die Fähigkeit des Körpers, Sauerstoff und Nährstoffe effizient in nutzbare Energie umzuwandeln. Maßnahmen zur Gesunderhaltung wie regelmäßige sportliche Betätigung zu begründen stützt sich auf diesen energetischen Zusammenhang.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
@@ -8189,9 +8588,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Zufuhr ungesättigter statt gesättigter Fettsäuren ist eine unmittelbare Frage der Stoffaufnahme und ihrer Auswirkung auf das Kreislaufsystem.",
+          "begruendung": "Die Zufuhr ungesättigter statt gesättigter Fettsäuren ist eine unmittelbare Frage der Stoffaufnahme und ihrer Auswirkung auf das Kreislaufsystem: Ungesättigte Fettsäuren wirken sich günstiger auf die Blutfettwerte aus als gesättigte, was langfristig das Risiko für Gefäßerkrankungen beeinflusst. Ausgewogene Ernährung als Maßnahme zur Gesunderhaltung zu begründen setzt damit ein Verständnis dafür voraus, welche aufgenommenen Stoffe sich wie auf den Körper auswirken.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -8285,9 +8687,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Bakterien, Hefepilze und Viren werden hier vor allem anhand ihrer strukturellen Merkmale unterschieden.",
+          "begruendung": "Bakterien, Hefepilze und Viren werden hier vor allem anhand ihrer strukturellen Merkmale voneinander unterschieden: Das Vorhandensein oder Fehlen einer Zellwand, eines Zellkerns oder überhaupt einer zellulären Struktur bestimmt maßgeblich, welcher Erregergruppe ein Krankheitserreger zuzuordnen ist. Diese strukturelle Kennzeichnung ist die notwendige Grundlage, um später gezielt passende Präventions- und Behandlungsmaßnahmen zu verstehen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Form-Funktions-Beziehung"
           ]
         },
         {
@@ -8407,9 +8812,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Übertragungswege beschreiben, wie Krankheitserreger als biologische Signale zwischen Wirtsorganismen weitergegeben werden - daher primär diesem Basiskonzept zugeordnet.",
+          "begruendung": "Die Übertragungswege beschreiben, wie Krankheitserreger von einem Wirtsorganismus zum nächsten gelangen, etwa über Tröpfchen, Kontakt oder Vektoren, und lassen sich damit als eine Form ungewollter Kommunikation zwischen Organismen verstehen: Der Erreger 'sendet' sich selbst als biologisches Signal weiter, dessen Übertragungsweg entscheidend für Präventionsmaßnahmen ist. Diese Perspektive ordnet die Übertragungswege primär diesem Basiskonzept zu, statt sie rein als medizinisches Faktum zu behandeln.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__kommunikation"
+          ],
+          "relevante_unterkonzepte": [
+            "Kommunikation zwischen Organismen"
           ]
         }
       ]
@@ -8496,9 +8904,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die Verteilung der Leukozyten in Blut und Lymphsystem ist ein strukturelles Merkmal des Abwehrsystems.",
+          "begruendung": "Die Verteilung der Leukozyten in Blut und Lymphsystem ist ein strukturelles Merkmal des Abwehrsystems: Weiße Blutzellen sind nicht auf ein einziges Organ beschränkt, sondern über mehrere miteinander verbundene Kompartimente des Körpers verteilt, wodurch sie an fast jedem Ort schnell zur Abwehr bereitstehen. Die Bedeutung weißer Blutzellen zu erläutern beginnt daher folgerichtig mit ihrer strukturellen Verteilung im Körper.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Gewebe- und Organebene der Kompartimentierung"
           ]
         },
         {
@@ -8516,9 +8927,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Leukozyten sind die zellulären Träger der Informationsverarbeitung im Immunsystem, deren Verteilung hier beschrieben wird.",
+          "begruendung": "Leukozyten sind die zellulären Träger der Informationsverarbeitung im Immunsystem, deren Verteilung in Blut und Lymphsystem hier beschrieben wird: Nur wenn Immunzellen im gesamten Körper präsent sind, können sie an jedem Ort molekulare Gefahrensignale erkennen und darauf reagieren. Ihr Vorkommen ist damit die räumliche Voraussetzung für funktionierende immunologische Signalverarbeitung.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Signaltransduktion"
           ]
         }
       ]
@@ -8618,9 +9032,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Die Aufnahme und der Abbau körperfremder Stoffe durch Phagozytose sind unmittelbar Stoffumwandlungsprozesse.",
+          "begruendung": "Die Aufnahme und der Abbau körperfremder Stoffe und abgestorbener Zellen durch Phagozytose sind unmittelbar Stoffumwandlungsprozesse: Fresszellen des Immunsystems nehmen körperfremdes Material aktiv auf und zerlegen es enzymatisch in unschädliche Bestandteile, ähnlich wie bei der Verdauung. Die Erläuterung dieser unspezifischen Abwehr beschreibt damit einen weiteren, immunologisch bedeutsamen Stoffumwandlungsprozess im Körper.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -8719,9 +9136,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Die spezifische Antigen-Antikörper-Bindung nach dem Schlüssel-Schloss-Prinzip ist ein direktes Struktur-Funktions-Beispiel.",
+          "begruendung": "Die spezifische Antigen-Antikörper-Bindung nach dem Schlüssel-Schloss-Prinzip ist ein direktes Struktur-Funktions-Beispiel: Jeder Antikörper besitzt eine räumliche Struktur, die nur zu einem ganz bestimmten Antigen passt, wodurch die Immunantwort hochspezifisch auf den jeweiligen Erreger zugeschnitten werden kann. Die Bildung von Antikörpern und Gedächtniszellen zu erläutern setzt ein Verständnis dieser strukturellen Erkennungsspezifität voraus.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Rezeptor-Ligand-Spezifität"
           ]
         },
         {
@@ -8739,9 +9159,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Gedächtniszellen speichern Information über vorangegangene Erregerkontakte - ein Kernbeispiel für Informationsspeicherung im Basiskonzept.",
+          "begruendung": "Gedächtniszellen speichern Information über vorangegangene Erregerkontakte und sind damit ein Kernbeispiel für Informationsspeicherung in diesem Basiskonzept: Nach dem ersten Kontakt mit einem Erreger bleiben spezialisierte Zellen im Körper zurück, die dessen Oberflächenmerkmale gewissermaßen codiert 'erinnern' und bei erneutem Kontakt eine deutlich schnellere und stärkere Antikörperbildung ermöglichen. Diese immunologische Gedächtnisbildung ist die molekularbiologische Grundlage für die im Lernziel behandelte spezifische Immunität.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Codierung und Decodierung von Information"
           ]
         }
       ]
@@ -8848,9 +9271,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Aktive Immunisierung nutzt gezielt den Aufbau des immunologischen Informationsgedächtnisses, passive die direkte Zufuhr fertiger Antikörper.",
+          "begruendung": "Aktive Immunisierung nutzt gezielt den Aufbau des immunologischen Informationsgedächtnisses, indem der Körper durch einen abgeschwächten oder inaktivierten Erreger zur eigenen Antikörperproduktion und Gedächtniszellbildung angeregt wird, während passive Immunisierung stattdessen fertige Antikörper direkt zuführt, ohne dass eine eigene Informationsspeicherung erfolgt. Dieser Unterschied erklärt, warum aktive Immunisierung langfristig, passive dagegen nur kurzfristig wirksam ist.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Codierung und Decodierung von Information"
           ]
         }
       ]
@@ -8930,8 +9356,11 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Impfungen betreffen häufig die frühe individuelle Entwicklung, da viele Impfempfehlungen an das Kindesalter geknüpft sind.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Impfungen betreffen häufig die frühe individuelle Entwicklung, da die meisten Impfempfehlungen gezielt an bestimmte Phasen des Kindesalters geknüpft sind, in denen das Immunsystem noch heranreift. Die Begründung von Präventionsmaßnahmen berührt damit indirekt entwicklungsbiologische Aspekte, auch wenn der eigentliche Schwerpunkt des Lernziels auf der Immunabwehr liegt.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Wachstum"
+          ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
@@ -8954,9 +9383,12 @@
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 3,
-          "begruendung": "Impfungen nutzen gezielt den Aufbau des immunologischen Gedächtnisses - der Kern der Informationsspeicherung im Immunsystem.",
+          "begruendung": "Impfungen nutzen gezielt den Aufbau des immunologischen Gedächtnisses und sind damit ein Kernbeispiel für Informationsspeicherung im Immunsystem: Durch die kontrollierte Konfrontation mit abgeschwächten oder inaktivierten Erregerbestandteilen codiert das Immunsystem deren Merkmale in Gedächtniszellen, ohne dass die Krankheit selbst durchgemacht werden muss. Die Begründung von Präventionsmaßnahmen wie Hygiene und Impfungen stützt sich damit unmittelbar auf dieses Prinzip gespeicherter Information.",
           "relevante_teilkonzepte": [
             "bk_information_kommunikation__information"
+          ],
+          "relevante_unterkonzepte": [
+            "Codierung und Decodierung von Information"
           ]
         }
       ]
@@ -9039,8 +9471,12 @@
         {
           "basiskonzept_id": "bk_individuelle_entwicklung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Wachstum, Entwicklung und Fortpflanzung als Lebensmerkmale sind unmittelbar Aspekte individueller Entwicklung, hier bezogen auf den Menschen.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Wachstum, Entwicklung und Fortpflanzung als grundlegende Lebensmerkmale sind unmittelbar Aspekte individueller Entwicklung, hier bezogen auf den Menschen als Lebewesen. Da diese Merkmale hier nur als eines von mehreren charakteristischen Kennzeichen des Lebens neben anderen genannt werden, bleibt der Bezug zum Basiskonzept grundlegend, aber nicht vertieft.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Wachstum",
+            "Reproduktion"
+          ]
         },
         {
           "basiskonzept_id": "bk_struktur_funktion",
@@ -9051,22 +9487,31 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Reizbarkeit und Homöostase als Lebensmerkmale setzen Steuerungs- und Regelungsprozesse voraus.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Reizbarkeit und Homöostase gehören als grundlegende Merkmale des Lebens auch beim Menschen zu den Voraussetzungen individueller Existenz und setzen fortlaufende Steuerungs- und Regelungsprozesse voraus. Die Charakterisierung des Menschen als Lebewesen macht diesen allgemeinen Bezug zum Basiskonzept explizit, ohne ihn hier bereits vertieft auszuführen.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
+          ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Stoffwechsel als zentrales Lebensmerkmal ist unmittelbar Gegenstand dieses Basiskonzepts.",
+          "begruendung": "Stoffwechsel als zentrales Lebensmerkmal ist unmittelbar Gegenstand dieses Basiskonzepts: Auch der Mensch als Lebewesen nimmt fortlaufend Stoffe auf, wandelt sie um und scheidet Abfallstoffe wieder aus, ein Kreislauf, der ununterbrochen ablaufen muss, um alle Lebensfunktionen aufrechtzuerhalten. Die Charakterisierung des Menschen als Lebewesen rückt den Stoffwechsel damit in den Mittelpunkt der Betrachtung.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
           "basiskonzept_id": "bk_information_kommunikation",
           "relevanz_beurteilung": 2,
-          "begruendung": "Reizbarkeit als Lebensmerkmal setzt Informationsaufnahme und -verarbeitung voraus.",
-          "relevante_teilkonzepte": []
+          "begruendung": "Reizbarkeit als Lebensmerkmal setzt Informationsaufnahme und -verarbeitung voraus, auch beim Menschen als Lebewesen: Ohne die Fähigkeit, Umweltreize aufzunehmen und zu verarbeiten, könnte kein Organismus angemessen auf Veränderungen reagieren. Die Charakterisierung des Menschen als Lebewesen macht diesen allgemeinen Bezug zum Basiskonzept explizit.",
+          "relevante_teilkonzepte": [],
+          "relevante_unterkonzepte": [
+            "Reizaufnahme und Reizverarbeitung"
+          ]
         }
       ]
     },
@@ -9165,17 +9610,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das koordinierte Zusammenwirken der Organsysteme zur Aufrechterhaltung der Homöostase ist der Kern dieses Lernziels.",
+          "begruendung": "Das koordinierte Zusammenwirken von Verdauungs-, Atmungs-, Herz-Kreislauf- und Ausscheidungssystem zur Aufrechterhaltung der Homöostase ist der Kern dieses Lernziels: Keines dieser Systeme reguliert seine Aufgabe isoliert, sondern jedes ist über gemeinsame Regelgrößen wie den Blutzucker-, Sauerstoff- oder Wasserhaushalt eng mit den anderen verknüpft. Erst durch dieses fein abgestimmte Zusammenspiel mehrerer Regelkreise kann der Körper innere Zustände trotz stark wechselnder äußerer und innerer Anforderungen konstant halten.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Verdauung, Atmung, Kreislauf und Ausscheidung bilden gemeinsam die Kette der Stoffaufnahme, -verteilung und -abgabe.",
+          "begruendung": "Verdauung, Atmung, Kreislauf und Ausscheidung bilden gemeinsam die durchgehende Kette der Stoffaufnahme, -verteilung und -abgabe im Körper: Ohne das koordinierte Zusammenwirken dieser vier Organsysteme könnten Stoffe weder aus der Umwelt aufgenommen noch im Körper verteilt oder am Ende wieder ausgeschieden werden. Das Zusammenwirken der Organsysteme zu erläutern zeigt damit den vollständigen stofflichen Kreislauf durch den Körper.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -9283,9 +9734,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Nahrung liefert die Substrate, aus denen die Zellatmung Energie in Form von ATP freisetzt - der Kern dieses Lernziels.",
+          "begruendung": "Nahrung liefert die Substrate, aus denen die Zellatmung Energie in Form von ATP freisetzt – der Kern dieses Lernziels: Erst durch die Kopplung von Nährstoffaufnahme und Zellatmung wird die in der Nahrung gespeicherte chemische Energie tatsächlich für Lebensprozesse nutzbar gemacht. Den Zusammenhang zwischen Ernährung und Zellatmung zu erläutern verbindet damit unmittelbar Stoffaufnahme und Energiegewinnung zu einem zusammenhängenden Prozess.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -9387,9 +9841,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Nachweis von Glucose und Proteinen ist ein direktes Experiment zur Stoffzusammensetzung von Nahrung.",
+          "begruendung": "Der Nachweis von Glucose und Proteinen in Nahrungsmitteln ist ein direktes Experiment zur Stoffzusammensetzung von Nahrung: Mithilfe einfacher chemischer Nachweisreaktionen lässt sich sichtbar machen, welche Nährstoffe tatsächlich in einem Nahrungsmittel enthalten sind. Dieses Experiment macht die sonst nur theoretisch behandelte stoffliche Zusammensetzung von Nahrung konkret nachweisbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -9486,9 +9943,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 2,
-          "begruendung": "Der Nachweis der Amylasewirkung demonstriert das Schlüssel-Schloss-Prinzip der Enzym-Substrat-Bindung.",
+          "begruendung": "Der Nachweis der Amylasewirkung demonstriert das Schlüssel-Schloss-Prinzip der Enzym-Substrat-Bindung experimentell: Amylase spaltet spezifisch Stärke, nicht aber andere Kohlenhydrate, weil nur Stärkemoleküle strukturell in ihr aktives Zentrum passen. Der experimentelle Nachweis dieser enzymatischen Spaltung macht die sonst nur theoretisch behandelte strukturelle Spezifität eines Enzyms unmittelbar sichtbar.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__funktion"
+          ],
+          "relevante_unterkonzepte": [
+            "Enzym-Substrat-Spezifität"
           ]
         },
         {
@@ -9500,9 +9960,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Nachweis der enzymatischen Stärkespaltung zeigt experimentell einen zentralen Schritt der Stoffumwandlung.",
+          "begruendung": "Der Nachweis der enzymatischen Spaltung von Stärke zeigt experimentell einen zentralen Schritt der Stoffumwandlung bei der Verdauung: Durch den Nachweis von Traubenzucker als Spaltprodukt wird sichtbar, dass das Enzym Amylase Stärke tatsächlich in kleinere, lösliche Zuckerbausteine zerlegt. Dieses Experiment macht den abstrakten Begriff der enzymatischen Stoffumwandlung konkret nachvollziehbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffumwandlung"
           ]
         },
         {
@@ -9608,9 +10071,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 3,
-          "begruendung": "CO2 als Endprodukt der Zellatmung nachzuweisen, ist ein direktes Experiment zur Energieumwandlung im Körper.",
+          "begruendung": "CO2 als Endprodukt der Zellatmung nachzuweisen, ist ein direktes Experiment zur Energieumwandlung im Körper: Der Nachweis von Kohlenstoffdioxid in der Ausatemluft macht sichtbar, dass im Körper fortlaufend Zellatmung stattfindet, bei der energiereiche Nährstoffe unter Energiefreisetzung abgebaut werden. Dieses einfache Experiment macht einen sonst unsichtbaren Energieumwandlungsprozess unmittelbar nachweisbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energetische Kopplung"
           ]
         },
         {
@@ -9709,9 +10175,12 @@
         {
           "basiskonzept_id": "bk_struktur_funktion",
           "relevanz_beurteilung": 3,
-          "begruendung": "Das Prinzip der Oberflächenvergrößerung durch Faltung ist ein zentrales Struktur-Merkmal dieses Basiskonzepts.",
+          "begruendung": "Das Prinzip der Oberflächenvergrößerung durch Faltung ist ein zentrales Struktur-Merkmal dieses Basiskonzepts, das dieses Modellexperiment gezielt veranschaulicht: Durch den Vergleich einer glatten mit einer gefalteten Fläche gleicher Grundgröße wird unmittelbar erfahrbar, wie stark sich die tatsächlich verfügbare Austauschfläche durch Faltung vergrößern lässt. Dieses abstrakte Prinzip lässt sich anschließend direkt auf reale Organe wie Darm oder Lunge übertragen.",
           "relevante_teilkonzepte": [
             "bk_struktur_funktion__struktur"
+          ],
+          "relevante_unterkonzepte": [
+            "Oberflächenvergrößerung"
           ]
         },
         {
@@ -9723,9 +10192,12 @@
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Oberflächenvergrößerung dient in vielen Organen (Lunge, Darm) direkt der effizienteren Stoffaufnahme.",
+          "begruendung": "Oberflächenvergrößerung dient in vielen Organen wie Lunge oder Darm direkt der effizienteren Stoffaufnahme aus der Umwelt: Je größer die verfügbare Austauschfläche, desto mehr Sauerstoff bzw. Nährstoffe können in derselben Zeit aufgenommen werden. Das Modellexperiment zur Oberflächenvergrößerung veranschaulicht damit ein Prinzip, das unmittelbar dem stofflichen Austausch des Körpers mit seiner Umwelt zugutekommt.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__stoff"
+          ],
+          "relevante_unterkonzepte": [
+            "Stoffaustausch mit der Umwelt"
           ]
         },
         {
@@ -9829,17 +10301,23 @@
         {
           "basiskonzept_id": "bk_steuerung_regelung",
           "relevanz_beurteilung": 3,
-          "begruendung": "Der Anstieg von Puls und Atemfrequenz unter Belastung zeigt experimentell, wie der Körper Homöostase durch Regelung aufrechterhält.",
+          "begruendung": "Der messbare Anstieg von Puls und Atemfrequenz unter körperlicher Belastung zeigt experimentell, wie der Körper Homöostase durch fortlaufende Regelung aufrechterhält: Der erhöhte Sauerstoff- und Energiebedarf der Muskulatur wird über Chemorezeptoren registriert und löst eine gesteigerte Herz- und Atemtätigkeit aus, die nach Belastungsende wieder auf den Ruhewert zurückgeregelt wird. Die eigene Messung macht diesen sonst unsichtbaren Regelungsprozess unmittelbar am eigenen Körper erfahrbar.",
           "relevante_teilkonzepte": [
             "bk_steuerung_regelung__regelung"
+          ],
+          "relevante_unterkonzepte": [
+            "Negative Rückkopplung (inkl. Homöostase-Prinzip)"
           ]
         },
         {
           "basiskonzept_id": "bk_stoff_energie_umwandlung",
           "relevanz_beurteilung": 2,
-          "begruendung": "Erhöhter Puls und erhöhte Atemfrequenz decken den gesteigerten Sauerstoff- und Energiebedarf bei körperlicher Belastung.",
+          "begruendung": "Erhöhter Puls und erhöhte Atemfrequenz nach körperlicher Betätigung decken den gesteigerten Sauerstoff- und Energiebedarf der arbeitenden Muskulatur: Je stärker die körperliche Belastung, desto mehr Energie muss in kürzerer Zeit bereitgestellt werden, was Herz und Lunge durch erhöhte Taktung ausgleichen. Die Messung von Puls und Atemfrequenz vor und nach Belastung macht diesen gesteigerten Energiebedarf messbar erfahrbar.",
           "relevante_teilkonzepte": [
             "bk_stoff_energie_umwandlung__energie"
+          ],
+          "relevante_unterkonzepte": [
+            "Energieumwandlung"
           ]
         },
         {
